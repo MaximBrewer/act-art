@@ -1,0 +1,93 @@
+.header {
+    .bg-dark {
+        color: #ffffff;
+    }
+    .header-left {
+        width: 40%;
+    }
+    .header-center {
+        width: 50%;
+    }
+    .header-right {
+        width: 10%;
+    }
+    .header-top-menu {
+        ul {
+            li {
+                @include txt_menu_4;
+                line-height: 2.31rem;
+                a {
+                    color: #ffffff;
+                }
+                margin-right: 2rem;
+            }
+        }
+    }
+    .search-container {
+        position: relative;
+        button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: none;
+            @include box-shadow(none);
+            background: transparent !important;
+            svg {
+                fill: transparent;
+                stroke: #d6d6d6;
+                // ellipse {
+                //     fill: #ffffff;
+                // }
+            }
+        }
+        input {
+            min-width: 27rem;
+            line-height: 2.31rem;
+            background: transparent;
+            color: #d6d6d6;
+            border: 1px solid #d6d6d6;
+        }
+    }
+    .lang-menu {
+        a {
+            @include txt_menu_2;
+            color: #ffffff;
+            line-height: 2.31rem;
+        }
+    }
+    .header-bottom-logo {
+        padding-left: 6.3125rem;
+        a {
+            color: $primary !important;
+            text-decoration: none !important;
+        }
+    }
+    .header-bottom-menu {
+        ul {
+            li {
+                padding: 0;
+                border-color: $primary;
+                a {
+                    @include txt_menu_4;
+                    display: block;
+                    padding: 0.6875rem 0;
+                    text-decoration: none;
+                }
+            }
+            li.list-group-item-header {
+                border-bottom-width: 4px;
+                a {
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 24px;
+                    white-space: nowrap;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                }
+            }
+            li:last-child {
+                border-bottom-width: 1px;
+            }
+        }
+    }
+}

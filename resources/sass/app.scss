@@ -1,8 +1,17 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '/fonts/TTServers/stylesheet.css';
 
 // Variables
 @import 'variables';
+@import '_mixins';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+@import 'common';
+@import 'header';
+@import 'footer';
+
+
+@import 'home';
