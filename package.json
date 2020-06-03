@@ -22,5 +22,16 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "backbone": "^1.4.0",
+        "inview": "0.0.15",
+        "jquery-waypoints": "^2.0.5",
+        "mdbvue": "^6.7.1",
+        "moment": "^2.26.0",
+        "underscore": "^1.10.2",
+        "vue-stack-grid": "^1.2.1",
+        "vue-waterfall": "^1.0.6",
+        "waypoints": "^4.0.1"
     }
 }

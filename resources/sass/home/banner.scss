@@ -1,2 +1,87 @@
 // Banner
 // background: #D6D6D6;
+.home-banner {
+    position: relative;
+    padding: 11rem 0;
+    background: #eceded;
+    .carousel {
+        padding-bottom: 9.75rem;
+        .carousel-button {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            bottom: 3.15rem;
+            .btn {
+                margin: 0;
+            }
+        }
+        .carousel-counter {
+            @include txt_menu_1;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            z-index: 0;
+            bottom: 3.875rem;
+            color: #1e2b32;
+        }
+        .carousel-arrows {
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            bottom: 3.25rem;
+            display: flex;
+            width: 8.8125rem;
+            z-index: 1;
+            justify-content: space-between;
+        }
+        .banner-image {
+            min-height: 37.5rem;
+            padding: 15.6875rem 5.0625rem 1.625rem;
+            color: #fff;
+            .h1 {
+                margin-bottom: 3rem;
+            }
+        }
+        .banner-announce {
+            min-height: 37.5rem;
+            border-top: 8px solid #1e2b32;
+            border-bottom: 8px solid #1e2b32;
+            padding-top: 3rem;
+            .h3 {
+                margin-bottom: 6.75rem;
+            }
+        }
+        .banner-counter-wrapper {
+            margin-bottom: 1.5rem;
+            p {
+                @include small_text_bold_14;
+            }
+            .banner-counter {
+                text-align: center;
+                > div {
+                    small {
+                        @include sssmal_text_bold_12;
+                    }
+                    .number {
+                        width: 2.5rem;
+                        line-height: 2.7rem;
+                        height: 2.5rem;
+                        color: #fff;
+                        background: #2c5770;
+                        margin: 0;
+                    }
+                    &.separator {
+                        width: 0.625rem;
+                        line-height: 2.5rem;
+                    }
+                }
+            }
+        }
+        .btn {
+            margin-bottom: 1.25rem;
+        }
+        .btn-control {
+            margin: 0;
+        }
+    }
+}

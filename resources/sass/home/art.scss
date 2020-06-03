@@ -1,0 +1,77 @@
+#art {
+    .background-text {
+        color: #eceded;
+        top: 3rem;
+    }
+    padding: 11rem 0;
+    .announce {
+        > div {
+            .h2,
+            .h3 {
+                line-height: 3rem;
+                padding-bottom: 1.5rem;
+                border-bottom: 8px solid #000000;
+            }
+            .sub_h1 {
+                padding-top: 3rem;
+            }
+            ol {
+                padding-top: 3rem;
+                counter-reset: my-counter;
+                list-style: none;
+                li {
+                    font-family: "TT Severs";
+                    font-size: 1.5rem;
+                    line-height: 1.75rem;
+                    margin: 0 0 0.5rem 0;
+                    counter-increment: my-counter;
+                    position: relative;
+                    &::before {
+                        content: counter(my-counter);
+                        font-weight: bold;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        position: absolute;
+                        --size: 32px;
+                        left: calc(-1 * var(--size) - 10px);
+                        line-height: var(--size);
+                        width: var(--size);
+                        height: var(--size);
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+    .vue-waterfall {
+        .item {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            font-size: 1.2em;
+            color: rgb(0, 158, 107);
+        }
+        .item:after {
+            content: attr(index);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+        .wf-transition {
+            transition: opacity 0.3s ease;
+            -webkit-transition: opacity 0.3s ease;
+        }
+        .wf-enter {
+            opacity: 0;
+        }
+        .item-move {
+          transition: all .5s cubic-bezier(.55,0,.1,1);
+          -webkit-transition: all .5s cubic-bezier(.55,0,.1,1);
+        }
+    }
+}

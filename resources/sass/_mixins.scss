@@ -42,10 +42,20 @@
     letter-spacing: 0.05em;
     color: #606566;
 }
+@mixin sssmal_text_bold_12{
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+    color: #606566;
+    font-weight: 500;
+}
 @mixin text_bold_18 {
     font-weight: 500;
 }
 @mixin small_text_bold_14 {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
     font-weight: 500;
 }
 

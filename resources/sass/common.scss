@@ -55,6 +55,7 @@ h5,
 }
 .h5_underline {
     font-family: "Montserrat";
+    display: block;
     font-weight: bold;
     line-height: 1em;
     text-decoration-line: underline;
@@ -137,4 +138,135 @@ h6,
 .btn-inverse:not(:disabled):not(.disabled).active:focus,
 .show > .btn-inverse.dropdown-toggle:focus {
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+
+.btn-default:hover {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:focus,
+.btn-default.focus {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+    // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+
+.btn-default.disabled,
+.btn-default:disabled {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:not(:disabled):not(.disabled):active,
+.btn-default:not(:disabled):not(.disabled).active,
+.show > .btn-default.dropdown-toggle {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:not(:disabled):not(.disabled):active:focus,
+.btn-default:not(:disabled):not(.disabled).active:focus,
+.show > .btn-default.dropdown-toggle:focus {
+    // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+
+.btn-default {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:hover {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:focus,
+.btn-default.focus {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+    // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+
+.btn-default.disabled,
+.btn-default:disabled {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:not(:disabled):not(.disabled):active,
+.btn-default:not(:disabled):not(.disabled).active,
+.show > .btn-default.dropdown-toggle {
+    color: #1e2b32;
+    background-color: transparent;
+    border-color: #1e2b32;
+}
+
+.btn-default:not(:disabled):not(.disabled):active:focus,
+.btn-default:not(:disabled):not(.disabled).active:focus,
+.show > .btn-default.dropdown-toggle:focus {
+    // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+.container {
+    position: relative;
+}
+.sticky-section {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 0;
+    left: -7.875rem;
+    text-align: right;
+}
+.sticky-section span {
+    white-space: nowrap;
+    font-family: TT Severs;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    color: #6c92a8;
+    display: block;
+    text-decoration-line: underline;
+}
+.background-text {
+    position: absolute;
+    top: 1.5rem;
+    width: 100%;
+    text-align: center;
+    font-family: TT Severs;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20rem;
+    line-height: 20rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.btn-control {
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    width: 3.75rem;
+    height: 3.75rem;
+    line-height: 3.75rem;
+}
+section {
+    position: relative;
 }

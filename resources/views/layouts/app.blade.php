@@ -10,9 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link
@@ -23,7 +20,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div>
         <header class="header">
             <nav>
                 <section class="bg-dark py-2">
@@ -96,7 +93,7 @@
                         </div>
                         <div class="header-center">
                             <div class="row header-bottom-menu">
-                                <div class="col col-lg-3">
+                                <div class="col col-lg-15">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item list-group-item-header"><a href="#">Аукционы</a></li>
                                         <li class="list-group-item"><a href="#">Регулярные</a></li>
@@ -104,7 +101,7 @@
                                         <li class="list-group-item"><a href="#">Архив</a></li>
                                     </ul>
                                 </div>
-                                <div class="col col-lg-3">
+                                <div class="col col-lg-15">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item list-group-item-header"><a
                                                 href="#">онлайн-ГАЛЕРЕЯ</a>
@@ -114,7 +111,7 @@
                                         <li class="list-group-item"><a href="#">Архив</a></li>
                                     </ul>
                                 </div>
-                                <div class="col col-lg-3">
+                                <div class="col col-lg-15">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item list-group-item-header"><a href="#">ПРОСТРАНСТВА</a>
                                         </li>
@@ -122,7 +119,7 @@
                                         <li class="list-group-item"><a href="#">Мастерские</a></li>
                                     </ul>
                                 </div>
-                                <div class="col col-lg-3">
+                                <div class="col col-lg-15">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item list-group-item-header"><a href="#">О проекте</a>
                                         </li>
@@ -147,7 +144,7 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col col-lg-3">
+                    <div class="col col-lg-15">
                         <a href="/" class="footer-logo">
                             <svg viewBox="0 0 282 136" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -156,7 +153,7 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="col col-lg-3">
+                    <div class="col col-lg-15">
                         <ul class="list-unstyled">
                             <li><a href="#">Правила Аукциона</a></li>
                             <li><a href="#">Правила Аукциона-Галереи</a></li>
@@ -168,7 +165,7 @@
                             <li><a href="#">Персональные данные</a></li>
                         </ul>
                     </div>
-                    <div class="col col-lg-3">
+                    <div class="col col-lg-15">
                         <ul class="list-unstyled">
                             <li><a href="#">Аукционы</a></li>
                             <li><a href="#">онлайн-ГАЛЕРЕЯ</a></li>
@@ -179,7 +176,7 @@
                             <li><a href="#">КОНТАКТЫ</a></li>
                         </ul>
                     </div>
-                    <div class="col col-lg-3">
+                    <div class="col col-lg-15">
                         <form>
                             <div class="form-group">
                                 <label for="subscribeFooterEmail">Узнавайте первым о новых лотах, специальных
@@ -236,6 +233,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>

@@ -1,0 +1,44 @@
+.bk-main-awards-ticker {
+    background: #1e2b32;
+    color: #2c5770;
+    padding:3.125rem 0 4.875rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.bk-main-ticker-line-1 {
+    padding-bottom: 1rem;
+}
+
+.bk-main-ticker-line-1,
+.bk-main-ticker-line-2{
+    min-width: 5000px;
+    display: flex;
+    white-space: nowrap;
+}
+
+.bk-main-ticker-line-1 span {
+    white-space: nowrap;
+    -webkit-animation: moveX_-100 15s linear infinite;
+    animation: moveX_-100 15s linear infinite;
+}
+
+.bk-main-ticker-line-2 span {
+    white-space: nowrap;
+    -webkit-animation: moveX_-100 22s linear infinite;
+    animation: moveX_-100 22s linear infinite;
+}
+/*! CSS Used keyframes */
+@-webkit-keyframes moveX_-100 {
+    to {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes moveX_-100 {
+    to {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
