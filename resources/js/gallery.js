@@ -174,25 +174,25 @@ Gallery = {
         Gallery.width = t.find(".gallery-inner").width();
     },
     correctGallery: function() {
-        var t = $("#gallery"),
-            e = t.find(".gallery-body"),
-            i = t.find(".picture");
-        if (t.length && e.length && i.length) {
-            var n = e.height(),
-                s = e.offset().top,
-                o = s + n;
-            i.each(function() {
-                var t = $(this),
-                    e = t.height(),
-                    i = t.offset().top,
-                    n = e + i,
-                    s = o - n;
-                if (s < 0) {
-                    var r = e - Math.abs(s);
-                    t.height(r);
-                }
-            });
-        }
+        // var t = $("#gallery"),
+        //     e = t.find(".gallery-body"),
+        //     i = t.find(".picture");
+        // if (t.length && e.length && i.length) {
+        //     var n = e.height(),
+        //         s = e.offset().top,
+        //         o = s + n;
+        //     i.each(function() {
+        //         var t = $(this),
+        //             e = t.height(),
+        //             i = t.offset().top,
+        //             n = e + i,
+        //             s = o - n;
+        //         if (s < 0) {
+        //             var r = e - Math.abs(s);
+        //             t.height(r);
+        //         }
+        //     });
+        // }
     },
     hoverEffects: {
         on: function(t) {

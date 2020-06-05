@@ -1,6 +1,11 @@
 // Banner
-// background: #D6D6D6;
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
 .home-banner {
+    div {
+        outline: none !important;
+    }
     position: relative;
     padding: 11rem 0;
     background: #eceded;
