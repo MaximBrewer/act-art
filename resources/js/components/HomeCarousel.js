@@ -1,10 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
+import Countdown, {
+    zeroPad,
+    calcTimeDelta,
+    formatTimeDelta
+} from "react-countdown";
+
+const declOfNum = (number, titles) => {
+    let cases = [2, 0, 1, 1, 1, 2];
+    return titles[
+        number % 100 > 4 && number % 100 < 20
+            ? 2
+            : cases[number % 10 < 5 ? number % 10 : 5]
+    ];
+};
 
 export default function HomeGalleries() {
     const [state, setState] = useState({
         slideIndex: 0,
-        slidesTotal: 0,
+        slidesTotal: 0
     });
     const refPicture = useRef();
     const refAnnounce = useRef();
@@ -46,6 +60,56 @@ export default function HomeGalleries() {
             )
                 refPicture.current.slickNext(false);
             else refPicture.current.slickPrev(false);
+        }
+    };
+
+    // Random component
+    const Completionist = () => (
+        <div className="banner-counter d-flex">You are good to go!</div>
+    );
+
+    // Renderer callback with condition
+    const renderer = ({ days, hours, minutes, seconds, completed }) => {
+        if (completed) {
+            // Render a completed state
+            return <Completionist />;
+        } else {
+            // Render a countdown
+            return (
+                <div className="banner-counter d-flex">
+                    <div className="days">
+                        <div className="number h5">{zeroPad(days)}</div>
+                        <small>
+                            {declOfNum(days, ["день", "дня", "дней"])}
+                        </small>
+                    </div>
+                    <div className="separator h5"></div>
+                    <div className="ours">
+                        <div className="number h5">{zeroPad(hours)}</div>
+                        <small>
+                            {declOfNum(hours, ["час", "часа", "часов"])}
+                        </small>
+                    </div>
+                    <div className="separator h5">:</div>
+                    <div className="minutes">
+                        <div className="number h5">{zeroPad(minutes)}</div>
+                        <small>
+                            {declOfNum(minutes, ["мин.", "мин.", "мин."])}
+                        </small>
+                    </div>
+                    <div className="separator h5">:</div>
+                    <div className="seconds">
+                        <div className="number h5">{zeroPad(seconds)}</div>
+                        <small>
+                            {declOfNum(seconds, [
+                                "сек.",
+                                "сек.",
+                                "сек."
+                            ])}
+                        </small>
+                    </div>
+                </div>
+            );
         }
     };
     return (
@@ -113,27 +177,10 @@ export default function HomeGalleries() {
                                 </div>
                                 <div className="banner-counter-wrapper">
                                     <p>ДО НАЧАЛА АУКЦИОНА:</p>
-                                    <div className="banner-counter d-flex">
-                                        <div className="days">
-                                            <div className="number h5">12</div>
-                                            <small>дней</small>
-                                        </div>
-                                        <div className="separator h5"></div>
-                                        <div className="ours">
-                                            <div className="number h5">12</div>
-                                            <small>часов</small>
-                                        </div>
-                                        <div className="separator h5">:</div>
-                                        <div className="minutes">
-                                            <div className="number h5">12</div>
-                                            <small>мин.</small>
-                                        </div>
-                                        <div className="separator h5">:</div>
-                                        <div className="seconds">
-                                            <div className="number h5">12</div>
-                                            <small>сек.</small>
-                                        </div>
-                                    </div>
+                                    <Countdown
+                                        date={Date.now() + 100000000}
+                                        renderer={renderer}
+                                    />
                                 </div>
                                 <button className="btn btn-primary btn-lg">
                                     ПРИНЯТЬ УЧАСТИЕ
@@ -149,27 +196,10 @@ export default function HomeGalleries() {
                                 </div>
                                 <div className="banner-counter-wrapper">
                                     <p>ДО НАЧАЛА АУКЦИОНА:</p>
-                                    <div className="banner-counter d-flex">
-                                        <div className="days">
-                                            <div className="number h5">12</div>
-                                            <small>дней</small>
-                                        </div>
-                                        <div className="separator h5"></div>
-                                        <div className="ours">
-                                            <div className="number h5">12</div>
-                                            <small>часов</small>
-                                        </div>
-                                        <div className="separator h5">:</div>
-                                        <div className="minutes">
-                                            <div className="number h5">12</div>
-                                            <small>мин.</small>
-                                        </div>
-                                        <div className="separator h5">:</div>
-                                        <div className="seconds">
-                                            <div className="number h5">12</div>
-                                            <small>сек.</small>
-                                        </div>
-                                    </div>
+                                    <Countdown
+                                        date={Date.now() + 100000000}
+                                        renderer={renderer}
+                                    />
                                 </div>
                                 <button className="btn btn-primary btn-lg">
                                     ПРИНЯТЬ УЧАСТИЕ
@@ -185,27 +215,10 @@ export default function HomeGalleries() {
                                 </div>
                                 <div className="banner-counter-wrapper">
                                     <p>ДО НАЧАЛА АУКЦИОНА:</p>
-                                    <div className="banner-counter d-flex">
-                                        <div className="days">
-                                            <div className="number h5">12</div>
-                                            <small>дней</small>
-                                        </div>
-                                        <div className="separator h5"></div>
-                                        <div className="ours">
-                                            <div className="number h5">12</div>
-                                            <small>часов</small>
-                                        </div>
-                                        <div className="separator h5">:</div>
-                                        <div className="minutes">
-                                            <div className="number h5">12</div>
-                                            <small>мин.</small>
-                                        </div>
-                                        <div className="separator h5">:</div>
-                                        <div className="seconds">
-                                            <div className="number h5">12</div>
-                                            <small>сек.</small>
-                                        </div>
-                                    </div>
+                                    <Countdown
+                                        date={Date.now() + 100000000}
+                                        renderer={renderer}
+                                    />
                                 </div>
                                 <button className="btn btn-primary btn-lg">
                                     ПРИНЯТЬ УЧАСТИЕ

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,14 @@ use TCG\Voyager\Facades\Voyager;
 */
 
 Auth::routes();
+
+Route::get('lang/{locale}', function ($locale) {
+    if (! in_array($locale, ['en', 'ru'])) {
+        abort(400);
+    }
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
 
 Route::get('/', 'HomeController@index')->name('home');
 

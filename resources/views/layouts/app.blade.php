@@ -21,48 +21,50 @@
 
 <body>
     <div>
-        <header class="header">
+        <header class="header" id="header">
             <nav>
-                <section class="bg-dark py-2">
-                    <div class="container-fluid d-flex">
-                        <div class="header-left"></div>
-                        <div class="header-center d-flex justify-content-between">
-                            <div class="header-top-menu">
-                                <ul class="list-unstyled d-flex m-0">
-                                    <li><a href="#">Как купить</a></li>
-                                    <li><a href="#">Правила</a></li>
-                                    <li><a href="#">Доставка</a></li>
-                                </ul>
+                <section class="bg-dark py-2" id="header-top">
+                    <div class="header-center container">
+                        <div class="row">
+                            <div class="col col-lg-16"></div>
+                            <div class="col col-lg-22">
+                                <div class="header-top-menu">
+                                    @php echo menu('topmost', 'menu.topmost');@endphp
+                                </div>
                             </div>
-                            <div class="header-top-search">
-                                <form action="/action_page.php">
-                                    <div class="search-container">
-                                        <input type="text" placeholder="Поиск.." name="search" class="form-control">
-                                        <button type="submit" class="btn p-1 btn-link">
-                                            <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <ellipse cx="11.3137" cy="12.3138" rx="8" ry="8"
-                                                    transform="rotate(-45 11.3137 12.3138)" stroke-width="3" />
-                                                <path d="M23.7782 24.7782L16 17.0001" stroke-width="3" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </form>
+                            <div class="col col-lg-22">
+                                <div class="header-top-search">
+                                    <form action="/action_page.php">
+                                        <div class="search-container">
+                                            <input type="text" placeholder="{{ __('Поиск..') }}" name="search"
+                                                class="form-control">
+                                            <button type="submit" class="btn p-1 btn-link">
+                                                <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <ellipse cx="11.3137" cy="12.3138" rx="8" ry="8"
+                                                        transform="rotate(-45 11.3137 12.3138)" stroke-width="3" />
+                                                    <path d="M23.7782 24.7782L16 17.0001" stroke-width="3" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                        <div class="header-right d-flex">
-                            <div class="lang-menu mx-5 text-nowrap">
-                                <a href="#">Rus</a> | <a href="#">Eng</a>
+                        <div class="header-lang d-flex">
+                            <div class="lang-menu mx-3 text-nowrap">
+                                <a href="/lang/ru" @if(App::getLocale()=='ru' ) class="active" @endif>Rus</a> | <a
+                                    href="/lang/en" @if(App::getLocale()=='en' ) class="active" @endif>Eng</a>
                             </div>
                             <div class="header-top-profile">
-                                <button class="btn btn-inverse" type="submit">Войти</button>
+                                <button class="btn btn-inverse" type="submit">{!! __('Войти') !!}</button>
                             </div>
                         </div>
                     </div>
                 </section>
                 <section class="my-5">
-                    <div class="container-fluid d-flex">
-                        <div class="header-left header-bottom-logo">
+                    <div class="container">
+                        <div class="header-bottom-logo">
                             <a href="/" class="header-logo">
                                 <svg width="379" height="50" viewBox="0 0 379 50" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -88,49 +90,48 @@
                                         d="M338.201 18.4536C338.201 14.0166 336.431 9.76134 333.282 6.62391C330.132 3.48648 325.86 1.72389 321.405 1.72389H295.021V49.5127H307.012V35.176H316.14L317.126 40.0058C318.586 46.014 323.275 49.4617 328.532 49.4617H335.835V39.9549H329.146L327.882 33.8886C330.939 32.6161 333.549 30.4718 335.385 27.7254C337.221 24.979 338.201 21.7532 338.201 18.4536ZM326.13 25.5528H307.019V11.2816H326.13V25.5528Z"
                                         fill="#2C5770" />
                                 </svg>
-                                <p class="h5 py-4">онлайн-аукцион<br>современного<br>искусства</p>
+                                <p class="h5 py-4">{!! __('онлайн-аукцион<br>современного<br>искусства') !!}</p>
                             </a>
                         </div>
-                        <div class="header-center">
-                            <div class="row header-bottom-menu">
-                                <div class="col col-lg-15">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-header"><a href="#">Аукционы</a></li>
-                                        <li class="list-group-item"><a href="#">Регулярные</a></li>
-                                        <li class="list-group-item"><a href="#">Тематические</a></li>
-                                        <li class="list-group-item"><a href="#">Архив</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col col-lg-15">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-header"><a
-                                                href="#">онлайн-ГАЛЕРЕЯ</a>
-                                        </li>
-                                        <li class="list-group-item"><a href="#">Работы в продаже</a></li>
-                                        <li class="list-group-item"><a href="#">Авторы</a></li>
-                                        <li class="list-group-item"><a href="#">Архив</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col col-lg-15">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-header"><a href="#">ПРОСТРАНСТВА</a>
-                                        </li>
-                                        <li class="list-group-item"><a href="#">Выставки</a></li>
-                                        <li class="list-group-item"><a href="#">Мастерские</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col col-lg-15">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item list-group-item-header"><a href="#">О проекте</a>
-                                        </li>
-                                        <li class="list-group-item"><a href="#">Платформа</a></li>
-                                        <li class="list-group-item"><a href="#">Художникам</a></li>
-                                        <li class="list-group-item"><a href="#">Блог • Новости</a></li>
-                                    </ul>
-                                </div>
+                        <div class="row header-bottom-menu">
+                            <div class="col col-lg-16"></div>
+                            <div class="col col-lg-11">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-header"><a
+                                            href="#">{{ __('Аукционы') }}</a></li>
+                                    <li class="list-group-item"><a href="#">{{ __('Регулярные') }}</a></li>
+                                    <li class="list-group-item"><a href="#">{{ __('Тематические') }}</a></li>
+                                    <li class="list-group-item"><a href="#">{{ __('Архив') }}</a></li>
+                                </ul>
+                            </div>
+                            <div class="col col-lg-11">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-header"><a
+                                            href="#">{{ __('Онлайн-галерея') }}</a>
+                                    </li>
+                                    <li class="list-group-item"><a href="#">{{ __('Работы в продаже') }}</a></li>
+                                    <li class="list-group-item"><a href="#">{{ __('Авторы') }}</a></li>
+                                    <li class="list-group-item"><a href="#">{{ __('Архив') }}</a></li>
+                                </ul>
+                            </div>
+                            <div class="col col-lg-11">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-header"><a href="#">Пространства</a>
+                                    </li>
+                                    <li class="list-group-item"><a href="#">Выставки</a></li>
+                                    <li class="list-group-item"><a href="#">Мастерские</a></li>
+                                </ul>
+                            </div>
+                            <div class="col col-lg-11">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-header"><a href="#">О проекте</a>
+                                    </li>
+                                    <li class="list-group-item"><a href="#">Платформа</a></li>
+                                    <li class="list-group-item"><a href="#">Художникам</a></li>
+                                    <li class="list-group-item"><a href="#">Блог • Новости</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="header-right d-flex"></div>
                     </div>
                 </section>
             </nav>
@@ -235,6 +236,9 @@
     </footer>
 
     <!-- Scripts -->
+    <script>
+        window._translations = {!! cache('translations'); !!};
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 

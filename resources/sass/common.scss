@@ -94,7 +94,9 @@ h6,
     letter-spacing: initial;
 }
 .btn {
+    font-family: "Roboto Condensed", sans-serif;
     font-weight: bold;
+    font-size: 18px;
     letter-spacing: 0.03em;
     outline: none !important;
 }
@@ -241,6 +243,7 @@ h6,
     text-decoration-line: underline;
 }
 .background-text {
+    transform: translateX(80%);
     position: absolute;
     top: 1.5rem;
     width: 100%;
@@ -269,4 +272,5 @@ h6,
 }
 section {
     position: relative;
+    overflow: hidden;
 }

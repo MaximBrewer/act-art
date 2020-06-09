@@ -23,25 +23,12 @@
         "react-dom": "^16.2.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
-        "sass-loader": "^8.0.0",
-        "vue-waypoint": "^3.4.1"
+        "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "backbone": "^1.4.0",
-        "bootstrap-material-design": "^4.1.1",
-        "inview": "0.0.15",
-        "jquery-waypoints": "^2.0.5",
-        "mdbvue": "^6.7.1",
-        "moment": "^2.26.0",
         "react-cool-inview": "^1.0.3",
-        "react-elastic-carousel": "^0.6.4",
-        "react-photo-gallery": "^8.0.0",
+        "react-countdown": "^2.2.1",
         "react-slick": "^0.26.1",
-        "scrollmagic": "^2.0.7",
-        "slick-carousel": "^1.8.1",
-        "underscore": "^1.10.2",
-        "vue-stack-grid": "^1.2.1",
-        "vue-waterfall": "^1.0.6",
-        "waypoints": "^4.0.1"
+        "slick-carousel": "^1.8.1"
     }
 }

@@ -2,15 +2,6 @@
     .bg-dark {
         color: #ffffff;
     }
-    .header-left {
-        width: 40%;
-    }
-    .header-center {
-        width: 50%;
-    }
-    .header-right {
-        width: 10%;
-    }
     .header-top-menu {
         ul {
             li {
@@ -48,15 +39,25 @@
             border: 1px solid #d6d6d6;
         }
     }
-    .lang-menu {
-        a {
-            @include txt_menu_2;
-            color: #ffffff;
-            line-height: 2.31rem;
+    .header-lang {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        .lang-menu {
+            a {
+                &.active {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+                font-family: "Roboto Condensed", sans-serif;
+                color: #ffffff;
+                line-height: 2.31rem;
+            }
         }
     }
     .header-bottom-logo {
-        padding-left: 6.3125rem;
+        position: absolute;
+        left: -7.875rem;
         a {
             color: $primary !important;
             text-decoration: none !important;
@@ -87,6 +88,25 @@
             }
             li:last-child {
                 border-bottom-width: 1px;
+            }
+        }
+    }
+    nav {
+        > section {
+            &.fixed {
+                width: 100%;
+                position: fixed;
+                display: none;
+            }
+        }
+    }
+    &.fixed {
+        nav {
+            > section {
+                display: none;
+                &.fixed {
+                    display: block;
+                }
             }
         }
     }

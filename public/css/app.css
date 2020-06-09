@@ -16800,7 +16800,9 @@ h6,
 }
 
 .btn {
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
+  font-size: 18px;
   letter-spacing: 0.03em;
   outline: none !important;
 }
@@ -16931,6 +16933,7 @@ h6,
 }
 
 .background-text {
+  transform: translateX(80%);
   position: absolute;
   top: 1.5rem;
   width: 100%;
@@ -16961,22 +16964,11 @@ h6,
 
 section {
   position: relative;
+  overflow: hidden;
 }
 
 .header .bg-dark {
   color: #ffffff;
-}
-
-.header .header-left {
-  width: 40%;
-}
-
-.header .header-center {
-  width: 50%;
-}
-
-.header .header-right {
-  width: 10%;
 }
 
 .header .header-top-menu ul li {
@@ -17019,19 +17011,26 @@ section {
   border: 1px solid #d6d6d6;
 }
 
-.header .lang-menu a {
+.header .header-lang {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+.header .header-lang .lang-menu a {
   font-family: "Roboto Condensed", sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 18px;
-  letter-spacing: 0.02em;
-  color: #2c5770;
   color: #ffffff;
   line-height: 2.31rem;
 }
 
+.header .header-lang .lang-menu a.active {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .header .header-bottom-logo {
-  padding-left: 6.3125rem;
+  position: absolute;
+  left: -7.875rem;
 }
 
 .header .header-bottom-logo a {
@@ -17071,6 +17070,20 @@ section {
 
 .header .header-bottom-menu ul li:last-child {
   border-bottom-width: 1px;
+}
+
+.header nav > section.fixed {
+  width: 100%;
+  position: fixed;
+  display: none;
+}
+
+.header.fixed nav > section {
+  display: none;
+}
+
+.header.fixed nav > section.fixed {
+  display: block;
 }
 
 .footer-top {
