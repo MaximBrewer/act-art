@@ -31,7 +31,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::patch('lots/relation', '\App\Http\Controllers\Voyager\VoyagerBaseController@addRelation')->name('lots.relation.add');
-    Route::patch('users/relation', '\App\Http\Controllers\Voyager\VoyagerUserController@addRelation')->name('users.relation.add');
+    Route::patch('/lots/relation', '\App\Http\Controllers\Voyager\VoyagerBaseController@addRelation')->name('voyager.lots.relation.add');
+    Route::patch('/users/relation', '\App\Http\Controllers\Voyager\VoyagerUserController@addRelation')->name('voyager.users.relation.add');
     Voyager::routes();
 });

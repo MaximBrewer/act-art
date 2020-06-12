@@ -9,5 +9,6 @@ class Style extends Model
 {
     use Translatable;
     protected $translatable = ['title'];
+    protected $fillable = ['title'];
     //
 }

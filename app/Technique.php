@@ -9,4 +9,5 @@ class Technique extends Model
 {
     use Translatable;
     protected $translatable = ['title'];
+    protected $fillable = ['title'];
 }
