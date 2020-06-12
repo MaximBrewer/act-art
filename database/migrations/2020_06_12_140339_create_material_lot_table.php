@@ -14,8 +14,10 @@ class CreateMaterialLotTable extends Migration
     public function up()
     {
         Schema::create('material_lot', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('lot_id');
+            $table->unsignedBigInteger('material_id');
+            $table->foreign('lot_id')->references('id')->on('lots')->onDelete('cascade');
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade');
         });
     }
 

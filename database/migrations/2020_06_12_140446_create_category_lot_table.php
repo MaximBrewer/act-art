@@ -14,8 +14,10 @@ class CreateCategoryLotTable extends Migration
     public function up()
     {
         Schema::create('category_lot', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('lot_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('lot_id')->references('id')->on('lots')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

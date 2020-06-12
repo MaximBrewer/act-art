@@ -14,8 +14,10 @@ class CreateStyleLotTable extends Migration
     public function up()
     {
         Schema::create('style_lot', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('lot_id');
+            $table->unsignedBigInteger('style_id');
+            $table->foreign('lot_id')->references('id')->on('lots')->onDelete('cascade');
+            $table->foreign('style_id')->references('id')->on('styles')->onDelete('cascade');
         });
     }
 
