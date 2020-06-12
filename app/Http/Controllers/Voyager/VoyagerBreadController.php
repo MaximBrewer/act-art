@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace App\Http\Controllers\Voyager;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +15,7 @@ use TCG\Voyager\Events\BreadUpdated;
 use TCG\Voyager\Facades\Voyager;
 use Exception;
 
-class VoyagerBreadController extends Controller
+class VoyagerBreadController extends \TCG\Voyager\Http\Controllers\Controller
 {
     public function index()
     {
