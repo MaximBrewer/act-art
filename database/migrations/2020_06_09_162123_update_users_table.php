@@ -14,13 +14,13 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('firstname')->nullable();
-            $table->string('secondname')->nullable();
+            $table->string('middlename')->nullable();
             $table->string('surname')->nullable();
             $table->integer('year')->nullable();
             $table->text('text')->nullable();
             $table->string('fb')->nullable();
             $table->string('inst')->nullable();
+            $table->string('beh')->nullable();
         });
     }
 
@@ -32,7 +32,13 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
-            $table->dropColumn('city');
+            $table->dropColumn('middlename');
+            $table->dropColumn('surname');
+            $table->dropColumn('year');
+            $table->dropColumn('text');
+            $table->dropColumn('fb');
+            $table->dropColumn('inst');
+            $table->dropColumn('beh');
         });
     }
 }

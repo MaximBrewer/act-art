@@ -5,9 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 
-class Auction extends Model
+class Group extends Model
 {
     use Translatable;
-    protected $translatable = ['title', 'sublime', 'text'];
+    protected $translatable = ['title'];
+    protected $fillable = ['title'];
     //
 }

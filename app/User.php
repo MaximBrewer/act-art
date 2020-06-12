@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use TCG\Voyager\Traits\Translatable;
 
 class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
+    use Translatable;
+    protected $translatable = ['name', 'surname', 'middlename'];
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +20,7 @@ class User extends \TCG\Voyager\Models\User
      */
     protected $fillable = [
         'name', 'email', 'password',
+        'phone', 'fb', 'inst', 'beh',
     ];
 
     /**
@@ -36,4 +40,24 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function exhibits()
+    {
+        return $this->belongsToMany('App\Exhibit');
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany('App\Group');
+    }
+
+    public function professions()
+    {
+        return $this->belongsToMany('App\Profession');
+    }
+
+    public function studies()
+    {
+        return $this->belongsToMany('App\Study');
+    }
 }
