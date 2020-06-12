@@ -16,6 +16,7 @@ class UpdateUsersTable extends Migration
         Schema::table('users', function ($table) {
             $table->string('middlename')->nullable();
             $table->string('surname')->nullable();
+            $table->string('phone', 31)->nullable();
             $table->integer('year')->nullable();
             $table->text('text')->nullable();
             $table->string('fb')->nullable();
@@ -35,6 +36,7 @@ class UpdateUsersTable extends Migration
             $table->dropColumn('middlename');
             $table->dropColumn('surname');
             $table->dropColumn('year');
+            $table->dropColumn('phone');
             $table->dropColumn('text');
             $table->dropColumn('fb');
             $table->dropColumn('inst');

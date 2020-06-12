@@ -11,7 +11,7 @@ class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
     use Translatable;
-    protected $translatable = ['name', 'surname', 'middlename'];
+    protected $translatable = ['name', 'surname', 'middlename', 'text'];
 
     /**
      * The attributes that are mass assignable.
