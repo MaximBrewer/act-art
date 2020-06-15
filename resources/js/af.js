@@ -1,4 +1,4 @@
-window.addValue = (inp) => {
+window.addValue = inp => {
     var body =
         "value=" +
         encodeURIComponent(inp.value) +
@@ -26,7 +26,7 @@ window.addValue = (inp) => {
                 has = document.createElement("SPAN"),
                 ha = document.createElement("A"),
                 hi = document.createElement("INPUT");
-            hi.setAttribute("name", inp.dataset.getItemsField + '[]');
+            hi.setAttribute("name", inp.dataset.getItemsField + "[]");
             hi.setAttribute("value", model.id);
             hi.setAttribute("type", "hidden");
 
@@ -48,8 +48,8 @@ window.addValue = (inp) => {
     });
 
     request.send(body);
-}
-window.autocomplete = (inp) => {
+};
+window.autocomplete = inp => {
     var currentFocus;
     inp.addEventListener("input", function(e) {
         var a,
@@ -184,7 +184,7 @@ window.autocomplete = (inp) => {
     document.addEventListener("click", function(e) {
         closeAllLists(e.target);
     });
-}
+};
 document.addEventListener("DOMContentLoaded", function() {
     [].forEach.call(
         document.getElementsByClassName("autocomplete-ajax"),

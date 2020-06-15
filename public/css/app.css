@@ -17031,9 +17031,11 @@ section {
 .header .header-bottom-logo {
   position: absolute;
   left: -7.875rem;
+  z-index: 1;
 }
 
 .header .header-bottom-logo a {
+  display: block;
   color: #2c5770 !important;
   text-decoration: none !important;
 }

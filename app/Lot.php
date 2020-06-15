@@ -10,6 +10,7 @@ class Lot extends Model
     use Translatable;
     protected $translatable = ['title', 'text'];
     protected $appends = ['number'];
+    protected $fillable = ['auction_id'];
     //
     public function getNumberAttribute()
     {
@@ -35,6 +36,12 @@ class Lot extends Model
     public function getBlitzAttribute($value)
     {
         return (float) $value / 100;
+    }
+
+
+    public function auction()
+    {
+        return $this->belongsTo('App\Auction');
     }
 
 

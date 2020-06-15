@@ -35,3 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::patch('/users/relation', '\App\Http\Controllers\Voyager\VoyagerUserController@addRelation')->name('voyager.users.relation.add');
     Voyager::routes();
 });
+
+
+
+Route::get('/{slug}', 'PageController@index');

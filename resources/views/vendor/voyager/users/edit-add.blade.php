@@ -56,7 +56,6 @@ $isModelTranslatable = true;
                         @php
 
                         if(in_array($row->field, [
-                        'user_belongsto_role_relationship',
                         'avatar',
                         'password'
                         ])) continue;
@@ -112,19 +111,6 @@ $isModelTranslatable = true;
                             <input type="password" class="form-control" id="password" name="password" value=""
                                 autocomplete="new-password">
                         </div>
-
-                        @can('editRoles', $dataTypeContent)
-                        <div class="form-group">
-                            <label for="default_role">{{ __('voyager::profile.role_default') }}</label>
-                            @php
-                            $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
-
-                            $row = $dataTypeRows->where('field', 'user_belongsto_role_relationship')->first();
-                            $options = $row->details;
-                            @endphp
-                            @include('voyager::formfields.relationship')
-                        </div>
-                        @endcan
                         @php
                         if (isset($dataTypeContent->locale)) {
                         $selected_locale = $dataTypeContent->locale;

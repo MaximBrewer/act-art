@@ -187,11 +187,11 @@ return [
 
     // Here you can specify additional assets you would like to be included in the master.blade
     'additional_css' => [
-        'css/af.css',
+        'css/admin.css',
     ],
 
     'additional_js' => [
-        'js/af.js',
+        'js/admin.js',
     ],
 
     'googlemaps' => [

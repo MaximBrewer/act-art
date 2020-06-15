@@ -58,7 +58,9 @@
     .header-bottom-logo {
         position: absolute;
         left: -7.875rem;
+        z-index: 1;
         a {
+            display: block;
             color: $primary !important;
             text-decoration: none !important;
         }

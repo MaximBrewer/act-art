@@ -21,6 +21,7 @@ class CreateLotsTable extends Migration
             $table->date('until')->nullable();
             $table->string('photo');
             $table->integer('price');
+            $table->unsignedInteger('sort');
             $table->integer('blitz')->nullable();
             $table->integer('year')->nullable();
             $table->integer('width')->nullable();
