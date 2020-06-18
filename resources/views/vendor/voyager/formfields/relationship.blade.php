@@ -168,7 +168,7 @@ if(mb_strlen($string_values) > 25){ $string_values = mb_substr($string_values, 0
 @php
 $model = app($options->model);
 $modelName = str_replace("App\\", "", get_class($model));
-$query = $model::where($options->column, '=', $dataTypeContent->{$options->key})->orderBy($options->sort->field, $options->sort->direction)->get();
+$query = $model::where($options->column, '=', $dataTypeContent->{$options->key})->orderBy($options->sort ? $options->sort->field : 'sort', $options->sort ? $options->sort->direction : 'asc')->get();
 @endphp
 
 @if(isset($query))
