@@ -44715,7 +44715,7 @@ window.axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 
-!document.getElementById("gallery-holder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
+!document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
 !document.getElementById("bannerCarousel") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeCarousel__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("bannerCarousel"));
 !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("artWaterfall"));
 

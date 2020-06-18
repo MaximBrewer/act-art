@@ -18,7 +18,7 @@ import HomeGalleries from "./components/HomeGalleries";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
 
-!document.getElementById("gallery-holder") ||
+!document.getElementById("galleryHolder") ||
     render(<HomeGalleries />, document.getElementById("galleryHolder"));
 !document.getElementById("bannerCarousel") ||
     render(<HomeCarousel />, document.getElementById("bannerCarousel"));
