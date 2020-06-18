@@ -31,8 +31,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::patch('/resort', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('voyager.newbase.resort');
-    Route::patch('/lots/relation', '\App\Http\Controllers\Voyager\VoyagerBaseController@addRelation')->name('voyager.newbase.relation.add');
+    Route::patch('/resort', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('voyager.base.resort');
+    Route::patch('/lots/relation', '\App\Http\Controllers\Voyager\VoyagerLotController@addRelation')->name('voyager.lots.relation.add');
     Route::patch('/users/relation', '\App\Http\Controllers\Voyager\VoyagerUserController@addRelation')->name('voyager.users.relation.add');
     Voyager::routes();
 });
