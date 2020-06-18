@@ -10,7 +10,7 @@ class Lot extends Model
     use Translatable;
     protected $translatable = ['title', 'text'];
     protected $appends = ['number'];
-    protected $fillable = ['auction_id'];
+    protected $fillable = ['auction_id', 'sort'];
     //
     public function getNumberAttribute()
     {

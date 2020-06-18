@@ -10,4 +10,10 @@ class Auction extends Model
     use Translatable;
     protected $translatable = ['title', 'sublime', 'text'];
     //
+
+
+    public function lots()
+    {
+        return $this->hasMany('App\Lot')->orderBy('sort', "ASC");
+    }
 }

@@ -16,11 +16,14 @@ import React, { useRef } from "react";
 import { render } from "react-dom";
 import HomeGalleries from "./components/HomeGalleries";
 import HomeCarousel from "./components/HomeCarousel";
+import HomeWaterfall from "./components/HomeWaterfall";
 
 !document.getElementById("gallery-holder") ||
-    render(<HomeGalleries />, document.getElementById("gallery-holder"));
+    render(<HomeGalleries />, document.getElementById("galleryHolder"));
 !document.getElementById("bannerCarousel") ||
     render(<HomeCarousel />, document.getElementById("bannerCarousel"));
+!document.getElementById("artWaterfall") ||
+    render(<HomeWaterfall />, document.getElementById("artWaterfall"));
 const scrollWindow = () => {
     let scrollTop =
             document.documentElement.scrollTop ||

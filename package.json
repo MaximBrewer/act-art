@@ -30,6 +30,7 @@
         "react-cool-inview": "^1.0.3",
         "react-countdown": "^2.2.1",
         "react-slick": "^0.26.1",
+        "react-stack-grid": "^0.7.1",
         "slick-carousel": "^1.8.1"
     }
 }

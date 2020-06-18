@@ -24,6 +24,27 @@ class VoyagerBaseController extends \TCG\Voyager\Http\Controllers\VoyagerBaseCon
      *
      * @return mixed
      */
+    public function resort(Request $request)
+    {
+        $modelName = $request->post('model');
+        $ids = explode(",", $request->post('ids'));
+        if(!$modelName || !is_array($ids)) return false;
+        foreach($ids as $key => $id){
+            $model = ("App\\".$modelName)::find($id);
+            $model->update([
+                'sort' => $key
+            ]);
+        }
+        return $ids;
+    }
+    /**
+     * Get BREAD relations data.
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+
     public function addRelation(Request $request)
     {
         $slug = $this->getSlug($request);
