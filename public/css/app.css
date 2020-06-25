@@ -16945,6 +16945,7 @@ h6,
   line-height: 20rem;
   text-transform: uppercase;
   color: #ffffff;
+  opacity: 70%;
   -ms-user-select: none;
       user-select: none;
   -moz-user-select: none;
@@ -17495,13 +17496,28 @@ section {
 }
 
 .home-banner {
-  position: relative;
   padding: 11rem 0;
   background: #eceded;
 }
 
+.home-banner:before {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  z-index: 1;
+  background-image: url("/images/dot.png");
+}
+
 .home-banner div {
+  z-index: 2;
   outline: none !important;
+}
+
+.home-banner div.container {
+  z-index: 3;
 }
 
 .home-banner .carousel {
@@ -17517,6 +17533,11 @@ section {
 
 .home-banner .carousel .carousel-button .btn {
   margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 171%;
+  background-color: white;
+  padding: 0.475rem 4.25rem;
 }
 
 .home-banner .carousel .carousel-counter {
@@ -17612,12 +17633,40 @@ section {
 }
 
 #art {
-  padding: 11rem 0;
+  padding: 18rem 0;
+}
+
+#art .dotted-gallery {
+  z-index: -1;
+  position: absolute;
+  top: 8.75rem;
+  right: 0;
+  width: 40%;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+#art .dotted-gallery .dotted-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("/images/dot.png");
+}
+
+#art .dotted-gallery svg {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
 }
 
 #art .background-text {
   color: #eceded;
-  top: 3rem;
+  top: 5.25rem;
+  opacity: 1;
 }
 
 #art .announce > div .h2,
@@ -17660,38 +17709,117 @@ section {
   top: 0;
 }
 
-#art .vue-waterfall .item {
+#art .art-waterfall-wrapper {
+  margin-top: 5.3125rem;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .title {
+  margin-top: 1rem;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .author {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .price {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  color: #818486;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .size {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  font-weight: bold;
+  color: #818486;
+}
+
+#popularCategories {
+  margin-bottom: 12rem;
+}
+
+#popularCategories > div {
+  background-image: url("/images/dot.png");
+}
+
+#popularCategories > div .col a {
+  padding: 40% 0;
+  position: relative;
+}
+
+#popularCategories > div .col a p {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #2c5770;
+  color: white;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+#popularCategories > div .col a:before {
+  width: 110%;
+  height: 110%;
+  left: -5%;
+  top: -5%;
+  border: 1px solid #818486;
   position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  font-size: 1.2em;
-  color: #009e6b;
 }
 
-#art .vue-waterfall .item:after {
-  content: attr(index);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+#popularCategories > div .col a:hover:before {
+  content: "";
 }
 
-#art .vue-waterfall .wf-transition {
-  transition: opacity 0.3s ease;
-  -webkit-transition: opacity 0.3s ease;
+#popularCategories > div button {
+  margin-top: 1.5rem;
+  margin-bottom: -1.5rem;
+  padding: 0.475rem 4.25rem;
+  font-size: 24px;
+  line-height: 171%;
 }
 
-#art .vue-waterfall .wf-enter {
-  opacity: 0;
+#homeAbout {
+  padding: 5.4375rem 0;
+  background-color: #2c5770;
 }
 
-#art .vue-waterfall .item-move {
-  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-  -webkit-transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+#homeAbout .container {
+  min-height: 800px;
 }
 
 #gallery {

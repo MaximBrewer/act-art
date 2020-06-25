@@ -36,7 +36,7 @@ export default function HomeGalleries() {
 
         if (
             !wait &&
-            document.getElementById("gallery-holder").offsetWidth >
+            document.getElementById("galleryHolder").offsetWidth >
                 w * size * cols + position - 300
         ) {
             wait = 1;
@@ -71,13 +71,13 @@ export default function HomeGalleries() {
                     let p = {
                         h: randomInteger(1, 2),
                         w: randomInteger(1, 2),
-                        tag: res.data.gallery[i].TAG,
-                        title: res.data.gallery[i].TITLE,
-                        path: res.data.gallery[i].PATH,
+                        tag: res.data.gallery[i].tag,
+                        title: res.data.gallery[i].title,
+                        path: res.data.gallery[i].url,
                         l: 0,
                         t: 0,
                         bg: getRandomColor(),
-                        href: res.data.gallery[i].ARTICLE
+                        href: res.data.gallery[i].article
                     };
                     let set = false;
                     loop2: for (let j in grid) {

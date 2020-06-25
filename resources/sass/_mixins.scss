@@ -68,3 +68,22 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
+ @mixin sssmal_text_16_medium{
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+ }
+ @mixin Text_Name_18{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+ }
+ @mixin  text_supersmall_13{
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+ }
