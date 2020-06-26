@@ -2,7 +2,7 @@
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
-$pink: #f66d9b;
+$pink: #ff665d;
 $red: #e3342f;
 $orange: #f6993f;
 $yellow: #ffed4a;
@@ -12,10 +12,11 @@ $cyan: #6cb2eb;
 
 $gray: #818486;
 
+$graybg: #d6d6d6;
 
-$grid-columns:                60 !default;
+$grid-columns: 60 !default;
 $grid-gutter-width: 40px;
-$grid-row-columns:            30 !default;
+$grid-row-columns: 30 !default;
 
 $grid-breakpoints: (
     // Extra small screen / phone
@@ -92,19 +93,15 @@ $btn-font-size-lg: 1.5rem !default;
 $btn-padding-y-lg: 3px !default;
 $btn-padding-x-lg: 1rem !default;
 
-
-
-
 $spacer: 1rem !default;
 $spacers: (
-  0: 0,
-  1: $spacer / 4,
-  2: $spacer * 0.625,
-  3: $spacer,
-  4: $spacer * 1.25,
-  5: $spacer * 2.5,
+    0: 0,
+    1: $spacer / 4,
+    2: $spacer * 0.625,
+    3: $spacer,
+    4: $spacer * 1.25,
+    5: $spacer * 2.5
 ) !default;
-
 
 // Buttons
 //

@@ -22,16 +22,6 @@
                     Еженедельное обновление.</div><br><br>
                 <a href="#" class="h5 h5_underline">Как купить?</a>
             </div>
-
-            {{-- <h3 class="h3">Как приобрести</h3>
-                <ol>
-                    <li>{{ __('Log in to your account') }}</li>
-            <li>Выбирайте понравившиеся лоты</li>
-            <li>Делайте ставки, следите за конкурентами</li>
-            <li>Ставки принимаются 30 дней с момента выставления лота</li>
-            <li>Если ваша ставка оказалась последней - вы становитесь обладателем лота</li>
-            <li>Мы связываемся с вами и оговариваем условия оплаты и доставки</li>
-            </ol> --}}
         </div>
         <div class="art-waterfall-wrapper">
             <div class="art-waterfall" id="artWaterfall"></div>
@@ -124,15 +114,120 @@
                 fill="#6C92A8" />
         </svg>
     </div>
+    <div class="background-logo">
+        <svg width="607" height="510" viewBox="0 0 607 510" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="283" cy="255" r="255" fill="#FF665E" />
+            <path
+                d="M303.736 110C73.1635 110 2.88873 265.916 0 272.565L72.4808 303.979C73.8988 300.89 97.2187 251.623 163.554 218.639C160.233 230.841 158.555 243.43 158.565 256.073C158.537 274.96 162.244 293.666 169.474 311.124C176.704 328.581 187.314 344.447 200.699 357.814C214.084 371.18 229.981 381.786 247.481 389.025C264.98 396.264 283.74 399.993 302.686 400H304.629C342.825 400.028 379.47 384.94 406.513 358.051C433.557 331.162 448.786 294.672 448.855 256.597C448.885 244.231 447.314 231.913 444.181 219.948C509.466 253.298 533.784 301.885 535.202 304.817L607 271.623C604.006 265.026 529.215 110 303.736 110ZM386.774 322.565H295.07V231.152H386.774V322.565Z"
+                fill="#2C5770" />
+        </svg>
+    </div>
     <div class="container">
         <div class="sticky-section"><span>о проекте</span></div>
+        <div class="row">
+            <div class="col col-md-20">
+            </div>
+            <div class="col col-md-40">
+                <h2 class="h2">ПЛАТФОРМА</h2>
+                <hr>
+                <p class="sub_h2">Платформа Act-Art – независимый социально-ориентированный коммерческий проект. Наша
+                    цель – популяризация современного российского искуства в России и мире. Мы помогаем молодым и
+                    именитым авторам найти своего зрителя и ценителя, делая процесс приобретения произведений
+                    максимально удобным и демократичным.</p>
+                <p class="sub_h2">Являясь куратором возрождённого легендарного творческого объединения “ВсекоХудожник”,
+                    платформа Аct-Art эксклюзивно представляет лучшие работы его авторов. Часть вырученных на аукционах
+                    средств идёт на обеспечение и развитие мастерских, выставок, поддержку творческих проектов,
+                    образовательные инициативы для горожан.</p>
+                <ul class="list-unstyled d-flex justify-content-between">
+                    <li class="h5 h5_underline"><a href="#">Подробнее о&nbsp;платформе</a></li>
+                    <li class="h5 h5_underline"><a href="#">Выставочные пространства</a></li>
+                    <li class="h5 h5_underline"><a href="#">Мастерские «ВсекоХудожник»</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rolling-strings">
+            <div class="row">
+                <div class="col col-md-50 align-self-end">
+                    <div class="d-flex" style="transform:translateX(40%)">
+                        <div class="h7">образование</div>
+                        <div class="h7">поддержка</div>
+                        <div class="h7">поддержка</div>
+                    </div>
+                    <div class="d-flex" style="transform:translateX(30%)">
+                        <div class="h7">искусство</div>
+                        <div class="h7">ОБЩЕСТВО</div>
+                        <div class="h7">словослово</div>
+                    </div>
+                    <div class="d-flex" style="transform:translateX(55%)">
+                        <div class="h7">ОТВЕТСТВЕННОСТЬ</div>
+                        <div class="h7">просвещение</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 @widget('marquee')
 
+
+<section id="announces">
+    <div class="background-text">ПРОСТРАНСТВА</div>
+    <div class="container">
+        <div class="sticky-section"><span>анонсы мероприятий</span></div>
+        <div class="row announce">
+            <div class="col col-xxl-38">
+                <h2 class="h2">ВЫСТАВКИ <span>и</span> МАСТЕРСКИЕ</h2>
+                <p class="sub_h2">Платформа Акт-Арт представляет три творческих кластера с собственными творческими
+                    мастерскими и выставочными галереями.
+                    Все кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
+                <p class="sub_h2">Все кластеры находятся в историческом центре Москвы и далее какой-то текст. Все
+                    кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
+            </div>
+            <div class="col col-xxl-22">
+                <h3 class="h3">Адреса:</h3>
+                <dl>
+                    <dt>Акт-Арт Фрунзенская</dt>
+                    <dd>Фрунзенская набережная, 1</dd>
+                    <dt>Акт-Арт Пречистенка</dt>
+                    <dd>Пречистенка, 24</dd>
+                    <dt>Акт-Арт Солянка</dt>
+                    <dd>Пречистенка, 24</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="announce-slider-wrapper">
+            <div class="announce-slider" id="announceSlider"></div>
+        </div>
+    </div>
+</section>
+
 <section id="gallery">
     <div class="gallery-holder" id="galleryHolder"></div>
 </section>
+
+
+<section id="news">
+    <div class="background-text">НОВОСТИ</div>
+    <div class="container">
+        <div class="sticky-section"><span>последние заметки</span></div>
+        <div class="news-slider-wrapper">
+            <div class="news-slider" id="newsSlider"></div>
+        </div>
+    </div>
+</section>
+
+
+<section id="experts">
+    <div class="container">
+        <div class="sticky-section"><span>экспертный совет</span></div>
+        <h2 class="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>
+        <div class="experts-slider-wrapper">
+            <div class="experts-slider" id="expertsSlider"></div>
+        </div>
+    </div>
+</section>
+
+
 @widget('marquee')
 @endsection

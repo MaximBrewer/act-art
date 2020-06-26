@@ -17,13 +17,23 @@ import { render } from "react-dom";
 import HomeGalleries from "./components/HomeGalleries";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
+import HomeAnnounce from "./components/HomeAnnounce";
+import HomeNews from "./components/HomeNews";
+import HomeExperts from "./components/HomeExperts";
 
 !document.getElementById("galleryHolder") ||
     render(<HomeGalleries />, document.getElementById("galleryHolder"));
+!document.getElementById("announceSlider") ||
+    render(<HomeAnnounce />, document.getElementById("announceSlider"));
 !document.getElementById("bannerCarousel") ||
     render(<HomeCarousel />, document.getElementById("bannerCarousel"));
 !document.getElementById("artWaterfall") ||
     render(<HomeWaterfall />, document.getElementById("artWaterfall"));
+!document.getElementById("newsSlider") ||
+    render(<HomeNews />, document.getElementById("newsSlider"));
+!document.getElementById("expertsSlider") ||
+    render(<HomeExperts />, document.getElementById("expertsSlider"));
+
 const scrollWindow = () => {
     let scrollTop =
             document.documentElement.scrollTop ||
@@ -31,9 +41,9 @@ const scrollWindow = () => {
             0,
         header = document.getElementById("header");
     if (scrollTop > document.getElementById("header-top").offsetHeight) {
-        // header.classList.add("fixed");
+        header.classList.add("fixed");
     } else {
-        // header.classList.remove("fixed");
+        header.classList.remove("fixed");
     }
     let stickies = document.getElementsByClassName("sticky-section");
 

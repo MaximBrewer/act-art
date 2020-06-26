@@ -22,7 +22,35 @@
 <body>
     <div>
         <header class="header" id="header">
-            <nav>
+            <nav class="header-nav-small">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-header"><a href="#">{{ __('Аукционы') }}</a></li>
+                    <li class="list-group-item"><a href="#">{{ __('Регулярные') }}</a></li>
+                    <li class="list-group-item"><a href="#">{{ __('Тематические') }}</a></li>
+                    <li class="list-group-item"><a href="#">{{ __('Архив') }}</a></li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-header"><a href="#">{{ __('Онлайн-галерея') }}</a>
+                    </li>
+                    <li class="list-group-item"><a href="#">{{ __('Работы в продаже') }}</a></li>
+                    <li class="list-group-item"><a href="#">{{ __('Авторы') }}</a></li>
+                    <li class="list-group-item"><a href="#">{{ __('Архив') }}</a></li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-header"><a href="#">Пространства</a>
+                    </li>
+                    <li class="list-group-item"><a href="#">Выставки</a></li>
+                    <li class="list-group-item"><a href="#">Мастерские</a></li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-header"><a href="#">О проекте</a>
+                    </li>
+                    <li class="list-group-item"><a href="#">Платформа</a></li>
+                    <li class="list-group-item"><a href="#">Художникам</a></li>
+                    <li class="list-group-item"><a href="#">Блог • Новости</a></li>
+                </ul>
+            </nav>
+            <nav class="header-nav-big">
                 <section class="bg-dark py-2" id="header-top">
                     <div class="header-center container">
                         <div class="row">

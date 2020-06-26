@@ -1,7 +1,41 @@
 #homeAbout {
-    padding: 5.4375rem 0;
+    color: white;
+    padding: 8rem 0 6rem;
     background-color: $primary;
+    .background-logo {
+        position: absolute;
+        left: 4rem;
+        bottom: 8rem;
+    }
     .container {
         min-height: 800px;
+    }
+    hr {
+        margin: 1.475rem 0 2rem;
+        background-color: white;
+        height: 8px;
+    }
+    ul {
+        margin-top: 6rem;
+        li {
+            line-height: 1.75rem;
+            a {
+                color: #fff;
+            }
+            &:nth-child(2n + 1) {
+                a {
+                    color: $pink;
+                }
+            }
+        }
+    }
+    .rolling-strings {
+        margin-top: 6rem;
+        .h7 {
+            padding: 0.7rem 3rem 0.2rem;
+            background-color: $pink;
+            margin: 0.375rem;
+            line-height: 1;
+        }
     }
 }

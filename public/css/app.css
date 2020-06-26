@@ -11,7 +11,7 @@
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #f66d9b;
+  --pink: #ff665d;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -534,7 +534,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #f66d9b;
+  color: #ff665d;
   word-wrap: break-word;
 }
 
@@ -16869,6 +16869,11 @@ h6,
   border-color: #1e2b32;
 }
 
+.btn-lg,
+.btn-group-lg > .btn {
+  text-transform: uppercase;
+}
+
 .btn-default {
   color: #1e2b32;
   background-color: transparent;
@@ -17633,7 +17638,7 @@ section {
 }
 
 #art {
-  padding: 18rem 0;
+  padding: 18rem 0 6rem;
 }
 
 #art .dotted-gallery {
@@ -17814,12 +17819,416 @@ section {
 }
 
 #homeAbout {
-  padding: 5.4375rem 0;
+  color: white;
+  padding: 8rem 0 6rem;
   background-color: #2c5770;
+}
+
+#homeAbout .background-logo {
+  position: absolute;
+  left: 4rem;
+  bottom: 8rem;
 }
 
 #homeAbout .container {
   min-height: 800px;
+}
+
+#homeAbout hr {
+  margin: 1.475rem 0 2rem;
+  background-color: white;
+  height: 8px;
+}
+
+#homeAbout ul {
+  margin-top: 6rem;
+}
+
+#homeAbout ul li {
+  line-height: 1.75rem;
+}
+
+#homeAbout ul li a {
+  color: #fff;
+}
+
+#homeAbout ul li:nth-child(2n+1) a {
+  color: #ff665d;
+}
+
+#homeAbout .rolling-strings {
+  margin-top: 6rem;
+}
+
+#homeAbout .rolling-strings .h7 {
+  padding: 0.7rem 3rem 0.2rem;
+  background-color: #ff665d;
+  margin: 0.375rem;
+  line-height: 1;
+}
+
+#announces {
+  padding: 12rem 0 6rem;
+}
+
+#announces .background-text {
+  color: #eceded;
+  top: 5.25rem;
+  opacity: 1;
+}
+
+#announces .announce > div .h2,
+#announces .announce > div .h3 {
+  line-height: 3rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 8px solid #000000;
+}
+
+#announces .announce > div dl {
+  font-family: "TT Severs";
+  font-size: 1.5rem;
+  line-height: 1.17em;
+  letter-spacing: initial;
+}
+
+#announces .announce > div dl dt {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#announces .announce > div dl dd {
+  margin-bottom: 1rem;
+}
+
+#announces .announce-slider {
+  margin-top: 4rem;
+  padding-bottom: 9.75rem;
+  position: relative;
+}
+
+#announces .announce-slider .slick-list {
+  margin: 0 -1.5rem;
+}
+
+#announces .announce-slider .slick-list > * {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+#announces .announce-slider .slick-slide:focus,
+#announces .announce-slider .slick-slide a {
+  outline: none;
+}
+
+#announces .announce-slider .slide-wrapper {
+  padding: 1.25rem 1.5rem;
+}
+
+#announces .announce-slider .slide-wrapper .slide-inner {
+  padding: 2rem 0;
+  border-top: 0.25rem solid #1e2b32;
+  border-bottom: 0.25rem solid #1e2b32;
+}
+
+#announces .announce-slider .slide-wrapper .slide-inner .image {
+  padding-top: 82%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#announces .announce-slider .slide-wrapper .slide-inner .exhibit {
+  font-weight: bold;
+}
+
+#announces .announce-slider .carousel-button {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 3.15rem;
+}
+
+#announces .announce-slider .carousel-button .btn {
+  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 171%;
+  background-color: white;
+  padding: 0.475rem 4.25rem;
+}
+
+#announces .announce-slider .carousel-counter {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #2c5770;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+  bottom: 3.875rem;
+  color: #1e2b32;
+}
+
+#announces .announce-slider .carousel-arrows {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  bottom: 3.25rem;
+  display: flex;
+  width: 8.8125rem;
+  z-index: 1;
+  justify-content: space-between;
+}
+
+#announces .announce-slider .btn {
+  margin-bottom: 1.25rem;
+}
+
+#announces .announce-slider .btn-control {
+  margin: 0;
+}
+
+#news {
+  background-color: #d6d6d6;
+  padding: 12rem 0 4rem;
+}
+
+#news .background-text {
+  color: white;
+  top: 5.25rem;
+  opacity: 1;
+}
+
+#news .news-slider {
+  margin-top: 4rem;
+  padding-bottom: 9.75rem;
+  position: relative;
+}
+
+#news .news-slider hr {
+  margin: 0 1.5rem;
+  background-color: #1e2b32;
+  height: 0.25rem;
+}
+
+#news .news-slider .mx-q {
+  margin: 0 -1.5rem;
+}
+
+#news .news-slider .slide-wrapper {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid transparent;
+  margin-bottom: 3rem;
+}
+
+#news .news-slider .slide-wrapper:hover {
+  background-color: white;
+  border: 1px solid #1e2b32;
+}
+
+#news .news-slider .slide-wrapper .slide-inner {
+  padding: 1rem 0 2rem;
+  border-top: 0.25rem solid #1e2b32;
+}
+
+#news .news-slider .slide-wrapper .slide-inner .date {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+}
+
+#news .news-slider .slide-wrapper .slide-inner .image {
+  padding-top: 82%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#news .news-slider .slide-wrapper .slide-inner .title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+
+#news .news-slider .slide-wrapper .slide-inner .announce {
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+}
+
+#news .news-slider .carousel-button {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 3.15rem;
+}
+
+#news .news-slider .carousel-button .btn {
+  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 171%;
+  background-color: white;
+  padding: 0.475rem 4.25rem;
+}
+
+#news .news-slider .carousel-counter {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #2c5770;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+  bottom: 3.875rem;
+  color: #1e2b32;
+}
+
+#news .news-slider .carousel-arrows {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  bottom: 3.25rem;
+  display: flex;
+  width: 8.8125rem;
+  z-index: 1;
+  justify-content: space-between;
+}
+
+#news .news-slider .btn {
+  margin-bottom: 1.25rem;
+}
+
+#news .news-slider .btn-control {
+  margin: 0;
+}
+
+#experts {
+  padding: 12rem 0 4rem;
+}
+
+#experts .background-text {
+  color: #eceded;
+  top: 5.25rem;
+  opacity: 1;
+}
+
+#experts .experts-slider {
+  padding-bottom: 9.75rem;
+  position: relative;
+}
+
+#experts .experts-slider .slick-list {
+  margin: 0 -1.5rem;
+}
+
+#experts .experts-slider .slick-list > * {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+#experts .experts-slider .slick-slide:focus,
+#experts .experts-slider .slick-slide a {
+  outline: none;
+}
+
+#experts .experts-slider .slide-wrapper {
+  padding: 1.25rem 1.5rem;
+}
+
+#experts .experts-slider .slide-wrapper .slide-inner {
+  padding: 2rem 0;
+  border-top: 0.25rem solid #1e2b32;
+}
+
+#experts .experts-slider .slide-wrapper .slide-inner .image {
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#experts .experts-slider .slide-wrapper .slide-inner .fio {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+
+#experts .experts-slider .slide-wrapper .slide-inner .description {
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+}
+
+#experts .experts-slider .carousel-description {
+  padding: 2rem 0;
+  border-top: 0.25rem solid #1e2b32;
+}
+
+#experts .experts-slider .carousel-buttons {
+  text-align: right;
+}
+
+#experts .experts-slider .carousel-buttons .btn {
+  margin-left: 3rem;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 171%;
+  padding: 0.475rem 4.25rem;
+}
+
+#experts .experts-slider .carousel-counter {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #2c5770;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+  bottom: 3.875rem;
+  color: #1e2b32;
+}
+
+#experts .experts-slider .carousel-arrows {
+  display: flex;
+  width: 8.8125rem;
+  z-index: 1;
+  justify-content: space-between;
+}
+
+#experts .experts-slider .btn {
+  margin-bottom: 1.25rem;
+}
+
+#experts .experts-slider .btn-control {
+  margin: 0;
 }
 
 #gallery {
