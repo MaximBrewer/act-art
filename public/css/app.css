@@ -17122,18 +17122,6 @@ section {
   color: #d6d6d6;
 }
 
-.footer-top .col:nth-child(2) ul:nth-child(2) li {
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.05em;
-  color: #606566;
-  margin-bottom: 0.75rem;
-}
-
-.footer-top .col:nth-child(2) ul:nth-child(2) li a {
-  color: #d6d6d6;
-}
-
 .footer-top .col:nth-child(3) ul:first-child {
   margin-bottom: 3rem;
 }
@@ -17141,8 +17129,8 @@ section {
 .footer-top .col:nth-child(3) ul:first-child li {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
   margin-bottom: 0.625rem;
@@ -17157,23 +17145,11 @@ section {
   padding-bottom: 7px;
 }
 
-.footer-top .col:nth-child(3) ul:first-child li :after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  content: "";
-  display: block;
-  height: 4px;
-  width: 100%;
-  max-width: 12.5rem;
-  background-color: #d6d6d6;
-}
-
 .footer-top .col:nth-child(3) ul:nth-child(2) li {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
 }
@@ -17548,8 +17524,8 @@ section {
 .home-banner .carousel .carousel-counter {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
   position: absolute;
@@ -17786,8 +17762,8 @@ section {
 #popularCategories > div .col a p {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
   color: white;
@@ -17967,8 +17943,8 @@ section {
 #announces .announce-slider .carousel-counter {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
   position: absolute;
@@ -18088,8 +18064,8 @@ section {
 #news .news-slider .carousel-counter {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
   position: absolute;
@@ -18204,8 +18180,8 @@ section {
 #experts .experts-slider .carousel-counter {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 22px;
   letter-spacing: 0.05em;
   color: #2c5770;
   position: absolute;

@@ -16,15 +16,6 @@
                 }
             }
         }
-        ul:nth-child(2) {
-            li {
-                @include sssmal_text_12;
-                margin-bottom: 0.75rem;
-                a {
-                    color: #d6d6d6;
-                }
-            }
-        }
     }
     .col:nth-child(3) {
         ul:first-child {
@@ -39,17 +30,6 @@
                     color: #d6d6d6;
                     text-decoration: none !important;
                     padding-bottom: 7px;
-                }
-                :after {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    content: "";
-                    display: block;
-                    height: 4px;
-                    width: 100%;
-                    max-width: 12.5rem;
-                    background-color: #d6d6d6;
                 }
             }
         }
