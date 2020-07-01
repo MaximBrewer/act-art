@@ -17737,6 +17737,14 @@ section {
 }
 
 @media screen and (max-width: 1919px) {
+  .home-banner {
+    padding: 10rem 0 2.725rem;
+  }
+
+  .home-banner:before {
+    height: 85%;
+  }
+
   .home-banner .carousel .carousel-button .btn {
     padding: 0.22rem 3.25rem;
   }
@@ -17945,6 +17953,12 @@ section {
   line-height: 24px;
   font-weight: bold;
   color: #818486;
+}
+
+@media screen and (max-width: 1919px) {
+  #art {
+    padding: 10rem 0 6rem;
+  }
 }
 
 #popularCategories {

@@ -44788,14 +44788,14 @@ var scrollWindow = function scrollWindow() {
         s = sticky.parentNode.parentNode,
         sp = sticky.children[0];
 
-    if (s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 < scrollTop + 90) {
+    if (s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 < scrollTop + 50) {
       if (s.offsetTop + s.offsetHeight - sp.offsetWidth - (s.offsetHeight - c.offsetHeight) / 2 > scrollTop + 90) {
         sticky.style.marginLeft = (s.offsetWidth - c.offsetWidth) / 2 + "px";
         sticky.style.top = "90px";
         sticky.style.position = "fixed";
       } else {
         sticky.style.marginLeft = "0";
-        sticky.style.top = c.offsetHeight - sp.offsetWidth + "px";
+        sticky.style.top = c.offsetHeight - sp.offsetWidth - 50 + "px";
         sticky.style.position = "absolute";
       }
     } else {

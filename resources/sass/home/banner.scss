@@ -108,7 +108,10 @@
         }
     }
     @media screen and (max-width: 1919px) {
-        // padding: 11rem 0;
+        padding: 10rem 0 2.725rem;
+        &:before {
+            height: 85%;
+        }
         .carousel {
             // padding-bottom: 9.75rem;
             .carousel-button {
