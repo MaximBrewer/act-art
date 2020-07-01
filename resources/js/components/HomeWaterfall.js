@@ -130,7 +130,7 @@ export default function HomeWaterfall() {
         <React.Fragment>
             <h3>
                 Последние ставки:{" "}
-                <svg
+                <svg className="hummer"
                     width="42"
                     height="42"
                     viewBox="0 0 42 42"

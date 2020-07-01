@@ -18,7 +18,7 @@
     <div class="container">
         <div class="sticky-section"><span>работы в продаже</span></div>
         <div class="row announce">
-            <div class="col col-xxl-38">
+            <div class="col col-xl-40 col-xxl-38">
                 <h2 class="h2">ОНЛАЙН-ГАЛЕРЕЯ</h2>
                 <div class="sub_h1">Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные
                     работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию.
@@ -181,7 +181,7 @@
     <div class="container">
         <div class="sticky-section"><span>анонсы мероприятий</span></div>
         <div class="row announce">
-            <div class="col col-xxl-38">
+            <div class="col col-xl-40 col-xxl-38">
                 <h2 class="h2">ВЫСТАВКИ <span>и</span> МАСТЕРСКИЕ</h2>
                 <p class="sub_h2">Платформа Акт-Арт представляет три творческих кластера с собственными творческими
                     мастерскими и выставочными галереями.
@@ -189,7 +189,7 @@
                 <p class="sub_h2">Все кластеры находятся в историческом центре Москвы и далее какой-то текст. Все
                     кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
             </div>
-            <div class="col col-xxl-22">
+            <div class="col col-xl-20 col-xxl-22">
                 <h3 class="h3">Адреса:</h3>
                 <dl>
                     <dt>Акт-Арт Фрунзенская</dt>

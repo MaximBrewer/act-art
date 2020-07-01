@@ -4,7 +4,7 @@
         background-image: url("/images/dot.png");
         .col {
             a {
-                padding: 40% 0;
+                padding: 30% 0;
                 position: relative;
                 p {
                     @include txt_menu_1;
@@ -35,6 +35,38 @@
             padding: 0.475rem 4.25rem;
             font-size: 24px;
             line-height: 171%;
+        }
+    }
+    @media screen and (max-width: 1919px) {
+        margin-bottom: 12rem;
+        > div {
+            background-image: url("/images/dot.png");
+            .col {
+                a {
+                    padding: 30% 0;
+                    position: relative;
+                    p {
+                        font-size: 18px;
+                        line-height: 18px;
+                    }
+                    &:before {
+                        width: 110%;
+                        height: 110%;
+                        left: -5%;
+                        top: -5%;
+                        border: 1px solid #818486;
+                        position: absolute;
+                    }
+                    &:hover {
+                        &:before {
+                            content: "";
+                        }
+                    }
+                }
+            }
+            button {
+                padding: 0.275rem 2.5rem;
+            }
         }
     }
 }

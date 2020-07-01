@@ -106,4 +106,116 @@
             margin: 0;
         }
     }
+    @media screen and (max-width: 1919px) {
+        padding: 12rem 0 6rem;
+        .background-text {
+            color: #eceded;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 1.5rem;
+                    margin-bottom: 2.5rem;
+                    border-bottom: 8px solid #000000;
+                }
+                dl {
+                    font-family: "TT Severs";
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: initial;
+                    dt {
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+                    dd {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+        .announce-slider {
+            margin-top: 4rem;
+            padding-bottom: 9.75rem;
+            position: relative;
+            .slick-list {
+                margin: 0 -1.5rem;
+                > * {
+                    -webkit-user-select: none; /* Safari */
+                    -moz-user-select: none; /* Firefox */
+                    -ms-user-select: none; /* IE10+/Edge */
+                    user-select: none; /* Standard */
+                }
+            }
+    
+            .slick-slide {
+                &:focus,
+                a {
+                    outline: none;
+                }
+            }
+            .slide-wrapper {
+                padding: 1.25rem 1.5rem;
+                .slide-inner {
+                    padding: 2rem 0;
+                    border-top: 0.25rem solid $body-color;
+                    border-bottom: 0.25rem solid $body-color;
+                    .image {
+                        padding-top: 82%;
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    .exhibit{
+                        font-weight: bold;
+                    }
+                }
+            }
+            .carousel-button {
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                bottom: 3.15rem;
+                .btn {
+                    margin: 0;
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 171%;
+                    background-color: white;
+                    padding: 0.475rem 4.25rem;
+                }
+            }
+            .carousel-counter {
+                @include txt_menu_1;
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                z-index: 0;
+                bottom: 3.875rem;
+                color: #1e2b32;
+            }
+            .carousel-arrows {
+                position: absolute;
+                right: 0;
+                z-index: 1;
+                bottom: 3.25rem;
+                display: flex;
+                width: 8.8125rem;
+                z-index: 1;
+                justify-content: space-between;
+            }
+            .btn {
+                margin-bottom: 1.25rem;
+            }
+            .btn-control {
+                margin: 0;
+            }
+        }
+    }
 }
+
+
+

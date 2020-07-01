@@ -8,13 +8,37 @@ export default function HomeAnnounce() {
     });
     const refPicture = useRef();
 
+    const grid = {
+        xs: 576,
+        sm: 768,
+        md: 992,
+        lg: 1280,
+        xl: 1920,
+        xxl: 100000
+    };
+
+    const gridCount = {
+        xs: 1,
+        sm: 1,
+        md: 3,
+        lg: 4,
+        xl: 4,
+        xxl: 6
+    };
+
+    const slidesToShow = () => {
+        let size = "xs";
+        for (size in grid) if (window.innerWidth < grid[size]) break;
+        return gridCount[size];
+    };
+
     const setting = {
         arrows: false,
         infinite: true,
         dots: false,
         speed: 300,
         auto: true,
-        slidesToShow: 6,
+        slidesToShow: slidesToShow(),
         slidesToScroll: 1,
         onInit: () => {
             setState({

@@ -31,6 +31,10 @@ h2,
     font-weight: bold;
     line-height: 1em;
     letter-spacing: initial;
+    @media screen and (max-width: 1919px) {
+        font-size: 36px;
+        line-height: 40px;
+    }
 }
 h3,
 .h3 {
@@ -38,6 +42,10 @@ h3,
     font-weight: bold;
     line-height: 1.11em;
     letter-spacing: initial;
+    @media screen and (max-width: 1919px) {
+        font-size: 24px;
+        line-height: 28px;
+    }
 }
 h4,
 .h4 {
@@ -60,6 +68,11 @@ h5,
     line-height: 1em;
     text-decoration-line: underline;
     letter-spacing: initial;
+
+    @media screen and (max-width: 1919px) {
+        font-size: 18px;
+        line-height: 21px;
+    }
 }
 h6,
 .h6 {
@@ -92,6 +105,12 @@ h6,
     font-size: 24px;
     line-height: 29px;
     letter-spacing: initial;
+
+    @media screen and (max-width: 1919px) {
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 21px;
+    }
 }
 .btn {
     font-family: "Roboto Condensed", sans-serif;
@@ -339,11 +358,11 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/storage/template/img/preloader.gif');
+    background-image: url("/storage/template/img/preloader.gif");
     background-position: center;
     background-repeat: no-repeat;
     background-color: #fff;
-    z-index:10000;
+    z-index: 10000;
 }
 // @media (max-width: $xl){
 

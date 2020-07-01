@@ -45660,13 +45660,40 @@ function HomeAnnounce() {
       setState = _useState2[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var grid = {
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1280,
+    xl: 1920,
+    xxl: 100000
+  };
+  var gridCount = {
+    xs: 1,
+    sm: 1,
+    md: 3,
+    lg: 4,
+    xl: 4,
+    xxl: 6
+  };
+
+  var slidesToShow = function slidesToShow() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return gridCount[size];
+  };
+
   var setting = {
     arrows: false,
     infinite: true,
     dots: false,
     speed: 300,
     auto: true,
-    slidesToShow: 6,
+    slidesToShow: slidesToShow(),
     slidesToScroll: 1,
     onInit: function onInit() {
       setState({
@@ -46593,6 +46620,7 @@ function HomeWaterfall() {
     addGallery();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435 \u0441\u0442\u0430\u0432\u043A\u0438:", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    className: "hummer",
     width: "42",
     height: "42",
     viewBox: "0 0 42 42",
