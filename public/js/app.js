@@ -44712,6 +44712,15 @@ window.axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a;
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// import React, { useRef, lazy } from "react";
+
+
+ // const HomeGalleries = lazy(() => import("./components/HomeGalleries"));
+// const HomeCarousel = lazy(() => import("./components/HomeCarousel"));
+// const HomeWaterfall = lazy(() => import("./components/HomeWaterfall"));
+// const HomeAnnounce = lazy(() => import("./components/HomeAnnounce"));
+// const HomeNews = lazy(() => import("./components/HomeNews"));
+// const HomeExperts = lazy(() => import("./components/HomeExperts"));
 
 
 
@@ -44720,34 +44729,69 @@ window.axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 
+var calculateHeader = function calculateHeader() {
+  console.log("calculate");
+  var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0,
+      header = document.getElementById("header"),
+      headerTop = document.getElementById("header-top");
+  document.getElementById("header-full-menu").style.paddingTop = headerTop.offsetHeight + "px";
+  var buttons = document.querySelectorAll("#header-top button");
 
-!document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
-!document.getElementById("announceSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeAnnounce__WEBPACK_IMPORTED_MODULE_6__["default"], null), document.getElementById("announceSlider"));
-!document.getElementById("bannerCarousel") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeCarousel__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("bannerCarousel"));
-!document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("artWaterfall"));
-!document.getElementById("newsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeNews__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("newsSlider"));
-!document.getElementById("expertsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeExperts__WEBPACK_IMPORTED_MODULE_8__["default"], null), document.getElementById("expertsSlider"));
+  if (scrollTop + headerTop.offsetHeight > header.offsetHeight) {
+    headerTop.classList.remove("bg-dark");
+    headerTop.classList.add("short-header-top");
+    [].forEach.call(buttons, function (button) {
+      button.classList.remove("btn-default-inverse");
+      button.classList.add("btn-primary-inverse");
+    });
+    document.getElementById("header-top-full").style.display = "none";
+    document.getElementById("header-top-short").style.display = "block";
+  } else {
+    headerTop.classList.add("bg-dark");
+    headerTop.classList.remove("short-header-top");
+    [].forEach.call(buttons, function (button) {
+      button.classList.remove("btn-primary-inverse");
+      button.classList.add("btn-default-inverse");
+    });
+    document.getElementById("header-top-short").style.display = "none";
+    document.getElementById("header-top-full").style.display = "block";
+  }
+};
 
 var scrollWindow = function scrollWindow() {
-  var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0,
-      header = document.getElementById("header");
+  var mf = document.getElementById("header-full-menu-fixed");
+  if (mf) mf.remove();
 
-  if (scrollTop > document.getElementById("header-top").offsetHeight) {
-    header.classList.add("fixed");
-  } else {
-    header.classList.remove("fixed");
+  if (document.body.classList.contains("home")) {
+    if (window.innerWidth > 1919) {
+      document.getElementById("header-full-menu").style.display = "block";
+      calculateHeader();
+    } else {
+      var headerTop = document.getElementById("header-top"),
+          buttons = document.querySelectorAll("#header-top button");
+      headerTop.classList.remove("bg-dark");
+      headerTop.classList.add("short-header-top");
+      [].forEach.call(buttons, function (button) {
+        button.classList.remove("btn-default-inverse");
+        button.classList.add("btn-primary-inverse");
+      });
+      document.getElementById("header-full-menu").style.display = "none";
+      document.getElementById("header-top-full").style.display = "none";
+      document.getElementById("header-top-short").style.display = "block";
+    }
   }
 
+  var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0;
   var stickies = document.getElementsByClassName("sticky-section");
   [].forEach.call(stickies, function (sticky) {
-    var c = sticky.parentNode;
-    var s = sticky.parentNode.parentNode;
-    var sp = sticky.children[0];
+    var c = sticky.parentNode,
+        s = sticky.parentNode.parentNode,
+        sp = sticky.children[0];
 
-    if (s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 < scrollTop + 50) {
-      if (s.offsetTop + s.offsetHeight - sp.offsetWidth - (s.offsetHeight - c.offsetHeight) / 2 > scrollTop + 50) {
+    if (s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 < scrollTop + 90) {
+      if (s.offsetTop + s.offsetHeight - sp.offsetWidth - (s.offsetHeight - c.offsetHeight) / 2 > scrollTop + 90) {
         sticky.style.marginLeft = (s.offsetWidth - c.offsetWidth) / 2 + "px";
-        sticky.style.top = "50px";
+        sticky.style.top = "90px";
         sticky.style.position = "fixed";
       } else {
         sticky.style.marginLeft = "0";
@@ -44776,11 +44820,46 @@ var scrollWindow = function scrollWindow() {
   });
 };
 
-document.addEventListener("load", function () {
-  return scrollWindow();
+document.addEventListener("DOMContentLoaded", function () {
+  !document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
+  !document.getElementById("announceSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeAnnounce__WEBPACK_IMPORTED_MODULE_6__["default"], null), document.getElementById("announceSlider"));
+  !document.getElementById("bannerCarousel") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeCarousel__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("bannerCarousel"));
+  !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("artWaterfall"));
+  !document.getElementById("newsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeNews__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("newsSlider"));
+  !document.getElementById("expertsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeExperts__WEBPACK_IMPORTED_MODULE_8__["default"], null), document.getElementById("expertsSlider"));
+  scrollWindow();
+  setTimeout(function () {
+    return document.getElementById("sitePreloader").remove();
+  }, 1100);
+  document.getElementById("burgerMenuToggle").addEventListener("click", function (e) {
+    var mf = document.getElementById("header-full-menu-fixed");
+    if (mf) mf.remove();else {
+      var menu = document.getElementById("header-full-menu").cloneNode(true),
+          headerTop = document.getElementById("header-top");
+      menu.id = "header-full-menu-fixed";
+      menu.style.marginTop = headerTop.offsetHeight + "px";
+      menu.style.paddingTop = "0";
+      menu.style.position = "fixed";
+      menu.style.display = "block";
+      menu.style.left = "0";
+      menu.style.top = "0";
+      menu.style.background = "white";
+      menu.style.width = "100%";
+      menu.style.zIndex = "100";
+      menu.style.paddingBottom = "2.5rem";
+      document.getElementById("header").appendChild(menu);
+    }
+  });
+  document.getElementById("searchTopToggle").addEventListener("click", function (e) {
+    e.preventDefault();
+  });
 });
 document.addEventListener("scroll", function () {
   return scrollWindow();
+});
+window.addEventListener("resize", function () {
+  !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("artWaterfall"));
+  scrollWindow();
 });
 
 /***/ }),
@@ -45298,7 +45377,7 @@ function HomeGalleries() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xxl-38"
+    className: "col col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -45329,7 +45408,7 @@ function HomeGalleries() {
   }, "\u0421\u041A\u041E\u0420\u041E \u041D\u041E\u0412\u042B\u0419 \u0410\u0423\u041A\u0426\u0418\u041E\u041D:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u043E\u0440\u0430 \u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C\u0441\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h2"
   }, "26 \u0438\u044E\u043B\u044F / 15:00"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xxl-22"
+    className: "col col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -46409,6 +46488,33 @@ function HomeWaterfall() {
 
   var toFavorite = function toFavorite() {};
 
+  var grid = {
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1280,
+    xl: 1920,
+    xxl: 100000
+  };
+  var gridCount = {
+    xs: 1,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 3,
+    xxl: 4
+  };
+
+  var columnWidth = function columnWidth() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return Math.round(100 / gridCount[size], 2) + "%";
+  };
+
   var addGallery = function addGallery() {
     axios.get("/api/get_gallery_items").then(function (res) {
       setPhotos(res.data.gallery.map(function (item, index) {
@@ -46513,7 +46619,7 @@ function HomeWaterfall() {
     entered: scaleDown.entered,
     leaved: scaleDown.leaved,
     itemComponent: "div",
-    columnWidth: "25%",
+    columnWidth: columnWidth(),
     gutterWidth: 40,
     gutterHeight: 40,
     className: "art-waterfall-inner"

@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+@section('body-class')class="home"@endsection
+
 @section('content')
 <section class="home-banner">
     <div class="background-text">АУКЦИОНы</div>
@@ -39,6 +42,12 @@
     </div>
 
 </section>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DpTuFrBEDSI?controls=0" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 <section id="popularCategories">
     <div class="pt-5 mb-5">
         <div class="container">

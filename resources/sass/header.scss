@@ -1,17 +1,70 @@
 .header {
-    .bg-dark {
-        color: #ffffff;
+    z-index: 10;
+    + main {
+        padding-top: 3.725rem;
     }
-    .header-top-menu {
-        ul {
-            li {
-                @include txt_menu_4;
-                line-height: 2.31rem;
-                a {
-                    color: #ffffff;
+    .header-top {
+        position: fixed;
+        min-height: 3.725rem;
+        width: 100%;
+        z-index: 11;
+        top: 0;
+        background-color: #ffffff;
+        border-bottom: 1px solid $graybg;
+        left: 0;
+        svg {
+            fill: transparent;
+            stroke: $primary;
+            // ellipse {
+            //     fill: #ffffff;
+            // }
+        }
+        .header-full-content {
+            display: none;
+        }
+        .header-short-content {
+            a.logo,
+            a.burger {
+                text-transform: uppercase;
+                @include txt_menu_3;
+                svg {
+                    fill: $primary;
                 }
-                margin-right: 2rem;
             }
+        }
+        .header-top-menu {
+            ul {
+                li {
+                    @include txt_menu_4;
+                    line-height: 2.31rem;
+                    margin-right: 2rem;
+                }
+            }
+        }
+        + section {
+            display: none;
+            padding-top: 3.725rem;
+        }
+    }
+    .bg-dark {
+        border-bottom: 1px solid transparent;
+        color: #ffffff;
+        a {
+            color: #ffffff;
+        }
+        svg {
+            fill: transparent;
+            stroke: #d6d6d6;
+            // ellipse {
+            //     fill: #ffffff;
+            // }
+        }
+        input {
+            min-width: 27rem;
+            line-height: 2.31rem;
+            background: transparent;
+            color: #d6d6d6;
+            border: 1px solid #d6d6d6;
         }
     }
     .search-container {
@@ -23,20 +76,11 @@
             border: none;
             @include box-shadow(none);
             background: transparent !important;
-            svg {
-                fill: transparent;
-                stroke: #d6d6d6;
-                // ellipse {
-                //     fill: #ffffff;
-                // }
-            }
         }
         input {
             min-width: 27rem;
             line-height: 2.31rem;
             background: transparent;
-            color: #d6d6d6;
-            border: 1px solid #d6d6d6;
         }
     }
     .header-lang {
@@ -50,7 +94,6 @@
                     font-weight: bold;
                 }
                 font-family: "Roboto Condensed", sans-serif;
-                color: #ffffff;
                 line-height: 2.31rem;
             }
         }
@@ -93,23 +136,18 @@
             }
         }
     }
-    nav {
-        > section {
-            &.fixed {
-                width: 100%;
-                position: fixed;
-                display: none;
-            }
+}
+.home {
+    .header {
+        .header-full-menu {
+            display: block;
         }
-    }
-    &.fixed {
-        nav {
-            > section {
-                display: none;
-                &.fixed {
-                    display: block;
-                }
-            }
+        .header-short-content {
+            display: none;
+        }
+        + main {
+            padding-top: 0;
+            margin-top: 3.725rem;
         }
     }
 }

@@ -19,12 +19,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body @yield('body-class')>
+    <div id="sitePreloader" class="site-preloader"></div>
     <div>
         <header class="header" id="header">
-            <nav class="header-nav-big">
-                <section class="bg-dark py-2" id="header-top">
-                    <div class="header-center container">
+            <nav>
+                <section class="py-2 header-top" id="header-top">
+                    <div class="header-short-content" id="header-top-short">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-20 text-left">
+                                    <a href="/" class="logo">@include('svg.header.top-logo')</a>
+                                </div>
+                                <div class="col-md-20 text-center">
+                                    <a href="javascript:void(0)" class="burger text-decoration-none" id="burgerMenuToggle">@include('svg.header.top-burger')&nbsp;&nbsp;&nbsp;&nbsp;{{  __('Меню') }}</a>
+                                </div>
+                                <div class="col-md-20 text-right">
+                                    <a href="javascript:void(0)" id="searchTopToggle">@include('svg.header.lens')</a>
+                                    <button class="btn btn-default-inverse" type="submit">{!! __('Войти') !!}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-center container header-full-content" id="header-top-full">
                         <div class="row">
                             <div class="col col-lg-16"></div>
                             <div class="col col-lg-22">
@@ -52,13 +69,13 @@
                                     href="/lang/en" @if(App::getLocale()=='en' ) class="active" @endif>Eng</a>
                             </div>
                             <div class="header-top-profile">
-                                <button class="btn btn-inverse" type="submit">{!! __('Войти') !!}</button>
+                                <button class="btn btn-default-inverse" type="submit">{!! __('Войти') !!}</button>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class="my-5">
-                    <div class="container">
+                <section class="header-full-menu" id="header-full-menu">
+                    <div class="container mt-5">
                         <div class="header-bottom-logo">
                             <a href="/" class="header-logo">
                                 @include('svg.header.logo')
@@ -84,7 +101,7 @@
                 </section>
             </nav>
         </header>
-        <main>
+        <main id="main">
             @yield('content')
         </main>
     </div>

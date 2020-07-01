@@ -7,6 +7,30 @@ export default function HomeWaterfall() {
 
     const toFavorite = () => {};
 
+    const grid = {
+        xs: 576,
+        sm: 768,
+        md: 992,
+        lg: 1280,
+        xl: 1920,
+        xxl: 100000
+    };
+
+    const gridCount = {
+        xs: 1,
+        sm: 1,
+        md: 2,
+        lg: 3,
+        xl: 3,
+        xxl: 4
+    };
+
+    const columnWidth = () => {
+        let size = "xs";
+        for (size in grid) if (window.innerWidth < grid[size]) break;
+        return Math.round(100 / gridCount[size], 2) + "%";
+    };
+
     const addGallery = () => {
         axios
             .get("/api/get_gallery_items")
@@ -140,14 +164,17 @@ export default function HomeWaterfall() {
                 entered={scaleDown.entered}
                 leaved={scaleDown.leaved}
                 itemComponent={"div"}
-                columnWidth={"25%"}
+                columnWidth={columnWidth()}
                 gutterWidth={40}
                 gutterHeight={40}
                 className="art-waterfall-inner"
             >
                 {photos}
             </StackGrid>
-            <div className="text-center h5 h5_underline">&bull;&bull;&bull;<br/></div>
+            <div className="text-center h5 h5_underline">
+                &bull;&bull;&bull;
+                <br />
+            </div>
             <div className="text-center">
                 <a href="#" className="h5 h5_underline">
                     Показать больше

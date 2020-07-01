@@ -101,44 +101,85 @@ h6,
     outline: none !important;
 }
 
-.btn-inverse {
+.btn-default-inverse {
     color: #fff;
     background-color: transparent;
     border-color: #fff;
 }
 
-.btn-inverse:hover {
+.btn-default-inverse:hover {
     color: #fff;
     background-color: transparent;
     border-color: #fff;
 }
 
-.btn-inverse:focus,
-.btn-inverse.focus {
+.btn-default-inverse:focus,
+.btn-default-inverse.focus {
     color: #fff;
     background-color: transparent;
     border-color: #fff;
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
 
-.btn-inverse.disabled,
-.btn-inverse:disabled {
+.btn-default-inverse.disabled,
+.btn-default-inverse:disabled {
     color: #fff;
     background-color: transparent;
     border-color: #fff;
 }
 
-.btn-inverse:not(:disabled):not(.disabled):active,
-.btn-inverse:not(:disabled):not(.disabled).active,
-.show > .btn-inverse.dropdown-toggle {
+.btn-default-inverse:not(:disabled):not(.disabled):active,
+.btn-default-inverse:not(:disabled):not(.disabled).active,
+.show > .btn-default-inverse.dropdown-toggle {
     color: #fff;
     background-color: transparent;
     border-color: #fff;
 }
 
-.btn-inverse:not(:disabled):not(.disabled):active:focus,
-.btn-inverse:not(:disabled):not(.disabled).active:focus,
-.show > .btn-inverse.dropdown-toggle:focus {
+.btn-default-inverse:not(:disabled):not(.disabled):active:focus,
+.btn-default-inverse:not(:disabled):not(.disabled).active:focus,
+.show > .btn-default-inverse.dropdown-toggle:focus {
+    // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+
+.btn-primary-inverse {
+    color: $primary;
+    background-color: transparent;
+    border-color: $primary;
+}
+
+.btn-primary-inverse:hover {
+    color: $primary;
+    background-color: transparent;
+    border-color: $primary;
+}
+
+.btn-primary-inverse:focus,
+.btn-primary-inverse.focus {
+    color: $primary;
+    background-color: transparent;
+    border-color: $primary;
+    // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
+}
+
+.btn-primary-inverse.disabled,
+.btn-primary-inverse:disabled {
+    color: $primary;
+    background-color: transparent;
+    border-color: $primary;
+}
+
+.btn-primary-inverse:not(:disabled):not(.disabled):active,
+.btn-primary-inverse:not(:disabled):not(.disabled).active,
+.show > .btn-primary-inverse.dropdown-toggle {
+    color: $primary;
+    background-color: transparent;
+    border-color: $primary;
+}
+
+.btn-primary-inverse:not(:disabled):not(.disabled):active:focus,
+.btn-primary-inverse:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary-inverse.dropdown-toggle:focus {
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
 
@@ -177,7 +218,7 @@ h6,
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
 
-.btn-lg{
+.btn-lg {
     text-transform: uppercase;
 }
 
@@ -232,7 +273,7 @@ h6,
     transform: rotate(-90deg);
     position: absolute;
     top: 0;
-    left: -7.875rem;
+    left: -1.875rem;
     text-align: right;
 }
 .sticky-section span {
@@ -245,6 +286,9 @@ h6,
     color: #6c92a8;
     display: block;
     text-decoration-line: underline;
+    @media screen and (max-width: 1919px) {
+        font-size: 1.125rem;
+    }
 }
 .background-text {
     transform: translateX(80%);
@@ -265,6 +309,10 @@ h6,
     -khtml-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
+    @media screen and (max-width: 1919px) {
+        font-size: 12.5rem;
+        line-height: 12.5rem;
+    }
 }
 
 .btn-control {
@@ -274,8 +322,29 @@ h6,
     width: 3.75rem;
     height: 3.75rem;
     line-height: 3.75rem;
+    background-color: white;
+    @media screen and (max-width: 1919px) {
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
+    }
 }
 section {
     position: relative;
     overflow: hidden;
 }
+.site-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/storage/template/img/preloader.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    z-index:10000;
+}
+// @media (max-width: $xl){
+
+// }
