@@ -110,7 +110,7 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col col-lg-12">
+                    <div class="col-lg-12">
                         <a href="/" class="footer-logo">
                             @include('svg.footer.logo')
                         </a>
@@ -119,14 +119,14 @@
                             <a href="mailto:info@act-art.ru">info@act-art.ru</a>
                         </div>
                     </div>
-                    <div class="col col-lg-12">
+                    <div class="col-lg-12">
                         @php echo menu('footer-left', 'menu.unstyled');@endphp
                     </div>
                     <div class="col col-lg-14">
                         @php echo menu('footer-right', 'menu.unstyled');@endphp
                         </ul>
                     </div>
-                    <div class="col col-lg-22">
+                    <div class="col-lg-22">
                         <form>
                             <div class="form-group">
                                 <label
@@ -161,14 +161,14 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col col-md-24 align-items-center d-flex">
+                    <div class="col-md-24 align-items-center d-flex">
                         <p>{{ __('ООО “ВОЛОН”  © 2020') }}<br>{{ __('При использовании материалов с сайта обязательна ссылка на сайт.') }}
                         </p>
                     </div>
-                    <div class="col col-md-14 align-items-center d-flex">
+                    <div class="col-md-14 align-items-center d-flex">
                         @php echo menu('copyright', 'menu.unstyled');@endphp
                     </div>
-                    <div class="col col-md-22 align-items-center d-flex">
+                    <div class="col-md-22 align-items-center d-flex">
                         <div class="d-flex">
                             <div>{{  __('Сайт сделан в  ВАШАКОМПАНИЯ') }}</div>
                             <div>{{  __('Разработка') }}</div>

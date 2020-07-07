@@ -44,7 +44,7 @@
 </section>
 
 
-<section id="popularCategories">
+<section id="popularCategories" class="d-none d-sm-none d-md-block">
     <div class="pt-5 mb-5">
         <div class="container">
             <h3 class="py-4">Популярные категории</h3>
@@ -223,7 +223,7 @@
 </section>
 
 
-<section id="experts">
+<section id="experts" class="d-none d-sm-none d-md-block">
     <div class="container">
         <div class="sticky-section"><span>экспертный совет</span></div>
         <h2 class="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>

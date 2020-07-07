@@ -21,7 +21,7 @@ export default function HomeAnnounce() {
         xs: 1,
         sm: 1,
         md: 3,
-        lg: 4,
+        lg: 3,
         xl: 4,
         xxl: 6
     };

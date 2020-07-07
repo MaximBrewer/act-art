@@ -44712,8 +44712,8 @@ window.axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a;
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-// import React, { useRef, lazy } from "react";
 
+ // import React, { useRef } from "react";
 
  // const HomeGalleries = lazy(() => import("./components/HomeGalleries"));
 // const HomeCarousel = lazy(() => import("./components/HomeCarousel"));
@@ -44758,7 +44758,7 @@ var calculateHeader = function calculateHeader() {
   }
 };
 
-var scrollWindow = function scrollWindow() {
+var changeWindow = function changeWindow() {
   var mf = document.getElementById("header-full-menu-fixed");
   if (mf) mf.remove();
 
@@ -44783,51 +44783,70 @@ var scrollWindow = function scrollWindow() {
 
   var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0;
   var stickies = document.getElementsByClassName("sticky-section");
-  [].forEach.call(stickies, function (sticky) {
-    var c = sticky.parentNode,
-        s = sticky.parentNode.parentNode,
-        sp = sticky.children[0];
+  var bgts = document.getElementsByClassName("background-text");
 
-    if (s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 < scrollTop + 50) {
-      if (s.offsetTop + s.offsetHeight - sp.offsetWidth - (s.offsetHeight - c.offsetHeight) / 2 > scrollTop + 90) {
-        sticky.style.marginLeft = (s.offsetWidth - c.offsetWidth) / 2 + "px";
-        sticky.style.top = "90px";
-        sticky.style.position = "fixed";
+  if (window.innerWidth > 1279) {
+    [].forEach.call(stickies, function (sticky) {
+      sticky.style.display = "block";
+      var c = sticky.parentNode,
+          s = sticky.parentNode.parentNode,
+          sp = sticky.children[0];
+
+      if (s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 < scrollTop + 50) {
+        if (s.offsetTop + s.offsetHeight - sp.offsetWidth - (s.offsetHeight - c.offsetHeight) / 2 > scrollTop + 90) {
+          sticky.style.marginLeft = (s.offsetWidth - c.offsetWidth) / 2 + "px";
+          sticky.style.top = "90px";
+          sticky.style.position = "fixed";
+        } else {
+          sticky.style.marginLeft = "0";
+          sticky.style.top = c.offsetHeight - sp.offsetWidth - 50 + "px";
+          sticky.style.position = "absolute";
+        }
       } else {
         sticky.style.marginLeft = "0";
-        sticky.style.top = c.offsetHeight - sp.offsetWidth - 50 + "px";
+        sticky.style.top = "0";
         sticky.style.position = "absolute";
       }
-    } else {
-      sticky.style.marginLeft = "0";
-      sticky.style.top = "0";
-      sticky.style.position = "absolute";
-    }
-  });
-  var bgts = document.getElementsByClassName("background-text");
-  [].forEach.call(bgts, function (bgt) {
-    var s = bgt.parentNode;
+    });
+    [].forEach.call(bgts, function (bgt) {
+      bgt.style.display = "block";
+      var s = bgt.parentNode;
 
-    if (s.offsetTop < scrollTop + 300) {
-      if (s.offsetTop - scrollTop > 100) {
-        bgt.style.transform = "translateX(" + 80 * (s.offsetTop - scrollTop - 100) / 200 + "%)";
+      if (s.offsetTop < scrollTop + 300) {
+        if (s.offsetTop - scrollTop > 100) {
+          bgt.style.transform = "translateX(" + 80 * (s.offsetTop - scrollTop - 100) / 200 + "%)";
+        } else {
+          bgt.style.transform = "translateX(0%)";
+        }
       } else {
-        bgt.style.transform = "translateX(0%)";
+        bgt.style.transform = "translateX(80%)";
       }
-    } else {
-      bgt.style.transform = "translateX(80%)";
-    }
-  });
+    });
+  } else {
+    [].forEach.call(stickies, function (sticky) {
+      sticky.style.display = "none";
+    });
+    [].forEach.call(bgts, function (bgt) {
+      bgt.style.display = "none";
+    });
+  }
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  !document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
+  if (window.innerWidth > 1279) {
+    !document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
+  }
+
   !document.getElementById("announceSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeAnnounce__WEBPACK_IMPORTED_MODULE_6__["default"], null), document.getElementById("announceSlider"));
   !document.getElementById("bannerCarousel") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeCarousel__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("bannerCarousel"));
   !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("artWaterfall"));
   !document.getElementById("newsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeNews__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("newsSlider"));
-  !document.getElementById("expertsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeExperts__WEBPACK_IMPORTED_MODULE_8__["default"], null), document.getElementById("expertsSlider"));
-  scrollWindow();
+
+  if (window.innerWidth > 767) {
+    !document.getElementById("expertsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeExperts__WEBPACK_IMPORTED_MODULE_8__["default"], null), document.getElementById("expertsSlider"));
+  }
+
+  changeWindow();
   setTimeout(function () {
     return document.getElementById("sitePreloader").remove();
   }, 1100);
@@ -44855,11 +44874,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 document.addEventListener("scroll", function () {
-  return scrollWindow();
+  return changeWindow();
 });
 window.addEventListener("resize", function () {
   !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("artWaterfall"));
-  scrollWindow();
+  changeWindow();
 });
 
 /***/ }),
@@ -45015,13 +45034,40 @@ function HomeAnnounce() {
       setState = _useState2[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var grid = {
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1280,
+    xl: 1920,
+    xxl: 100000
+  };
+  var gridCount = {
+    xs: 1,
+    sm: 1,
+    md: 3,
+    lg: 3,
+    xl: 4,
+    xxl: 6
+  };
+
+  var slidesToShow = function slidesToShow() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return gridCount[size];
+  };
+
   var setting = {
     arrows: false,
     infinite: true,
     dots: false,
     speed: 300,
     auto: true,
-    slidesToShow: 3,
+    slidesToShow: slidesToShow(),
     slidesToScroll: 1,
     onInit: function onInit() {
       setState({
@@ -45062,7 +45108,7 @@ function HomeAnnounce() {
         className: "date h5 pb-4"
       }, "12 \u043C\u0430\u044F - 15 \u0438\u044E\u043D\u044F 2020 \u0433."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "exhibit small"
-      }, "Act-Art \u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Act-Art \u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F", " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "address small"
       }, "\u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F \u043D\u0430\u0431., \u0434. 1"))));
     }
@@ -45070,60 +45116,64 @@ function HomeAnnounce() {
     return slides;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
-    ref: refPicture
-  }), createSlides())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-button"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "btn btn-lg btn-default"
-  }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-counter"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "current"
-  }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "total"
-  }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-arrows"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-default btn-control d-flex",
-    onClick: function onClick() {
-      refPicture.current.slickPrev();
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    width: "39",
-    height: "36",
-    viewBox: "0 0 39 36",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M20.5946 3L6 18L20.5946 33",
-    stroke: "#1B292B",
-    strokeWidth: "8"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M7.62164 17.5946H38.4325",
-    stroke: "#1E2B32",
-    strokeWidth: "8"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-default btn-control d-flex",
-    onClick: function onClick() {
-      refPicture.current.slickNext();
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    width: "39",
-    height: "36",
-    viewBox: "0 0 39 36",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M18.4054 33L33 18L18.4054 3",
-    stroke: "#1B292B",
-    strokeWidth: "8"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M31.3784 18.4054L0.567543 18.4054",
-    stroke: "#1E2B32",
-    strokeWidth: "8"
-  })))));
+  if (window.innerWidth > 767) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
+      ref: refPicture
+    }), createSlides())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-button"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "btn btn-lg btn-default"
+    }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-counter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "current"
+    }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "total"
+    }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-arrows"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-default btn-control d-flex",
+      onClick: function onClick() {
+        refPicture.current.slickPrev();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "39",
+      height: "36",
+      viewBox: "0 0 39 36",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M20.5946 3L6 18L20.5946 33",
+      stroke: "#1B292B",
+      strokeWidth: "8"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M7.62164 17.5946H38.4325",
+      stroke: "#1E2B32",
+      strokeWidth: "8"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-default btn-control d-flex",
+      onClick: function onClick() {
+        refPicture.current.slickNext();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "39",
+      height: "36",
+      viewBox: "0 0 39 36",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M18.4054 33L33 18L18.4054 3",
+      stroke: "#1B292B",
+      strokeWidth: "8"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M31.3784 18.4054L0.567543 18.4054",
+      stroke: "#1E2B32",
+      strokeWidth: "8"
+    })))));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, createSlides()));
+  }
 }
 
 /***/ }),
@@ -45377,7 +45427,7 @@ function HomeGalleries() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xl-40 col-xxl-38"
+    className: "col-xl-40 col-xxl-38"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -45408,7 +45458,7 @@ function HomeGalleries() {
   }, "\u0421\u041A\u041E\u0420\u041E \u041D\u041E\u0412\u042B\u0419 \u0410\u0423\u041A\u0426\u0418\u041E\u041D:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u043E\u0440\u0430 \u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C\u0441\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h2"
   }, "26 \u0438\u044E\u043B\u044F / 15:00"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col col-xl-20 col-xxl-22"
+    className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -45672,7 +45722,7 @@ function HomeAnnounce() {
     xs: 1,
     sm: 1,
     md: 3,
-    lg: 4,
+    lg: 3,
     xl: 4,
     xxl: 6
   };
@@ -46371,62 +46421,68 @@ function HomeNews() {
     return slides;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "mx-q"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
-    ref: refPicture
-  }), createSlides()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-button"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "btn btn-lg btn-default"
-  }, "\u0427\u0418\u0422\u0410\u0422\u042C")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-counter"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "current"
-  }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "total"
-  }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-arrows"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-default btn-control d-flex",
-    onClick: function onClick() {
-      refPicture.current.slickPrev();
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    width: "39",
-    height: "36",
-    viewBox: "0 0 39 36",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M20.5946 3L6 18L20.5946 33",
-    stroke: "#1B292B",
-    strokeWidth: "8"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M7.62164 17.5946H38.4325",
-    stroke: "#1E2B32",
-    strokeWidth: "8"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "btn btn-default btn-control d-flex",
-    onClick: function onClick() {
-      refPicture.current.slickNext();
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-    width: "39",
-    height: "36",
-    viewBox: "0 0 39 36",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M18.4054 33L33 18L18.4054 3",
-    stroke: "#1B292B",
-    strokeWidth: "8"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    d: "M31.3784 18.4054L0.567543 18.4054",
-    stroke: "#1E2B32",
-    strokeWidth: "8"
-  })))));
+  if (window.innerWidth > 767) {
+    console.log(window.innerWidth);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "mx-q"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
+      ref: refPicture
+    }), createSlides()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-button"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "btn btn-lg btn-default"
+    }, "\u0427\u0418\u0422\u0410\u0422\u042C")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-counter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "current"
+    }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "total"
+    }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-arrows"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-default btn-control d-flex",
+      onClick: function onClick() {
+        refPicture.current.slickPrev();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "39",
+      height: "36",
+      viewBox: "0 0 39 36",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M20.5946 3L6 18L20.5946 33",
+      stroke: "#1B292B",
+      strokeWidth: "8"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M7.62164 17.5946H38.4325",
+      stroke: "#1E2B32",
+      strokeWidth: "8"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-default btn-control d-flex",
+      onClick: function onClick() {
+        refPicture.current.slickNext();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "39",
+      height: "36",
+      viewBox: "0 0 39 36",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M18.4054 33L33 18L18.4054 3",
+      stroke: "#1B292B",
+      strokeWidth: "8"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M31.3784 18.4054L0.567543 18.4054",
+      stroke: "#1E2B32",
+      strokeWidth: "8"
+    })))));
+  } else {
+    console.log(window.innerWidth);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, createSlides()));
+  }
 }
 
 /***/ }),

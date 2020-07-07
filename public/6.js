@@ -151,13 +151,40 @@ function HomeAnnounce() {
       setState = _useState2[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var grid = {
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1280,
+    xl: 1920,
+    xxl: 100000
+  };
+  var gridCount = {
+    xs: 1,
+    sm: 1,
+    md: 3,
+    lg: 4,
+    xl: 4,
+    xxl: 6
+  };
+
+  var slidesToShow = function slidesToShow() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return gridCount[size];
+  };
+
   var setting = {
     arrows: false,
     infinite: true,
     dots: false,
     speed: 300,
     auto: true,
-    slidesToShow: 6,
+    slidesToShow: slidesToShow(),
     slidesToScroll: 1,
     onInit: function onInit() {
       setState({

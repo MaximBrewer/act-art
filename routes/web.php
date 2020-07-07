@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Session;
 Auth::routes();
 
 Route::get('lang/{locale}', function ($locale) {
-    if (! in_array($locale, ['en', 'ru'])) {
+    if (!in_array($locale, ['en', 'ru'])) {
         abort(400);
     }
     Session::put('locale', $locale);

@@ -84,6 +84,33 @@ function HomeWaterfall() {
 
   var toFavorite = function toFavorite() {};
 
+  var grid = {
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1280,
+    xl: 1920,
+    xxl: 100000
+  };
+  var gridCount = {
+    xs: 1,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 3,
+    xxl: 4
+  };
+
+  var columnWidth = function columnWidth() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return Math.round(100 / gridCount[size], 2) + "%";
+  };
+
   var addGallery = function addGallery() {
     axios.get("/api/get_gallery_items").then(function (res) {
       setPhotos(res.data.gallery.map(function (item, index) {
@@ -162,6 +189,7 @@ function HomeWaterfall() {
     addGallery();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435 \u0441\u0442\u0430\u0432\u043A\u0438:", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    className: "hummer",
     width: "42",
     height: "42",
     viewBox: "0 0 42 42",
@@ -188,7 +216,7 @@ function HomeWaterfall() {
     entered: scaleDown.entered,
     leaved: scaleDown.leaved,
     itemComponent: "div",
-    columnWidth: "25%",
+    columnWidth: columnWidth(),
     gutterWidth: 40,
     gutterHeight: 40,
     className: "art-waterfall-inner"

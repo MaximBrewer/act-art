@@ -116,7 +116,7 @@ export default function HomeGalleries() {
         <React.Fragment>
             <div>
                 <div className="row">
-                    <div className="col col-xl-40 col-xxl-38">
+                    <div className="col-xl-40 col-xxl-38">
                         <Slider {...settingsPicture} ref={refPicture}>
                             <div>
                                 <div
@@ -168,7 +168,7 @@ export default function HomeGalleries() {
                             </div>
                         </Slider>
                     </div>
-                    <div className="col col-xl-20 col-xxl-22">
+                    <div className="col-xl-20 col-xxl-22">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
                             <div className="banner-announce">
                                 <div className="h3">

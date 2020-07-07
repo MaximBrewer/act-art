@@ -13,8 +13,8 @@ window.axios = axios;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// import React, { useRef, lazy } from "react";
-import React, { useRef } from "react";
+import React, { useRef, lazy } from "react";
+// import React, { useRef } from "react";
 import { render } from "react-dom";
 
 // const HomeGalleries = lazy(() => import("./components/HomeGalleries"));
@@ -63,7 +63,7 @@ const calculateHeader = () => {
         document.getElementById("header-top-full").style.display = "block";
     }
 };
-const scrollWindow = () => {
+const changeWindow = () => {
     let mf = document.getElementById("header-full-menu-fixed");
     if (mf) mf.remove();
     if (document.body.classList.contains("home")) {
@@ -89,58 +89,71 @@ const scrollWindow = () => {
         (document.body && document.body.scrollTop) ||
         0;
     let stickies = document.getElementsByClassName("sticky-section");
-
-    [].forEach.call(stickies, function(sticky) {
-        let c = sticky.parentNode,
-            s = sticky.parentNode.parentNode,
-            sp = sticky.children[0];
-        if (
-            s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 <
-            scrollTop + 50
-        ) {
-            if (
-                s.offsetTop +
-                    s.offsetHeight -
-                    sp.offsetWidth -
-                    (s.offsetHeight - c.offsetHeight) / 2 >
-                scrollTop + 90
-            ) {
-                sticky.style.marginLeft =
-                    (s.offsetWidth - c.offsetWidth) / 2 + "px";
-                sticky.style.top = "90px";
-                sticky.style.position = "fixed";
-            } else {
-                sticky.style.marginLeft = "0";
-                sticky.style.top = c.offsetHeight - sp.offsetWidth - 50 + "px";
-                sticky.style.position = "absolute";
-            }
-        } else {
-            sticky.style.marginLeft = "0";
-            sticky.style.top = "0";
-            sticky.style.position = "absolute";
-        }
-    });
     let bgts = document.getElementsByClassName("background-text");
 
-    [].forEach.call(bgts, function(bgt) {
-        let s = bgt.parentNode;
-        if (s.offsetTop < scrollTop + 300) {
-            if (s.offsetTop - scrollTop > 100) {
-                bgt.style.transform =
-                    "translateX(" +
-                    (80 * (s.offsetTop - scrollTop - 100)) / 200 +
-                    "%)";
+    if (window.innerWidth > 1279) {
+        [].forEach.call(stickies, function(sticky) {
+            sticky.style.display = "block";
+            let c = sticky.parentNode,
+                s = sticky.parentNode.parentNode,
+                sp = sticky.children[0];
+            if (
+                s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 <
+                scrollTop + 50
+            ) {
+                if (
+                    s.offsetTop +
+                        s.offsetHeight -
+                        sp.offsetWidth -
+                        (s.offsetHeight - c.offsetHeight) / 2 >
+                    scrollTop + 90
+                ) {
+                    sticky.style.marginLeft =
+                        (s.offsetWidth - c.offsetWidth) / 2 + "px";
+                    sticky.style.top = "90px";
+                    sticky.style.position = "fixed";
+                } else {
+                    sticky.style.marginLeft = "0";
+                    sticky.style.top =
+                        c.offsetHeight - sp.offsetWidth - 50 + "px";
+                    sticky.style.position = "absolute";
+                }
             } else {
-                bgt.style.transform = "translateX(0%)";
+                sticky.style.marginLeft = "0";
+                sticky.style.top = "0";
+                sticky.style.position = "absolute";
             }
-        } else {
-            bgt.style.transform = "translateX(80%)";
-        }
-    });
+        });
+        [].forEach.call(bgts, function(bgt) {
+            bgt.style.display = "block";
+            let s = bgt.parentNode;
+            if (s.offsetTop < scrollTop + 300) {
+                if (s.offsetTop - scrollTop > 100) {
+                    bgt.style.transform =
+                        "translateX(" +
+                        (80 * (s.offsetTop - scrollTop - 100)) / 200 +
+                        "%)";
+                } else {
+                    bgt.style.transform = "translateX(0%)";
+                }
+            } else {
+                bgt.style.transform = "translateX(80%)";
+            }
+        });
+    } else {
+        [].forEach.call(stickies, function(sticky) {
+            sticky.style.display = "none";
+        });
+        [].forEach.call(bgts, function(bgt) {
+            bgt.style.display = "none";
+        });
+    }
 };
 document.addEventListener("DOMContentLoaded", () => {
-    !document.getElementById("galleryHolder") ||
-        render(<HomeGalleries />, document.getElementById("galleryHolder"));
+    if (window.innerWidth > 1279) {
+        !document.getElementById("galleryHolder") ||
+            render(<HomeGalleries />, document.getElementById("galleryHolder"));
+    }
     !document.getElementById("announceSlider") ||
         render(<HomeAnnounce />, document.getElementById("announceSlider"));
     !document.getElementById("bannerCarousel") ||
@@ -149,9 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
         render(<HomeWaterfall />, document.getElementById("artWaterfall"));
     !document.getElementById("newsSlider") ||
         render(<HomeNews />, document.getElementById("newsSlider"));
-    !document.getElementById("expertsSlider") ||
-        render(<HomeExperts />, document.getElementById("expertsSlider"));
-    scrollWindow();
+    if (window.innerWidth > 767) {
+        !document.getElementById("expertsSlider") ||
+            render(<HomeExperts />, document.getElementById("expertsSlider"));
+    }
+    changeWindow();
     setTimeout(() => document.getElementById("sitePreloader").remove(), 1100);
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
@@ -181,9 +196,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
     });
 });
-document.addEventListener("scroll", () => scrollWindow());
+document.addEventListener("scroll", () => changeWindow());
 window.addEventListener("resize", () => {
     !document.getElementById("artWaterfall") ||
         render(<HomeWaterfall />, document.getElementById("artWaterfall"));
-    scrollWindow();
+    changeWindow();
 });
