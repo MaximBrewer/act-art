@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->text('meta_description');
             $table->text('meta_keywords');
+            $table->enum('category', ['BLOG', 'NEWS'])->default('BLOG');
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
             $table->boolean('featured')->default(0);
             $table->timestamps();

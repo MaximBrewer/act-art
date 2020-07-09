@@ -29,7 +29,8 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-20 text-left">
-                                    <a href="/" class="logo">@include('svg.header.top-logo')</a>
+                                    <a href="/" class="logo" style="display:none;">@include('svg.header.top-logo')</a>
+                                    <a href="/" class="logo">@include('svg.header.small-top-logo')</a>
                                 </div>
                                 <div class="col-md-20 text-center">
                                     <a href="javascript:void(0)" class="burger text-decoration-none" id="burgerMenuToggle">@include('svg.header.top-burger')&nbsp;&nbsp;&nbsp;&nbsp;{{  __('Меню') }}</a>

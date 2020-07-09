@@ -31,4 +31,10 @@ class Post extends Model
     {
         return $query->where('status', '=', static::PUBLISHED);
     }
+
+ 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'post_tag');
+    }
 }
