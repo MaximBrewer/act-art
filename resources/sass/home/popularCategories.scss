@@ -1,72 +1,60 @@
+@use "sass:map";
 #popularCategories {
-    margin-bottom: 12rem;
+    margin-bottom: 6rem;
     > div {
         background-image: url("/images/dot.png");
-        .col {
-            a {
-                padding: 30% 0;
-                position: relative;
-                p {
-                    @include txt_menu_1;
-                    color: white;
-                    letter-spacing: 0.05em;
-                    text-transform: uppercase;
-                    margin: 0;
-                    padding: 0;
-                }
+        a {
+            display: block;
+            padding: 4vw 0;
+            width: 15%;
+            position: relative;
+            p {
+                @include txt_menu_1;
+                color: white;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin: 0;
+                padding: 0;
+                font-size: .875rem;
+                line-height: .875rem;
+            }
+            &:before {
+                width: 110%;
+                height: 110%;
+                left: -5%;
+                top: -5%;
+                border: 1px solid #818486;
+                position: absolute;
+            }
+            &:hover {
                 &:before {
-                    width: 110%;
-                    height: 110%;
-                    left: -5%;
-                    top: -5%;
-                    border: 1px solid #818486;
-                    position: absolute;
-                }
-                &:hover {
-                    &:before {
-                        content: "";
-                    }
+                    content: "";
                 }
             }
         }
         button {
             margin-top: 1.5rem;
             margin-bottom: -1.5rem;
-            padding: 0.475rem 4.25rem;
             font-size: 24px;
             line-height: 171%;
+            padding: 0.275rem 2.5rem;
         }
     }
-    @media screen and (max-width: 1919px) {
-        margin-bottom: 12rem;
-        > div {
-            background-image: url("/images/dot.png");
-            .col {
-                a {
-                    padding: 30% 0;
-                    position: relative;
-                    p {
-                        font-size: 18px;
-                        line-height: 18px;
-                    }
-                    &:before {
-                        width: 110%;
-                        height: 110%;
-                        left: -5%;
-                        top: -5%;
-                        border: 1px solid #818486;
-                        position: absolute;
-                    }
-                    &:hover {
-                        &:before {
-                            content: "";
-                        }
-                    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        margin-bottom: 4rem;
+        a {
+            p {
+                @include txt_menu_1;
+            }
+            &:before {
+            }
+            &:hover {
+                &:before {
                 }
             }
-            button {
-                padding: 0.275rem 2.5rem;
-            }
+        }
+        button {
+            padding: 0.475rem 4.25rem;
         }
     }
 }

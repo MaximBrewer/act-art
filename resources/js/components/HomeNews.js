@@ -8,13 +8,37 @@ export default function HomeNews() {
     });
     const refPicture = useRef();
 
+    const grid = {
+        xs: 576,
+        sm: 768,
+        md: 992,
+        lg: 1280,
+        xl: 1920,
+        xxl: 100000
+    };
+
+    const gridCount = {
+        xs: 1,
+        sm: 1,
+        md: 3,
+        lg: 4,
+        xl: 4,
+        xxl: 4
+    };
+
+    const slidesToShow = () => {
+        let size = "xs";
+        for (size in grid) if (window.innerWidth < grid[size]) break;
+        return gridCount[size];
+    };
+
     const setting = {
         arrows: false,
         infinite: true,
         dots: false,
         speed: 300,
         auto: true,
-        slidesToShow: 4,
+        slidesToShow: slidesToShow(),
         slidesToScroll: 1,
         onInit: () => {
             setState({
@@ -67,8 +91,6 @@ export default function HomeNews() {
     };
 
     if (window.innerWidth > 767) {
-        console.log(window.innerWidth);
-
         return (
             <React.Fragment>
                 <div className="mx-q">
@@ -141,10 +163,23 @@ export default function HomeNews() {
             </React.Fragment>
         );
     } else {
-        console.log(window.innerWidth);
         return (
             <React.Fragment>
                 <div>{createSlides()}</div>
+                <div className="text-center h5 color-primary">
+                    &bull;&bull;&bull;
+                    <br />
+                </div>
+                <div className="text-center">
+                    <a href="#" className="show-more">
+                        Показать больше
+                    </a>
+                </div>
+                <div className="text-center button-wrapper pt-4">
+                    <a href="#" className="btn btn-default btn-lg">
+                        ВСЕ АННОНСЫ
+                    </a>
+                </div>
             </React.Fragment>
         );
     }

@@ -23,6 +23,24 @@ export default function HomeGalleries() {
     const refPicture = useRef();
     const refAnnounce = useRef();
 
+    const grid = {
+        xs: 576,
+        sm: 768,
+        md: 992,
+        lg: 1280,
+        xl: 1920,
+        xxl: 100000
+    };
+
+    const gridCount = {
+        xs: 1,
+        sm: 1,
+        md: 3,
+        lg: 3,
+        xl: 4,
+        xxl: 6
+    };
+
     const setting = {
         arrows: false,
         infinite: true,
@@ -70,43 +88,44 @@ export default function HomeGalleries() {
 
     // Renderer callback with condition
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
+        if (window.innerWidth < grid.sm) return "";
+
         if (completed) {
             // Render a completed state
             return <Completionist />;
         } else {
             // Render a countdown
             return (
-                <div className="banner-counter d-flex">
-                    <div className="days">
-                        <div className="number h5">{zeroPad(days)}</div>
-                        <small>
-                            {declOfNum(days, ["день", "дня", "дней"])}
-                        </small>
-                    </div>
-                    <div className="separator h5"></div>
-                    <div className="ours">
-                        <div className="number h5">{zeroPad(hours)}</div>
-                        <small>
-                            {declOfNum(hours, ["час", "часа", "часов"])}
-                        </small>
-                    </div>
-                    <div className="separator h5">:</div>
-                    <div className="minutes">
-                        <div className="number h5">{zeroPad(minutes)}</div>
-                        <small>
-                            {declOfNum(minutes, ["мин.", "мин.", "мин."])}
-                        </small>
-                    </div>
-                    <div className="separator h5">:</div>
-                    <div className="seconds">
-                        <div className="number h5">{zeroPad(seconds)}</div>
-                        <small>
-                            {declOfNum(seconds, [
-                                "сек.",
-                                "сек.",
-                                "сек."
-                            ])}
-                        </small>
+                <div className="banner-counter-wrapper">
+                    <p>ДО НАЧАЛА АУКЦИОНА:</p>
+                    <div className="banner-counter d-flex">
+                        <div className="days">
+                            <div className="number h5">{zeroPad(days)}</div>
+                            <small>
+                                {declOfNum(days, ["день", "дня", "дней"])}
+                            </small>
+                        </div>
+                        <div className="separator h5"></div>
+                        <div className="ours">
+                            <div className="number h5">{zeroPad(hours)}</div>
+                            <small>
+                                {declOfNum(hours, ["час", "часа", "часов"])}
+                            </small>
+                        </div>
+                        <div className="separator h5">:</div>
+                        <div className="minutes">
+                            <div className="number h5">{zeroPad(minutes)}</div>
+                            <small>
+                                {declOfNum(minutes, ["мин.", "мин.", "мин."])}
+                            </small>
+                        </div>
+                        <div className="separator h5">:</div>
+                        <div className="seconds">
+                            <div className="number h5">{zeroPad(seconds)}</div>
+                            <small>
+                                {declOfNum(seconds, ["сек.", "сек.", "сек."])}
+                            </small>
+                        </div>
                     </div>
                 </div>
             );
@@ -117,6 +136,7 @@ export default function HomeGalleries() {
             <div>
                 <div className="row">
                     <div className="col-xl-40 col-xxl-38">
+                        <hr className="d-lg-none" />
                         <Slider {...settingsPicture} ref={refPicture}>
                             <div>
                                 <div
@@ -126,12 +146,16 @@ export default function HomeGalleries() {
                                             'url("/storage/template/img/banner.jpg")'
                                     }}
                                 >
-                                    <div className="h1">
-                                        СКОРО НОВЫЙ АУКЦИОН:
-                                        <br />
-                                        пора готовиться
+                                    <div className="banner-inner-text">
+                                        <div className="h1">
+                                            СКОРО НОВЫЙ АУКЦИОН:
+                                            <br />
+                                            пора готовиться
+                                        </div>
+                                        <div className="h2">
+                                            26 июля / 15:00
+                                        </div>
                                     </div>
-                                    <div className="h2">26 июля / 15:00</div>
                                 </div>
                             </div>
                             <div>
@@ -142,12 +166,16 @@ export default function HomeGalleries() {
                                             'url("/storage/template/img/banner.jpg")'
                                     }}
                                 >
-                                    <div className="h1">
-                                        СКОРО НОВЫЙ АУКЦИОН:
-                                        <br />
-                                        пора готовиться
+                                    <div className="banner-inner-text">
+                                        <div className="h1">
+                                            СКОРО НОВЫЙ АУКЦИОН:
+                                            <br />
+                                            пора готовиться
+                                        </div>
+                                        <div className="h2">
+                                            26 июля / 15:00
+                                        </div>
                                     </div>
-                                    <div className="h2">26 июля / 15:00</div>
                                 </div>
                             </div>
                             <div>
@@ -158,12 +186,16 @@ export default function HomeGalleries() {
                                             'url("/storage/template/img/banner.jpg")'
                                     }}
                                 >
-                                    <div className="h1">
-                                        СКОРО НОВЫЙ АУКЦИОН:
-                                        <br />
-                                        пора готовиться
+                                    <div className="banner-inner-text">
+                                        <div className="h1">
+                                            СКОРО НОВЫЙ АУКЦИОН:
+                                            <br />
+                                            пора готовиться
+                                        </div>
+                                        <div className="h2">
+                                            26 июля / 15:00
+                                        </div>
                                     </div>
-                                    <div className="h2">26 июля / 15:00</div>
                                 </div>
                             </div>
                         </Slider>
@@ -171,68 +203,87 @@ export default function HomeGalleries() {
                     <div className="col-xl-20 col-xxl-22">
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
                             <div className="banner-announce">
-                                <div className="h3">
-                                    Размер этого шрифта должен уменьшаться при
-                                    сжатии текстового контейнера
+                                <div class="row">
+                                    <div className="h3 col-md-38">
+                                        Размер этого шрифта должен уменьшаться
+                                        при сжатии текстового контейнера
+                                    </div>
+                                    <div className="d-none d-md-block col-md-22">
+                                        <Countdown
+                                            date={Date.now() + 100000000}
+                                            renderer={renderer}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="banner-counter-wrapper">
-                                    <p>ДО НАЧАЛА АУКЦИОНА:</p>
-                                    <Countdown
-                                        date={Date.now() + 100000000}
-                                        renderer={renderer}
-                                    />
+                                <div className="text-xs-center">
+                                    <button className="btn btn-primary btn-lg">
+                                        ПРИНЯТЬ УЧАСТИЕ
+                                    </button>
                                 </div>
-                                <button className="btn btn-primary btn-lg">
-                                    ПРИНЯТЬ УЧАСТИЕ
-                                </button>
-                                <a href="#" className="h5_underline">
+                                <a
+                                    href="#"
+                                    className="h5_underline d-none d-xl-block"
+                                >
                                     Смотреть лоты →
                                 </a>
                             </div>
                             <div className="banner-announce">
-                                <div className="h3">
-                                    Размер этого шрифта должен уменьшаться при
-                                    сжатии текстового контейнера
+                                <div class="row">
+                                    <div className="h3 col-md-38">
+                                        Размер этого шрифта должен уменьшаться
+                                        при сжатии текстового контейнера
+                                    </div>
+                                    <div className="d-none d-md-block col-md-22">
+                                        <Countdown
+                                            date={Date.now() + 100000000}
+                                            renderer={renderer}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="banner-counter-wrapper">
-                                    <p>ДО НАЧАЛА АУКЦИОНА:</p>
-                                    <Countdown
-                                        date={Date.now() + 100000000}
-                                        renderer={renderer}
-                                    />
+                                <div className="text-xs-center">
+                                    <button className="btn btn-primary btn-lg">
+                                        ПРИНЯТЬ УЧАСТИЕ
+                                    </button>
                                 </div>
-                                <button className="btn btn-primary btn-lg">
-                                    ПРИНЯТЬ УЧАСТИЕ
-                                </button>
-                                <a href="#" className="h5_underline">
+                                <a
+                                    href="#"
+                                    className="h5_underline d-none d-xl-block"
+                                >
                                     Смотреть лоты →
                                 </a>
                             </div>
                             <div className="banner-announce">
-                                <div className="h3">
-                                    Размер этого шрифта должен уменьшаться при
-                                    сжатии текстового контейнера
+                                <div class="row">
+                                    <div className="h3 col-md-38">
+                                        Размер этого шрифта должен уменьшаться
+                                        при сжатии текстового контейнера
+                                    </div>
+                                    <div className="d-none d-md-block col-md-22">
+                                        <Countdown
+                                            date={Date.now() + 100000000}
+                                            renderer={renderer}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="banner-counter-wrapper">
-                                    <p>ДО НАЧАЛА АУКЦИОНА:</p>
-                                    <Countdown
-                                        date={Date.now() + 100000000}
-                                        renderer={renderer}
-                                    />
+                                <div className="text-xs-center">
+                                    <button className="btn btn-primary btn-lg">
+                                        ПРИНЯТЬ УЧАСТИЕ
+                                    </button>
                                 </div>
-                                <button className="btn btn-primary btn-lg">
-                                    ПРИНЯТЬ УЧАСТИЕ
-                                </button>
-                                <a href="#" className="h5_underline">
+                                <a
+                                    href="#"
+                                    className="h5_underline d-none d-xl-block"
+                                >
                                     Смотреть лоты →
                                 </a>
                             </div>
                         </Slider>
+                        <hr className="d-lg-none" />
                     </div>
                 </div>
             </div>
             <div className="carousel-button">
-                <a href="#" className="btn btn-lg btn-default">
+                <a href="#" className="btn btn-default">
                     ВСЕ АУКЦИОНЫ
                 </a>
             </div>

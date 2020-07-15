@@ -1,4 +1,4 @@
-<section class="bk-main-awards-ticker bg-black white overflow-hidden relative d-none d-sm-none d-md-block">
+<section class="bk-main-awards-ticker bg-black white overflow-hidden relative d-none d-lg-block">
     <div class="bk-main-ticker-line-1 flex">
         @for($i=0;$i<15;$i++) <span class="sub_h1">современное • актуальное • избранное • российское •</span>
             @endfor

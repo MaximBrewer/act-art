@@ -69,20 +69,14 @@ export default function HomeAnnounce() {
                                     'url("/storage/images/200.jpg")'
                             }}
                         ></div>
-                        <div className="fio h5">Василий Цветаев:</div>
-                        <div className="title h5"> Generation Ready Now</div>
-                        <div className="subtitle py-4">
+                        <div className="fio">Василий Цветаев:</div>
+                        <div className="title"> Generation Ready Now</div>
+                        <div className="subtitle">
                             Ретроспектива советского плаката
                         </div>
-                        <div className="date h5 pb-4">
-                            12 мая - 15 июня 2020 г.
-                        </div>
-                        <div className="exhibit small">
-                            Act-Art Фрунзенская{" "}
-                        </div>
-                        <div className="address small">
-                            Фрунзенская наб., д. 1
-                        </div>
+                        <div className="date">12 мая - 15 июня 2020 г.</div>
+                        <div className="exhibit">Act-Art Фрунзенская </div>
+                        <div className="address">Фрунзенская наб., д. 1</div>
                     </div>
                 </div>
             );
@@ -90,7 +84,7 @@ export default function HomeAnnounce() {
         return slides;
     };
 
-    if (window.innerWidth > 767) {
+    if (window.innerWidth >= grid.md) {
         return (
             <React.Fragment>
                 <div>
@@ -164,7 +158,21 @@ export default function HomeAnnounce() {
     } else {
         return (
             <React.Fragment>
-                <div>{createSlides()}</div>
+                <div className="d-md-flex justify-content-between flex-wrap">
+                    {createSlides()}
+                </div>
+                <p class="d-none d-md-block d-lg-none">
+                    Платформа Act-Art – независимый коммерческий проект. Наша
+                    цель – популяризация современного российского искуства в
+                    России и мире. Мы помогаем молодым и именитым авторам найти
+                    своего зрителя и ценителя, делая процесс приобретения
+                    произведений максимально удобным и демократичным.
+                </p>
+                <div className="text-center button-wrapper pt-4">
+                    <a href="#" className="btn btn-default btn-lg">
+                        ВСЕ АННОНСЫ
+                    </a>
+                </div>
             </React.Fragment>
         );
     }

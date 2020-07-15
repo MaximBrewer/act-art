@@ -1,10 +1,16 @@
+@use "sass:map";
 html {
 }
 body {
     letter-spacing: 0.03em;
 }
 .footer {
-    color: #d6d6d6;
+    color: $graybg;
+}
+input.form-control {
+    border: none;
+    outline: none !important;
+    @include box-shadow(none);
 }
 .container-fluid {
     max-width: 1920px;
@@ -338,14 +344,31 @@ h6,
     justify-content: center;
     align-items: center;
     padding: 0 !important;
-    width: 3.75rem;
-    height: 3.75rem;
-    line-height: 3.75rem;
+    width: 1.875rem;
+    height: 1.875rem;
+    line-height: 1.875rem;
     background-color: white;
-    @media screen and (max-width: 1919px) {
-        width: 3.5rem;
-        height: 3.5rem;
-        line-height: 3.5rem;
+    border-width: 2px;
+    svg{
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        border-width: 4px;
+        width: 3.125rem;
+        height: 3.125rem;
+        line-height: 3.125rem;
+        svg{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        width: 3.75rem;
+        height: 3.75rem;
+        line-height: 3.75rem;
     }
 }
 section {
@@ -364,6 +387,15 @@ section {
     background-color: #fff;
     z-index: 10000;
 }
+.lh-2rem {
+    line-height: 2rem;
+}
+.lh-1125rem {
+    line-height: 1.125rem;
+}
 // @media (max-width: $xl){
 
 // }
+.color-primary{
+    color: $primary;
+}

@@ -7,14 +7,7 @@
 import axios from "axios";
 window.axios = axios;
 
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 import React, { useRef, lazy } from "react";
-// import React, { useRef } from "react";
 import { render } from "react-dom";
 
 // const HomeGalleries = lazy(() => import("./components/HomeGalleries"));
@@ -23,6 +16,7 @@ import { render } from "react-dom";
 // const HomeAnnounce = lazy(() => import("./components/HomeAnnounce"));
 // const HomeNews = lazy(() => import("./components/HomeNews"));
 // const HomeExperts = lazy(() => import("./components/HomeExperts"));
+
 import HomeGalleries from "./components/HomeGalleries";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
@@ -30,8 +24,11 @@ import HomeAnnounce from "./components/HomeAnnounce";
 import HomeNews from "./components/HomeNews";
 import HomeExperts from "./components/HomeExperts";
 
+import SearchForm from "./components/SearchForm";
+
+SearchForm;
+
 const calculateHeader = () => {
-    console.log("calculate");
     let scrollTop =
             document.documentElement.scrollTop ||
             (document.body && document.body.scrollTop) ||
@@ -50,8 +47,7 @@ const calculateHeader = () => {
             button.classList.remove("btn-default-inverse");
             button.classList.add("btn-primary-inverse");
         });
-        document.getElementById("header-top-full").style.display = "none";
-        document.getElementById("header-top-short").style.display = "block";
+        document.getElementById("header-content").classList.remove("bg-dark");
     } else {
         headerTop.classList.add("bg-dark");
         headerTop.classList.remove("short-header-top");
@@ -59,15 +55,16 @@ const calculateHeader = () => {
             button.classList.remove("btn-primary-inverse");
             button.classList.add("btn-default-inverse");
         });
-        document.getElementById("header-top-short").style.display = "none";
-        document.getElementById("header-top-full").style.display = "block";
+        document.getElementById("header-content").classList.add("bg-dark");
     }
 };
 const changeWindow = () => {
     let mf = document.getElementById("header-full-menu-fixed");
-    if (mf) mf.remove();
+    if (mf) {
+        mf.remove();
+    }
     if (document.body.classList.contains("home")) {
-        if (window.innerWidth > 1919) {
+        if (window.innerWidth > 1279) {
             document.getElementById("header-full-menu").style.display = "block";
             calculateHeader();
         } else {
@@ -80,8 +77,9 @@ const changeWindow = () => {
                 button.classList.add("btn-primary-inverse");
             });
             document.getElementById("header-full-menu").style.display = "none";
-            document.getElementById("header-top-full").style.display = "none";
-            document.getElementById("header-top-short").style.display = "block";
+            document
+                .getElementById("header-content")
+                .classList.remove("bg-dark");
         }
     }
     let scrollTop =
@@ -93,7 +91,7 @@ const changeWindow = () => {
 
     if (window.innerWidth > 1279) {
         [].forEach.call(stickies, function(sticky) {
-            sticky.style.display = "block";
+            sticky.style.display = "flex";
             let c = sticky.parentNode,
                 s = sticky.parentNode.parentNode,
                 sp = sticky.children[0];
@@ -140,13 +138,6 @@ const changeWindow = () => {
                 bgt.style.transform = "translateX(80%)";
             }
         });
-    } else {
-        [].forEach.call(stickies, function(sticky) {
-            sticky.style.display = "none";
-        });
-        [].forEach.call(bgts, function(bgt) {
-            bgt.style.display = "none";
-        });
     }
 };
 document.addEventListener("DOMContentLoaded", () => {
@@ -167,33 +158,61 @@ document.addEventListener("DOMContentLoaded", () => {
             render(<HomeExperts />, document.getElementById("expertsSlider"));
     }
     changeWindow();
-    setTimeout(() => document.getElementById("sitePreloader").remove(), 1100);
+    setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
-        let mf = document.getElementById("header-full-menu-fixed");
-        if (mf) mf.remove();
-        else {
-            let menu = document
-                    .getElementById("header-full-menu")
-                    .cloneNode(true),
-                headerTop = document.getElementById("header-top");
-            menu.id = "header-full-menu-fixed";
-            menu.style.marginTop = headerTop.offsetHeight + "px";
-            menu.style.paddingTop = "0";
-            menu.style.position = "fixed";
-            menu.style.display = "block";
-            menu.style.left = "0";
-            menu.style.top = "0";
-            menu.style.background = "white";
-            menu.style.width = "100%";
-            menu.style.zIndex = "100";
-            menu.style.paddingBottom = "2.5rem";
-            document.getElementById("header").appendChild(menu);
+        if (window.innerWidth > 1279) {
+            let mf = document.getElementById("header-full-menu-fixed");
+            if (mf) {
+                mf.remove();
+            } else {
+                let menu = document
+                        .getElementById("header-full-menu")
+                        .cloneNode(true),
+                    headerTop = document.getElementById("header-top");
+                menu.id = "header-full-menu-fixed";
+                menu.style.marginTop = headerTop.offsetHeight + "px";
+                menu.style.paddingTop = "0";
+                menu.style.position = "fixed";
+                menu.style.display = "block";
+                menu.style.left = "0";
+                menu.style.top = "0";
+                menu.style.background = "white";
+                menu.style.width = "100%";
+                menu.style.zIndex = "100";
+                menu.style.paddingBottom = "2.5rem";
+                document.getElementById("header").appendChild(menu);
+            }
+        } else {
+            document.getElementById("mobileMenu").style.display = "block";
+            document.body.style.overflowY = "hidden";
         }
+    });
+
+    let closeButtons = document.getElementsByClassName("close-mobile-menu");
+
+    [].forEach.call(closeButtons, function(bgt) {
+        bgt.addEventListener("click", e => {
+            document.getElementById("mobileMenu").style.display = "none";
+            document.body.style.overflowY = "auto";
+        });
     });
 
     document.getElementById("searchTopToggle").addEventListener("click", e => {
         e.preventDefault();
+        let form = document.getElementById("searchForm").cloneNode(true);
+        form.id = "formSearchFull";
+        form.classList.add("form-search-full");
+        form.classList.add("py-2");
+        form.classList.add("container-fluid");
+        document.getElementById("header-top").appendChild(form);
+        let btn = form.getElementsByClassName("close-search-form");
+        form.querySelector("input[type=text]").focus();
+        !btn.length ||
+            btn[0].addEventListener("click", e => {
+                e.preventDefault();
+                document.getElementById("formSearchFull").remove();
+            });
     });
 });
 document.addEventListener("scroll", () => changeWindow());

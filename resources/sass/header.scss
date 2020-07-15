@@ -1,35 +1,49 @@
+@use "sass:map";
 .header {
-    z-index: 10;
+    z-index: 100;
+    position: relative;
     + main {
-        padding-top: 3.725rem;
+        padding-top: 3.075rem;
+        @media (min-width: map.get($grid-breakpoints, "md")) {
+            padding-top: 3.575rem;
+        }
+    }
+    .lang-menu {
+        a {
+            &.active {
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+            font-family: "Roboto Condensed", sans-serif;
+            line-height: 2.31rem;
+        }
     }
     .header-top {
         position: fixed;
-        min-height: 3.725rem;
         width: 100%;
         z-index: 11;
         top: 0;
         background-color: #ffffff;
         border-bottom: 1px solid $graybg;
         left: 0;
-        svg {
-            fill: transparent;
-            stroke: $primary;
-            // ellipse {
-            //     fill: #ffffff;
-            // }
-        }
-        .header-full-content {
+        .header-top-container-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: none;
         }
-        .header-short-content {
-            a.logo,
-            a.burger {
-                text-transform: uppercase;
-                @include txt_menu_3;
-                svg {
-                    fill: $primary;
-                }
+        .header-wide {
+            [class^="col-"] {
+                display: flex;
+                align-items: center;
+            }
+        }
+        svg {
+            fill: $primary;
+            stroke: $primary;
+            ellipse {
+                fill: transparent;
             }
         }
         .header-top-menu {
@@ -41,80 +55,114 @@
                 }
             }
         }
+        .logo {
+            display: flex;
+        }
         + section {
             display: none;
             padding-top: 3.725rem;
         }
-    }
-    .bg-dark {
-        border-bottom: 1px solid transparent;
-        color: #ffffff;
-        a {
-            color: #ffffff;
-        }
-        svg {
-            fill: transparent;
-            stroke: #d6d6d6;
-            // ellipse {
-            //     fill: #ffffff;
-            // }
-        }
-        input {
-            min-width: 27rem;
-            line-height: 2.31rem;
-            background: transparent;
-            color: #d6d6d6;
-            border: 1px solid #d6d6d6;
-        }
-    }
-    .search-container {
-        position: relative;
-        button {
-            position: absolute;
-            right: 0;
-            top: 0;
-            border: none;
-            @include box-shadow(none);
-            background: transparent !important;
-        }
-        input {
-            min-width: 27rem;
-            line-height: 2.31rem;
-            background: transparent;
-        }
-    }
-    .header-lang {
-        position: absolute;
-        left: 100%;
-        top: 0;
-        .lang-menu {
-            a {
-                &.active {
-                    text-transform: uppercase;
-                    font-weight: bold;
+        .burger-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            @media (min-width: map.get($grid-breakpoints, "md")) {
+                justify-content: center;
+            }
+            .burger {
+                display: flex;
+                min-width: 6.125rem;
+                flex-direction: row-reverse;
+                @media (min-width: map.get($grid-breakpoints, "md")) {
+                    flex-direction: row;
                 }
-                font-family: "Roboto Condensed", sans-serif;
+            }
+        }
+        &.bg-dark {
+            .header-wide {
+                flex-direction: row-reverse;
+                .right-position {
+                    width: auto;
+                    flex: 0;
+                    padding-left: 0;
+                }
+            }
+            .header-top-container-wrapper {
+                display: block;
+            }
+            .hide-dark {
+                display: none;
+            }
+            .hide-dark-lens {
+                @media (min-width: map.get($grid-breakpoints, "xxl")) {
+                    display: none;
+                }
+            }
+            .logo {
+                height: 1px;
+                opacity: 0;
+            }
+            border-bottom: 1px solid transparent;
+            color: #ffffff;
+            a {
+                color: #ffffff;
+            }
+            svg {
+                fill: $graybg;
+                stroke: $graybg;
+                // ellipse {
+                //     fill: #ffffff;
+                // }
+            }
+            input {
+                min-width: 27rem;
                 line-height: 2.31rem;
+                background: transparent;
+                color: $graybg;
+                border: 1px solid $graybg;
             }
         }
     }
     .header-bottom-logo {
         position: absolute;
-        left: -7.875rem;
         z-index: 1;
+        left: -1.875rem;
         a {
+            margin-top: 0.6875rem;
             display: block;
-            color: $primary !important;
+            color: $primary;
+            fill: $primary;
+            stroke: $primary;
             text-decoration: none !important;
+            .h5 {
+                font-size: 1.2rem;
+            }
+            svg {
+                width: 240px;
+            }
+        }
+        @media (min-width: map.get($grid-breakpoints, "xxl")) {
+            left: -9.875rem;
+            a {
+                .h5 {
+                    font-size: 1.5rem;
+                }
+                svg {
+                    width: 379px;
+                }
+            }
         }
     }
     .header-bottom-menu {
+        .col:first-child {
+            display: none;
+        }
         ul {
             li {
                 padding: 0;
-                border-color: $primary;
+                border-color: $dark;
                 a {
                     @include txt_menu_4;
+                    color: $dark;
                     display: block;
                     padding: 0.6875rem 0;
                     text-decoration: none;
@@ -136,6 +184,31 @@
             }
         }
     }
+    #header-full-menu-fixed {
+        .header-bottom-logo {
+            display: none;
+        }
+        .header-bottom-menu {
+            .col:first-child {
+                display: block;
+                ul {
+                    li {
+                        &.list-group-item-header {
+                            border-bottom-width: 1px;
+                            a {
+                                font-weight: normal;
+                                font-size: 18px;
+                                line-height: 27px;
+                                white-space: nowrap;
+                                letter-spacing: 0.05em;
+                                text-transform: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 .home {
     .header {
@@ -147,7 +220,127 @@
         }
         + main {
             padding-top: 0;
-            margin-top: 3.725rem;
+            margin-top: 3.075rem;
+            @media (min-width: map.get($grid-breakpoints, "md")) {
+                margin-top: 3.575rem;
+            }
+        }
+    }
+}
+.mobile-menu-wrapper {
+    display: none;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    .bg {
+        background-color: $primary;
+        opacity: 0.75;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: -1;
+    }
+    .mobile-menu {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        min-height: 100%;
+        border-bottom: 1px solid $graybg;
+        .close-tablet {
+            width: 2rem;
+            fill: $primary;
+            stroke: $primary;
+            display: block;
+        }
+        .close-mobile {
+            width: 1.125rem;
+            fill: white;
+            stroke: white;
+            display: block;
+        }
+        ul {
+            li {
+                @include txt_menu_1;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                line-height: 2rem;
+            }
+            margin-bottom: 1.725rem;
+        }
+        .menu-2 {
+            ul {
+                li {
+                    font-size: 1.125rem;
+                    text-transform: none;
+                }
+            }
+        }
+        .menu-3 {
+            ul {
+                li {
+                    font-size: 1.125rem;
+                    text-transform: none;
+                }
+            }
+        }
+        .logo-mobile {
+            display: block;
+            width: 8rem;
+            fill: white;
+            stroke: white;
+            opacity: 0.3;
+        }
+        .mobile-menu-header {
+            background-color: $primary;
+        }
+        .lang-menu a {
+            line-height: 1;
+        }
+        > div:last-child {
+            border-top: 1px solid $dark;
+            > a {
+                @include txt_menu_3;
+                text-transform: uppercase;
+            }
+        }
+        @media (min-width: map.get($grid-breakpoints, "md")) {
+            display: block;
+            width: 60%;
+            max-width: 30rem;
+            border-left: 1px solid $graybg;
+            .mobile-menu-header {
+                background-color: $primary;
+                background-color: white;
+            }
+            ul {
+                li {
+                    line-height: 2.5rem;
+                }
+                margin-bottom: 4rem;
+            }
+            .menu-2 {
+                ul {
+                    li {
+                        font-size: 22px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .menu-3 {
+                ul {
+                    li {
+                        font-size: 1.125rem;
+                    }
+                }
+            }
         }
     }
 }

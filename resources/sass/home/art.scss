@@ -1,44 +1,15 @@
+@use "sass:map";
 #art {
-    padding: 18rem 0 6rem;
-    .dotted-gallery {
-        z-index: -1;
-        position: absolute;
-        top: 8.75rem;
-        right: 0;
-        width: 40%;
-        min-height: 700px;
-        display: flex;
-        align-items: flex-end;
-        overflow: hidden;
-        .dotted-bg {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-image: url("/images/dot.png");
-        }
-        svg {
-            position: absolute;
-            bottom: 3rem;
-            left: 3rem;
-        }
-    }
-    .background-text {
-        color: #eceded;
-        top: 5.25rem;
-        opacity: 1;
-    }
+    padding: 3rem 0 2rem;
     .announce {
         > div {
-            .h2,
-            .h3 {
-                line-height: 3rem;
-                padding-bottom: 1.5rem;
-                border-bottom: 8px solid #000000;
-            }
-            .sub_h1 {
-                padding-top: 3rem;
+            .h2{
+                font-size: 8vw;
+                line-height: 9.625vw;
+                white-space: nowrap;
+                padding-bottom: 0.5rem;
+                text-align: center;
+                border-bottom: .25rem solid $dark;
             }
             ol {
                 padding-top: 3rem;
@@ -67,15 +38,22 @@
                 }
             }
         }
+        .show-more{
+            
+        }
+        .to-gallery{
+            font-weight: normal;
+        }
     }
     .art-waterfall-wrapper {
-        margin-top: 5.3125rem;
+        margin-top: 3.3125rem;
         .art-waterfall {
-            .hummer{
-                width:2.625rem;
-                height:2.625rem;
+            .hummer {
+                width: 2rem;
+                height: 2rem;
             }
             .art-waterfall-inner {
+                margin-bottom:4rem;
                 .waterfall-item {
                     .image {
                         position: relative;
@@ -110,7 +88,20 @@
             }
         }
     }
-    @media screen and (max-width: 1919px) {
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        padding: 3.75rem 0 2.725rem;
+        .announce {
+            > div {
+                .h2{
+                    font-size: 2.25rem;
+                    text-align: left;
+                    padding-bottom: 0.5rem;
+                    border-bottom-width: .5rem;
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
         padding: 10rem 0 6rem;
         .dotted-gallery {
             z-index: -1;
@@ -146,7 +137,7 @@
                 .h2,
                 .h3 {
                     line-height: 3rem;
-                    padding-bottom: .5rem;
+                    padding-bottom: 0.5rem;
                 }
                 .sub_h1 {
                     padding-top: 2rem;
@@ -185,9 +176,9 @@
         .art-waterfall-wrapper {
             margin-top: 3.3125rem;
             .art-waterfall {
-                .hummer{
-                    width:2rem;
-                    height:2rem;
+                .hummer {
+                    width: 2rem;
+                    height: 2rem;
                 }
                 .art-waterfall-inner {
                     .waterfall-item {

@@ -1,5 +1,6 @@
+@use "sass:map";
 #experts {
-    padding: 12rem 0 4rem;
+    padding: 3rem 0 2rem;
     .background-text {
         color: #eceded;
         top: 5.25rem;
@@ -84,5 +85,13 @@
         .btn-control {
             margin: 0;
         }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 12rem 0 4rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        padding: 12rem 0 4rem;
     }
 }

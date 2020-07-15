@@ -51,7 +51,7 @@ export default function HomeWaterfall() {
                                     onClick={toFavorite(item.id)}
                                     style={{
                                         position: "absolute",
-                                        top: ".5rem",
+                                        top: "-.5rem",
                                         right: ".5rem"
                                     }}
                                 >
@@ -128,9 +128,10 @@ export default function HomeWaterfall() {
 
     return (
         <React.Fragment>
-            <h3>
+            <h3 className="d-none d-md-block pb-4">
                 Последние ставки:{" "}
-                <svg className="hummer"
+                <svg
+                    className="hummer"
                     width="42"
                     height="42"
                     viewBox="0 0 42 42"
@@ -155,8 +156,6 @@ export default function HomeWaterfall() {
                     />
                 </svg>
             </h3>
-            <br />
-            <br />
             <StackGrid
                 appear={scaleDown.appear}
                 appeared={scaleDown.appeared}
@@ -171,14 +170,17 @@ export default function HomeWaterfall() {
             >
                 {photos}
             </StackGrid>
-            <div className="text-center h5 h5_underline">
+            <div className="text-center h5 color-primary">
                 &bull;&bull;&bull;
                 <br />
             </div>
             <div className="text-center">
-                <a href="#" className="h5 h5_underline">
+                <a href="#" className="show-more">
                     Показать больше
                 </a>
+            </div>
+            <div className="text-center pt-5 pb-4 d-md-none">
+                <button className="btn btn-primary btn-lg to-gallery">ПЕРЕЙТИ В ГАЛЕРЕЮ</button>
             </div>
         </React.Fragment>
     );
