@@ -172,7 +172,7 @@
         </main>
     </div>
 
-    {{-- <footer class="footer">
+    <footer class="footer">
         <div class="footer-top">
             <div class="container">
                 <div class="d-flex">
@@ -249,7 +249,7 @@
                     </div>
                 </div>
             </div>
-    </footer> --}}
+    </footer>
 
     <!-- Scripts -->
     <script>
