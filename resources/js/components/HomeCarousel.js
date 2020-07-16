@@ -204,11 +204,11 @@ export default function HomeGalleries() {
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
                             <div className="banner-announce">
                                 <div class="row">
-                                    <div className="h3 col-md-38">
+                                    <div className="h3 col-md-38 col-lg-60">
                                         Размер этого шрифта должен уменьшаться
                                         при сжатии текстового контейнера
                                     </div>
-                                    <div className="d-none d-md-block col-md-22">
+                                    <div className="d-none d-md-block col-md-22 col-lg-60">
                                         <Countdown
                                             date={Date.now() + 100000000}
                                             renderer={renderer}
@@ -229,11 +229,11 @@ export default function HomeGalleries() {
                             </div>
                             <div className="banner-announce">
                                 <div class="row">
-                                    <div className="h3 col-md-38">
+                                    <div className="h3 col-md-38 col-lg-60">
                                         Размер этого шрифта должен уменьшаться
                                         при сжатии текстового контейнера
                                     </div>
-                                    <div className="d-none d-md-block col-md-22">
+                                    <div className="d-none d-md-block col-md-22 col-lg-60">
                                         <Countdown
                                             date={Date.now() + 100000000}
                                             renderer={renderer}
@@ -254,11 +254,11 @@ export default function HomeGalleries() {
                             </div>
                             <div className="banner-announce">
                                 <div class="row">
-                                    <div className="h3 col-md-38">
+                                    <div className="h3 col-md-38 col-lg-60">
                                         Размер этого шрифта должен уменьшаться
                                         при сжатии текстового контейнера
                                     </div>
-                                    <div className="d-none d-md-block col-md-22">
+                                    <div className="d-none d-md-block col-md-22 col-lg-60">
                                         <Countdown
                                             date={Date.now() + 100000000}
                                             renderer={renderer}

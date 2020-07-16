@@ -44821,7 +44821,7 @@ var changeWindow = function changeWindow() {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth > 1279) {
+  if (window.innerWidth > 991) {
     !document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_HomeGalleries__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("galleryHolder"));
   }
 
@@ -45517,9 +45517,9 @@ function HomeGalleries() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h3 col-md-38"
+    className: "h3 col-md-38 col-lg-60"
   }, "\u0420\u0430\u0437\u043C\u0435\u0440 \u044D\u0442\u043E\u0433\u043E \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438 \u0441\u0436\u0430\u0442\u0438\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E \u043A\u043E\u043D\u0442\u0435\u0439\u043D\u0435\u0440\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-md-block col-md-22"
+    className: "d-none d-md-block col-md-22 col-lg-60"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     date: Date.now() + 100000000,
     renderer: renderer
@@ -45535,9 +45535,9 @@ function HomeGalleries() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h3 col-md-38"
+    className: "h3 col-md-38 col-lg-60"
   }, "\u0420\u0430\u0437\u043C\u0435\u0440 \u044D\u0442\u043E\u0433\u043E \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438 \u0441\u0436\u0430\u0442\u0438\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E \u043A\u043E\u043D\u0442\u0435\u0439\u043D\u0435\u0440\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-md-block col-md-22"
+    className: "d-none d-md-block col-md-22 col-lg-60"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     date: Date.now() + 100000000,
     renderer: renderer
@@ -45553,9 +45553,9 @@ function HomeGalleries() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h3 col-md-38"
+    className: "h3 col-md-38 col-lg-60"
   }, "\u0420\u0430\u0437\u043C\u0435\u0440 \u044D\u0442\u043E\u0433\u043E \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438 \u0441\u0436\u0430\u0442\u0438\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E \u043A\u043E\u043D\u0442\u0435\u0439\u043D\u0435\u0440\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-md-block col-md-22"
+    className: "d-none d-md-block col-md-22 col-lg-60"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     date: Date.now() + 100000000,
     renderer: renderer

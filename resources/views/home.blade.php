@@ -70,13 +70,14 @@
                 </a>
             </div>
             <div class="d-flex mt-5 justify-content-center align-items-end">
-                <button class="btn btn-lg btn-primary">СМОТРЕТЬ ВСЕ РАБОТЫ</button>
+                <button class="btn btn-xl btn-primary">СМОТРЕТЬ ВСЕ РАБОТЫ</button>
             </div>
         </div>
     </div>
 </section>
 
 <section id="homeAbout">
+    <div class="dotted-bg"></div>
     <div class="background-text d-none d-xl-block">
         @include('svg.home.about-logo')
     </div>
@@ -86,9 +87,9 @@
     <div class="container">
         <div class="sticky-section d-none d-xl-flex"><span>о проекте</span></div>
         <div class="row">
-            <div class="col-lg-20">
+            <div class="col-xl-20">
             </div>
-            <div class="col-lg-40">
+            <div class="col-xl-40">
                 <h2 class="h2">ПЛАТФОРМА<span class="d-xl-none"> ACT•ART</h2>
                 <hr>
                 <p class="sub_h2">Платформа Act-Art – независимый социально-ориентированный коммерческий проект. Наша
@@ -139,15 +140,15 @@
         <div class="row announce">
             <div class="col-xl-40 col-xxl-38">
                 <h2 class="h2">ВЫСТАВКИ <span>и</span>&nbsp;МАСТЕРСКИЕ</h2>
-                <p class="sub_h2 d-none d-lg-block">Платформа Акт-Арт представляет три творческих кластера с
+                <p class="sub_h2 d-none d-xl-block">Платформа Акт-Арт представляет три творческих кластера с
                     собственными творческими
                     мастерскими и выставочными галереями.
                     Все кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
-                <p class="sub_h2 d-none d-lg-block">Все кластеры находятся в историческом центре Москвы и далее какой-то
+                <p class="sub_h2 d-none d-xl-block">Все кластеры находятся в историческом центре Москвы и далее какой-то
                     текст. Все
                     кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
             </div>
-            <div class="col-xl-20 col-xxl-22 d-none d-lg-block">
+            <div class="col-xl-20 col-xxl-22 d-none d-xl-block">
                 <h3 class="h3">Адреса:</h3>
                 <dl>
                     <dt>Акт-Арт Фрунзенская</dt>

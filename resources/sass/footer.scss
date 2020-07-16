@@ -1,19 +1,15 @@
 @use "sass:map";
 .footer-top {
-    background: #2c5770;
+    background: $primary;
     padding: 1rem 0;
-    .d-flex {
-        flex-direction: column;
-        &.soc-wr {
-            padding: 1.5rem 0;
-            flex-direction: row;
-            justify-content: center;
-            a {
-                display: block;
-                width: 2.5rem;
-                stroke: white;
-                fill: white;
-            }
+    .soc-wr {
+        padding: 1.5rem 0;
+        justify-content: center;
+        a {
+            display: block;
+            width: 2.5rem;
+            stroke: white;
+            fill: white;
         }
     }
     .footer-logo {
@@ -61,6 +57,7 @@
         a {
             color: $graybg;
             text-decoration: none;
+            white-space: nowrap;
         }
     }
     .footer-right-menu {
@@ -97,12 +94,122 @@
     background: $dark;
     padding: 2rem 0;
     text-align: center;
+    font-size: 0.875rem;
+    line-height: 1rem;
     p {
-        @include sssmal_text_12;
         color: $graybg;
         margin-bottom: 0;
     }
 }
+@media (min-width: map.get($grid-breakpoints, "md")) {
+    .footer-top {
+        padding: 4rem 0 2rem;
+        .soc-wr {
+            padding: 0;
+            justify-content: space-between;
+            div {
+                align-self: flex-end;
+                a {
+                    width: 2.25rem;
+                    padding-top: 0.125rem;
+                    padding-bottom: 0.125rem;
+                    svg {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+        .footer-logo {
+            width: 12rem;
+            display: block;
+            margin: 1rem 2rem 1rem 0;
+        }
+        .mail-to {
+            padding: 0;
+            margin: 2.5rem 2rem 1rem 0;
+        }
+        .form-group {
+            padding-right: 2rem;
+            label {
+                font-weight: bolder;
+                text-align: left;
+                margin-bottom: 2rem;
+                color: $sectbg;
+            }
+            .input-group-prepend {
+                fill: transparent;
+                stroke: white;
+                margin-right: 1rem;
+                height: 2.25rem;
+                svg {
+                    height: 2.5rem;
+                    margin-top: -0.125rem;
+                }
+            }
+            input.form-control {
+                width: auto;
+                line-height: 2.25rem;
+                height: 2.25rem;
+            }
+        }
+        .footer-left-menu,
+        .footer-right-menu {
+            width: 50%;
+            ul {
+                margin-bottom: 1.125rem;
+                li {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .footer-bottom {
+        text-align: left;
+        p {
+            margin-bottom: 0;
+        }
+        ul {
+            li {
+                a {
+                    color: $graybg;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($grid-breakpoints, "xl")) {
+    .footer-top {
+        .footer-logo {
+        }
+        ul {
+            margin-right: 2rem;
+            li {
+                a {
+                }
+            }
+        }
+        .soc-wr {
+            color: $primary-light;
+            justify-content: space-between;
+            div {
+                align-self: center;
+            }
+        }
+    }
+    .footer-bottom {
+        // background: #1e2b32;
+        // p {
+        //     @include sssmal_text_12;
+        //     color: $graybg;
+        //     padding: 1rem 5rem;
+        //     margin-bottom: 0;
+        // }
+    }
+}
+
 @media (min-width: map.get($grid-breakpoints, "xxl")) {
     .footer-top {
         background: #2c5770;
@@ -165,9 +272,6 @@
                     border: none;
                     outline: none !important;
                     @include box-shadow(none);
-                }
-                small {
-                    @include small_text_14;
                 }
             }
             .d-flex {

@@ -8,7 +8,7 @@
         top: 2rem;
         width: 100%;
         max-width: 23.75rem;
-        margin-left:50%;
+        margin-left: 50%;
         transform: translateX(-50%);
         svg {
             left: 0;
@@ -17,7 +17,7 @@
             width: 110%;
         }
     }
-    .h2{
+    .h2 {
         margin-top: 52vw;
         font-size: 7.25vw;
         line-height: 7.25vw;
@@ -52,7 +52,7 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
-        .h2{
+        .h2 {
             margin-top: 12vw;
             font-size: 2.5rem;
             line-height: 3rem;
@@ -62,9 +62,51 @@
             position: absolute;
             top: 4rem;
             width: 20rem;
-            right:0;
-            margin-left:0;
+            right: 0;
+            margin-left: 0;
             transform: translateX(0);
+            svg {
+                left: 0;
+                top: 0;
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 12rem 0 10rem;
+        .h2 {
+            margin-top: 0;
+            font-size: 2.5rem;
+            line-height: 3rem;
+            text-align: left;
+        }
+        .dotted-bg {
+            opacity: 0.2;
+            width: 20%;
+            height: 80%;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            background-image: url(/images/dot.png);
+        }
+        .background-text {
+            top: 3rem;
+            svg {
+                fill: $primary-light;
+                opacity: 0.2;
+                stroke: $primary-light;
+                width: 95%;
+            }
+        }
+        .background-logo {
+            position: absolute;
+            top: 22rem;
+            width: 28.75rem;
+            max-width: none;
+            right: auto;
+            left: 33.33%;
+            margin-left: -28.75rem;
             svg {
                 left: 0;
                 top: 0;

@@ -29,13 +29,13 @@
                         <div class="header-top-container-wrapper py-2">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col col-lg-12"></div>
-                                    <div class="col col-lg-24">
+                                    <div class="col col-xl-12"></div>
+                                    <div class="col col-xl-24">
                                         <div class="header-top-menu">
                                             @php echo menu('topmost', 'menu.topmost');@endphp
                                         </div>
                                     </div>
-                                    <div class="col col-lg-24">
+                                    <div class="col col-xl-24">
                                         <div class="header-top-search d-none d-xxl-block">
                                             <div id="searchForm" class="search-form">
                                                 <form action="#">
@@ -111,19 +111,19 @@
                             </a>
                         </div>
                         <div class="row header-bottom-menu flex-row-reverse">
-                            <div class="col col-lg-12">
+                            <div class="col col-xl-12">
                                 @php echo menu('topmost', 'menu.top');@endphp
                             </div>
-                            <div class="col col-lg-12">
+                            <div class="col col-xl-12">
                                 @php echo menu('top4', 'menu.top');@endphp
                             </div>
-                            <div class="col col-lg-12">
+                            <div class="col col-xl-12">
                                 @php echo menu('top3', 'menu.top');@endphp
                             </div>
-                            <div class="col col-lg-12">
+                            <div class="col col-xl-12">
                                 @php echo menu('top2', 'menu.top');@endphp
                             </div>
-                            <div class="col col-lg-12">
+                            <div class="col col-xl-12">
                                 @php echo menu('top1', 'menu.top');@endphp
                             </div>
                         </div>
@@ -175,54 +175,68 @@
     <footer class="footer">
         <div class="footer-top">
             <div class="container">
-                <div class="d-flex">
-                    <div class="order-2 order-md-1 d-flex">
-                        <a href="/" class="footer-logo order-2 order-md-1">
+                <div class="d-flex flex-column flex-md-row">
+                    <div class="order-1 d-none d-md-block">
+                        <a href="/" class="footer-logo">
                             @include('svg.footer.logo')
                         </a>
-                        <div class="mail-to order-1 order-md-2 d-flex">
+                        <div class="mail-to d-flex flex-column">
                             <div class="mb-1">{{  __('По вопросам сотрудничества:') }}</div>
                             <div class="h5"><a href="mailto:info@act-art.ru">info@act-art.ru</a></div>
                         </div>
                     </div>
-                    <div class="order-4 order-md-2 footer-left-menu">
-                        @php echo menu('footer-left', 'menu.unstyled');@endphp
-                        <div class="d-sm-none">
-                            @php echo menu('copyright', 'menu.unstyled');@endphp
-                        </div>
-                    </div>
-                    <div class="order-3 order-md-3 footer-right-menu">
-                        @php echo menu('footer-right', 'menu.unstyled');@endphp
-                    </div>
-                    <div class="order-1 order-md-4 d-flex">
-                        <div class="order-2 order-md-1">
-                            <form>
-                                <div class="form-group">
-                                    <label
-                                        for="subscribeFooterEmail">{{  __('Узнавайте первым о новых лотах, специальных предложениях, новых выставках в нашей рассылке') }}</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend d-none d-sm-block">
-                                            @include('svg.footer.mail')
-                                        </div>
-                                        <input type="email" class="form-control" aria-describedby="email"
-                                            placeholder="{{  __('Ваш E-mail') }}" id="subscribeFooterEmail">
-                                    </div>
-                                    <small
-                                        class="d-none d-sm-block">{{  __('обещаем, мы не будем навязчивыми') }}</small>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="order-1 order-md-2 d-flex soc-wr">
-                            <div class="d-none d-md-block mr-3 text-nowrap">{{  __('Мы в соцсетях:') }}</div>
-                            <div class="mr-3">
-                                <a href="#">
-                                    @include('svg.footer.facebook')
-                                </a>
+                    <div class="d-flex flex-column order-2 flex-xl-row">
+                        <div class="order-2 d-flex flex-column d-md-none">
+                            <div class="mail-to d-flex flex-column">
+                                <div class="mb-1">{{  __('По вопросам сотрудничества:') }}</div>
+                                <div class="h5"><a href="mailto:info@act-art.ru">info@act-art.ru</a></div>
                             </div>
-                            <div class="mr-3">
-                                <a href="#">
-                                    @include('svg.footer.instagram')
-                                </a>
+                            <a href="/" class="footer-logo">
+                                @include('svg.footer.logo')
+                            </a>
+                        </div>
+                        <div class="d-flex flex-column flex-md-row order-3 order-md-2 order-xl-1 col-xl-30">
+                            <div class="order-2 order-md-1 footer-left-menu">
+                                @php echo menu('footer-left', 'menu.unstyled');@endphp
+                                <div class="d-sm-none">
+                                    @php echo menu('copyright', 'menu.unstyled');@endphp
+                                </div>
+                            </div>
+                            <div class="order-1 order-md-2 footer-right-menu">
+                                @php echo menu('footer-right', 'menu.unstyled');@endphp
+                            </div>
+                        </div>
+                        <div
+                            class="order-1 order-md-1 d-flex flex-column flex-md-row flex-xl-column order-xl-2 col-xl-30">
+                            <div class="order-2 order-md-1 pb-md-5">
+                                <form>
+                                    <div class="form-group mb-0">
+                                        <label
+                                            for="subscribeFooterEmail">{{  __('Узнавайте первым о новых лотах, специальных предложениях, новых выставках в нашей рассылке') }}</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend d-none d-sm-block">
+                                                @include('svg.footer.mail')
+                                            </div>
+                                            <input type="email" class="form-control" aria-describedby="email"
+                                                placeholder="{{  __('Ваш E-mail') }}" id="subscribeFooterEmail">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="order-1 order-md-2 d-flex flex-row soc-wr pb-md-5">
+                                <div class="d-none d-xl-block color-lprimary">
+                                    <small>{{  __('Анонсы, статьи, новости мира искусства:') }}</small>
+                                </div>
+                                <div class="mr-3">
+                                    <a href="#">
+                                        @include('svg.footer.facebook')
+                                    </a>
+                                </div>
+                                <div class="">
+                                    <a href="#">
+                                        @include('svg.footer.instagram')
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -232,19 +246,21 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-24 align-items-center d-flex">
+                    <div class="col-md-20 align-items-center align-items-md-start d-flex">
                         <p class="pb-2">
                             {{ __('ООО “ВОЛОН”  © 2020') }}<br>{{ __('При использовании материалов с сайта обязательна ссылка на сайт.') }}
                         </p>
                     </div>
-                    <div class="col-md-14 align-items-center d-none d-sm-flex">
+                    <div class="col-md-20 align-items-center align-items-md-start d-none d-sm-flex">
                         @php echo menu('copyright', 'menu.unstyled');@endphp
                     </div>
-                    <div class="col-md-22 align-items-center">
-                        <div class="d-sm-flex">
+                    <div class="col-md-20 align-items-center align-items-md-start">
+                        <div class="d-xl-flex">
                             <div class="pb-2">{{  __('Сайт сделан в  ВАША КОМПАНИЯ') }}</div>
-                            <div class="pb-2">{{  __('Разработка') }}</div>
-                            <div class="pb-2">@include('svg.footer.cp')</div>
+                            <div class="d-md-flex">
+                                <div class="pb-2">{{  __('Разработка') }}</div>
+                                <div class="pb-2">@include('svg.footer.cp')</div>
+                            </div>
                         </div>
                     </div>
                 </div>

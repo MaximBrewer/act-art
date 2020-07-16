@@ -141,7 +141,7 @@ const changeWindow = () => {
     }
 };
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.innerWidth > 1279) {
+    if (window.innerWidth > 991) {
         !document.getElementById("galleryHolder") ||
             render(<HomeGalleries />, document.getElementById("galleryHolder"));
     }
