@@ -44730,7 +44730,7 @@ var calculateHeader = function calculateHeader() {
       header = document.getElementById("header"),
       headerTop = document.getElementById("header-top");
   document.getElementById("header-full-menu").style.paddingTop = headerTop.offsetHeight + "px";
-  var buttons = document.querySelectorAll("#header-top button");
+  var buttons = document.querySelectorAll("#header-top .btn");
 
   if (scrollTop + headerTop.offsetHeight > header.offsetHeight) {
     headerTop.classList.remove("bg-dark");
@@ -44764,7 +44764,7 @@ var changeWindow = function changeWindow() {
       calculateHeader();
     } else {
       var headerTop = document.getElementById("header-top"),
-          buttons = document.querySelectorAll("#header-top button");
+          buttons = document.querySelectorAll("#header-top .btn");
       headerTop.classList.remove("bg-dark");
       headerTop.classList.add("short-header-top");
       [].forEach.call(buttons, function (button) {
@@ -44774,6 +44774,13 @@ var changeWindow = function changeWindow() {
       document.getElementById("header-full-menu").style.display = "none";
       document.getElementById("header-content").classList.remove("bg-dark");
     }
+  } else {
+    var _buttons = document.querySelectorAll("#header-top .btn");
+
+    [].forEach.call(_buttons, function (button) {
+      button.classList.remove("btn-default-inverse");
+      button.classList.add("btn-primary-inverse");
+    });
   }
 
   var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0;

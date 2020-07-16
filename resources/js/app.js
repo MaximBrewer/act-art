@@ -39,7 +39,7 @@ const calculateHeader = () => {
     document.getElementById("header-full-menu").style.paddingTop =
         headerTop.offsetHeight + "px";
 
-    let buttons = document.querySelectorAll("#header-top button");
+    let buttons = document.querySelectorAll("#header-top .btn");
     if (scrollTop + headerTop.offsetHeight > header.offsetHeight) {
         headerTop.classList.remove("bg-dark");
         headerTop.classList.add("short-header-top");
@@ -69,7 +69,7 @@ const changeWindow = () => {
             calculateHeader();
         } else {
             let headerTop = document.getElementById("header-top"),
-                buttons = document.querySelectorAll("#header-top button");
+                buttons = document.querySelectorAll("#header-top .btn");
             headerTop.classList.remove("bg-dark");
             headerTop.classList.add("short-header-top");
             [].forEach.call(buttons, function(button) {
@@ -81,6 +81,12 @@ const changeWindow = () => {
                 .getElementById("header-content")
                 .classList.remove("bg-dark");
         }
+    } else {
+        let buttons = document.querySelectorAll("#header-top .btn");
+        [].forEach.call(buttons, function(button) {
+            button.classList.remove("btn-default-inverse");
+            button.classList.add("btn-primary-inverse");
+        });
     }
     let scrollTop =
         document.documentElement.scrollTop ||

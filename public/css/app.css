@@ -18708,14 +18708,21 @@ a.text-dark:focus {
 
 body {
   letter-spacing: 0.03em;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.footer {
+body > .wrapper {
+  flex: 1;
+}
+
+body .footer {
+  flex-shrink: 0;
   color: #d6d6d6;
 }
 
 input.form-control {
-  border: none;
   outline: none !important;
 }
 
@@ -19617,6 +19624,7 @@ section {
 }
 
 .footer-top .form-group input.form-control {
+  border: none;
   width: 100%;
   line-height: 2.75rem;
   height: 2.75rem;

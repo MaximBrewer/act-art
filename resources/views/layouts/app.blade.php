@@ -21,7 +21,7 @@
 
 <body @yield('body-class')>
     <div id="sitePreloader" class="site-preloader"></div>
-    <div>
+    <div class="wrapper">
         <header class="header" id="header">
             <nav>
                 <section class="py-2 header-top" id="header-top">
@@ -82,8 +82,8 @@
                                 </div>
                                 <div class="col-md-20 flex-row-reverse right-position d-none d-md-flex">
                                     <div>
-                                        <button class="btn btn-default-inverse" type="submit">{!! __('Войти')
-                                            !!}</button>
+                                        <a class="btn btn-default-inverse" type="submit" href="/login">{!! __('Войти')
+                                            !!}</a>
                                     </div>
                                     <div class="header-lang">
                                         <div class="lang-menu mx-3 text-nowrap">
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="p-4 d-flex justify-content-between d-md-none">
-                            <a href="#">{{  __('Войти')  }}</a>
+                            <a href="/login">{{  __('Войти')  }}</a>
                             <div class="lang-menu text-nowrap">
                                 <a href="/lang/ru" @if(App::getLocale()=='ru' ) class="active" @endif>Rus</a> |
                                 <a href="/lang/en" @if(App::getLocale()=='en' ) class="active" @endif>Eng</a>

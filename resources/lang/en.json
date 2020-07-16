@@ -1,8 +1,22 @@
 {
+    "E-Mail": "E-Mail",
+    "Пароль": "Password",
+    "Запомнить меня": "Remember Me",
+    "Забыли пароль?": "Forgot Your Password?",
+    "Регистрация": "Register",
+    "Подтвердите пароль": "Confirm Password",
+    "Пожалуйста подтвердите Ваш пароль для продолжения.": "Please confirm your password before continuing.",
+    "Сброс пароля": "Reset Password",
+    "Отправить ссылку для сброса пароля": "Send Password Reset Link",
+
+
+
+
     "Как купить": "How to buy",
     "Как продать": "How to sell",
     "Правила": "Rules",
     "Доставка": "Delivery",
+    
 
     "Поиск..": "Search..",
 
