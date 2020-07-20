@@ -36,6 +36,6 @@ class NewsController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         if (!$post) abort(404, 'Page not found');
-        return view('news.show', ['post' => $post]);
+        return view('news.show', ['post' => $post])->withShortcodes();
     }
 }

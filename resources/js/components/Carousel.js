@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 
-export default function HomeAnnounce() {
+export default function Carousel(props) {
     const [state, setState] = useState({
         slideIndex: 0,
         slidesTotal: 0
     });
+    const [slides, setSlides] = useState([]);
     const refPicture = useRef();
 
     const grid = {
@@ -21,10 +22,14 @@ export default function HomeAnnounce() {
         xs: 1,
         sm: 1,
         md: 3,
-        lg: 3,
+        lg: 4,
         xl: 4,
-        xxl: 6
+        xxl: 4
     };
+
+    useEffect(() => {
+        addSlides();
+    }, []);
 
     const slidesToShow = () => {
         let size = "xs";
@@ -56,51 +61,37 @@ export default function HomeAnnounce() {
         }
     };
 
-    const createSlides = () => {
-        let slides = [];
-        for (let i = 0; i < 20; i++) {
-            slides.push(
-                <div className="slide-wrapper" key={i}>
-                    <div className="slide-inner">
-                        <div
-                            className="image mb-4"
-                            style={{
-                                backgroundImage:
-                                    'url("/storage/images/200.jpg")'
-                            }}
-                        ></div>
-                        <div className="fio">Василий Цветаев:</div>
-                        <div className="title"> Generation Ready Now</div>
-                        <div className="subtitle">
-                            Ретроспектива советского плаката
+    const addSlides = () => {
+        axios
+            .get(
+                "/api/get_carousel_items/" +
+                    props.data.entity +
+                    "/" +
+                    props.data.id
+            )
+            .then(res => {
+                setSlides(
+                    res.data.slides.map((item, index) => (
+                        <div>
+                            <div
+                                key={index}
+                                className="image"
+                                style={{
+                                    backgroundImage:
+                                        'url("' + res.data.prefix + item + '")'
+                                }}
+                            ></div>
                         </div>
-                        <div className="date">12 мая - 15 июня 2020 г.</div>
-                        <div className="exhibit">Act-Art Фрунзенская </div>
-                        <div className="address">Фрунзенская наб., д. 1</div>
-                    </div>
-                </div>
-            );
-        }
-        return slides;
+                    ))
+                );
+            });
     };
 
-    if (window.innerWidth >= grid.md) {
-        return (
-            <React.Fragment>
-                <div>
-                    <Slider {...setting} ref={refPicture}>
-                        {createSlides()}
-                    </Slider>
-                </div>
-                <div className="carousel-button">
-                    <a href="#" className="btn btn-lg btn-default">
-                        ВСЕ АННОНСЫ
-                    </a>
-                </div>
-                <div className="carousel-counter">
-                    <span className="current">{state.slideIndex + 1}</span>/
-                    <span className="total">{state.slidesTotal}</span>
-                </div>
+    // if (window.innerWidth > 767) {
+    return (
+        <React.Fragment>
+            <div className="cg">
+                <Slider {...setting}>{slides}</Slider>
                 <div className="carousel-arrows">
                     <a
                         className="btn btn-default btn-control d-flex"
@@ -153,27 +144,14 @@ export default function HomeAnnounce() {
                         </svg>
                     </a>
                 </div>
-            </React.Fragment>
-        );
-    } else {
-        return (
-            <React.Fragment>
-                <div className="d-md-flex justify-content-between flex-wrap">
-                    {createSlides()}
-                </div>
-                <p className="d-none d-md-block d-lg-none">
-                    Платформа Act-Art – независимый коммерческий проект. Наша
-                    цель – популяризация современного российского искуства в
-                    России и мире. Мы помогаем молодым и именитым авторам найти
-                    своего зрителя и ценителя, делая процесс приобретения
-                    произведений максимально удобным и демократичным.
-                </p>
-                <div className="text-center button-wrapper pt-4">
-                    <a href="#" className="btn btn-default btn-lg">
-                        ВСЕ АННОНСЫ
-                    </a>
-                </div>
-            </React.Fragment>
-        );
-    }
+            </div>
+        </React.Fragment>
+    );
+    // } else {
+    //     return (
+    //         <React.Fragment>
+    //             {createSlides()}
+    //         </React.Fragment>
+    //     );
+    // }
 }

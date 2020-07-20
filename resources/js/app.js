@@ -22,6 +22,7 @@ import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
 import HomeAnnounce from "./components/HomeAnnounce";
 import HomeNews from "./components/HomeNews";
+import Carousel from "./components/Carousel";
 import HomeExperts from "./components/HomeExperts";
 
 import SearchForm from "./components/SearchForm";
@@ -165,6 +166,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     changeWindow();
     setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
+
+    let carousels = document.getElementsByClassName("carousel-wrapper");
+
+    [].forEach.call(carousels, function(carousel) {
+        render(<Carousel data={carousel.dataset}/>, carousel);
+    });
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
         if (window.innerWidth > 1279) {

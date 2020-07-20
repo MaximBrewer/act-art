@@ -27,6 +27,6 @@ class PageController extends Controller
     {
         $page = Page::where('slug', $slug)->first();
         if (!$page) abort(404, 'Page not found');
-        return view('page', ['page' => $page]);
+        return view('page', ['page' => $page])->withShortcodes();
     }
 }

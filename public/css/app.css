@@ -18722,6 +18722,10 @@ body .footer {
   color: #d6d6d6;
 }
 
+img {
+  max-width: 100%;
+}
+
 input.form-control {
   outline: none !important;
 }
@@ -22555,6 +22559,148 @@ section {
   }
 }
 
+#page {
+  padding: 3rem 0 4rem;
+}
+
+#page:before {
+  display: block;
+  width: 50%;
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  background-image: url("/images/dot.png");
+}
+
+#page .image-wrapper {
+  width: 100%;
+  padding-top: 67.5%;
+  background-size: cover;
+  background-position: center;
+}
+
+#page .h2 {
+  font-size: 7.25vw;
+  line-height: 7.25vw;
+  text-align: center;
+}
+
+#page hr {
+  margin: 1.175rem 0 1.725rem;
+  background-color: transparent;
+  border-bottom: 0.25rem solid #1e2b32;
+  border-top: none;
+}
+
+#page ul li {
+  line-height: 1.75rem;
+}
+
+#page ul li a {
+  color: #fff;
+}
+
+#page ul li:nth-child(2n+1) a {
+  color: #ff665d;
+}
+
+#page .sharing p {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 768px) {
+  #page .h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1280px) {
+  #page {
+    padding: 3rem 0 5rem;
+  }
+
+  #page:before {
+    content: "";
+    width: 50%;
+    height: 26rem;
+    top: 1.5rem;
+  }
+
+  #page .h2 {
+    margin-top: 0;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: left;
+  }
+
+  #page .dotted-bg {
+    opacity: 0.2;
+    width: 20%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    background-image: url(/images/dot.png);
+  }
+
+  #page .background-text {
+    top: 3rem;
+  }
+
+  #page .background-text svg {
+    fill: #6C92A8;
+    opacity: 0.2;
+    stroke: #6C92A8;
+    width: 95%;
+  }
+
+  #page .background-logo {
+    position: absolute;
+    top: 22rem;
+    width: 28.75rem;
+    max-width: none;
+    right: auto;
+    left: 33.33%;
+    margin-left: -28.75rem;
+  }
+
+  #page .background-logo svg {
+    left: 0;
+    top: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1600px) {
+  #page {
+    padding: 3rem 0 5rem;
+  }
+
+  #page:before {
+    width: 53%;
+    height: 28rem;
+    top: 1.5rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  #page {
+    padding: 3rem 0 5rem;
+  }
+
+  #page:before {
+    width: 53%;
+    height: 33.5rem;
+    top: 1.5rem;
+  }
+}
+
 .auction-preview {
   background-position: center;
   background-size: cover;
@@ -22565,5 +22711,9 @@ section {
 
 .auction-preview .h1 {
   max-width: 60rem;
+}
+
+.cg .image {
+  padding-top: 67.5%;
 }
 

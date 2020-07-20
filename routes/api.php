@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,7 @@ Route::get('/get_gallery_items', function (Request $request) {
     $dir = storage_path("app/public/images/*");
 
     foreach (glob($dir) as $k => $filename) {
-        if($size = getimagesize($filename)){
+        if ($size = getimagesize($filename)) {
             $arr[] = [
                 'title' => 'Хелло',
                 'url' => '/storage/images/' . basename($filename),
@@ -39,4 +41,14 @@ Route::get('/get_gallery_items', function (Request $request) {
         }
     }
     return json_encode(['gallery' => $arr]);
+});
+
+
+Route::get('/get_carousel_items/{entity}/{id}', function ($entity, $id) {
+    // return[$entity, $id];
+    // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
+    // return 
+    $res = DB::table($entity .'s')->select('images')->find($id);
+    // });
+    return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
 });
