@@ -1,6 +1,6 @@
 @use "sass:map";
 .footer-top {
-    background: $primary;
+    background: $cyanmedium;
     padding: 1rem 0;
     .soc-wr {
         padding: 1.5rem 0;
@@ -30,23 +30,23 @@
             width: 100%;
             line-height: 2.75rem;
             height: 2.75rem;
-            color: white;
+            color: $white;
             font-weight: bold;
             background: $primary-light;
             &::-webkit-input-placeholder {
-                color: white;
+                color: $white;
             }
             &:-moz-placeholder {
                 color: whitec;
             }
             &::-moz-placeholder {
-                color: white;
+                color: $white;
             }
             &::placeholder {
-                color: white;
+                color: $white;
             }
             &:-ms-input-placeholder {
-                color: white;
+                color: $white;
             }
         }
     }
@@ -56,7 +56,7 @@
         text-align: center;
         padding: 2.5rem 0;
         a {
-            color: $graybg;
+            color: $greylight;
             text-decoration: none;
             white-space: nowrap;
         }
@@ -71,7 +71,7 @@
                 text-transform: uppercase;
                 margin-bottom: 0.875rem;
                 a {
-                    color: $graybg;
+                    color: $greylight;
                 }
             }
         }
@@ -85,7 +85,7 @@
                 letter-spacing: 0.03em;
                 margin-bottom: 0.875rem;
                 a {
-                    color: $graybg;
+                    color: $greylight;
                 }
             }
         }
@@ -98,7 +98,7 @@
     font-size: 0.875rem;
     line-height: 1rem;
     p {
-        color: $graybg;
+        color: $greylight;
         margin-bottom: 0;
     }
 }
@@ -136,7 +136,7 @@
                 font-weight: bolder;
                 text-align: left;
                 margin-bottom: 2rem;
-                color: $sectbg;
+                color: $fonlight;
             }
             .input-group-prepend {
                 fill: transparent;
@@ -173,7 +173,7 @@
         ul {
             li {
                 a {
-                    color: $graybg;
+                    color: $greylight;
                     text-decoration: underline;
                 }
             }
@@ -201,10 +201,10 @@
         }
     }
     .footer-bottom {
-        // background: #1e2b32;
+        // background: $primary;
         // p {
         //     @include sssmal_text_12;
-        //     color: $graybg;
+        //     color: $greylight;
         //     padding: 1rem 5rem;
         //     margin-bottom: 0;
         // }
@@ -213,7 +213,6 @@
 
 @media (min-width: map.get($grid-breakpoints, "xxl")) {
     .footer-top {
-        background: #2c5770;
         padding: 6rem 0;
         .footer-logo {
             max-width: 282px;
@@ -226,7 +225,7 @@
                     @include txt_menu_4;
                     margin-bottom: 1.375rem;
                     a {
-                        color: $graybg;
+                        color: $greylight;
                     }
                 }
             }
@@ -241,7 +240,7 @@
                     a {
                         position: relative;
                         display: block;
-                        color: $graybg;
+                        color: $greylight;
                         text-decoration: none !important;
                         padding-bottom: 7px;
                     }
@@ -252,7 +251,7 @@
                     @include txt_menu_1;
                     a {
                         display: block;
-                        color: $graybg;
+                        color: $greylight;
                         text-decoration: none !important;
                     }
                 }
@@ -269,7 +268,7 @@
                     margin-left: 1.2rem;
                     line-height: 44px;
                     height: 44px;
-                    background: #c4c4c4;
+                    background: $gray;
                     border: none;
                     outline: none !important;
                     @include box-shadow(none);
@@ -284,10 +283,10 @@
         }
     }
     .footer-bottom {
-        background: #1e2b32;
+        background: $primary;
         p {
             @include sssmal_text_12;
-            color: $graybg;
+            color: $greylight;
             padding: 1rem 5rem;
             margin-bottom: 0;
         }

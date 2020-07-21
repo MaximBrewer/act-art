@@ -216,7 +216,7 @@ export default function HomeGalleries() {
                                     </div>
                                 </div>
                                 <div className="text-xs-center">
-                                    <button className="btn btn-primary btn-lg">
+                                    <button className="btn btn-danger btn-lg">
                                         ПРИНЯТЬ УЧАСТИЕ
                                     </button>
                                 </div>
@@ -241,7 +241,7 @@ export default function HomeGalleries() {
                                     </div>
                                 </div>
                                 <div className="text-xs-center">
-                                    <button className="btn btn-primary btn-lg">
+                                    <button className="btn btn-danger btn-lg">
                                         ПРИНЯТЬ УЧАСТИЕ
                                     </button>
                                 </div>
@@ -266,7 +266,7 @@ export default function HomeGalleries() {
                                     </div>
                                 </div>
                                 <div className="text-xs-center">
-                                    <button className="btn btn-primary btn-lg">
+                                    <button className="btn btn-danger btn-lg">
                                         ПРИНЯТЬ УЧАСТИЕ
                                     </button>
                                 </div>

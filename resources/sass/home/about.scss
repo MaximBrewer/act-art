@@ -1,8 +1,8 @@
 @use "sass:map";
 #homeAbout {
-    color: white;
+    color: $white;
     padding: 8rem 0 6rem;
-    background-color: $primary;
+    background-color: $cyanmedium;
     .background-logo {
         position: absolute;
         top: 2rem;
@@ -25,7 +25,7 @@
     }
     hr {
         margin: 1.175rem 0 1.725rem;
-        background-color: white;
+        background-color: $white;
         height: 6px;
     }
     ul {
@@ -33,20 +33,20 @@
         li {
             line-height: 1.75rem;
             a {
-                color: #fff;
+                color: $red;
             }
-            &:nth-child(2n + 1) {
-                a {
-                    color: $pink;
-                }
-            }
+            // &:nth-child(2n + 1) {
+            //     a {
+            //         color: $red;
+            //     }
+            // }
         }
     }
     .rolling-strings {
         margin-top: 6rem;
         .h7 {
             padding: 0.7rem 3rem 0.2rem;
-            background-color: $pink;
+            background-color: $red;
             margin: 0.375rem;
             line-height: 1;
         }
@@ -93,9 +93,9 @@
         .background-text {
             top: 3rem;
             svg {
-                fill: $primary-light;
+                fill: $greengreylight;
                 opacity: 0.2;
-                stroke: $primary-light;
+                stroke: $greengreylight;
                 width: 95%;
             }
         }

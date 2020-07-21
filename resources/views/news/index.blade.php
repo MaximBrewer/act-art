@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section id="auctionPreview" class="auction-preview" style="background-image: url('/storage/template/img/banner.jpg');background-position: top center;">
-    <div class="container">
-        <div class="h1">ВОЗМОЖНОСТЬ ВЫБРАТЬ АНОНС аукциона</div>
-        <div class="h3">26 мюля 2020 г.  15:00 &nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-default-inverse">подробнее</a></div>
-    </div>
-</section>
+@widget('announce')
 
 <section id="news">
     <div class="background-text">НОВОСТИ</div>

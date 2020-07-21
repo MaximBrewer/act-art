@@ -1,7 +1,7 @@
 @use "sass:map";
 #page {
     padding: 3rem 0 4rem;
-    &:before {
+    &.dotted:before {
         display: block;
         width: 50%;
         position: absolute;
@@ -23,18 +23,18 @@
     hr {
         margin: 1.175rem 0 1.725rem;
         background-color: transparent;
-        border-bottom: 0.25rem solid #1e2b32;
+        border-bottom: 0.25rem solid $primary;
         border-top: none;
     }
     ul {
         li {
             line-height: 1.75rem;
             a {
-                color: #fff;
+                color: $white;
             }
             &:nth-child(2n + 1) {
                 a {
-                    color: $pink;
+                    color: $red;
                 }
             }
         }

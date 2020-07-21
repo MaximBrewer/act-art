@@ -23,8 +23,8 @@
         width: 100%;
         z-index: 11;
         top: 0;
-        background-color: #ffffff;
-        border-bottom: 1px solid $graybg;
+        background-color: $white;
+        border-bottom: 1px solid $greylight;
         left: 0;
         .header-top-container-wrapper {
             position: absolute;
@@ -102,23 +102,23 @@
                 opacity: 0;
             }
             border-bottom: 1px solid transparent;
-            color: #ffffff;
+            color: $white;
             a {
-                color: #ffffff;
+                color: $white;
             }
             svg {
-                fill: $graybg;
-                stroke: $graybg;
+                fill: $greylight;
+                stroke: $greylight;
                 // ellipse {
-                //     fill: #ffffff;
+                //     fill: $white;
                 // }
             }
             input {
                 min-width: 27rem;
                 line-height: 2.31rem;
                 background: transparent;
-                color: $graybg;
-                border: 1px solid $graybg;
+                color: $greylight;
+                border: 1px solid $greylight;
             }
         }
     }
@@ -185,6 +185,7 @@
         }
     }
     #header-full-menu-fixed {
+        border-bottom: 1px solid $greylight;
         .header-bottom-logo {
             display: none;
         }
@@ -250,10 +251,10 @@
         justify-content: space-between;
         flex-direction: column;
         right: 0;
-        background-color: white;
+        background-color: $white;
         width: 100%;
         min-height: 100%;
-        border-bottom: 1px solid $graybg;
+        border-bottom: 1px solid $greylight;
         .close-tablet {
             width: 2rem;
             fill: $primary;
@@ -315,10 +316,10 @@
             display: block;
             width: 60%;
             max-width: 30rem;
-            border-left: 1px solid $graybg;
+            border-left: 1px solid $greylight;
             .mobile-menu-header {
                 background-color: $primary;
-                background-color: white;
+                background-color: $white;
             }
             ul {
                 li {

@@ -212,7 +212,7 @@
                                         <label
                                             for="subscribeFooterEmail">{{  __('Узнавайте первым о новых лотах, специальных предложениях, новых выставках в нашей рассылке') }}</label>
                                         <div class="input-group">
-                                            <div class="input-group-prepend d-none d-sm-block">
+                                            <div class="input-group-prepend d-none d-lg-block">
                                                 @include('svg.footer.mail')
                                             </div>
                                             <input type="email" class="form-control" aria-describedby="email"
@@ -222,7 +222,7 @@
                                 </form>
                             </div>
                             <div class="order-1 order-md-2 d-flex flex-row soc-wr pb-md-5">
-                                <div class="d-none d-xl-block color-lprimary">
+                                <div class="d-none d-xl-block flex-fill">
                                     <small>{{  __('Анонсы, статьи, новости мира искусства:') }}</small>
                                 </div>
                                 <div class="mr-3">

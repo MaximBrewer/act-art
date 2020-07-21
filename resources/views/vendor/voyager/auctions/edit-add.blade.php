@@ -211,4 +211,5 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+    @yield('javascript_add');
 @stop

@@ -11,10 +11,10 @@ body {
     }
     .footer {
         flex-shrink: 0;
-        color: $graybg;
+        color: $greylight;
     }
 }
-img{
+img {
     max-width: 100%;
 }
 input.form-control {
@@ -137,38 +137,38 @@ h6,
 }
 
 .btn-default-inverse {
-    color: #fff;
+    color: $white;
     background-color: transparent;
-    border-color: #fff;
+    border-color: $white;
 }
 
 .btn-default-inverse:hover {
-    color: #fff;
+    color: $white;
     background-color: transparent;
-    border-color: #fff;
+    border-color: $white;
 }
 
 .btn-default-inverse:focus,
 .btn-default-inverse.focus {
-    color: #fff;
+    color: $white;
     background-color: transparent;
-    border-color: #fff;
+    border-color: $white;
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
 
 .btn-default-inverse.disabled,
 .btn-default-inverse:disabled {
-    color: #fff;
+    color: $white;
     background-color: transparent;
-    border-color: #fff;
+    border-color: $white;
 }
 
 .btn-default-inverse:not(:disabled):not(.disabled):active,
 .btn-default-inverse:not(:disabled):not(.disabled).active,
 .show > .btn-default-inverse.dropdown-toggle {
-    color: #fff;
+    color: $white;
     background-color: transparent;
-    border-color: #fff;
+    border-color: $white;
 }
 
 .btn-default-inverse:not(:disabled):not(.disabled):active:focus,
@@ -219,32 +219,32 @@ h6,
 }
 
 .btn-default:hover {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:focus,
 .btn-default.focus {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
 
 .btn-default.disabled,
 .btn-default:disabled {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:not(:disabled):not(.disabled):active,
 .btn-default:not(:disabled):not(.disabled).active,
 .show > .btn-default.dropdown-toggle {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:not(:disabled):not(.disabled):active:focus,
@@ -258,38 +258,38 @@ h6,
 }
 
 .btn-default {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:hover {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:focus,
 .btn-default.focus {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
 
 .btn-default.disabled,
 .btn-default:disabled {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:not(:disabled):not(.disabled):active,
 .btn-default:not(:disabled):not(.disabled).active,
 .show > .btn-default.dropdown-toggle {
-    color: #1e2b32;
+    color: $primary;
     background-color: transparent;
-    border-color: #1e2b32;
+    border-color: $primary;
 }
 
 .btn-default:not(:disabled):not(.disabled):active:focus,
@@ -318,7 +318,7 @@ h6,
     font-weight: bold;
     font-size: 1.5rem;
     line-height: 1.5rem;
-    color: #6c92a8;
+    color: $red;
     display: block;
     text-decoration-line: underline;
     @media screen and (max-width: 1919px) {
@@ -337,7 +337,7 @@ h6,
     font-size: 20rem;
     line-height: 20rem;
     text-transform: uppercase;
-    color: #ffffff;
+    color: $white;
     opacity: 70%;
     user-select: none;
     -moz-user-select: none;
@@ -357,7 +357,7 @@ h6,
     width: 1.875rem;
     height: 1.875rem;
     line-height: 1.875rem;
-    background-color: white;
+    background-color: $white;
     border-width: 2px;
     svg {
         width: 1.25rem;
@@ -394,7 +394,7 @@ section {
     background-image: url("/storage/template/img/preloader.gif");
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #fff;
+    background-color: $white;
     z-index: 10000;
 }
 .lh-2rem {

@@ -10,7 +10,7 @@
             position: relative;
             p {
                 @include txt_menu_1;
-                color: white;
+                color: $white;
                 letter-spacing: 0.05em;
                 text-transform: uppercase;
                 margin: 0;
@@ -23,7 +23,7 @@
                 height: 110%;
                 left: -5%;
                 top: -5%;
-                border: 1px solid #818486;
+                border: 1px solid $gray;
                 position: absolute;
             }
             &:hover {

@@ -75,13 +75,13 @@
                     .matherial {
                         @include text_supersmall_13;
                         line-height: 24px;
-                        color: $gray;
+                        color: $grey;
                     }
                     .size {
                         @include text_supersmall_13;
                         line-height: 24px;
                         font-weight: bold;
-                        color: $gray;
+                        color: $grey;
                     }
                 }
             }
@@ -130,7 +130,7 @@
             }
         }
         .background-text {
-            color: #eceded;
+            color: $fonlight;
             top: 5.25rem;
             opacity: 1;
         }
@@ -205,13 +205,13 @@
                         .matherial {
                             @include text_supersmall_13;
                             line-height: 24px;
-                            color: $gray;
+                            color: $grey;
                         }
                         .size {
                             @include text_supersmall_13;
                             line-height: 24px;
                             font-weight: bold;
-                            color: $gray;
+                            color: $grey;
                         }
                     }
                 }
@@ -245,7 +245,7 @@
             }
         }
         .background-text {
-            color: #eceded;
+            color: $fonlight;
             top: 5.25rem;
             opacity: 1;
         }
@@ -320,13 +320,13 @@
                         .matherial {
                             @include text_supersmall_13;
                             line-height: 24px;
-                            color: $gray;
+                            color: $grey;
                         }
                         .size {
                             @include text_supersmall_13;
                             line-height: 24px;
                             font-weight: bold;
-                            color: $gray;
+                            color: $grey;
                         }
                     }
                 }

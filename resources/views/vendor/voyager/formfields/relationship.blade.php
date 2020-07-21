@@ -168,22 +168,26 @@ if(mb_strlen($string_values) > 25){ $string_values = mb_substr($string_values, 0
 @php
 $model = app($options->model);
 $modelName = str_replace("App\\", "", get_class($model));
-$query = $model::where($options->column, '=', $dataTypeContent->{$options->key})->orderBy(isset($options->sort) ? $options->sort->field : 'sort', isset($options->sort) ? $options->sort->direction : 'asc')->get();
-@endphp
+if($dataTypeContent->{$options->key})
+$query = $model::where($options->column, '=', $dataTypeContent->{$options->key})->orderBy(isset($options->sort) ?
+$options->sort->field : 'sort', isset($options->sort) ? $options->sort->direction : 'asc')->get();
 
-@if(isset($query))
+@endphp
+@if(isset($query) && count($query))
 
 @if(isset($options->sortable) && !!$options->sortable)
 
 
 <ul id="photoSortable" class="photo-sortable">
     @foreach($query as $query_res)
-    <li data-id="{{ $query_res->id }}"><div style="background-image: url('/storage/{{ $query_res->photo }}')"></div></li>
+    <li data-id="{{ $query_res->id }}">
+        <div style="background-image: url('/storage/{{ $query_res->photo }}')"></div>
+    </li>
     @endforeach
 </ul>
 
 
-@section("javascript")
+@section("javascript_add")
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
     Sortable.create(photoSortable, { 
@@ -222,7 +226,6 @@ $query = $model::where($options->column, '=', $dataTypeContent->{$options->key})
     @endforeach
 </ul>
 @endif
-
 @else
 <p>{{ __('voyager::generic.no_results') }}</p>
 @endif

@@ -15,12 +15,12 @@
         }
         button {
             svg {
-                fill: $graybg;
-                stroke: $graybg;
+                fill: $greylight;
+                stroke: $greylight;
             }
         }
         input {
-            color: $graybg !important;
+            color: $greylight !important;
         }
     }
     .search-container {

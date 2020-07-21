@@ -4,7 +4,7 @@
 @import "~slick-carousel/slick/slick-theme.scss";
 .home-banner {
     padding: 2rem 0;
-    background: $sectbg;
+    background: $fonlight;
     .h5 {
         text-align: center;
     }
@@ -27,7 +27,7 @@
     .carousel {
         padding-bottom: 6.75rem;
         > div:first-child {
-            background-color: white;
+            background-color: $white;
             padding: 1.255rem 0.875rem;
         }
         hr {
@@ -38,7 +38,7 @@
         }
         .banner-image {
             padding: 87.5% 1rem 0;
-            color: #fff;
+            color: $white;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -70,6 +70,9 @@
             }
             .text-xs-center {
                 text-align: center;
+            }
+            a {
+                color: $red;
             }
         }
         .carousel-button {
@@ -121,8 +124,8 @@
                         width: 2.5rem;
                         line-height: 2.7rem;
                         height: 2.5rem;
-                        color: #fff;
-                        background: #2c5770;
+                        color: $white;
+                        background: $primary;
                         margin: 0;
                     }
                     &.separator {
@@ -175,7 +178,7 @@
             }
             .banner-image {
                 padding: 50% 1rem 0;
-                color: #fff;
+                color: $white;
                 .banner-inner-text {
                     top: 25%;
                     max-width: 30rem;
@@ -222,9 +225,6 @@
                             line-height: 2.55rem;
                             text-align: center;
                             height: 2.25rem;
-                            color: white;
-                            background: $primary;
-                            margin: 0;
                         }
                         &.separator {
                             width: 0.625rem;
@@ -269,7 +269,7 @@
                 width: 8.8125rem;
             }
             .banner-image {
-                color: #fff;
+                color: $white;
                 min-height: 30rem;
                 .banner-inner-text {
                     bottom: 2rem;
@@ -319,9 +319,6 @@
                             width: 2.5rem;
                             line-height: 2.7rem;
                             height: 2.5rem;
-                            color: #fff;
-                            background: #2c5770;
-                            margin: 0;
                         }
                         &.separator {
                             width: 0.625rem;
@@ -375,7 +372,7 @@
             .banner-image {
                 min-height: 30rem;
                 padding: 11.4375rem 2.375rem 1.625rem;
-                color: #fff;
+                color: $white;
                 .h1 {
                     margin-bottom: 3rem;
                     font-size: 48px;
@@ -414,9 +411,6 @@
                             width: 2.5rem;
                             line-height: 2.7rem;
                             height: 2.5rem;
-                            color: #fff;
-                            background: #2c5770;
-                            margin: 0;
                         }
                         &.separator {
                             width: 0.625rem;
@@ -469,7 +463,7 @@
             .banner-image {
                 min-height: 30rem;
                 padding: 11.4375rem 2.375rem 1.625rem;
-                color: #fff;
+                color: $white;
                 .h1 {
                     margin-bottom: 3rem;
                     font-size: 48px;
@@ -508,9 +502,6 @@
                             width: 2.5rem;
                             line-height: 2.7rem;
                             height: 2.5rem;
-                            color: #fff;
-                            background: #2c5770;
-                            margin: 0;
                         }
                         &.separator {
                             width: 0.625rem;

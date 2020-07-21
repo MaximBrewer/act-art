@@ -45800,7 +45800,7 @@ function HomeGalleries() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-xs-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary btn-lg"
+    className: "btn btn-danger btn-lg"
   }, "\u041F\u0420\u0418\u041D\u042F\u0422\u042C \u0423\u0427\u0410\u0421\u0422\u0418\u0415")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "h5_underline d-none d-xl-block"
@@ -45818,7 +45818,7 @@ function HomeGalleries() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-xs-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary btn-lg"
+    className: "btn btn-danger btn-lg"
   }, "\u041F\u0420\u0418\u041D\u042F\u0422\u042C \u0423\u0427\u0410\u0421\u0422\u0418\u0415")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "h5_underline d-none d-xl-block"
@@ -45836,7 +45836,7 @@ function HomeGalleries() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-xs-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary btn-lg"
+    className: "btn btn-danger btn-lg"
   }, "\u041F\u0420\u0418\u041D\u042F\u0422\u042C \u0423\u0427\u0410\u0421\u0422\u0418\u0415")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "h5_underline d-none d-xl-block"

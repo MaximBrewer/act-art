@@ -5,7 +5,7 @@
 
 .autocomplete-items {
   position: absolute;
-  border: 1px solid #d4d4d4;
+  border: 1px solid #818486;
   border-bottom: none;
   border-top: none;
   z-index: 99;
@@ -18,14 +18,14 @@
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
+  background-color: #ffffff;
+  border-bottom: 1px solid #818486;
 }
 
 /*when hovering an item:*/
 
 .autocomplete-items div:hover {
-  background-color: #e9e9e9;
+  background-color: #818486;
 }
 
 /*when navigating through the items using the arrow keys:*/
@@ -50,7 +50,7 @@
 .photo-sortable li {
   padding: 5px;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 1px solid #818486;
   margin: 5px;
 }
 

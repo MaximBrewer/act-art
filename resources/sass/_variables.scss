@@ -1,19 +1,34 @@
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #ff665d;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
 
+$greydark: #1e2b32;
+$grey: #818486;
+$greylight: #d6d6d6;
+$darkgrey20: rgba(27, 41, 43, 0.2);
+$darkgrey40: rgba(27, 41, 43, 0.4);
+$darkgrey60: rgba(27, 41, 43, 0.6);
+$reddark: #850700;
+$red: #ff665e;
+$redlight: rgba(255, 102, 94, 0.4);
+$cyandark: #1e2b32;
+$cyan: #00a1ff;
+$cyanmedium: #285671;
+$cyandark80: #213E4F;
+$cyanlight: rgba(0, 208, 250, 0.4);
+$greengreylight: #6c92a8;
+$fonlight: #eceded;
+$yellowdark: #854d00;
+$yellow: #fac300;
+$white: #ffffff;
+$greendark: #1b6951;
+$green: #00db93;
 $gray: #818486;
 
-$graybg: #d6d6d6;
-$sectbg: #eceded;
+
+
+$primary: #1e2b32 !default;
+$primary-light: #6c92a8 !default;
+$dark: #1e2b32 !default;
+
 
 $grid-columns: 60 !default;
 $grid-gutter-width: 40px;
@@ -72,23 +87,12 @@ $h4-font-size: 3rem !default;
 $h5-font-size: 1.5rem !default;
 $h6-font-size: 7.5rem !default;
 
-$body-bg: #ffffff;
-$body-color: #1e2b32;
+$body-bg: $white;
+$body-color: $primary;
 
 $border-radius: 0 !default;
 $border-radius-sm: 0 !default;
 $border-radius-lg: 0 !default;
-
-$primary: #2c5770 !default;
-$primary-light: #6C92A8 !default;
-
-// $secondary: $gray-600 !default;
-// $success: $green !default;
-// $info: $cyan !default;
-// $warning: $yellow !default;
-// $danger: $red !default;
-// $light: $gray-100 !default;
-$dark: #1e2b32 !default;
 
 $btn-font-size: 1.25rem !default;
 $btn-border-width: 4px !default;
@@ -96,7 +100,7 @@ $btn-padding-y: 3px !default;
 $btn-padding-x: 1rem !default;
 
 $btn-font-size-lg: 1.5rem !default;
-$btn-padding-y-lg: 3px !default;
+$btn-padding-y-lg: .5rem !default;
 $btn-padding-x-lg: 1rem !default;
 
 $spacer: 1rem !default;

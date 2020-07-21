@@ -2,7 +2,7 @@
 #experts {
     padding: 3rem 0 2rem;
     .background-text {
-        color: #eceded;
+        color: $fonlight;
         top: 5.25rem;
         opacity: 1;
     }
@@ -71,7 +71,7 @@
             text-align: center;
             z-index: 0;
             bottom: 3.875rem;
-            color: #1e2b32;
+            color: $primary;
         }
         .carousel-arrows {
             display: flex;
