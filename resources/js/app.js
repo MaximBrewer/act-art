@@ -6,6 +6,21 @@
 // require("./lang.js");
 import axios from "axios";
 window.axios = axios;
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
+import Echo from "laravel-echo";
+
+window.io = require("socket.io-client");
+
+if (typeof io !== "undefined") {
+    window.Echo = new Echo({
+        broadcaster: "socket.io",
+        host: window.location.hostname + ":6001",
+        headers: {
+            "X-CSRF-TOKEN": document.getElementsByName("csrf-token").content
+        }
+    });
+}
 
 import React, { useRef, lazy } from "react";
 import { render } from "react-dom";
@@ -170,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let carousels = document.getElementsByClassName("carousel-wrapper");
 
     [].forEach.call(carousels, function(carousel) {
-        render(<Carousel data={carousel.dataset}/>, carousel);
+        render(<Carousel data={carousel.dataset} />, carousel);
     });
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
