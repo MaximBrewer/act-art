@@ -9,7 +9,7 @@ use TCG\Voyager\Http\Controllers\ContentTypes\Coordinates;
 use TCG\Voyager\Http\Controllers\ContentTypes\File;
 use App\Http\Controllers\Voyager\ContentTypes\Image as ContentImage;
 use TCG\Voyager\Http\Controllers\ContentTypes\MultipleCheckbox;
-use TCG\Voyager\Http\Controllers\ContentTypes\MultipleImage;
+use App\Http\Controllers\Voyager\ContentTypes\MultipleImage;
 use TCG\Voyager\Http\Controllers\ContentTypes\Password;
 use TCG\Voyager\Http\Controllers\ContentTypes\Relationship;
 use TCG\Voyager\Http\Controllers\ContentTypes\SelectMultiple;
