@@ -63,8 +63,9 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                 Storage::disk(config('voyager.storage.disk'))->put($fullPath, (string) $image, 'public');
             }
 
+            $exec = [];
             if ($ext == 'jpg')
-                echo exec('jpegoptim --strip-all --all-progressive -ptm100 ' . storage_path('app/public/' . $fullPath));
+                $exec[] = '/usr/local/bin/jpegoptim --strip-all --all-progressive -ptm100 ' . storage_path('app/public/' . $fullPath);
 
             if (isset($this->options->thumbnails)) {
                 foreach ($this->options->thumbnails as $thumbnails) {
@@ -108,9 +109,11 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                         'public'
                     );
                     if ($ext == 'jpg')
-                        exec('jpegoptim --strip-all --all-progressive -ptm85 ' . storage_path('app/public/' . $path . $filename . '-' . $thumbnails->name . '.' . $ext));
+                        $exec[] = '/usr/local/bin/jpegoptim --strip-all --all-progressive -ptm85 ' . storage_path('app/public/' . $path . $filename . '-' . $thumbnails->name . '.' . $ext);
                 }
             }
+
+            foreach ($exec as $cmd) exec($cmd . '  >> log_file.log 2>&1 &');
 
             return $fullPath;
         }
