@@ -20,6 +20,8 @@
             margin: 0 -1.5rem;
         }
         .slide-wrapper {
+            display: block;
+            text-decoration: none !important;
             padding: 1.25rem 1.5rem;
             border: 1px solid transparent;
             margin-bottom: 0;
@@ -36,7 +38,7 @@
                     @include small_text_bold_16;
                 }
                 .image {
-                    padding-top: 82%;
+                    padding-top: 62%;
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -45,10 +47,22 @@
                     font-weight: bold;
                     font-size: 18px;
                     line-height: 21px;
+                    height: 63px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                     letter-spacing: 0.03em;
                     margin-bottom: 1rem;
                 }
                 .announce {
+                    height: 105px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                     font-size: 18px;
                     line-height: 21px;
                     letter-spacing: 0.03em;
@@ -126,10 +140,6 @@
                         @include small_text_bold_16;
                     }
                     .image {
-                        padding-top: 82%;
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
                     }
                     .title {
                         font-weight: bold;
@@ -219,10 +229,6 @@
                         @include small_text_bold_16;
                     }
                     .image {
-                        padding-top: 82%;
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
                     }
                     .title {
                         font-weight: bold;

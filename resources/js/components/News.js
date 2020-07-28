@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 
-export default function HomeNews() {
+export default function News(props) {
     const [state, setState] = useState({
         slideIndex: 0,
         slidesTotal: 0
     });
+    const [slides, setSlides] = useState([]);
     const refPicture = useRef();
 
     const grid = {
@@ -40,12 +41,6 @@ export default function HomeNews() {
         auto: true,
         slidesToShow: slidesToShow(),
         slidesToScroll: 1,
-        onInit: () => {
-            setState({
-                slideIndex: 0,
-                slidesTotal: 20
-            });
-        },
         beforeChange: (current, next) => {
             setState(prevState => {
                 return {
@@ -56,46 +51,55 @@ export default function HomeNews() {
         }
     };
 
-    const createSlides = () => {
-        let slides = [];
-        for (let i = 0; i < 20; i++) {
-            slides.push(
-                <div className="slide-wrapper" key={i}>
-                    <div className="slide-inner">
-                        <div className="d-flex justify-content-between">
-                            <div className="category sub_h2">Блог</div>
-                            <div className="date">12/03/2020</div>
-                        </div>
-                        <div
-                            className="image mb-4"
-                            style={{
-                                backgroundImage:
-                                    'url("/storage/images/300.jpg")'
-                            }}
-                        ></div>
-                        <div className="title">
-                            Распродажа современного искусства в поддержку
-                            фигурантов “московского дела”
-                        </div>
-                        <div className="announce">
-                            Благотворительный аукцион на площадке состоится в
-                            много букв много словосочетаний субботу.
-                            Благотворительный аукцион на площадке состоится в
-                            субботу.
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-        return slides;
+    const addPosts = () => {
+        axios
+            .get("/api/get_posts/" + props.data.category)
+            .then(res => {
+                let posts = [];
+                res.data.posts.map((item, index) => {
+                    posts.push(
+                        <a className="slide-wrapper" key={index} href={'/news/' + item.slug}>
+                            <div className="slide-inner">
+                                <div className="d-flex justify-content-between">
+                                    <div className="category sub_h2">
+                                        {item.category}
+                                    </div>
+                                    <div className="date">
+                                        {item.date}
+                                    </div>
+                                </div>
+                                <div
+                                    className="image mb-4"
+                                    style={{
+                                        backgroundImage:
+                                            'url("' + item.thumbnail + '")'
+                                    }}
+                                ></div>
+                                <div className="title">{item.title}</div>
+                                <div className="announce">{item.excerpt}</div>
+                            </div>
+                        </a>
+                    );
+                });
+                setSlides(posts);
+                setState({
+                    slideIndex: 0,
+                    slidesTotal: posts.length
+                });
+            })
+            .catch(err => {});
     };
+
+    useEffect(() => {
+        addPosts();
+    }, []);
 
     if (window.innerWidth > 767) {
         return (
             <React.Fragment>
                 <div className="mx-q">
                     <Slider {...setting} ref={refPicture}>
-                        {createSlides()}
+                        {slides}
                     </Slider>
                     <hr />
                 </div>
@@ -165,7 +169,7 @@ export default function HomeNews() {
     } else {
         return (
             <React.Fragment>
-                <div>{createSlides()}</div>
+                <div>{slides}</div>
                 <div className="text-center h5 color-primary">
                     &bull;&bull;&bull;
                     <br />

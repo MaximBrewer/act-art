@@ -80,8 +80,12 @@
                                 </div>
                                 <div class="col-md-20 flex-row-reverse right-position d-none d-md-flex">
                                     <div>
+                                        @guest
                                         <a class="btn btn-default-inverse" type="submit" href="/login">{!! __('Войти')
                                             !!}</a>
+                                        @else
+                                        <a class="icon profile" type="submit" href="/profile">@include('svg.header.profile')</a>
+                                        @endguest
                                     </div>
                                     <div class="header-lang">
                                         <div class="lang-menu mx-3 text-nowrap">
@@ -155,7 +159,11 @@
                             </div>
                         </div>
                         <div class="p-4 d-flex justify-content-between d-md-none">
+                            @guest
                             <a href="/login">{{  __('Войти')  }}</a>
+                            @else
+                            <a href="/profile">{{  __('кабинет')  }}</a>
+                            @endguest
                             <div class="lang-menu text-nowrap">
                                 <a href="/lang/ru" @if(App::getLocale()=='ru' ) class="active" @endif>Rus</a> |
                                 <a href="/lang/en" @if(App::getLocale()=='en' ) class="active" @endif>Eng</a>

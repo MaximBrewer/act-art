@@ -203,6 +203,15 @@ return [
         'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
     ],
 
+    'yandexmaps' => [
+        'key'    => env('YANDEX_MAPS_KEY', '29ea008a-2cfc-41e4-9ca4-494c060ad1c9'),
+        'center' => [
+            'lat' => env('YANDEX_MAPS_DEFAULT_CENTER_LAT', '55.76'),
+            'lng' => env('YANDEX_MAPS_DEFAULT_CENTER_LNG', '37.64'),
+        ],
+        'zoom' => env('YANDEX_MAPS_DEFAULT_ZOOM', 14),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Model specific settings

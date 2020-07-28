@@ -6,7 +6,6 @@
 // require("./lang.js");
 import axios from "axios";
 window.axios = axios;
-window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 import Echo from "laravel-echo";
 
@@ -36,7 +35,8 @@ import HomeGalleries from "./components/HomeGalleries";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
 import HomeAnnounce from "./components/HomeAnnounce";
-import HomeNews from "./components/HomeNews";
+import News from "./components/News";
+import Waterfall from "./components/Waterfall";
 import Carousel from "./components/Carousel";
 import HomeExperts from "./components/HomeExperts";
 
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     !document.getElementById("artWaterfall") ||
         render(<HomeWaterfall />, document.getElementById("artWaterfall"));
     !document.getElementById("newsSlider") ||
-        render(<HomeNews />, document.getElementById("newsSlider"));
+        render(<News data={document.getElementById("newsSlider").dataset}/>, document.getElementById("newsSlider"));
     if (window.innerWidth > 767) {
         !document.getElementById("expertsSlider") ||
             render(<HomeExperts />, document.getElementById("expertsSlider"));
@@ -182,11 +182,17 @@ document.addEventListener("DOMContentLoaded", () => {
     changeWindow();
     setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
 
-    let carousels = document.getElementsByClassName("carousel-wrapper");
+    // let carousels = document.getElementsByClassName("carousel-wrapper");
 
-    [].forEach.call(carousels, function(carousel) {
-        render(<Carousel data={carousel.dataset} />, carousel);
-    });
+    // [].forEach.call(carousels, function(carousel) {
+    //     render(<Carousel data={carousel.dataset} />, carousel);
+    // });
+
+    // let waterfalls = document.getElementsByClassName("waterfall");
+
+    // [].forEach.call(waterfalls, function(waterfall) {
+    //     render(<Waterfall data={waterfall.dataset} />, carousel);
+    // });
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
         if (window.innerWidth > 1279) {
@@ -242,6 +248,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("formSearchFull").remove();
             });
     });
+
+    // console.log(Echo)
+    // console.log(window.Echo)
+    window.Echo.channel("Auction.1").listen("AuctionUpdate", function(e) {
+        //that.$emit("gotAuction", e.auction);
+    });
+
 });
 document.addEventListener("scroll", () => changeWindow());
 window.addEventListener("resize", () => {

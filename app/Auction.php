@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 use TCG\Voyager\Traits\Resizable;
@@ -39,6 +40,8 @@ class Auction extends Model
             // ... code here
             if ($model->to_announce)
                 DB::table($model->table)->update(['to_announce' => 0]);
+            if ($model->to_gallery)
+                DB::table($model->table)->update(['to_gallery' => 0]);
         });
 
         self::updated(function ($model) {
@@ -53,6 +56,21 @@ class Auction extends Model
             // ... code here
         });
     }
+
+
+
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeGallery(Builder $query)
+    {
+        return $query->where('to_gallery', '=', 1);
+    }
+
 
     public function getDateoutAttribute()
     {

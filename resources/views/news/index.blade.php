@@ -3,11 +3,11 @@
 @widget('announce')
 
 <section id="news">
-    <div class="background-text">НОВОСТИ</div>
+    <div class="background-text">{{ __('НОВОСТИ') }}</div>
     <div class="container">
-        <div class="sticky-section"><span>последние заметки</span></div>
+        <div class="sticky-section"><span>{{ __('новости act•art') }}</span></div>
         <div class="news-slider-wrapper">
-            <div class="news-slider" id="newsSlider"></div>
+            <div class="news-slider" id="newsSlider" data-category="news"></div>
         </div>
     </div>
 </section>
@@ -18,11 +18,11 @@
 
 
 <section id="art">
-    <div class="background-text">БЛОГ</div>
+    <div class="background-text">{{ __('БЛОГ') }}</div>
     <div class="container">
-        <div class="sticky-section"><span>блог</span></div>
+        <div class="sticky-section"><span>{{ __('блог act•art') }}</span></div>
         <div class="art-waterfall-wrapper">
-            <div class="art-waterfall" id="artWaterfall"></div>
+            <div class="waterfall" data-entity="post" data-category="blog" data-count="9" data-type="blog"></div>
         </div>
     </div>
 </section>

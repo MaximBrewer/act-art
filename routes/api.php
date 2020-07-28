@@ -4,7 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
-
+use App\Post;
+use App\Auction;
+use App\Http\Resources\Post as PostResource;
+use App\Http\Resources\Auction as AuctionResource;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,27 +23,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/get_posts/{type}', function ($type) {
+    $posts = Post::{$type}()->published()->orderBy('created_at')->get();
+    return json_encode(['posts' => PostResource::collection($posts)]);
+});
+
 Route::get('/get_gallery_items', function (Request $request) {
-
-    $arr = [];
-    $dir = storage_path("app/public/images/*");
-
-    foreach (glob($dir) as $k => $filename) {
-        if ($size = getimagesize($filename)) {
-            $arr[] = [
-                'title' => 'Хелло',
-                'url' => '/storage/images/' . basename($filename),
-                'size' => $size[0] / $size[1] > 1 ? 2 : 1,
-                'width' => $size[0],
-                'height' => $size[1],
-                'article' => 'Хелло',
-                'id' => $k,
-                'props' => '1,2',
-                'tag' => "Хелло"
-            ];
-        }
-    }
-    return json_encode(['gallery' => $arr]);
+    $auction = Auction::gallery()->first();
+    return json_encode(['auction' => new AuctionResource($auction)]);
 });
 
 
@@ -48,7 +38,7 @@ Route::get('/get_carousel_items/{entity}/{id}', function ($entity, $id) {
     // return[$entity, $id];
     // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
     // return 
-    $res = DB::table($entity .'s')->select('images')->find($id);
+    $res = DB::table($entity . 's')->select('images')->find($id);
     // });
     return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
 });

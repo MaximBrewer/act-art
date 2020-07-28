@@ -4,13 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
+use TCG\Voyager\Traits\Resizable;
+use Jenssegers\Date\Date;
 
 class Lot extends Model
 {
     use Translatable;
+    use Resizable;
+    
     protected $translatable = ['title', 'text'];
     protected $appends = ['number'];
     protected $fillable = ['auction_id', 'sort'];
+
+    protected $dateFormat = 'Y-m-d H:i:s';
+    protected $dateTimeOutFormat = 'j/m/Y';
+    protected $dates = [
+        'date',
+    ];
     //
     public function getNumberAttribute()
     {

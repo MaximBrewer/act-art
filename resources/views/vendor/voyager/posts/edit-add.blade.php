@@ -154,7 +154,7 @@
                         <div class="panel-body">
                             @php
                                 $dataTypeRows = $dataType->{($edit ? 'editRows' : 'addRows' )};
-                                $exclude = ['title', 'body', 'excerpt', 'slug', 'status', 'author_id', 'featured', 'image', 'meta_description', 'meta_keywords', 'seo_title'];
+                                $exclude = ['title', 'body', 'excerpt', 'slug', 'category', 'status', 'author_id', 'featured', 'image', 'meta_description', 'meta_keywords', 'seo_title'];
                             @endphp
 
                             @foreach($dataTypeRows as $row)
@@ -218,8 +218,8 @@
                             <div class="form-group">
                                 <label for="category">{{ __('voyager::post.category') }}</label>
                                 <select class="form-control" name="category">
-                                    <option value="BLOG"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'BLOG') selected="selected"@endif>{{ __('voyager::post.category_blog') }}</option>
-                                    <option value="NEWS"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'NEWS') selected="selected"@endif>{{ __('voyager::post.category_news') }}</option>
+                                    <option value="BLOG"@if(isset($dataTypeContent->category) && $dataTypeContent->category == 'BLOG') selected="selected"@endif>{{ __('voyager::post.category_blog') }}</option>
+                                    <option value="NEWS"@if(isset($dataTypeContent->category) && $dataTypeContent->category == 'NEWS') selected="selected"@endif>{{ __('voyager::post.category_news') }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
