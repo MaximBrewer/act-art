@@ -113,7 +113,7 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                 }
             }
 
-            foreach ($exec as $cmd) exec($cmd . '  >> log_file.log 2>&1 &');
+            foreach ($exec as $cmd) exec($cmd);
 
             return $fullPath;
         }
