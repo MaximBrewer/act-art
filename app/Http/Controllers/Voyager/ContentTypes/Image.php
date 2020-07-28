@@ -65,7 +65,7 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
 
             $exec = [];
             if ($ext == 'jpg')
-                $exec[] = '/usr/local/bin/jpegoptim --strip-all --all-progressive -ptm100 ' . storage_path('app/public/' . $fullPath);
+                $exec[] = 'jpegoptim --strip-all --all-progressive -ptm100 ' . storage_path('app/public/' . $fullPath);
 
             if (isset($this->options->thumbnails)) {
                 foreach ($this->options->thumbnails as $thumbnails) {
@@ -109,7 +109,7 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                         'public'
                     );
                     if ($ext == 'jpg')
-                        $exec[] = '/usr/local/bin/jpegoptim --strip-all --all-progressive -ptm85 ' . storage_path('app/public/' . $path . $filename . '-' . $thumbnails->name . '.' . $ext);
+                        $exec[] = 'jpegoptim --strip-all --all-progressive -ptm85 ' . storage_path('app/public/' . $path . $filename . '-' . $thumbnails->name . '.' . $ext);
                 }
             }
 
