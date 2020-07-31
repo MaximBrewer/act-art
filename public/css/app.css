@@ -22758,46 +22758,17 @@ section {
 }
 
 .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
-  margin-top: 1rem;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 0.05em;
-  font-weight: 500;
-}
-
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .author {
-  font-family: Roboto;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  line-height: 32px;
+  font-size: 1.25rem;
+  margin: 1rem 0;
 }
 
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .price {
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  line-height: 32px;
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .excerpt {
+  margin-bottom: 1rem;
 }
 
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .matherial {
-  font-size: 13px;
-  line-height: 15px;
-  letter-spacing: 0.05em;
-  line-height: 24px;
-  color: #818486;
-}
-
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .size {
-  font-size: 13px;
-  line-height: 15px;
-  letter-spacing: 0.05em;
-  line-height: 24px;
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .link {
+  text-decoration: underline;
   font-weight: bold;
   color: #818486;
 }
@@ -22906,58 +22877,6 @@ section {
     width: 2rem;
     height: 2rem;
   }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
-    margin-top: 1rem;
-    font-size: 16px;
-    line-height: 19px;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .author {
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    line-height: 32px;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .price {
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    line-height: 32px;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .matherial {
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.05em;
-    line-height: 24px;
-    color: #818486;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .size {
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.05em;
-    line-height: 24px;
-    font-weight: bold;
-    color: #818486;
-  }
 }
 
 @media (min-width: 1600px) {
@@ -23047,58 +22966,6 @@ section {
   .waterfall-section .waterfall-wrapper .waterfall .hummer {
     width: 2rem;
     height: 2rem;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
-    margin-top: 1rem;
-    font-size: 16px;
-    line-height: 19px;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .author {
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    line-height: 32px;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .price {
-    font-family: Roboto;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    line-height: 32px;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .matherial {
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.05em;
-    line-height: 24px;
-    color: #818486;
-  }
-
-  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .size {
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.05em;
-    line-height: 24px;
-    font-weight: bold;
-    color: #818486;
   }
 }
 

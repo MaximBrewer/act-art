@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Cache;
 use App\Post;
 use App\Auction;
 use App\Http\Resources\Post as PostResource;
+use App\Http\Resources\PostWaterfall as PostWaterfallResource;
+
+
 use App\Http\Resources\Auction as AuctionResource;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
@@ -30,7 +33,7 @@ Route::group(['prefix' => '{lang}'], function () {
     Route::get('waterfall_items/{entity}/{category}/{page}/{count}', function ($lang, $entity, $category, $page, $count) {
         App::setLocale($lang);
         $posts = Post::{$category}()->published()->orderBy('created_at')->limit($count)->offset($page)->get();
-        return json_encode(['posts' => PostResource::collection($posts)]);
+        return json_encode(['posts' => PostWaterfallResource::collection($posts)]);
     });
 
 

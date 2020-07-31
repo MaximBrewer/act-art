@@ -61,25 +61,15 @@
                         background-position: center;
                     }
                     .title {
-                        margin-top: 1rem;
-                        @include sssmal_text_16_medium;
+                        font-weight: bold;
+                        font-size: 1.25rem;
+                        margin: 1rem 0;
                     }
-                    .author {
-                        @include Text_Name_18;
-                        line-height: 32px;
+                    .excerpt {
+                        margin-bottom: 1rem;
                     }
-                    .price {
-                        @include Text_Name_18;
-                        line-height: 32px;
-                    }
-                    .matherial {
-                        @include text_supersmall_13;
-                        line-height: 24px;
-                        color: $grey;
-                    }
-                    .size {
-                        @include text_supersmall_13;
-                        line-height: 24px;
+                    .link {
+                        text-decoration: underline;
                         font-weight: bold;
                         color: $grey;
                     }
@@ -185,33 +175,8 @@
                 .waterfall-inner {
                     .waterfall-item {
                         .image {
-                            position: relative;
-                            background-size: cover;
-                            background-repeat: no-repeat;
-                            background-position: center;
                         }
                         .title {
-                            margin-top: 1rem;
-                            @include sssmal_text_16_medium;
-                        }
-                        .author {
-                            @include Text_Name_18;
-                            line-height: 32px;
-                        }
-                        .price {
-                            @include Text_Name_18;
-                            line-height: 32px;
-                        }
-                        .matherial {
-                            @include text_supersmall_13;
-                            line-height: 24px;
-                            color: $grey;
-                        }
-                        .size {
-                            @include text_supersmall_13;
-                            line-height: 24px;
-                            font-weight: bold;
-                            color: $grey;
                         }
                     }
                 }
@@ -299,35 +264,6 @@
                 }
                 .waterfall-inner {
                     .waterfall-item {
-                        .image {
-                            position: relative;
-                            background-size: cover;
-                            background-repeat: no-repeat;
-                            background-position: center;
-                        }
-                        .title {
-                            margin-top: 1rem;
-                            @include sssmal_text_16_medium;
-                        }
-                        .author {
-                            @include Text_Name_18;
-                            line-height: 32px;
-                        }
-                        .price {
-                            @include Text_Name_18;
-                            line-height: 32px;
-                        }
-                        .matherial {
-                            @include text_supersmall_13;
-                            line-height: 24px;
-                            color: $grey;
-                        }
-                        .size {
-                            @include text_supersmall_13;
-                            line-height: 24px;
-                            font-weight: bold;
-                            color: $grey;
-                        }
                     }
                 }
             }

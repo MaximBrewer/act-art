@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use TCG\Voyager\Facades\Voyager;
 
-class Post extends JsonResource
+class PostWaterfall extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,9 +24,10 @@ class Post extends JsonResource
             'date' => $this->dateout,
             'slug' => $this->slug,
             'category' => $this->category == 'NEWS' ? __('Новости') :  __('Блог'),
-            'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
+            'thumbnail' => Voyager::image($this->thumbnail('waterfall', 'image')),
             'width' => $size[0],
             'height' => $size[1],
+            'url' => '/news/' . $this->slug
         ];
     }
 }
