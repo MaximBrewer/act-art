@@ -33,6 +33,8 @@ export default function News(props) {
         return gridCount[size];
     };
 
+
+    
     const setting = {
         arrows: false,
         infinite: true,
