@@ -206,12 +206,12 @@ export default function Gallery() {
 
     useEffect(() => {
         getGallery();
-        ref.current.addEventListener('mouseenter', () => {
+        ref.current.addEventListener("mouseenter", () => {
             step = 1;
-        })
-        ref.current.addEventListener('mouseleave', () => {
+        });
+        ref.current.addEventListener("mouseleave", () => {
             step = 2;
-        })
+        });
     }, []);
 
     return (
@@ -220,7 +220,7 @@ export default function Gallery() {
                 <div className="row">
                     <div className="col-xs-6">
                         <div className="g-title">
-                            <h5 className="h5">Аукцион</h5>
+                            <h5 className="h5">{__("Аукцион")}</h5>
                             <h1 className="h1">Зёрна Арта</h1>
                             <div className="sub_h2">
                                 Лучшее из коллекции Всекохудожник 2020 г.

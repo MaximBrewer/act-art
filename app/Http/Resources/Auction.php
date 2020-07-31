@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Lot as LotResource;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\App;
 
 class Auction extends JsonResource
 {
@@ -19,6 +20,8 @@ class Auction extends JsonResource
         if ($this)
             return [
                 'id' => $this->id,
+                'locale' => App::getLocale(),
+                'title' => $this->getTranslatedAttribute('title'),
                 'lots' => LotResource::collection($this->lots)
             ];
     }

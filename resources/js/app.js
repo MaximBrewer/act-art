@@ -31,6 +31,7 @@ import { render } from "react-dom";
 // const HomeNews = lazy(() => import("./components/HomeNews"));
 // const HomeExperts = lazy(() => import("./components/HomeExperts"));
 
+import {__} from "./trans.js";
 import Gallery from "./components/Gallery";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
