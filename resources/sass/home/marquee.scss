@@ -28,17 +28,3 @@
     -webkit-animation: moveX_-100 22s linear infinite;
     animation: moveX_-100 22s linear infinite;
 }
-/*! CSS Used keyframes */
-@-webkit-keyframes moveX_-100 {
-    to {
-        -webkit-transform: translateX(-100%);
-        transform: translateX(-100%);
-    }
-}
-
-@keyframes moveX_-100 {
-    to {
-        -webkit-transform: translateX(-100%);
-        transform: translateX(-100%);
-    }
-}

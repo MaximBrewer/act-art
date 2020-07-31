@@ -17,13 +17,7 @@
     white-space: nowrap !important;
     display: block;
     max-height: 750px;
-}
-#gallery .gallery-inner .gallery-body {
-    display: inline-block;
-    position: relative;
-}
-#gallery .gallery-inner .gallery-body + .gallery-body {
-    margin-left: -5px;
+    min-height: 750px;
 }
 @media screen and (max-width: 992px) {
     #gallery .g-title {
@@ -89,12 +83,13 @@
 }
 .gallery-inner {
     white-space: nowrap;
+    cursor: pointer;
 }
 .gallery-body {
-    position: relative;
-    display: inline-block;
+    position: absolute;
     margin-left: 0;
     overflow: hidden;
+    margin-left: -1px;
 }
 .gallery-body .picture {
     background-color: $grey;

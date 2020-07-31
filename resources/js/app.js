@@ -31,7 +31,7 @@ import { render } from "react-dom";
 // const HomeNews = lazy(() => import("./components/HomeNews"));
 // const HomeExperts = lazy(() => import("./components/HomeExperts"));
 
-import HomeGalleries from "./components/HomeGalleries";
+import Gallery from "./components/Gallery";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
 import HomeAnnounce from "./components/HomeAnnounce";
@@ -165,7 +165,7 @@ const changeWindow = () => {
 document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth > 991) {
         !document.getElementById("galleryHolder") ||
-            render(<HomeGalleries />, document.getElementById("galleryHolder"));
+            render(<Gallery />, document.getElementById("galleryHolder"));
     }
     !document.getElementById("announceSlider") ||
         render(<HomeAnnounce />, document.getElementById("announceSlider"));

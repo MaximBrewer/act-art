@@ -23,12 +23,7 @@ class Announce extends AbstractWidget
      */
     public function run()
     {
-        //
-        // DB::connection()->enableQueryLog();
-        $auction = Auction::where('to_announce', 1)->where('date','>',  Carbon::now())->first();
-        if(!$auction) $auction = Auction::where('date','>',  Carbon::now())->orderBy('date', 'ASC')->first();
-        // $queries = DB::getQueryLog();
-        // info($queries);
+        $auction = Auction::announce();
         return view('widgets.announce', [
             'config' => $this->config,
             'auction' => $auction,

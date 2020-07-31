@@ -3,10 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Lot as LotResource;
-use TCG\Voyager\Facades\Voyager;
 
-class Auction extends JsonResource
+class User extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +14,6 @@ class Auction extends JsonResource
      */
     public function toArray($request)
     {
-        if ($this)
-            return [
-                'id' => $this->id,
-                'lots' => LotResource::collection($this->lots)
-            ];
+        return parent::toArray($request);
     }
 }

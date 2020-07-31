@@ -8,6 +8,7 @@ use App\Post;
 use App\Auction;
 use App\Http\Resources\Post as PostResource;
 use App\Http\Resources\Auction as AuctionResource;
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,8 +29,8 @@ Route::get('/get_posts/{type}', function ($type) {
     return json_encode(['posts' => PostResource::collection($posts)]);
 });
 
-Route::get('/get_gallery_items', function (Request $request) {
-    $auction = Auction::gallery()->first();
+Route::get('/get_gallery', function (Request $request) {
+    $auction = Auction::gallery();
     return json_encode(['auction' => new AuctionResource($auction)]);
 });
 

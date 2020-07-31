@@ -8,6 +8,7 @@ use TCG\Voyager\Traits\Translatable;
 use TCG\Voyager\Traits\Resizable;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Auction extends Model
 {
@@ -66,11 +67,34 @@ class Auction extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeGallery(Builder $query)
+    public static function gallery()
     {
-        return $query->where('to_gallery', '=', 1);
+        $auction = self::where('to_gallery', '=', 1)->where('date', '>', Carbon::now())->first();
+        return $auction ? $auction : self::nearest();
     }
-
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function nearest()
+    {
+        return self::where('date', '>', Carbon::now())->orderBy('date', 'ASC')->first();
+    }
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function announce()
+    {
+        $auction = self::where('to_announce', 1)->where('date', '>', Carbon::now())->first();
+        return $auction ? $auction : self::nearest();
+    }
 
     public function getDateoutAttribute()
     {

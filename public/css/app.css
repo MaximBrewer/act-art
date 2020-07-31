@@ -19141,6 +19141,20 @@ section {
   color: #1e2b32;
 }
 
+/*! CSS Used keyframes */
+
+@-webkit-keyframes moveX_-100 {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moveX_-100 {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 .header {
   z-index: 100;
   position: relative;
@@ -21921,15 +21935,7 @@ section {
   white-space: nowrap !important;
   display: block;
   max-height: 750px;
-}
-
-#gallery .gallery-inner .gallery-body {
-  display: inline-block;
-  position: relative;
-}
-
-#gallery .gallery-inner .gallery-body + .gallery-body {
-  margin-left: -5px;
+  min-height: 750px;
 }
 
 @media screen and (max-width: 992px) {
@@ -22006,13 +22012,14 @@ section {
 
 .gallery-inner {
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .gallery-body {
-  position: relative;
-  display: inline-block;
+  position: absolute;
   margin-left: 0;
   overflow: hidden;
+  margin-left: -1px;
 }
 
 .gallery-body .picture {
@@ -22169,20 +22176,6 @@ section {
   white-space: nowrap;
   -webkit-animation: moveX_-100 22s linear infinite;
   animation: moveX_-100 22s linear infinite;
-}
-
-/*! CSS Used keyframes */
-
-@-webkit-keyframes moveX_-100 {
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes moveX_-100 {
-  to {
-    transform: translateX(-100%);
-  }
 }
 
 #page {
