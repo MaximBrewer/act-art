@@ -67,7 +67,7 @@
         <div class="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
         <div class="sticky-section d-none d-xl-flex"><span>последние заметки</span></div>
         <div class="news-slider-wrapper">
-            <div class="news-slider" id="newsSlider"></div>
+            <div class="news-slider" id="newsSlider" data-category="blog"></div>
         </div>
     </div>
 </section>

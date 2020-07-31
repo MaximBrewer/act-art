@@ -59153,7 +59153,7 @@ function Waterfall(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    addGallery(1);
+    addGallery(0);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
     appear: scaleDown.appear,

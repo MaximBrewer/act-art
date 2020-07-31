@@ -32,7 +32,7 @@ Route::group(['prefix' => '{lang}'], function () {
 
     Route::get('waterfall_items/{entity}/{category}/{page}/{count}', function ($lang, $entity, $category, $page, $count) {
         App::setLocale($lang);
-        $posts = Post::{$category}()->published()->orderBy('created_at')->limit($count)->offset($page)->get();
+        $posts = Post::{$category}()->published()->orderBy('created_at')->offset($page)->limit($count)->get();
         return json_encode(['posts' => PostWaterfallResource::collection($posts)]);
     });
 

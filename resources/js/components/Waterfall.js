@@ -73,7 +73,7 @@ export default function Waterfall(props) {
     };
 
     useEffect(() => {
-        addGallery(1);
+        addGallery(0);
     }, []);
 
     return (
