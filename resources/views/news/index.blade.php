@@ -17,11 +17,11 @@
 </section>
 
 
-<section id="art">
+<section class="waterfall-section">
     <div class="background-text">{{ __('БЛОГ') }}</div>
     <div class="container">
         <div class="sticky-section"><span>{{ __('блог act•art') }}</span></div>
-        <div class="art-waterfall-wrapper">
+        <div class="waterfall-wrapper">
             <div class="waterfall" data-entity="post" data-category="blog" data-count="9" data-type="blog"></div>
         </div>
     </div>

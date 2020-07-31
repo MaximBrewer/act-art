@@ -19,7 +19,7 @@ class Lot extends JsonResource
         $size = getimagesize($dir . $this->photo);
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'title' => $this->getTranslatedAttribute('title'),
             'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
             'size' => $size[0] / $size[1] > 1 ? 2 : 1,
             'width' => $size[0],

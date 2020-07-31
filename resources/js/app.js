@@ -45,6 +45,8 @@ import SearchForm from "./components/SearchForm";
 
 SearchForm;
 
+window.lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
 const calculateHeader = () => {
     let scrollTop =
             document.documentElement.scrollTop ||
@@ -189,11 +191,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //     render(<Carousel data={carousel.dataset} />, carousel);
     // });
 
-    // let waterfalls = document.getElementsByClassName("waterfall");
+    let waterfalls = document.getElementsByClassName("waterfall");
 
-    // [].forEach.call(waterfalls, function(waterfall) {
-    //     render(<Waterfall data={waterfall.dataset} />, carousel);
-    // });
+    [].forEach.call(waterfalls, function(waterfall) {
+        console.log(waterfall.dataset)
+        render(<Waterfall data={waterfall.dataset} />, waterfall);
+    });
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
         if (window.innerWidth > 1279) {

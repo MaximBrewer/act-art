@@ -20,7 +20,6 @@ class Auction extends JsonResource
         if ($this)
             return [
                 'id' => $this->id,
-                'locale' => App::getLocale(),
                 'title' => $this->getTranslatedAttribute('title'),
                 'lots' => LotResource::collection($this->lots)
             ];

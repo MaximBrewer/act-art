@@ -1,0 +1,336 @@
+@use "sass:map";
+.waterfall-section {
+    padding: 3rem 0 2rem;
+    .announce {
+        > div {
+            .h2 {
+                font-size: 8vw;
+                line-height: 9.625vw;
+                white-space: nowrap;
+                padding-bottom: 0.5rem;
+                text-align: center;
+                border-bottom: 0.25rem solid $dark;
+            }
+            ol {
+                padding-top: 3rem;
+                counter-reset: my-counter;
+                list-style: none;
+                li {
+                    font-family: "TT Severs";
+                    font-size: 1.5rem;
+                    line-height: 1.75rem;
+                    margin: 0 0 0.5rem 0;
+                    counter-increment: my-counter;
+                    position: relative;
+                    &::before {
+                        content: counter(my-counter);
+                        font-weight: bold;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        position: absolute;
+                        --size: 32px;
+                        left: calc(-1 * var(--size) - 10px);
+                        line-height: var(--size);
+                        width: var(--size);
+                        height: var(--size);
+                        top: 0;
+                    }
+                }
+            }
+        }
+        .show-more {
+        }
+        .to-gallery {
+            font-weight: normal;
+        }
+    }
+    .waterfall-wrapper {
+        margin-top: 3.3125rem;
+        .waterfall {
+            .hummer {
+                width: 2rem;
+                height: 2rem;
+            }
+            .waterfall-inner {
+                margin-bottom: 4rem;
+                .waterfall-item {
+                    .image {
+                        position: relative;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+                    .title {
+                        margin-top: 1rem;
+                        @include sssmal_text_16_medium;
+                    }
+                    .author {
+                        @include Text_Name_18;
+                        line-height: 32px;
+                    }
+                    .price {
+                        @include Text_Name_18;
+                        line-height: 32px;
+                    }
+                    .matherial {
+                        @include text_supersmall_13;
+                        line-height: 24px;
+                        color: $grey;
+                    }
+                    .size {
+                        @include text_supersmall_13;
+                        line-height: 24px;
+                        font-weight: bold;
+                        color: $grey;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        padding: 6.75rem 0 2.725rem;
+        .announce {
+            > div {
+                .h2 {
+                    font-size: 2.25rem;
+                    line-height: 3rem;
+                    text-align: left;
+                    padding-bottom: 1.5rem;
+                    border-bottom-width: 0.5rem;
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        padding: 10rem 0 6rem;
+        .dotted-gallery {
+            z-index: -1;
+            position: absolute;
+            top: 8.75rem;
+            right: 0;
+            width: 40%;
+            min-height: 26.625rem;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            .dotted-bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: url("/images/dot.png");
+            }
+            svg {
+                fill: white;
+                stroke: white;
+                position: absolute;
+                bottom: 3rem;
+                left: 3rem;
+            }
+        }
+        .background-text {
+            color: $fonlight;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 0.5rem;
+                }
+                .sub_h1 {
+                    padding-top: 2rem;
+                    font-weight: 300;
+                    font-size: 18px;
+                    line-height: 21px;
+                }
+                ol {
+                    padding-top: 3rem;
+                    counter-reset: my-counter;
+                    list-style: none;
+                    li {
+                        font-family: "TT Severs";
+                        font-size: 1.5rem;
+                        line-height: 1.75rem;
+                        margin: 0 0 0.5rem 0;
+                        counter-increment: my-counter;
+                        position: relative;
+                        &::before {
+                            content: counter(my-counter);
+                            font-weight: bold;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            position: absolute;
+                            --size: 32px;
+                            left: calc(-1 * var(--size) - 10px);
+                            line-height: var(--size);
+                            width: var(--size);
+                            height: var(--size);
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .waterfall-wrapper {
+            margin-top: 3.3125rem;
+            .waterfall {
+                .hummer {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                .waterfall-inner {
+                    .waterfall-item {
+                        .image {
+                            position: relative;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                        .title {
+                            margin-top: 1rem;
+                            @include sssmal_text_16_medium;
+                        }
+                        .author {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .price {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .matherial {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            color: $grey;
+                        }
+                        .size {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            font-weight: bold;
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        padding: 10rem 0 6rem;
+        .dotted-gallery {
+            z-index: -1;
+            position: absolute;
+            top: 8.75rem;
+            right: 0;
+            width: 40%;
+            min-height: 700px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            .dotted-bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: url("/images/dot.png");
+            }
+            svg {
+                position: absolute;
+                bottom: 3rem;
+                left: 3rem;
+            }
+        }
+        .background-text {
+            color: $fonlight;
+            top: 5.25rem;
+            opacity: 1;
+        }
+        .announce {
+            > div {
+                .h2,
+                .h3 {
+                    line-height: 3rem;
+                    padding-bottom: 0.5rem;
+                }
+                .sub_h1 {
+                    padding-top: 2rem;
+                    font-weight: 300;
+                    font-size: 18px;
+                    line-height: 21px;
+                }
+                ol {
+                    padding-top: 3rem;
+                    counter-reset: my-counter;
+                    list-style: none;
+                    li {
+                        font-family: "TT Severs";
+                        font-size: 1.5rem;
+                        line-height: 1.75rem;
+                        margin: 0 0 0.5rem 0;
+                        counter-increment: my-counter;
+                        position: relative;
+                        &::before {
+                            content: counter(my-counter);
+                            font-weight: bold;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            position: absolute;
+                            --size: 32px;
+                            left: calc(-1 * var(--size) - 10px);
+                            line-height: var(--size);
+                            width: var(--size);
+                            height: var(--size);
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .waterfall-wrapper {
+            margin-top: 3.3125rem;
+            .waterfall {
+                .hummer {
+                    width: 2rem;
+                    height: 2rem;
+                }
+                .waterfall-inner {
+                    .waterfall-item {
+                        .image {
+                            position: relative;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                        .title {
+                            margin-top: 1rem;
+                            @include sssmal_text_16_medium;
+                        }
+                        .author {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .price {
+                            @include Text_Name_18;
+                            line-height: 32px;
+                        }
+                        .matherial {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            color: $grey;
+                        }
+                        .size {
+                            @include text_supersmall_13;
+                            line-height: 24px;
+                            font-weight: bold;
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

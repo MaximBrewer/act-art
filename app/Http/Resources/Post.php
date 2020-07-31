@@ -15,14 +15,18 @@ class Post extends JsonResource
      */
     public function toArray($request)
     {
+        $dir = storage_path("app/public/");
+        $size = getimagesize($dir . $this->image);
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'excerpt' => $this->excerpt,
+            'title' => $this->getTranslatedAttribute('title'),
+            'excerpt' => $this->getTranslatedAttribute('excerpt'),
             'date' => $this->dateout,
             'slug' => $this->slug,
             'category' => $this->category == 'NEWS' ? __('Новости') :  __('Блог'),
-            'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
+            'thumbnail' => Voyager::image($this->thumbnail('waterfall', 'image')),
+            'width' => $size[0],
+            'height' => $size[1],
         ];
     }
 }

@@ -67,6 +67,7 @@ function Block(props) {
 
 export default function Gallery() {
     const [blocks, setBlocks] = useState([]);
+    const [state, setState] = useState({ auction: {} });
 
     const ref = useRef();
 
@@ -109,7 +110,7 @@ export default function Gallery() {
 
     const getGallery = () => {
         axios
-            .get("/api/get_gallery")
+            .get("/api/" + window.lang + "/get_gallery")
             .then(res => {
                 let array = [];
                 let grid = [];
@@ -175,7 +176,7 @@ export default function Gallery() {
                 }
                 let auction = res.data.auction;
                 auction.lots = array;
-
+                setState({ auction: auction });
                 let w = document.body.clientWidth,
                     c = Math.ceil(w / (size * cols)) + 2;
                 c = c < 20 ? c : 20;
@@ -221,12 +222,15 @@ export default function Gallery() {
                     <div className="col-xs-6">
                         <div className="g-title">
                             <h5 className="h5">{__("Аукцион")}</h5>
-                            <h1 className="h1">Зёрна Арта</h1>
+                            <h1 className="h1">{state.auction.title}</h1>
                             <div className="sub_h2">
                                 Лучшее из коллекции Всекохудожник 2020 г.
                             </div>
-                            <a className="h5_underline" href="#">
-                                Смотреть лоты →
+                            <a
+                                className="h5_underline"
+                                href="/auction/{state.auction.id}"
+                            >
+                                {__("Смотреть лоты")} →
                             </a>
                         </div>
                     </div>

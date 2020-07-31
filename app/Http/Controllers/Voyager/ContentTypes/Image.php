@@ -20,11 +20,10 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
 
             if (isset($this->options->jpeg) && $this->options->jpeg && !$this->is_animated_gif($file)) {
                 $ext = 'jpg';
-                $image = InterventionImage::make($file)->encode('jpg', 100)->orientate();
             } else {
-                $image = InterventionImage::make($file)->orientate();
                 $ext = $file->getClientOriginalExtension();
             }
+            $image = InterventionImage::make($file)->orientate();
 
             $fullPath = $path . $filename . '.' . $ext;
 
@@ -42,7 +41,7 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                 $resize_height = $image->height();
             }
 
-            $resize_quality = isset($this->options->quality) ? intval($this->options->quality) : 75;
+            $resize_quality = isset($this->options->quality) ? intval($this->options->quality) : 100;
 
             $image = $image->resize(
                 $resize_width,
@@ -101,8 +100,29 @@ class Image extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                             ->orientate()
                             ->fit($crop_width, $crop_height)
                             ->encode($ext, $resize_quality);
-                    }
+                    } elseif (isset($thumbnails->resize->width) || isset($thumbnails->resize->height)) {
+                        $thumb_resize_width = null;
+                        $thumb_resize_height = null;
+                        if (intval($thumbnails->resize->width)) {
+                            $thumb_resize_width = $thumbnails->resize->width;
+                        }
+                        if (intval($thumbnails->resize->height)) {
+                            $thumb_resize_height = $thumbnails->resize->height;
+                        }
+                        
+                        $resize_quality = isset($thumbnails->quality) ? intval($thumbnails->quality) : 100;
 
+                        $image = $image->resize(
+                            $thumb_resize_width,
+                            $thumb_resize_height,
+                            function (Constraint $constraint) {
+                                $constraint->aspectRatio();
+                                if (isset($this->options->upsize) && !$this->options->upsize) {
+                                    $constraint->upsize();
+                                }
+                            }
+                        )->encode($ext, $resize_quality);
+                    }
                     Storage::disk(config('voyager.storage.disk'))->put(
                         $path . $filename . '-' . $thumbnails->name . '.' . $ext,
                         (string) $image,

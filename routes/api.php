@@ -9,6 +9,7 @@ use App\Auction;
 use App\Http\Resources\Post as PostResource;
 use App\Http\Resources\Auction as AuctionResource;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,22 +25,34 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/get_posts/{type}', function ($type) {
-    $posts = Post::{$type}()->published()->orderBy('created_at')->get();
-    return json_encode(['posts' => PostResource::collection($posts)]);
-});
+Route::group(['prefix' => '{lang}'], function () {
 
-Route::get('/get_gallery', function (Request $request) {
-    $auction = Auction::gallery();
-    return json_encode(['auction' => new AuctionResource($auction)]);
-});
+    Route::get('waterfall_items/{entity}/{category}/{page}/{count}', function ($lang, $entity, $category, $page, $count) {
+        App::setLocale($lang);
+        $posts = Post::{$category}()->published()->orderBy('created_at')->limit($count)->offset($page)->get();
+        return json_encode(['posts' => PostResource::collection($posts)]);
+    });
 
 
-Route::get('/get_carousel_items/{entity}/{id}', function ($entity, $id) {
-    // return[$entity, $id];
-    // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
-    // return 
-    $res = DB::table($entity . 's')->select('images')->find($id);
-    // });
-    return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
+    Route::get('get_posts/{type}', function ($lang, $type) {
+        App::setLocale($lang);
+        $posts = Post::{$type}()->published()->orderBy('created_at')->get();
+        return json_encode(['posts' => PostResource::collection($posts)]);
+    });
+
+    Route::get('get_gallery', function ($lang) {
+        App::setLocale($lang);
+        $auction = Auction::gallery();
+        return json_encode(['auction' => new AuctionResource($auction)]);
+    });
+
+    Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
+        App::setLocale($lang);
+        // return[$entity, $id];
+        // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
+        // return 
+        $res = DB::table($entity . 's')->select('images')->find($id);
+        // });
+        return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
+    });
 });

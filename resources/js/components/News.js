@@ -34,7 +34,7 @@ export default function News(props) {
     };
 
 
-    
+
     const setting = {
         arrows: false,
         infinite: true,
@@ -55,7 +55,7 @@ export default function News(props) {
 
     const addPosts = () => {
         axios
-            .get("/api/get_posts/" + props.data.category)
+            .get("/api/" + window.lang + "/get_posts/" + props.data.category)
             .then(res => {
                 let posts = [];
                 res.data.posts.map((item, index) => {

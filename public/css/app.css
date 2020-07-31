@@ -22691,3 +22691,414 @@ section {
   padding-top: 67.5%;
 }
 
+.waterfall-section {
+  padding: 3rem 0 2rem;
+}
+
+.waterfall-section .announce > div .h2 {
+  font-size: 8vw;
+  line-height: 9.625vw;
+  white-space: nowrap;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  border-bottom: 0.25rem solid #1e2b32;
+}
+
+.waterfall-section .announce > div ol {
+  padding-top: 3rem;
+  counter-reset: my-counter;
+  list-style: none;
+}
+
+.waterfall-section .announce > div ol li {
+  font-family: "TT Severs";
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  margin: 0 0 0.5rem 0;
+  counter-increment: my-counter;
+  position: relative;
+}
+
+.waterfall-section .announce > div ol li::before {
+  content: counter(my-counter);
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  --size: 32px;
+  left: calc(-1 * var(--size) - 10px);
+  line-height: var(--size);
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+}
+
+.waterfall-section .announce .to-gallery {
+  font-weight: normal;
+}
+
+.waterfall-section .waterfall-wrapper {
+  margin-top: 3.3125rem;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .hummer {
+  width: 2rem;
+  height: 2rem;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner {
+  margin-bottom: 4rem;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
+  margin-top: 1rem;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .author {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .price {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .matherial {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  color: #818486;
+}
+
+.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .size {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  font-weight: bold;
+  color: #818486;
+}
+
+@media (min-width: 768px) {
+  .waterfall-section {
+    padding: 6.75rem 0 2.725rem;
+  }
+
+  .waterfall-section .announce > div .h2 {
+    font-size: 2.25rem;
+    line-height: 3rem;
+    text-align: left;
+    padding-bottom: 1.5rem;
+    border-bottom-width: 0.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .waterfall-section {
+    padding: 10rem 0 6rem;
+  }
+
+  .waterfall-section .dotted-gallery {
+    z-index: -1;
+    position: absolute;
+    top: 8.75rem;
+    right: 0;
+    width: 40%;
+    min-height: 26.625rem;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .waterfall-section .dotted-gallery .dotted-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/images/dot.png");
+  }
+
+  .waterfall-section .dotted-gallery svg {
+    fill: white;
+    stroke: white;
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .waterfall-section .background-text {
+    color: #eceded;
+    top: 5.25rem;
+    opacity: 1;
+  }
+
+  .waterfall-section .announce > div .h2,
+  .waterfall-section .announce > div .h3 {
+    line-height: 3rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .waterfall-section .announce > div .sub_h1 {
+    padding-top: 2rem;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .waterfall-section .announce > div ol {
+    padding-top: 3rem;
+    counter-reset: my-counter;
+    list-style: none;
+  }
+
+  .waterfall-section .announce > div ol li {
+    font-family: "TT Severs";
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    margin: 0 0 0.5rem 0;
+    counter-increment: my-counter;
+    position: relative;
+  }
+
+  .waterfall-section .announce > div ol li::before {
+    content: counter(my-counter);
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    --size: 32px;
+    left: calc(-1 * var(--size) - 10px);
+    line-height: var(--size);
+    width: var(--size);
+    height: var(--size);
+    top: 0;
+  }
+
+  .waterfall-section .waterfall-wrapper {
+    margin-top: 3.3125rem;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .hummer {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
+    margin-top: 1rem;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .author {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 32px;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .price {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 32px;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .matherial {
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    color: #818486;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .size {
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    font-weight: bold;
+    color: #818486;
+  }
+}
+
+@media (min-width: 1600px) {
+  .waterfall-section {
+    padding: 10rem 0 6rem;
+  }
+
+  .waterfall-section .dotted-gallery {
+    z-index: -1;
+    position: absolute;
+    top: 8.75rem;
+    right: 0;
+    width: 40%;
+    min-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .waterfall-section .dotted-gallery .dotted-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/images/dot.png");
+  }
+
+  .waterfall-section .dotted-gallery svg {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .waterfall-section .background-text {
+    color: #eceded;
+    top: 5.25rem;
+    opacity: 1;
+  }
+
+  .waterfall-section .announce > div .h2,
+  .waterfall-section .announce > div .h3 {
+    line-height: 3rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .waterfall-section .announce > div .sub_h1 {
+    padding-top: 2rem;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .waterfall-section .announce > div ol {
+    padding-top: 3rem;
+    counter-reset: my-counter;
+    list-style: none;
+  }
+
+  .waterfall-section .announce > div ol li {
+    font-family: "TT Severs";
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    margin: 0 0 0.5rem 0;
+    counter-increment: my-counter;
+    position: relative;
+  }
+
+  .waterfall-section .announce > div ol li::before {
+    content: counter(my-counter);
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    --size: 32px;
+    left: calc(-1 * var(--size) - 10px);
+    line-height: var(--size);
+    width: var(--size);
+    height: var(--size);
+    top: 0;
+  }
+
+  .waterfall-section .waterfall-wrapper {
+    margin-top: 3.3125rem;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .hummer {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
+    margin-top: 1rem;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .author {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 32px;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .price {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 32px;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .matherial {
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    color: #818486;
+  }
+
+  .waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .size {
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    font-weight: bold;
+    color: #818486;
+  }
+}
+

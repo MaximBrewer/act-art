@@ -56539,6 +56539,7 @@ if (typeof io !== "undefined") {
 
 
 _components_SearchForm__WEBPACK_IMPORTED_MODULE_13__["default"];
+window.lang = document.getElementsByTagName('html')[0].getAttribute('lang');
 
 var calculateHeader = function calculateHeader() {
   var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0,
@@ -56665,11 +56666,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // [].forEach.call(carousels, function(carousel) {
   //     render(<Carousel data={carousel.dataset} />, carousel);
   // });
-  // let waterfalls = document.getElementsByClassName("waterfall");
-  // [].forEach.call(waterfalls, function(waterfall) {
-  //     render(<Waterfall data={waterfall.dataset} />, carousel);
-  // });
 
+  var waterfalls = document.getElementsByClassName("waterfall");
+  [].forEach.call(waterfalls, function (waterfall) {
+    console.log(waterfall.dataset);
+    Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Waterfall__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      data: waterfall.dataset
+    }), waterfall);
+  });
   document.getElementById("burgerMenuToggle").addEventListener("click", function (e) {
     if (window.innerWidth > 1279) {
       var mf = document.getElementById("header-full-menu-fixed");
@@ -57190,6 +57194,13 @@ function Gallery() {
       blocks = _useState2[0],
       setBlocks = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    auction: {}
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      state = _useState4[0],
+      setState = _useState4[1];
+
   var ref = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
   var moveLeft = function moveLeft(auction) {
@@ -57224,7 +57235,7 @@ function Gallery() {
   };
 
   var getGallery = function getGallery() {
-    axios.get("/api/get_gallery").then(function (res) {
+    axios.get("/api/" + window.lang + "/get_gallery").then(function (res) {
       var array = [];
       var grid = [];
 
@@ -57308,6 +57319,9 @@ function Gallery() {
 
       var auction = res.data.auction;
       auction.lots = array;
+      setState({
+        auction: auction
+      });
       var w = document.body.clientWidth,
           c = Math.ceil(w / (size * cols)) + 2;
       c = c < 20 ? c : 20;
@@ -57354,12 +57368,12 @@ function Gallery() {
     className: "h5"
   }, __("Аукцион")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "h1"
-  }, "\u0417\u0451\u0440\u043D\u0430 \u0410\u0440\u0442\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sub_h2"
   }, "\u041B\u0443\u0447\u0448\u0435\u0435 \u0438\u0437 \u043A\u043E\u043B\u043B\u0435\u043A\u0446\u0438\u0438 \u0412\u0441\u0435\u043A\u043E\u0445\u0443\u0434\u043E\u0436\u043D\u0438\u043A 2020 \u0433."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "h5_underline",
-    href: "#"
-  }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043B\u043E\u0442\u044B \u2192"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    href: "/auction/{state.auction.id}"
+  }, __("Смотреть лоты"), " \u2192"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-inner",
     ref: ref
   }, blocks));
@@ -58824,7 +58838,7 @@ function News(props) {
   };
 
   var addPosts = function addPosts() {
-    axios.get("/api/get_posts/" + props.data.category).then(function (res) {
+    axios.get("/api/" + window.lang + "/get_posts/" + props.data.category).then(function (res) {
       var posts = [];
       res.data.posts.map(function (item, index) {
         posts.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -59008,7 +59022,7 @@ function SearchForm() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HomeWaterfall; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Waterfall; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_stack_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-stack-grid */ "./node_modules/react-stack-grid/lib/index.js");
@@ -59073,7 +59087,7 @@ function _arrayWithHoles(arr) {
 
 
 
-function HomeWaterfall() {
+function Waterfall(props) {
   var scaleDown = react_stack_grid__WEBPACK_IMPORTED_MODULE_1__["transitions"].scaleDown;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
@@ -59110,16 +59124,16 @@ function HomeWaterfall() {
     return Math.round(100 / gridCount[size], 2) + "%";
   };
 
-  var addGallery = function addGallery() {
-    axios.get("/api/get_gallery_items").then(function (res) {
-      setPhotos(res.data.gallery.map(function (item, index) {
+  var addGallery = function addGallery(page) {
+    axios.get("/api/" + window.lang + "/waterfall_items/" + props.data.entity + "/" + props.data.category + "/" + page + "/" + props.data.count).then(function (res) {
+      var photos = res.data.posts.map(function (item, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index,
           className: "waterfall-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "image",
           style: {
-            backgroundImage: "url(" + item.url + ")",
+            backgroundImage: "url(" + item.thumbnail + ")",
             paddingTop: item.height / item.width * 100 + "%"
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -59180,12 +59194,15 @@ function HomeWaterfall() {
         }, "\u0445\u043E\u043B\u0441\u0442, \u0430\u043A\u0440\u0438\u043B, \u043F\u043E\u043B\u0438\u043C\u0435\u0440\u043D\u0430\u044F \u0433\u043B\u0438\u043D\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "size"
         }, "95 \u0445 60 \u0441\u043C"));
-      }));
-    })["catch"](function (err) {});
+      });
+      setPhotos(photos);
+    })["catch"](function (err) {
+      console.log(err);
+    });
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    addGallery();
+    addGallery(1);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "d-none d-md-block pb-4"
@@ -59220,7 +59237,7 @@ function HomeWaterfall() {
     columnWidth: columnWidth(),
     gutterWidth: 40,
     gutterHeight: 40,
-    className: "art-waterfall-inner"
+    className: "waterfall-inner"
   }, photos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center h5 color-primary"
   }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

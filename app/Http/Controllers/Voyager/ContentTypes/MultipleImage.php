@@ -99,13 +99,35 @@ class MultipleImage extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
                                     }
                                 }
                             )->encode($ext, $resize_quality);
-                    } elseif (isset($this->options->thumbnails) && isset($thumbnails->crop->width) && isset($thumbnails->crop->height)) {
+                    } elseif (isset($thumbnails->crop->width) && isset($thumbnails->crop->height)) {
                         $crop_width = $thumbnails->crop->width;
                         $crop_height = $thumbnails->crop->height;
                         $image = InterventionImage::make($file)
                             ->orientate()
                             ->fit($crop_width, $crop_height)
                             ->encode($ext, $resize_quality);
+                    } elseif (isset($thumbnails->resize->width) || isset($thumbnails->resize->height)) {
+                        $thumb_resize_width = null;
+                        $thumb_resize_height = null;
+                        if (intval($thumbnails->resize->width)) {
+                            $thumb_resize_width = $thumbnails->resize->width;
+                        }
+                        if (intval($thumbnails->resize->height)) {
+                            $thumb_resize_height = $thumbnails->resize->height;
+                        }
+
+                        $resize_quality = isset($thumbnails->quality) ? intval($thumbnails->quality) : 100;
+
+                        $image = $image->resize(
+                            $thumb_resize_width,
+                            $thumb_resize_height,
+                            function (Constraint $constraint) {
+                                $constraint->aspectRatio();
+                                if (isset($this->options->upsize) && !$this->options->upsize) {
+                                    $constraint->upsize();
+                                }
+                            }
+                        )->encode($ext, $resize_quality);
                     }
 
                     Storage::disk(config('voyager.storage.disk'))->put(
