@@ -302,6 +302,7 @@ h6,
 }
 .sticky-section {
     display: flex;
+    z-index: 1;
     flex-direction: row-reverse;
     width: 1.5rem;
     height: 1.5rem;
@@ -443,4 +444,7 @@ section {
     .carousel-arrows {
         width: 8.8125rem;
     }
+}
+iframe {
+    min-height: 480px;
 }
