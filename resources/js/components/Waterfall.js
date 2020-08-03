@@ -12,18 +12,12 @@ export default function Waterfall(props) {
         sm: 768,
         md: 992,
         lg: 1280,
-        xl: 1920,
-        xxl: 100000
+        xl: 1600,
+        xxl: 1920,
+        xxxl: 100000
     };
 
-    const gridCount = {
-        xs: 1,
-        sm: 1,
-        md: 2,
-        lg: 3,
-        xl: 3,
-        xxl: 4
-    };
+    const gridCount = props.data.view;
 
     const columnWidth = () => {
         let size = "xs";
@@ -31,40 +25,82 @@ export default function Waterfall(props) {
         return Math.round(100 / gridCount[size], 2) + "%";
     };
 
+    const getCount = () => {
+        let size = "xs";
+        for (size in grid) if (window.innerWidth < grid[size]) break;
+        return photos.length
+            ? props.data.count[size]
+            : props.data.firstCount[size];
+    };
+
     const addGallery = page => {
         axios
             .get(
                 "/api/" +
                     window.lang +
-                    "/waterfall_items/" +
+                    "/get_posts/" +
                     props.data.entity +
                     "/" +
                     props.data.category +
                     "/" +
                     page +
                     "/" +
-                    props.data.count
+                    getCount()
             )
             .then(res => {
-                let photos = res.data.posts.map((item, index) => (
-                    <div key={index} className="waterfall-item">
-                        <div
-                            className="image"
-                            style={{
-                                backgroundImage: "url(" + item.thumbnail + ")",
-                                paddingTop:
-                                    (item.height / item.width) * 100 + "%"
-                            }}
-                        ></div>
-                        <div className="title">{item.title}</div>
-                        <div className="excerpt">{item.excerpt}</div>
-                        <div className="link">
-                            <a href={item.url}>
-                                {__("Читать дальше")}
-                            </a>
+                let photos;
+                if (props.data.preview == "waterfall") {
+                    photos = res.data.posts.map((item, index) => (
+                        <div key={index} className="waterfall-item">
+                            <div className="d-flex justify-content-between py-2 align-items-center">
+                                <div className="category">
+                                    {item.category}
+                                </div>
+                                <div className="date">{item.date}</div>
+                            </div>
+                            <div
+                                className="image"
+                                style={{
+                                    backgroundImage:
+                                        "url(" + item[props.data.preview] + ")",
+                                    paddingTop:
+                                        (item.height / item.width) * 100 + "%"
+                                }}
+                            ></div>
+                            <div className="title">{item.title}</div>
+                            <div className="excerpt">{item.excerpt}</div>
+                            <div className="link">
+                                <a href={item.url}>{__("Читать дальше")}</a>
+                            </div>
                         </div>
-                    </div>
-                ));
+                    ));
+                } else {
+                    photos = res.data.posts.map((item, index) => (
+                        <a
+                            key={index}
+                            className="waterfall-item"
+                            href={item.url}
+                        >
+                            <div className="d-flex justify-content-between py-2 align-items-center">
+                                <div className="category">
+                                    {item.category}
+                                </div>
+                                <div className="date">{item.date}</div>
+                            </div>
+                            <div
+                                className="image"
+                                style={{
+                                    backgroundImage:
+                                        "url(" + item[props.data.preview] + ")",
+                                    paddingTop:
+                                        (item.height / item.width) * 100 + "%"
+                                }}
+                            ></div>
+                            <div className="title">{item.title}</div>
+                            <div className="announce">{item.excerpt}</div>
+                        </a>
+                    ));
+                }
                 setPhotos(photos);
             })
             .catch(err => {

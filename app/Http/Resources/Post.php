@@ -27,6 +27,8 @@ class Post extends JsonResource
             'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
             'width' => $size[0],
             'height' => $size[1],
+            'waterfall' => Voyager::image($this->thumbnail('waterfall', 'image')),
+            'url' => '/news/' . $this->slug
         ];
     }
 }

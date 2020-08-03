@@ -22691,11 +22691,13 @@ section {
   padding-top: 67.5%;
 }
 
-.waterfall-section {
+.news-section,
+.blog-section {
   padding: 3rem 0 2rem;
 }
 
-.waterfall-section .announce > div .h2 {
+.news-section .announce > div .h2,
+.blog-section .announce > div .h2 {
   font-size: 8vw;
   line-height: 9.625vw;
   white-space: nowrap;
@@ -22704,13 +22706,15 @@ section {
   border-bottom: 0.25rem solid #1e2b32;
 }
 
-.waterfall-section .announce > div ol {
+.news-section .announce > div ol,
+.blog-section .announce > div ol {
   padding-top: 3rem;
   counter-reset: my-counter;
   list-style: none;
 }
 
-.waterfall-section .announce > div ol li {
+.news-section .announce > div ol li,
+.blog-section .announce > div ol li {
   font-family: "TT Severs";
   font-size: 1.5rem;
   line-height: 1.75rem;
@@ -22719,7 +22723,8 @@ section {
   position: relative;
 }
 
-.waterfall-section .announce > div ol li::before {
+.news-section .announce > div ol li::before,
+.blog-section .announce > div ol li::before {
   content: counter(my-counter);
   font-weight: bold;
   font-size: 1.5rem;
@@ -22733,52 +22738,112 @@ section {
   top: 0;
 }
 
-.waterfall-section .announce .to-gallery {
+.news-section .announce .to-gallery,
+.blog-section .announce .to-gallery {
   font-weight: normal;
 }
 
-.waterfall-section .waterfall-wrapper {
+.news-section .waterfall-wrapper,
+.blog-section .waterfall-wrapper {
   margin-top: 3.3125rem;
 }
 
-.waterfall-section .waterfall-wrapper .waterfall .hummer {
+.news-section .waterfall-wrapper .waterfall .hummer,
+.blog-section .waterfall-wrapper .waterfall .hummer {
   width: 2rem;
   height: 2rem;
 }
 
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner {
+.news-section .waterfall-wrapper .waterfall .waterfall-inner,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner {
   margin-bottom: 4rem;
 }
 
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item {
+  display: block;
+  text-decoration: none !important;
+}
+
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item:before,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.25rem;
+  background-color: #1e2b32;
+}
+
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .date,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .date {
+  font-size: 0.875rem;
+}
+
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .image {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
-  font-weight: bold;
-  font-size: 1.25rem;
-  margin: 1rem 0;
-}
-
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .excerpt {
   margin-bottom: 1rem;
 }
 
-.waterfall-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .link {
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  height: 42px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .excerpt,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .excerpt {
+  margin-bottom: 1rem;
+}
+
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .announce,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .announce {
+  height: 105px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+}
+
+.news-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .link,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner .waterfall-item .link {
   text-decoration: underline;
   font-weight: bold;
   color: #818486;
 }
 
+.news-section .waterfall-wrapper .waterfall .waterfall-inner a.waterfall-item:hover,
+.blog-section .waterfall-wrapper .waterfall .waterfall-inner a.waterfall-item:hover {
+  padding: 19px;
+  margin: -20px;
+  border: 1px solid #1e2b32;
+  background-color: #ffffff;
+}
+
 @media (min-width: 768px) {
-  .waterfall-section {
+  .news-section,
+  .blog-section {
     padding: 6.75rem 0 2.725rem;
   }
 
-  .waterfall-section .announce > div .h2 {
+  .news-section .announce > div .h2,
+  .blog-section .announce > div .h2 {
     font-size: 2.25rem;
     line-height: 3rem;
     text-align: left;
@@ -22788,11 +22853,13 @@ section {
 }
 
 @media (min-width: 1280px) {
-  .waterfall-section {
+  .news-section,
+  .blog-section {
     padding: 10rem 0 6rem;
   }
 
-  .waterfall-section .dotted-gallery {
+  .news-section .dotted-gallery,
+  .blog-section .dotted-gallery {
     z-index: -1;
     position: absolute;
     top: 8.75rem;
@@ -22804,7 +22871,8 @@ section {
     overflow: hidden;
   }
 
-  .waterfall-section .dotted-gallery .dotted-bg {
+  .news-section .dotted-gallery .dotted-bg,
+  .blog-section .dotted-gallery .dotted-bg {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -22813,7 +22881,8 @@ section {
     background-image: url("/images/dot.png");
   }
 
-  .waterfall-section .dotted-gallery svg {
+  .news-section .dotted-gallery svg,
+  .blog-section .dotted-gallery svg {
     fill: white;
     stroke: white;
     position: absolute;
@@ -22821,32 +22890,38 @@ section {
     left: 3rem;
   }
 
-  .waterfall-section .background-text {
+  .news-section .background-text,
+  .blog-section .background-text {
     color: #eceded;
     top: 5.25rem;
     opacity: 1;
   }
 
-  .waterfall-section .announce > div .h2,
-  .waterfall-section .announce > div .h3 {
+  .news-section .announce > div .h2,
+  .news-section .announce > div .h3,
+  .blog-section .announce > div .h2,
+  .blog-section .announce > div .h3 {
     line-height: 3rem;
     padding-bottom: 0.5rem;
   }
 
-  .waterfall-section .announce > div .sub_h1 {
+  .news-section .announce > div .sub_h1,
+  .blog-section .announce > div .sub_h1 {
     padding-top: 2rem;
     font-weight: 300;
     font-size: 18px;
     line-height: 21px;
   }
 
-  .waterfall-section .announce > div ol {
+  .news-section .announce > div ol,
+  .blog-section .announce > div ol {
     padding-top: 3rem;
     counter-reset: my-counter;
     list-style: none;
   }
 
-  .waterfall-section .announce > div ol li {
+  .news-section .announce > div ol li,
+  .blog-section .announce > div ol li {
     font-family: "TT Severs";
     font-size: 1.5rem;
     line-height: 1.75rem;
@@ -22855,7 +22930,8 @@ section {
     position: relative;
   }
 
-  .waterfall-section .announce > div ol li::before {
+  .news-section .announce > div ol li::before,
+  .blog-section .announce > div ol li::before {
     content: counter(my-counter);
     font-weight: bold;
     font-size: 1.5rem;
@@ -22869,22 +22945,26 @@ section {
     top: 0;
   }
 
-  .waterfall-section .waterfall-wrapper {
+  .news-section .waterfall-wrapper,
+  .blog-section .waterfall-wrapper {
     margin-top: 3.3125rem;
   }
 
-  .waterfall-section .waterfall-wrapper .waterfall .hummer {
+  .news-section .waterfall-wrapper .waterfall .hummer,
+  .blog-section .waterfall-wrapper .waterfall .hummer {
     width: 2rem;
     height: 2rem;
   }
 }
 
 @media (min-width: 1600px) {
-  .waterfall-section {
+  .news-section,
+  .blog-section {
     padding: 10rem 0 6rem;
   }
 
-  .waterfall-section .dotted-gallery {
+  .news-section .dotted-gallery,
+  .blog-section .dotted-gallery {
     z-index: -1;
     position: absolute;
     top: 8.75rem;
@@ -22896,7 +22976,8 @@ section {
     overflow: hidden;
   }
 
-  .waterfall-section .dotted-gallery .dotted-bg {
+  .news-section .dotted-gallery .dotted-bg,
+  .blog-section .dotted-gallery .dotted-bg {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -22905,38 +22986,45 @@ section {
     background-image: url("/images/dot.png");
   }
 
-  .waterfall-section .dotted-gallery svg {
+  .news-section .dotted-gallery svg,
+  .blog-section .dotted-gallery svg {
     position: absolute;
     bottom: 3rem;
     left: 3rem;
   }
 
-  .waterfall-section .background-text {
+  .news-section .background-text,
+  .blog-section .background-text {
     color: #eceded;
     top: 5.25rem;
     opacity: 1;
   }
 
-  .waterfall-section .announce > div .h2,
-  .waterfall-section .announce > div .h3 {
+  .news-section .announce > div .h2,
+  .news-section .announce > div .h3,
+  .blog-section .announce > div .h2,
+  .blog-section .announce > div .h3 {
     line-height: 3rem;
     padding-bottom: 0.5rem;
   }
 
-  .waterfall-section .announce > div .sub_h1 {
+  .news-section .announce > div .sub_h1,
+  .blog-section .announce > div .sub_h1 {
     padding-top: 2rem;
     font-weight: 300;
     font-size: 18px;
     line-height: 21px;
   }
 
-  .waterfall-section .announce > div ol {
+  .news-section .announce > div ol,
+  .blog-section .announce > div ol {
     padding-top: 3rem;
     counter-reset: my-counter;
     list-style: none;
   }
 
-  .waterfall-section .announce > div ol li {
+  .news-section .announce > div ol li,
+  .blog-section .announce > div ol li {
     font-family: "TT Severs";
     font-size: 1.5rem;
     line-height: 1.75rem;
@@ -22945,7 +23033,8 @@ section {
     position: relative;
   }
 
-  .waterfall-section .announce > div ol li::before {
+  .news-section .announce > div ol li::before,
+  .blog-section .announce > div ol li::before {
     content: counter(my-counter);
     font-weight: bold;
     font-size: 1.5rem;
@@ -22959,11 +23048,13 @@ section {
     top: 0;
   }
 
-  .waterfall-section .waterfall-wrapper {
+  .news-section .waterfall-wrapper,
+  .blog-section .waterfall-wrapper {
     margin-top: 3.3125rem;
   }
 
-  .waterfall-section .waterfall-wrapper .waterfall .hummer {
+  .news-section .waterfall-wrapper .waterfall .hummer,
+  .blog-section .waterfall-wrapper .waterfall .hummer {
     width: 2rem;
     height: 2rem;
   }

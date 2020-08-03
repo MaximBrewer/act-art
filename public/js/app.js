@@ -56496,9 +56496,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HomeAnnounce__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/HomeAnnounce */ "./resources/js/components/HomeAnnounce.js");
 /* harmony import */ var _components_News__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/News */ "./resources/js/components/News.js");
 /* harmony import */ var _components_Waterfall__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Waterfall */ "./resources/js/components/Waterfall.js");
-/* harmony import */ var _components_Carousel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Carousel */ "./resources/js/components/Carousel.js");
-/* harmony import */ var _components_HomeExperts__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/HomeExperts */ "./resources/js/components/HomeExperts.js");
-/* harmony import */ var _components_SearchForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/SearchForm */ "./resources/js/components/SearchForm.js");
+/* harmony import */ var _components_Postsgrid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Postsgrid */ "./resources/js/components/Postsgrid.js");
+/* harmony import */ var _components_Carousel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Carousel */ "./resources/js/components/Carousel.js");
+/* harmony import */ var _components_HomeExperts__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/HomeExperts */ "./resources/js/components/HomeExperts.js");
+/* harmony import */ var _components_SearchForm__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/SearchForm */ "./resources/js/components/SearchForm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -56538,8 +56539,9 @@ if (typeof io !== "undefined") {
 
 
 
-_components_SearchForm__WEBPACK_IMPORTED_MODULE_13__["default"];
-window.lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+_components_SearchForm__WEBPACK_IMPORTED_MODULE_14__["default"];
+window.lang = document.getElementsByTagName("html")[0].getAttribute("lang");
 
 var calculateHeader = function calculateHeader() {
   var scrollTop = document.documentElement.scrollTop || document.body && document.body.scrollTop || 0,
@@ -56656,22 +56658,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }), document.getElementById("newsSlider"));
 
   if (window.innerWidth > 767) {
-    !document.getElementById("expertsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeExperts__WEBPACK_IMPORTED_MODULE_12__["default"], null), document.getElementById("expertsSlider"));
+    !document.getElementById("expertsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeExperts__WEBPACK_IMPORTED_MODULE_13__["default"], null), document.getElementById("expertsSlider"));
   }
 
   changeWindow();
   setTimeout(function () {
     return document.getElementById("sitePreloader").remove();
-  }, 700); // let carousels = document.getElementsByClassName("carousel-wrapper");
-  // [].forEach.call(carousels, function(carousel) {
-  //     render(<Carousel data={carousel.dataset} />, carousel);
-  // });
-
+  }, 700);
+  var carousels = document.getElementsByClassName("carousel-wrapper");
+  [].forEach.call(carousels, function (carousel) {
+    Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Carousel__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      data: carousel.dataset
+    }), carousel);
+  });
   var waterfalls = document.getElementsByClassName("waterfall");
   [].forEach.call(waterfalls, function (waterfall) {
-    console.log(waterfall.dataset);
+    var data = {
+      count: JSON.parse(waterfall.dataset.count),
+      firstCount: JSON.parse(waterfall.dataset.firstCount),
+      view: JSON.parse(waterfall.dataset.view),
+      entity: waterfall.dataset.entity,
+      category: waterfall.dataset.category,
+      preview: waterfall.dataset.preview
+    };
     Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Waterfall__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      data: waterfall.dataset
+      data: data
     }), waterfall);
   });
   document.getElementById("burgerMenuToggle").addEventListener("click", function (e) {
@@ -58952,6 +58963,139 @@ function News(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Postsgrid.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Postsgrid.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Postsgrid; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+
+function Postsgrid(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    items: []
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  var addItems = function addItems(page) {
+    axios.get("/api/" + window.lang + "/get_posts/" + props.data.entity + "/" + props.data.category + "/" + page + "/" + props.data.count).then(function (res) {
+      var items = [];
+      res.data.posts.map(function (item, index) {
+        items.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "col-60 col-sm-30 col-md-20 col-xl-15"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "slide-wrapper",
+          key: index,
+          href: "/news/" + item.slug
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "slide-inner"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "d-flex justify-content-between"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category sub_h2"
+        }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "date"
+        }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "image mb-4",
+          style: {
+            backgroundImage: 'url("' + item.thumbnail + '")'
+          }
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title"
+        }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "announce"
+        }, item.excerpt)))));
+      });
+      setState({
+        items: state.items.concat(items)
+      });
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    addItems(0);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, state.items), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center h5 color-primary"
+  }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "show-more"
+  }, __("Показать больше"))));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/SearchForm.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/SearchForm.js ***!
@@ -59102,17 +59246,11 @@ function Waterfall(props) {
     sm: 768,
     md: 992,
     lg: 1280,
-    xl: 1920,
-    xxl: 100000
+    xl: 1600,
+    xxl: 1920,
+    xxxl: 100000
   };
-  var gridCount = {
-    xs: 1,
-    sm: 1,
-    md: 2,
-    lg: 3,
-    xl: 3,
-    xxl: 4
-  };
+  var gridCount = props.data.view;
 
   var columnWidth = function columnWidth() {
     var size = "xs";
@@ -59124,28 +59262,73 @@ function Waterfall(props) {
     return Math.round(100 / gridCount[size], 2) + "%";
   };
 
+  var getCount = function getCount() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return photos.length ? props.data.count[size] : props.data.firstCount[size];
+  };
+
   var addGallery = function addGallery(page) {
-    axios.get("/api/" + window.lang + "/waterfall_items/" + props.data.entity + "/" + props.data.category + "/" + page + "/" + props.data.count).then(function (res) {
-      var photos = res.data.posts.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: index,
-          className: "waterfall-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "image",
-          style: {
-            backgroundImage: "url(" + item.thumbnail + ")",
-            paddingTop: item.height / item.width * 100 + "%"
-          }
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "title"
-        }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "excerpt"
-        }, item.excerpt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "link"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: item.url
-        }, __("Читать дальше"))));
-      });
+    axios.get("/api/" + window.lang + "/get_posts/" + props.data.entity + "/" + props.data.category + "/" + page + "/" + getCount()).then(function (res) {
+      var photos;
+
+      if (props.data.preview == "waterfall") {
+        photos = res.data.posts.map(function (item, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: index,
+            className: "waterfall-item"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "d-flex justify-content-between py-2 align-items-center"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "category"
+          }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "date"
+          }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "image",
+            style: {
+              backgroundImage: "url(" + item[props.data.preview] + ")",
+              paddingTop: item.height / item.width * 100 + "%"
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "title"
+          }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "excerpt"
+          }, item.excerpt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "link"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: item.url
+          }, __("Читать дальше"))));
+        });
+      } else {
+        photos = res.data.posts.map(function (item, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            key: index,
+            className: "waterfall-item",
+            href: item.url
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "d-flex justify-content-between py-2 align-items-center"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "category"
+          }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "date"
+          }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "image",
+            style: {
+              backgroundImage: "url(" + item[props.data.preview] + ")",
+              paddingTop: item.height / item.width * 100 + "%"
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "title"
+          }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "announce"
+          }, item.excerpt));
+        });
+      }
+
       setPhotos(photos);
     })["catch"](function (err) {
       console.log(err);

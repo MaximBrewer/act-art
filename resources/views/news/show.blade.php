@@ -61,13 +61,10 @@
     <div class="gallery-holder" id="galleryHolder"></div>
 </section>
 
-<section id="news">
-    <div class="background-text d-none d-xl-block">НОВОСТИ</div>
+<section class="blog-section">
     <div class="container">
-        <div class="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
-        <div class="sticky-section d-none d-xl-flex"><span>последние заметки</span></div>
-        <div class="news-slider-wrapper">
-            <div class="news-slider" id="newsSlider" data-category="blog"></div>
+        <div class="waterfall-wrapper">
+            <div class="waterfall" data-entity="post" data-preview="waterfall" data-category="blog" data-count='{"xs":4,"sm":3,"md":3,"xl":4,"lg":4,"xxl":4,"xxxl":4}' data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3,"xxxl":3}' data-first-count='{"xs":12,"sm":12,"md":12,"xl":12,"lg":12,"xxl":12,"xxxl":12}'></div>
         </div>
     </div>
 </section>

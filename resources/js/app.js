@@ -31,13 +31,14 @@ import { render } from "react-dom";
 // const HomeNews = lazy(() => import("./components/HomeNews"));
 // const HomeExperts = lazy(() => import("./components/HomeExperts"));
 
-import {__} from "./trans.js";
+import { __ } from "./trans.js";
 import Gallery from "./components/Gallery";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
 import HomeAnnounce from "./components/HomeAnnounce";
 import News from "./components/News";
 import Waterfall from "./components/Waterfall";
+import Postsgrid from "./components/Postsgrid";
 import Carousel from "./components/Carousel";
 import HomeExperts from "./components/HomeExperts";
 
@@ -45,7 +46,7 @@ import SearchForm from "./components/SearchForm";
 
 SearchForm;
 
-window.lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+window.lang = document.getElementsByTagName("html")[0].getAttribute("lang");
 
 const calculateHeader = () => {
     let scrollTop =
@@ -177,7 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
     !document.getElementById("artWaterfall") ||
         render(<HomeWaterfall />, document.getElementById("artWaterfall"));
     !document.getElementById("newsSlider") ||
-        render(<News data={document.getElementById("newsSlider").dataset}/>, document.getElementById("newsSlider"));
+        render(
+            <News data={document.getElementById("newsSlider").dataset} />,
+            document.getElementById("newsSlider")
+        );
     if (window.innerWidth > 767) {
         !document.getElementById("expertsSlider") ||
             render(<HomeExperts />, document.getElementById("expertsSlider"));
@@ -185,17 +189,24 @@ document.addEventListener("DOMContentLoaded", () => {
     changeWindow();
     setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
 
-    // let carousels = document.getElementsByClassName("carousel-wrapper");
+    let carousels = document.getElementsByClassName("carousel-wrapper");
 
-    // [].forEach.call(carousels, function(carousel) {
-    //     render(<Carousel data={carousel.dataset} />, carousel);
-    // });
+    [].forEach.call(carousels, function(carousel) {
+        render(<Carousel data={carousel.dataset} />, carousel);
+    });
 
     let waterfalls = document.getElementsByClassName("waterfall");
 
     [].forEach.call(waterfalls, function(waterfall) {
-        console.log(waterfall.dataset)
-        render(<Waterfall data={waterfall.dataset} />, waterfall);
+        let data = {
+            count: JSON.parse(waterfall.dataset.count),
+            firstCount: JSON.parse(waterfall.dataset.firstCount),
+            view: JSON.parse(waterfall.dataset.view),
+            entity: waterfall.dataset.entity,
+            category: waterfall.dataset.category,
+            preview: waterfall.dataset.preview
+        }
+        render(<Waterfall data={data} />, waterfall);
     });
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
@@ -258,7 +269,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.Echo.channel("Auction.1").listen("AuctionUpdate", function(e) {
         //that.$emit("gotAuction", e.auction);
     });
-
 });
 document.addEventListener("scroll", () => changeWindow());
 window.addEventListener("resize", () => {
