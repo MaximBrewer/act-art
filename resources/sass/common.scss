@@ -424,3 +424,23 @@ section {
         transform: translateX(-100%);
     }
 }
+
+.carousel-arrows {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    width: 4.125rem;
+    z-index: 1;
+    justify-content: space-between;
+}
+@media (min-width: map.get($grid-breakpoints, "md")) {
+    .carousel-arrows {
+        width: 7.125rem;
+    }
+}
+
+@media (min-width: map.get($grid-breakpoints, "xl")) {
+    .carousel-arrows {
+        width: 8.8125rem;
+    }
+}

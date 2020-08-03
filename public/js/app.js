@@ -56763,6 +56763,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
 
@@ -56898,10 +56916,10 @@ function Carousel(props) {
   var gridCount = {
     xs: 1,
     sm: 1,
-    md: 3,
-    lg: 4,
-    xl: 4,
-    xxl: 4
+    md: 1,
+    lg: 1,
+    xl: 1,
+    xxl: 1
   };
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     addSlides();
@@ -56922,6 +56940,8 @@ function Carousel(props) {
     infinite: true,
     dots: false,
     speed: 300,
+    centerMode: true,
+    centerPadding: "25%",
     auto: true,
     slidesToShow: slidesToShow(),
     slidesToScroll: 1,
@@ -56941,9 +56961,11 @@ function Carousel(props) {
   };
 
   var addSlides = function addSlides() {
-    axios.get("/api/get_carousel_items/" + props.data.entity + "/" + props.data.id).then(function (res) {
+    axios.get("/api/" + window.lang + "/get_carousel_items/" + props.data.entity + "/" + props.data.id).then(function (res) {
       setSlides(res.data.slides.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "px-2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index,
           className: "image",
           style: {
@@ -56957,7 +56979,9 @@ function Carousel(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, setting, slides), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
+    ref: refPicture
+  }), slides)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-arrows"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
@@ -56997,7 +57021,7 @@ function Carousel(props) {
     d: "M31.3784 18.4054L0.567543 18.4054",
     stroke: "#1E2B32",
     strokeWidth: "8"
-  })))))); // } else {
+  }))))); // } else {
   //     return (
   //         <React.Fragment>
   //             {createSlides()}

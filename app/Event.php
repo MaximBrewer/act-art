@@ -10,7 +10,7 @@ use TCG\Voyager\Traits\Resizable;
 use TCG\Voyager\Traits\Translatable;
 use Jenssegers\Date\Date;
 
-class Post extends Model
+class Event extends Model
 {
     use Translatable;
     use Resizable;
@@ -18,7 +18,7 @@ class Post extends Model
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'meta_description', 'meta_keywords'];
 
     const PUBLISHED = 'PUBLISHED';
-    const NEWS = 'NEWS';
+    const EXHIBIT = 'NEWS';
     const BLOG = 'BLOG';
 
     protected $dateFormat = 'Y-m-d H:i:s';

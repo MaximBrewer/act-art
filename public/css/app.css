@@ -19155,6 +19155,27 @@ section {
   }
 }
 
+.carousel-arrows {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  width: 4.125rem;
+  z-index: 1;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .carousel-arrows {
+    width: 7.125rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-arrows {
+    width: 8.8125rem;
+  }
+}
+
 .header {
   z-index: 100;
   position: relative;
@@ -20337,14 +20358,9 @@ section {
 }
 
 .home-banner .carousel .carousel-arrows {
-  position: absolute;
   right: 0;
   z-index: 1;
   bottom: 3.875rem;
-  display: flex;
-  width: 4.125rem;
-  z-index: 1;
-  justify-content: space-between;
 }
 
 .home-banner .carousel .carousel-counter {
@@ -20440,7 +20456,6 @@ section {
   }
 
   .home-banner .carousel .carousel-arrows {
-    width: 7.125rem;
     bottom: 1.875rem;
   }
 
@@ -20549,10 +20564,6 @@ section {
     right: auto;
     left: 50%;
     margin-left: -1rem;
-  }
-
-  .home-banner .carousel .carousel-arrows {
-    width: 8.8125rem;
   }
 
   .home-banner .carousel .banner-image {
@@ -22687,8 +22698,23 @@ section {
   max-width: 60rem;
 }
 
-.cg .image {
+.carousel-wrapper {
+  position: relative;
+  padding: 2rem 0 8rem;
+}
+
+.carousel-wrapper .cg {
+  margin: 0 calc(50% - 50vw);
+}
+
+.carousel-wrapper .cg .image {
   padding-top: 67.5%;
+  background-size: cover;
+}
+
+.carousel-wrapper .carousel-arrows {
+  bottom: 2rem;
+  right: 0;
 }
 
 .news-section,

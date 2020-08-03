@@ -92,14 +92,9 @@
             }
         }
         .carousel-arrows {
-            position: absolute;
             right: 0;
             z-index: 1;
             bottom: 3.875rem;
-            display: flex;
-            width: 4.125rem;
-            z-index: 1;
-            justify-content: space-between;
         }
         .carousel-counter {
             @include txt_menu_1;
@@ -173,7 +168,6 @@
                 line-height: 3.125rem;
             }
             .carousel-arrows {
-                width: 7.125rem;
                 bottom: 1.875rem;
             }
             .banner-image {
@@ -264,9 +258,6 @@
                 right: auto;
                 left: 50%;
                 margin-left: -1rem;
-            }
-            .carousel-arrows {
-                width: 8.8125rem;
             }
             .banner-image {
                 color: $white;
