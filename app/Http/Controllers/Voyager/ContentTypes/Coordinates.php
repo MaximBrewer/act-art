@@ -1,10 +1,10 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers\ContentTypes;
+namespace App\Http\Controllers\Voyager\ContentTypes;
 
 use Illuminate\Support\Facades\DB;
 
-class Coordinates extends BaseType
+class Coordinates extends \TCG\Voyager\Http\Controllers\ContentTypes\BaseType
 {
     /**
      * @return string|\Illuminate\Database\Query\Expression
