@@ -64,7 +64,7 @@
 <section class="blog-section">
     <div class="container">
         <div class="waterfall-wrapper">
-            <div class="waterfall" data-entity="post" data-preview="waterfall" data-category="blog" data-count='{"xs":4,"sm":3,"md":3,"xl":4,"lg":4,"xxl":4,"xxxl":4}' data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3,"xxxl":3}' data-first-count='{"xs":12,"sm":12,"md":12,"xl":12,"lg":12,"xxl":12,"xxxl":12}'></div>
+            <div class="waterfall" data-entity="post" data-preview="waterfall" data-category="blog" data-count='{"xs":4,"sm":3,"md":3,"xl":4,"lg":4,"xxl":4}' data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-first-count='{"xs":12,"sm":12,"md":12,"xl":12,"lg":12,"xxl":12}'></div>
         </div>
     </div>
 </section>

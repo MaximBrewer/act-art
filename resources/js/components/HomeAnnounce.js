@@ -8,14 +8,7 @@ export default function HomeAnnounce() {
     });
     const refPicture = useRef();
 
-    const grid = {
-        xs: 576,
-        sm: 768,
-        md: 992,
-        lg: 1280,
-        xl: 1920,
-        xxl: 100000
-    };
+    const grid = window.grid;
 
     const gridCount = {
         xs: 1,
@@ -23,7 +16,7 @@ export default function HomeAnnounce() {
         md: 3,
         lg: 3,
         xl: 4,
-        xxl: 6
+        xxl: 4
     };
 
     const slidesToShow = () => {

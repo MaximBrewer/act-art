@@ -44,7 +44,14 @@ import HomeExperts from "./components/HomeExperts";
 
 import SearchForm from "./components/SearchForm";
 
-SearchForm;
+window.grid = {
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1280,
+    xl: 1440,
+    xxl: 100000
+};
 
 window.lang = document.getElementsByTagName("html")[0].getAttribute("lang");
 

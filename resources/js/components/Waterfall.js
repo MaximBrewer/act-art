@@ -7,15 +7,7 @@ export default function Waterfall(props) {
 
     const toFavorite = () => {};
 
-    const grid = {
-        xs: 576,
-        sm: 768,
-        md: 992,
-        lg: 1280,
-        xl: 1600,
-        xxl: 1920,
-        xxxl: 100000
-    };
+    const grid = window.grid;
 
     const gridCount = props.data.view;
 
@@ -38,13 +30,13 @@ export default function Waterfall(props) {
             .get(
                 "/api/" +
                     window.lang +
-                    "/get_posts/" +
+                    "/posts?entity=" +
                     props.data.entity +
-                    "/" +
+                    "&category=" +
                     props.data.category +
-                    "/" +
+                    "&page=" +
                     page +
-                    "/" +
+                    "&per_page=" +
                     getCount()
             )
             .then(res => {
@@ -53,9 +45,7 @@ export default function Waterfall(props) {
                     photos = res.data.posts.map((item, index) => (
                         <div key={index} className="waterfall-item">
                             <div className="d-flex justify-content-between py-2 align-items-center">
-                                <div className="category">
-                                    {item.category}
-                                </div>
+                                <div className="category">{item.category}</div>
                                 <div className="date">{item.date}</div>
                             </div>
                             <div
@@ -82,9 +72,7 @@ export default function Waterfall(props) {
                             href={item.url}
                         >
                             <div className="d-flex justify-content-between py-2 align-items-center">
-                                <div className="category">
-                                    {item.category}
-                                </div>
+                                <div className="category">{item.category}</div>
                                 <div className="date">{item.date}</div>
                             </div>
                             <div

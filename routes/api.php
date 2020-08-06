@@ -13,6 +13,7 @@ use App\Http\Resources\PostWaterfall as PostWaterfallResource;
 use App\Http\Resources\Auction as AuctionResource;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use App\Http\Middleware\ApiLocale;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,38 +25,33 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::group(['prefix' => '{lang}'], function () {
+Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
 
-    Route::get('get_posts/{entity}/{category}/{page}/{count}', function ($lang, $entity, $category, $page, $count) {
-        App::setLocale($lang);
-        $posts = Post::{$category}()->published()->orderBy('created_at')->offset($page)->limit($count)->get();
-        return json_encode(['posts' => PostResource::collection($posts)]);
-    });
+    Route::get('posts', '\App\Http\Controllers\Api\PostController@index')->name('post.index');
 
+    // Route::get('posts/{type}', function ($lang, $type) {
+    //     App::setLocale($lang);
+    //     $posts = Post::{$type}()->published()->orderBy('created_at')->get();
+    //     return json_encode(['posts' => PostResource::collection($posts)]);
+    // });
 
-    Route::get('get_posts/{type}', function ($lang, $type) {
-        App::setLocale($lang);
-        $posts = Post::{$type}()->published()->orderBy('created_at')->get();
-        return json_encode(['posts' => PostResource::collection($posts)]);
-    });
+    // Route::get('get_gallery', function ($lang) {
+    //     App::setLocale($lang);
+    //     $auction = Auction::gallery();
+    //     return json_encode(['auction' => new AuctionResource($auction)]);
+    // });
 
-    Route::get('get_gallery', function ($lang) {
-        App::setLocale($lang);
-        $auction = Auction::gallery();
-        return json_encode(['auction' => new AuctionResource($auction)]);
-    });
-
-    Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
-        App::setLocale($lang);
-        // return[$entity, $id];
-        // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
-        // return 
-        $res = DB::table($entity . 's')->select('images')->find($id);
-        // });
-        return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
-    });
+    // Route::get('get_carousel_items/{entity}/{id}', function ($lang, $entity, $id) {
+    //     App::setLocale($lang);
+    //     // return[$entity, $id];
+    //     // $images = Cache::get('carousel.shortcode.' . $entity . '.' . $id, function ($entity, $id) {
+    //     // return 
+    //     $res = DB::table($entity . 's')->select('images')->find($id);
+    //     // });
+    //     return json_encode(['slides' => json_decode($res->images), 'prefix' => '/storage/']);
+    // });
 });

@@ -25,9 +25,9 @@ class Post extends JsonResource
             'slug' => $this->slug,
             'category' => $this->category == 'NEWS' ? __('Новости') :  __('Блог'),
             'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
+            'waterfall' => Voyager::image($this->thumbnail('waterfall', 'image')),
             'width' => $size[0],
             'height' => $size[1],
-            'waterfall' => Voyager::image($this->thumbnail('waterfall', 'image')),
             'url' => '/news/' . $this->slug
         ];
     }

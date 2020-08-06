@@ -46,9 +46,7 @@ $grid-breakpoints: (
     // Extra large screen / wide desktop
         xl: 1280px,
     // Extra large screen / wide desktop
-        xxl: 1600px,
-    // Extra large screen / wide desktop
-        xxxl: 1920px
+        xxl: 1440px
 );
 
 $container-max-widths: (
@@ -56,8 +54,7 @@ $container-max-widths: (
     md: 720px,
     lg: 960px,
     xl: 1160px,
-    xxl: 1200px,
-    xxxl: 1440px
+    xxl: 1280px
 );
 
 $font-family-sans-serif: "Roboto", sans-serif;

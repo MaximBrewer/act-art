@@ -15,8 +15,8 @@
                 text-transform: uppercase;
                 margin: 0;
                 padding: 0;
-                font-size: .875rem;
-                line-height: .875rem;
+                font-size: 0.875rem;
+                line-height: 0.875rem;
             }
             &:before {
                 width: 110%;
@@ -42,19 +42,28 @@
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
         margin-bottom: 4rem;
-        a {
-            p {
-                @include txt_menu_1;
-            }
-            &:before {
-            }
-            &:hover {
+        > div {
+            a {
+                p {
+                    @include txt_menu_1;
+                }
                 &:before {
                 }
+                &:hover {
+                    &:before {
+                    }
+                }
+            }
+            button {
+                padding: 0.475rem 4.25rem;
             }
         }
-        button {
-            padding: 0.475rem 4.25rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        > div {
+            a {
+                padding: 5rem 0;
+            }
         }
     }
 }

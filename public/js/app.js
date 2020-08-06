@@ -56540,7 +56540,14 @@ if (typeof io !== "undefined") {
 
 
 
-_components_SearchForm__WEBPACK_IMPORTED_MODULE_14__["default"];
+window.grid = {
+  xs: 576,
+  sm: 768,
+  md: 992,
+  lg: 1280,
+  xl: 1440,
+  xxl: 100000
+};
 window.lang = document.getElementsByTagName("html")[0].getAttribute("lang");
 
 var calculateHeader = function calculateHeader() {
@@ -56905,14 +56912,7 @@ function Carousel(props) {
       setSlides = _useState4[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1920,
-    xxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = {
     xs: 1,
     sm: 1,
@@ -57567,21 +57567,14 @@ function HomeAnnounce() {
       setState = _useState2[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1920,
-    xxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = {
     xs: 1,
     sm: 1,
     md: 3,
     lg: 3,
     xl: 4,
-    xxl: 6
+    xxl: 4
   };
 
   var slidesToShow = function slidesToShow() {
@@ -57880,14 +57873,7 @@ function HomeGalleries() {
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1920,
-    xxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = {
     xs: 1,
     sm: 1,
@@ -58293,14 +58279,7 @@ function HomeAnnounce() {
       setState = _useState2[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1920,
-    xxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = {
     xs: 1,
     sm: 1,
@@ -58518,14 +58497,7 @@ function HomeWaterfall() {
 
   var toFavorite = function toFavorite() {};
 
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1920,
-    xxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = {
     xs: 1,
     sm: 1,
@@ -58828,14 +58800,7 @@ function News(props) {
       setSlides = _useState4[1];
 
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1920,
-    xxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = {
     xs: 1,
     sm: 1,
@@ -59265,15 +59230,7 @@ function Waterfall(props) {
 
   var toFavorite = function toFavorite() {};
 
-  var grid = {
-    xs: 576,
-    sm: 768,
-    md: 992,
-    lg: 1280,
-    xl: 1600,
-    xxl: 1920,
-    xxxl: 100000
-  };
+  var grid = window.grid;
   var gridCount = props.data.view;
 
   var columnWidth = function columnWidth() {
@@ -59297,7 +59254,7 @@ function Waterfall(props) {
   };
 
   var addGallery = function addGallery(page) {
-    axios.get("/api/" + window.lang + "/get_posts/" + props.data.entity + "/" + props.data.category + "/" + page + "/" + getCount()).then(function (res) {
+    axios.get("/api/" + window.lang + "/posts?entity=" + props.data.entity + "&category=" + props.data.category + "&page=" + page + "&per_page=" + getCount()).then(function (res) {
       var photos;
 
       if (props.data.preview == "waterfall") {

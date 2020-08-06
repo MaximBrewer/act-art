@@ -105,12 +105,4 @@
             top: 1.5rem;
         }
     }
-    @media (min-width: map.get($grid-breakpoints, "xxxl")) {
-        padding: 3rem 0 5rem;
-        &:before {
-            width: 53%;
-            height: 33.5rem;
-            top: 1.5rem;
-        }
-    }
 }

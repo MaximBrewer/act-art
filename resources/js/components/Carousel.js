@@ -9,14 +9,7 @@ export default function Carousel(props) {
     const [slides, setSlides] = useState([]);
     const refPicture = useRef();
 
-    const grid = {
-        xs: 576,
-        sm: 768,
-        md: 992,
-        lg: 1280,
-        xl: 1920,
-        xxl: 100000
-    };
+    const grid = window.grid;
 
     const gridCount = {
         xs: 1,
