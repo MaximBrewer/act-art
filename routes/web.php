@@ -31,15 +31,26 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'news'], function () {
     Route::get('/', '\App\Http\Controllers\NewsController@index')->name('news.index');
-    Route::get('/{slug}', '\App\Http\Controllers\NewsController@show')->name('news.show');
-    // Route::patch('/', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('news.index');
+    Route::get('/{slug}', '\App\Http\Controllers\NewsController@show');
+});
+
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', '\App\Http\Controllers\BlogController@index')->name('blog.index');
+    Route::get('/{slug}', '\App\Http\Controllers\BlogController@show');
+});
+
+Route::group(['prefix' => 'auction'], function () {
+    Route::get('/', '\App\Http\Controllers\AuctionController@index')->name('auction.index');
+    Route::group(['prefix' => '{id}'], function () {
+        Route::get('/', '\App\Http\Controllers\AuctionController@show');
+        Route::get('/online', '\App\Http\Controllers\AuctionController@online');
+        Route::get('/lots', '\App\Http\Controllers\AuctionController@lots');
+    });
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Route::patch('/resort', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('voyager.base.resort');
     Voyager::routes();
 });
-
-
 
 Route::get('/{slug}', 'PageController@index');

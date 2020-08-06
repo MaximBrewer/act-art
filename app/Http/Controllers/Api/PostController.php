@@ -13,26 +13,18 @@ class PostController extends Controller
     //
     public function index(Request $request)
     {
-        $per_page = $request->get('per_page') ? $request->get('per_page') : 24;
-        $page = $request->get('page') ? $request->get('page') : 1;
+        $limit = $request->get('limit') ? $request->get('limit') : 24;
+        $offset = $request->get('offset') ? $request->get('offset') : 0;
         $cat = $request->get('category') ?  $request->get('category') : 'all';
         $posts = Post::{$cat}()->published()->orderBy('created_at');
-        $paginate = $posts->simplePaginate($per_page)->toArray();
         return json_encode([
             'posts' => PostResource::collection(
                 $posts
-                    ->limit($paginate['per_page'])
-                    ->offset(($paginate['current_page'] - 1) * $paginate['per_page'])
+                    ->limit($limit)
+                    ->offset($offset)
                     ->get()
             ),
-            'per_page' => $paginate['per_page'],
-            'first_page_url' => $paginate['first_page_url'],
-            'next_page_url' => $paginate['next_page_url'],
-            'path' => $paginate['path'],
-            'prev_page_url' => $paginate['prev_page_url'],
-            'to' => $paginate['to'],
-            'from' => $paginate['from'],
-            'current_page' => $paginate['current_page']
+            'next' => $posts->count() - $offset - $limit
         ]);
     }
 }

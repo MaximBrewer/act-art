@@ -4,6 +4,8 @@ import StackGrid, { transitions } from "react-stack-grid";
 export default function Waterfall(props) {
     const { scaleDown } = transitions;
     const [photos, setPhotos] = useState([]);
+    const [page, setPage] = useState(0);
+    const [more, setMore] = useState(true);
 
     const toFavorite = () => {};
 
@@ -17,15 +19,24 @@ export default function Waterfall(props) {
         return Math.round(100 / gridCount[size], 2) + "%";
     };
 
-    const getCount = () => {
+    const getLimit = () => {
         let size = "xs";
         for (size in grid) if (window.innerWidth < grid[size]) break;
         return photos.length
-            ? props.data.count[size]
-            : props.data.firstCount[size];
+            ? props.data.limit[size]
+            : props.data.firstLimit[size];
     };
 
-    const addGallery = page => {
+    const getOffset = () => {
+        let size = "xs";
+        for (size in grid) if (window.innerWidth < grid[size]) break;
+        return page
+            ? (page - 1) * props.data.limit[size] + props.data.firstLimit[size]
+            : 0;
+    };
+
+    const addGallery = e => {
+        if (!!e) e.preventDefault();
         axios
             .get(
                 "/api/" +
@@ -34,16 +45,19 @@ export default function Waterfall(props) {
                     props.data.entity +
                     "&category=" +
                     props.data.category +
-                    "&page=" +
-                    page +
-                    "&per_page=" +
-                    getCount()
+                    "&offset=" +
+                    getOffset() +
+                    "&limit=" +
+                    getLimit()
             )
             .then(res => {
-                let photos;
+                setMore(res.data.next > 0);
+                setPage(page + 1);
+                let arr;
+                let start = photos.length;
                 if (props.data.preview == "waterfall") {
-                    photos = res.data.posts.map((item, index) => (
-                        <div key={index} className="waterfall-item">
+                    arr = res.data.posts.map((item, index) => (
+                        <div key={index + start} className="waterfall-item">
                             <div className="d-flex justify-content-between py-2 align-items-center">
                                 <div className="category">{item.category}</div>
                                 <div className="date">{item.date}</div>
@@ -65,9 +79,9 @@ export default function Waterfall(props) {
                         </div>
                     ));
                 } else {
-                    photos = res.data.posts.map((item, index) => (
+                    arr = res.data.posts.map((item, index) => (
                         <a
-                            key={index}
+                            key={index + start}
                             className="waterfall-item"
                             href={item.url}
                         >
@@ -89,7 +103,7 @@ export default function Waterfall(props) {
                         </a>
                     ));
                 }
-                setPhotos(photos);
+                setPhotos(photos.concat(arr));
             })
             .catch(err => {
                 console.log(err);
@@ -97,8 +111,37 @@ export default function Waterfall(props) {
     };
 
     useEffect(() => {
-        addGallery(0);
+        addGallery();
     }, []);
+
+    const showMoreElems = () => {
+        return (
+            <React.Fragment>
+                <div className="text-center h5 color-primary">
+                    &bull;&bull;&bull;
+                    <br />
+                </div>
+                <div className="text-center">
+                    <a
+                        href={
+                            props.data.action == "add"
+                                ? "#"
+                                : "/" + props.data.category
+                        }
+                        className="show-more"
+                        onClick={props.data.action == "add" ? addGallery : ""}
+                    >
+                        {__("Показать больше")}
+                    </a>
+                </div>
+                <div className="text-center pt-5 pb-4 d-md-none">
+                    <button className="btn btn-primary btn-lg to-gallery">
+                        {__("ПЕРЕЙТИ В ГАЛЕРЕЮ")}
+                    </button>
+                </div>
+            </React.Fragment>
+        );
+    };
 
     return (
         <React.Fragment>
@@ -116,20 +159,7 @@ export default function Waterfall(props) {
             >
                 {photos}
             </StackGrid>
-            <div className="text-center h5 color-primary">
-                &bull;&bull;&bull;
-                <br />
-            </div>
-            <div className="text-center">
-                <a href="#" className="show-more">
-                    {__("Показать больше")}
-                </a>
-            </div>
-            <div className="text-center pt-5 pb-4 d-md-none">
-                <button className="btn btn-primary btn-lg to-gallery">
-                    {__("ПЕРЕЙТИ В ГАЛЕРЕЮ")}
-                </button>
-            </div>
+            {more ? showMoreElems() : ""}
         </React.Fragment>
     );
 }

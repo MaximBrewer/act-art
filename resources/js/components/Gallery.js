@@ -110,7 +110,7 @@ export default function Gallery() {
 
     const getGallery = () => {
         axios
-            .get("/api/" + window.lang + "/get_gallery")
+            .get("/api/" + window.lang + "/lots/gallery")
             .then(res => {
                 let array = [];
                 let grid = [];
@@ -139,7 +139,7 @@ export default function Gallery() {
                         t: 0,
                         bg: getRandomColor(),
                         href:
-                            "/auction/" + res.data.auction.id + "/lot/" + lot.id
+                            "/auction/" + res.data.auction.id + "/#lot=" + lot.id
                     };
                     let set = false;
                     loop2: for (let j in grid) {

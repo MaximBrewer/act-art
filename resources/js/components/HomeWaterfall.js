@@ -26,15 +26,16 @@ export default function HomeWaterfall() {
 
     const addGallery = () => {
         axios
-            .get("/api/get_gallery_items")
+            .get("/api/" + window.lang + "/lots/gallery")
             .then(res => {
                 setPhotos(
-                    res.data.gallery.map((item, index) => (
+                    res.data.auction.lots.map((item, index) => (
                         <div key={index} className="waterfall-item">
                             <div
                                 className="image"
                                 style={{
-                                    backgroundImage: "url(" + item.url + ")",
+                                    backgroundImage:
+                                        "url(" + item.thumbnail + ")",
                                     paddingTop:
                                         (item.height / item.width) * 100 + "%"
                                 }}
@@ -69,11 +70,9 @@ export default function HomeWaterfall() {
                                     </svg>
                                 </a>
                             </div>
-                            <div className="title">
-                                Синий квадрат на красном фоне
-                            </div>
+                            <div className="title">{item.title}</div>
                             <div className="d-flex justify-content-between">
-                                <div className="author">Сергей Пупыркин</div>
+                                <div className="author">{item.author}</div>
                                 <div className="price">
                                     <svg
                                         style={{
@@ -101,13 +100,14 @@ export default function HomeWaterfall() {
                                             fill="#FF665E"
                                         />
                                     </svg>
-                                    $2300
+                                    {item.price}
                                 </div>
                             </div>
-                            <div className="matherial">
-                                холст, акрил, полимерная глина
+                            <div className="matherial">{item.matherials}</div>
+                            <div className="size">
+                                {item.width} х {item.height}
+                                {__("см")}
                             </div>
-                            <div className="size">95 х 60 см</div>
                         </div>
                     ))
                 );
@@ -122,7 +122,7 @@ export default function HomeWaterfall() {
     return (
         <React.Fragment>
             <h3 className="d-none d-md-block pb-4">
-                Последние ставки:{" "}
+                {__("Последние ставки")}:
                 <svg
                     className="hummer"
                     width="42"
@@ -168,12 +168,17 @@ export default function HomeWaterfall() {
                 <br />
             </div>
             <div className="text-center">
-                <a href="#" className="show-more">
-                    Показать больше
+                <a href="#" className="show-more" onClick={addGallery}>
+                    {__("Показать больше")}
                 </a>
             </div>
             <div className="text-center pt-5 pb-4 d-md-none">
-                <button className="btn btn-primary btn-lg to-gallery">ПЕРЕЙТИ В ГАЛЕРЕЮ</button>
+                <a
+                    className="btn btn-primary btn-lg to-gallery"
+                    href="/gallery"
+                >
+                    {__("ПЕРЕЙТИ В ГАЛЕРЕЮ")}
+                </a>
             </div>
         </React.Fragment>
     );

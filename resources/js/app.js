@@ -206,12 +206,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     [].forEach.call(waterfalls, function(waterfall) {
         let data = {
-            count: JSON.parse(waterfall.dataset.count),
-            firstCount: JSON.parse(waterfall.dataset.firstCount),
+            limit: JSON.parse(waterfall.dataset.limit),
+            firstLimit: JSON.parse(waterfall.dataset.firstLimit),
             view: JSON.parse(waterfall.dataset.view),
             entity: waterfall.dataset.entity,
             category: waterfall.dataset.category,
-            preview: waterfall.dataset.preview
+            preview: waterfall.dataset.preview,
+            action: waterfall.dataset.action
         }
         render(<Waterfall data={data} />, waterfall);
     });

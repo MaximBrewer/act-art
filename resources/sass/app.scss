@@ -8,6 +8,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
 
 @import 'common';
 @import 'header';
@@ -16,11 +18,12 @@
 
 
 @import 'home';
-
 @import 'page';
+@import 'auction';
 
 
 @import './blocks/news';
-@import './blocks/auctionPreview';
+@import './blocks/auction.announce';
+@import './blocks/auction.preview';
 @import './blocks/carousel';
 @import './blocks/waterfall';

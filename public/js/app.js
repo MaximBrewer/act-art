@@ -56681,12 +56681,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var waterfalls = document.getElementsByClassName("waterfall");
   [].forEach.call(waterfalls, function (waterfall) {
     var data = {
-      count: JSON.parse(waterfall.dataset.count),
-      firstCount: JSON.parse(waterfall.dataset.firstCount),
+      limit: JSON.parse(waterfall.dataset.limit),
+      firstLimit: JSON.parse(waterfall.dataset.firstLimit),
       view: JSON.parse(waterfall.dataset.view),
       entity: waterfall.dataset.entity,
       category: waterfall.dataset.category,
-      preview: waterfall.dataset.preview
+      preview: waterfall.dataset.preview,
+      action: waterfall.dataset.action
     };
     Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Waterfall__WEBPACK_IMPORTED_MODULE_10__["default"], {
       data: data
@@ -56753,6 +56754,133 @@ window.addEventListener("resize", function () {
   !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("artWaterfall"));
   changeWindow();
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/AuctionPreviewLeft.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/AuctionPreviewLeft.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AuctionPreviewLeft; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function AuctionPreviewLeft(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "banner-image",
+    style: {
+      backgroundImage: 'url("' + props.auction.thumbnail + '")'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "banner-inner-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h1"
+  }, props.auction.announce_text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h2"
+  }, props.auction.date))));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/AuctionPreviewRight.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/AuctionPreviewRight.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AuctionPreviewRight; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
+
+
+
+var declOfNum = function declOfNum(number, titles) {
+  var cases = [2, 0, 1, 1, 1, 2];
+  return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
+}; // Random component
+
+
+var Completionist = function Completionist() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "banner-counter d-flex"
+  }, "You are good to go!");
+}; // Renderer callback with condition
+
+
+var renderer = function renderer(_ref) {
+  var days = _ref.days,
+      hours = _ref.hours,
+      minutes = _ref.minutes,
+      seconds = _ref.seconds,
+      completed = _ref.completed;
+  if (window.innerWidth < window.grid.sm) return "";
+
+  if (completed) {
+    // Render a completed state
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Completionist, null);
+  } else {
+    // Render a countdown
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "banner-counter-wrapper"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, __("ДО НАЧАЛА АУКЦИОНА:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "banner-counter d-flex"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "days"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "number h5"
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(days)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(days, [__("день"), __("дня"), __("дней")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "separator h5"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "ours"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "number h5"
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(hours)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(hours, [__("час"), __("часа"), __("часов")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "separator h5"
+    }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "minutes"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "number h5"
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(minutes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(minutes, [__("мин."), __("мин."), __("мин.")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "separator h5"
+    }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "seconds"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "number h5"
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(seconds)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(seconds, [__("сек."), __("сек."), __("сек.")])))));
+  }
+};
+
+function AuctionPreviewRight(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "banner-announce"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h3 col-md-38 col-lg-60"
+  }, props.auction.sublime), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-none d-md-block col-md-22 col-lg-60"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    date: props.auction.dateatom,
+    renderer: renderer
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-xs-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/auction/" + props.auction.id + "/online",
+    className: "btn btn-danger btn-lg"
+  }, __("ПРИНЯТЬ УЧАСТИЕ"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/auction/" + props.auction.id + "/lots",
+    className: "h5_underline d-none d-xl-block"
+  }, __("Смотреть лоты"), " \u2192"));
+}
 
 /***/ }),
 
@@ -57270,7 +57398,7 @@ function Gallery() {
   };
 
   var getGallery = function getGallery() {
-    axios.get("/api/" + window.lang + "/get_gallery").then(function (res) {
+    axios.get("/api/" + window.lang + "/lots/gallery").then(function (res) {
       var array = [];
       var grid = [];
 
@@ -57308,7 +57436,7 @@ function Gallery() {
             l: 0,
             t: 0,
             bg: getRandomColor(),
-            href: "/auction/" + res.data.auction.id + "/lot/" + lot.id
+            href: "/auction/" + res.data.auction.id + "/#lot=" + lot.id
           };
           var set = false;
 
@@ -57722,12 +57850,13 @@ function HomeAnnounce() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HomeGalleries; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AuctionCarousel; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
+/* harmony import */ var _AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AuctionPreviewLeft */ "./resources/js/components/AuctionPreviewLeft.js");
+/* harmony import */ var _AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuctionPreviewRight */ "./resources/js/components/AuctionPreviewRight.js");
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -57857,12 +57986,7 @@ function _arrayWithHoles(arr) {
 
 
 
-var declOfNum = function declOfNum(number, titles) {
-  var cases = [2, 0, 1, 1, 1, 2];
-  return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
-};
-
-function HomeGalleries() {
+function AuctionCarousel() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     slideIndex: 0,
     slidesTotal: 0
@@ -57871,20 +57995,24 @@ function HomeGalleries() {
       state = _useState2[0],
       setState = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      auctions = _useState4[0],
+      setAuctions = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    axios.get("/api/" + window.lang + "/auctions/coming").then(function (res) {
+      setAuctions(res.data.auctions);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }, []);
   var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   var refAnnounce = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = window.grid;
-  var gridCount = {
-    xs: 1,
-    sm: 1,
-    md: 3,
-    lg: 3,
-    xl: 4,
-    xxl: 6
-  };
   var setting = {
     arrows: false,
     infinite: true,
+    className: "auction-preview",
     dots: false,
     speed: 300,
     auto: true,
@@ -57918,60 +58046,9 @@ function HomeGalleries() {
       });
       if (next > current && (next == 1 || current != 0) || current == cnt - 1 && next == 0) refPicture.current.slickNext(false);else refPicture.current.slickPrev(false);
     }
-  }); // Random component
+  });
 
-
-  var Completionist = function Completionist() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "banner-counter d-flex"
-    }, "You are good to go!");
-  }; // Renderer callback with condition
-
-
-  var renderer = function renderer(_ref) {
-    var days = _ref.days,
-        hours = _ref.hours,
-        minutes = _ref.minutes,
-        seconds = _ref.seconds,
-        completed = _ref.completed;
-    if (window.innerWidth < grid.sm) return "";
-
-    if (completed) {
-      // Render a completed state
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Completionist, null);
-    } else {
-      // Render a countdown
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "banner-counter-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0414\u041E \u041D\u0410\u0427\u0410\u041B\u0410 \u0410\u0423\u041A\u0426\u0418\u041E\u041D\u0410:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "banner-counter d-flex"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "days"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(days)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(days, ["день", "дня", "дней"]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "separator h5"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ours"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(hours)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(hours, ["час", "часа", "часов"]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "separator h5"
-      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "minutes"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(minutes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(minutes, ["мин.", "мин.", "мин."]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "separator h5"
-      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "seconds"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "number h5"
-      }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(seconds)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(seconds, ["сек.", "сек.", "сек."])))));
-    }
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-40 col-xxl-38"
@@ -57979,105 +58056,30 @@ function HomeGalleries() {
     className: "d-lg-none"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
     ref: refPicture
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-image",
-    style: {
-      backgroundImage: 'url("/storage/template/img/banner.jpg")'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-inner-text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h1"
-  }, "\u0421\u041A\u041E\u0420\u041E \u041D\u041E\u0412\u042B\u0419 \u0410\u0423\u041A\u0426\u0418\u041E\u041D:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u043E\u0440\u0430 \u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C\u0441\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h2"
-  }, "26 \u0438\u044E\u043B\u044F / 15:00")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-image",
-    style: {
-      backgroundImage: 'url("/storage/template/img/banner.jpg")'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-inner-text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h1"
-  }, "\u0421\u041A\u041E\u0420\u041E \u041D\u041E\u0412\u042B\u0419 \u0410\u0423\u041A\u0426\u0418\u041E\u041D:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u043E\u0440\u0430 \u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C\u0441\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h2"
-  }, "26 \u0438\u044E\u043B\u044F / 15:00")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-image",
-    style: {
-      backgroundImage: 'url("/storage/template/img/banner.jpg")'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-inner-text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h1"
-  }, "\u0421\u041A\u041E\u0420\u041E \u041D\u041E\u0412\u042B\u0419 \u0410\u0423\u041A\u0426\u0418\u041E\u041D:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u043E\u0440\u0430 \u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C\u0441\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h2"
-  }, "26 \u0438\u044E\u043B\u044F / 15:00")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), auctions.map(function (item, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      index: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      auction: item
+    }));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-xl-20 col-xxl-22"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-announce"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h3 col-md-38 col-lg-60"
-  }, "\u0420\u0430\u0437\u043C\u0435\u0440 \u044D\u0442\u043E\u0433\u043E \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438 \u0441\u0436\u0430\u0442\u0438\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E \u043A\u043E\u043D\u0442\u0435\u0439\u043D\u0435\u0440\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-md-block col-md-22 col-lg-60"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: Date.now() + 100000000,
-    renderer: renderer
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-xs-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-danger btn-lg"
-  }, "\u041F\u0420\u0418\u041D\u042F\u0422\u042C \u0423\u0427\u0410\u0421\u0422\u0418\u0415")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "h5_underline d-none d-xl-block"
-  }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043B\u043E\u0442\u044B \u2192")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-announce"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h3 col-md-38 col-lg-60"
-  }, "\u0420\u0430\u0437\u043C\u0435\u0440 \u044D\u0442\u043E\u0433\u043E \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438 \u0441\u0436\u0430\u0442\u0438\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E \u043A\u043E\u043D\u0442\u0435\u0439\u043D\u0435\u0440\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-md-block col-md-22 col-lg-60"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: Date.now() + 100000000,
-    renderer: renderer
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-xs-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-danger btn-lg"
-  }, "\u041F\u0420\u0418\u041D\u042F\u0422\u042C \u0423\u0427\u0410\u0421\u0422\u0418\u0415")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "h5_underline d-none d-xl-block"
-  }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043B\u043E\u0442\u044B \u2192")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "banner-announce"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "h3 col-md-38 col-lg-60"
-  }, "\u0420\u0430\u0437\u043C\u0435\u0440 \u044D\u0442\u043E\u0433\u043E \u0448\u0440\u0438\u0444\u0442\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0442\u044C\u0441\u044F \u043F\u0440\u0438 \u0441\u0436\u0430\u0442\u0438\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0433\u043E \u043A\u043E\u043D\u0442\u0435\u0439\u043D\u0435\u0440\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d-none d-md-block col-md-22 col-lg-60"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    date: Date.now() + 100000000,
-    renderer: renderer
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-xs-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-danger btn-lg"
-  }, "\u041F\u0420\u0418\u041D\u042F\u0422\u042C \u0423\u0427\u0410\u0421\u0422\u0418\u0415")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "h5_underline d-none d-xl-block"
-  }, "\u0421\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043B\u043E\u0442\u044B \u2192"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+  }), auctions.map(function (item, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      index: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      auction: item
+    }));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     className: "d-lg-none"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
+    href: "/auctions",
     className: "btn btn-default"
-  }, "\u0412\u0421\u0415 \u0410\u0423\u041A\u0426\u0418\u041E\u041D\u042B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, __("ВСЕ АУКЦИОНЫ"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-counter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "current"
@@ -58518,15 +58520,15 @@ function HomeWaterfall() {
   };
 
   var addGallery = function addGallery() {
-    axios.get("/api/get_gallery_items").then(function (res) {
-      setPhotos(res.data.gallery.map(function (item, index) {
+    axios.get("/api/" + window.lang + "/lots/gallery").then(function (res) {
+      setPhotos(res.data.auction.lots.map(function (item, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index,
           className: "waterfall-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "image",
           style: {
-            backgroundImage: "url(" + item.url + ")",
+            backgroundImage: "url(" + item.thumbnail + ")",
             paddingTop: item.height / item.width * 100 + "%"
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -58554,11 +58556,11 @@ function HomeWaterfall() {
           fill: "#818486"
         })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "title"
-        }, "\u0421\u0438\u043D\u0438\u0439 \u043A\u0432\u0430\u0434\u0440\u0430\u0442 \u043D\u0430 \u043A\u0440\u0430\u0441\u043D\u043E\u043C \u0444\u043E\u043D\u0435"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "d-flex justify-content-between"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "author"
-        }, "\u0421\u0435\u0440\u0433\u0435\u0439 \u041F\u0443\u043F\u044B\u0440\u043A\u0438\u043D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "price"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
           style: {
@@ -58582,11 +58584,11 @@ function HomeWaterfall() {
           height: "8",
           transform: "matrix(0.734421 0.678694 -0.678693 0.734423 6.0457 6.71973)",
           fill: "#FF665E"
-        })), "$2300")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), item.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "matherial"
-        }, "\u0445\u043E\u043B\u0441\u0442, \u0430\u043A\u0440\u0438\u043B, \u043F\u043E\u043B\u0438\u043C\u0435\u0440\u043D\u0430\u044F \u0433\u043B\u0438\u043D\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.matherials), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "size"
-        }, "95 \u0445 60 \u0441\u043C"));
+        }, item.width, " \u0445 ", item.height, __("см")));
       }));
     })["catch"](function (err) {});
   };
@@ -58596,7 +58598,7 @@ function HomeWaterfall() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "d-none d-md-block pb-4"
-  }, "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435 \u0441\u0442\u0430\u0432\u043A\u0438:", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+  }, __("Последние ставки"), ":", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     className: "hummer",
     width: "42",
     height: "42",
@@ -58634,12 +58636,14 @@ function HomeWaterfall() {
     className: "text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: "show-more"
-  }, "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "show-more",
+    onClick: addGallery
+  }, __("Показать больше"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center pt-5 pb-4 d-md-none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary btn-lg to-gallery"
-  }, "\u041F\u0415\u0420\u0415\u0419\u0422\u0418 \u0412 \u0413\u0410\u041B\u0415\u0420\u0415\u042E")));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "btn btn-primary btn-lg to-gallery",
+    href: "/gallery"
+  }, __("ПЕРЕЙТИ В ГАЛЕРЕЮ"))));
 }
 
 /***/ }),
@@ -59228,6 +59232,16 @@ function Waterfall(props) {
       photos = _useState2[0],
       setPhotos = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      page = _useState4[0],
+      setPage = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState6 = _slicedToArray(_useState5, 2),
+      more = _useState6[0],
+      setMore = _useState6[1];
+
   var toFavorite = function toFavorite() {};
 
   var grid = window.grid;
@@ -59243,24 +59257,38 @@ function Waterfall(props) {
     return Math.round(100 / gridCount[size], 2) + "%";
   };
 
-  var getCount = function getCount() {
+  var getLimit = function getLimit() {
     var size = "xs";
 
     for (size in grid) {
       if (window.innerWidth < grid[size]) break;
     }
 
-    return photos.length ? props.data.count[size] : props.data.firstCount[size];
+    return photos.length ? props.data.limit[size] : props.data.firstLimit[size];
   };
 
-  var addGallery = function addGallery(page) {
-    axios.get("/api/" + window.lang + "/posts?entity=" + props.data.entity + "&category=" + props.data.category + "&page=" + page + "&per_page=" + getCount()).then(function (res) {
-      var photos;
+  var getOffset = function getOffset() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return page ? (page - 1) * props.data.limit[size] + props.data.firstLimit[size] : 0;
+  };
+
+  var addGallery = function addGallery(e) {
+    if (!!e) e.preventDefault();
+    axios.get("/api/" + window.lang + "/posts?entity=" + props.data.entity + "&category=" + props.data.category + "&offset=" + getOffset() + "&limit=" + getLimit()).then(function (res) {
+      setMore(res.data.next > 0);
+      setPage(page + 1);
+      var arr;
+      var start = photos.length;
 
       if (props.data.preview == "waterfall") {
-        photos = res.data.posts.map(function (item, index) {
+        arr = res.data.posts.map(function (item, index) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: index,
+            key: index + start,
             className: "waterfall-item"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "d-flex justify-content-between py-2 align-items-center"
@@ -59285,9 +59313,9 @@ function Waterfall(props) {
           }, __("Читать дальше"))));
         });
       } else {
-        photos = res.data.posts.map(function (item, index) {
+        arr = res.data.posts.map(function (item, index) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-            key: index,
+            key: index + start,
             className: "waterfall-item",
             href: item.url
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -59310,15 +59338,32 @@ function Waterfall(props) {
         });
       }
 
-      setPhotos(photos);
+      setPhotos(photos.concat(arr));
     })["catch"](function (err) {
       console.log(err);
     });
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    addGallery(0);
+    addGallery();
   }, []);
+
+  var showMoreElems = function showMoreElems() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center h5 color-primary"
+    }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: props.data.action == "add" ? "#" : "/" + props.data.category,
+      className: "show-more",
+      onClick: props.data.action == "add" ? addGallery : ""
+    }, __("Показать больше"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center pt-5 pb-4 d-md-none"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "btn btn-primary btn-lg to-gallery"
+    }, __("ПЕРЕЙТИ В ГАЛЕРЕЮ"))));
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
     appear: scaleDown.appear,
     appeared: scaleDown.appeared,
@@ -59330,18 +59375,7 @@ function Waterfall(props) {
     gutterWidth: 40,
     gutterHeight: 40,
     className: "waterfall-inner"
-  }, photos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center h5 color-primary"
-  }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "show-more"
-  }, __("Показать больше"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center pt-5 pb-4 d-md-none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary btn-lg to-gallery"
-  }, __("ПЕРЕЙТИ В ГАЛЕРЕЮ"))));
+  }, photos), more ? showMoreElems() : "");
 }
 
 /***/ }),

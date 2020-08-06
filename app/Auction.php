@@ -17,7 +17,7 @@ class Auction extends Model
     protected $translatable = ['title', 'sublime', 'text', 'header_text', 'announce_text'];
     //
     protected $dateFormat = 'Y-m-d H:i:s';
-    protected $dateTimeOutFormat = 'j F Y г. H:i';
+    protected $dateTimeOutFormat = 'j F / H:i';
     protected $dates = [
         'date',
     ];
@@ -58,6 +58,18 @@ class Auction extends Model
         });
     }
 
+
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeComing(Builder $query)
+    {
+        return $query->where('date', '>', Carbon::now())->orderBy('sort', 'ASC');
+    }
 
 
     /**
