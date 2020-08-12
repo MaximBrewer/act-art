@@ -52,10 +52,17 @@
     left: 3.25rem;
     z-index: 50;
     padding: 2.6875rem 1.8125rem 3.1875rem;
-    max-width: 20rem;
+    max-width: 22.5rem;
     border: 8px solid $red;
     box-sizing: border-box;
     color: $white;
+    > * {
+        overflow-wrap: normal; /* не поддерживает IE, Firefox; является копией word-wrap */
+        word-wrap: normal;
+        word-break: normal; /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */
+        line-break: auto; /* нет поддержки для русского языка */
+        hyphens: auto; /* значение auto не поддерживается Chrome */
+    }
 }
 .gallery-holder .g-title .sub_h2 {
     margin-bottom: 3rem;

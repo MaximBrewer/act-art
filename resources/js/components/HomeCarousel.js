@@ -6,15 +6,19 @@ import AuctionPreviewRight from "./AuctionPreviewRight";
 export default function AuctionCarousel() {
     const [state, setState] = useState({
         slideIndex: 0,
-        slidesTotal: 0
+        slidesTotal: 0,
+        auctions: []
     });
-    const [auctions, setAuctions] = useState([]);
 
     useEffect(() => {
         axios
             .get("/api/" + window.lang + "/auctions/coming")
             .then(res => {
-                setAuctions(res.data.auctions);
+                setState({
+                    slideIndex: 0,
+                    slidesTotal: res.data.auctions.length,
+                    auctions: res.data.auctions
+                });
             })
             .catch(err => {
                 console.log(err);
@@ -34,7 +38,7 @@ export default function AuctionCarousel() {
         slidesToShow: 1,
         slidesToScroll: 1,
         onInit: () => {
-            setState({ slideIndex: 0, slidesTotal: 3 });
+            setState({ slideIndex: 0, slidesTotal: 0, auctions: state.auctions });
         }
     };
 
@@ -42,7 +46,7 @@ export default function AuctionCarousel() {
         ...setting,
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
-            setState({ slideIndex: next, slidesTotal: cnt });
+            setState({ slideIndex: next, slidesTotal: cnt, auctions: state.auctions });
             if (
                 (next > current && (next == 1 || current != 0)) ||
                 (current == cnt - 1 && next == 0)
@@ -55,7 +59,7 @@ export default function AuctionCarousel() {
         ...setting,
         beforeChange: (current, next) => {
             let cnt = refPicture.current.props.children.length;
-            setState({ slideIndex: next, slidesTotal: cnt });
+            setState({ slideIndex: next, slidesTotal: cnt, auctions: state.auctions });
             if (
                 (next > current && (next == 1 || current != 0)) ||
                 (current == cnt - 1 && next == 0)
@@ -71,7 +75,7 @@ export default function AuctionCarousel() {
                 <div className="col-xl-40 col-xxl-38">
                     <hr className="d-lg-none" />
                     <Slider {...settingsPicture} ref={refPicture}>
-                        {auctions.map((item, index) => (
+                        {state.auctions.map((item, index) => (
                             <div index={index}>
                                 <AuctionPreviewLeft auction={item} />
                             </div>
@@ -80,7 +84,7 @@ export default function AuctionCarousel() {
                 </div>
                 <div className="col-xl-20 col-xxl-22">
                     <Slider {...settingsAnnounce} ref={refAnnounce}>
-                        {auctions.map((item, index) => (
+                        {state.auctions.map((item, index) => (
                             <div index={index}>
                                 <AuctionPreviewRight auction={item} />
                             </div>

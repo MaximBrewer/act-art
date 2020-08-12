@@ -15,16 +15,18 @@ class Lot extends JsonResource
      */
     public function toArray($request)
     {
-        $dir = storage_path("app/public/");
-        $size = getimagesize($dir . $this->photo);
-        return [
-            'id' => $this->id,
-            'title' => $this->getTranslatedAttribute('title'),
-            'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
-            'size' => $size[0] / $size[1] > 1 ? 2 : 1,
-            'width' => $size[0],
-            'height' => $size[1],
-            'props' => '1,2',
-        ];
+        if ($this) {
+            $dir = storage_path("app/public/");
+            $size = getimagesize($dir . $this->photo);
+            return [
+                'id' => $this->id,
+                'title' => $this->getTranslatedAttribute('title'),
+                'thumbnail' => Voyager::image($this->thumbnail('preview', 'photo')),
+                'size' => $size[0] / $size[1] > 1 ? 2 : 1,
+                'width' => $size[0],
+                'height' => $size[1],
+                'props' => '1,2',
+            ];
+        }
     }
 }

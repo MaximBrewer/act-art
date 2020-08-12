@@ -1,3 +1,4 @@
+@if($auction)
 <section class="auction-announce"
     style="background-image: url({{Voyager::image($auction->thumbnail('narrow', 'header_image'))}});background-position: top center;">
     <div class="darkener">
@@ -8,3 +9,4 @@
         </div>
     </div>
 </section>
+@endif

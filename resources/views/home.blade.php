@@ -5,27 +5,24 @@
 
 @section('content')
 <section class="home-banner">
-    <div class="background-text d-none d-xl-block">АУКЦИОНЫ</div>
+    <div class="background-text d-none d-xl-block">{{ __('АУКЦИОНЫ') }}</div>
     <div class="container">
-        <div class="h5 d-xl-none">АУКЦИОНЫ</div>
-        <div class="sticky-section d-none d-xl-flex"><span>ближайшие аукционы</span></div>
+        <div class="h5 d-xl-none">{{ __('АУКЦИОНЫ') }}</div>
+        <div class="sticky-section d-none d-xl-flex"><span>{{ __('ближайшие аукционы') }}</span></div>
         <div id="bannerCarousel" class="carousel"></div>
     </div>
 </section>
 
 
 <section id="art">
-    <div class="background-text d-none d-xl-block">Галерея</div>
+    <div class="background-text d-none d-xl-block">{{ __('Галерея') }}</div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>работы в продаже</span></div>
+        <div class="sticky-section d-none d-xl-flex"><span>{{ __('работы в продаже') }}</span></div>
         <div class="row announce">
             <div class="col col-xl-40 col-xxl-38">
-                <h2 class="h2">ОНЛАЙН-ГАЛЕРЕЯ</h2>
-                <div class="sub_h1 d-none d-xl-block">Постоянно действующая галерея-аукцион в которой вы можете
-                    приобрести избранные
-                    работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию.
-                    Еженедельное обновление.</div>
-                <a href="#" class="h5 h5_underline d-none d-xl-block">Как купить?</a>
+                <h2 class="h2">{{ __('ОНЛАЙН-ГАЛЕРЕЯ') }}</h2>
+                <div class="sub_h1 d-none d-xl-block">{{ __('Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.') }}</div>
+                <a href="/how-to-buy" class="h5 h5_underline d-none d-xl-block">{{ __('Как купить?') }}</a>
             </div>
         </div>
         <div class="art-waterfall-wrapper">

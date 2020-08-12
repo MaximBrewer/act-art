@@ -20131,10 +20131,24 @@ iframe {
   left: 3.25rem;
   z-index: 50;
   padding: 2.6875rem 1.8125rem 3.1875rem;
-  max-width: 20rem;
+  max-width: 22.5rem;
   border: 8px solid #ff665e;
   box-sizing: border-box;
   color: #ffffff;
+}
+
+.gallery-holder .g-title > * {
+  overflow-wrap: normal;
+  /* не поддерживает IE, Firefox; является копией word-wrap */
+  word-wrap: normal;
+  word-break: normal;
+  /* не поддерживает Opera12.14, значение keep-all не поддерживается IE, Chrome */
+  line-break: auto;
+  /* нет поддержки для русского языка */
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  /* значение auto не поддерживается Chrome */
 }
 
 .gallery-holder .g-title .sub_h2 {

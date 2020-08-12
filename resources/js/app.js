@@ -40,7 +40,7 @@ import News from "./components/News";
 import Waterfall from "./components/Waterfall";
 import Postsgrid from "./components/Postsgrid";
 import Carousel from "./components/Carousel";
-import HomeExperts from "./components/HomeExperts";
+import Experts from "./components/Experts";
 
 import SearchForm from "./components/SearchForm";
 
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     if (window.innerWidth > 767) {
         !document.getElementById("expertsSlider") ||
-            render(<HomeExperts />, document.getElementById("expertsSlider"));
+            render(<Experts />, document.getElementById("expertsSlider"));
     }
     changeWindow();
     setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
