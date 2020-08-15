@@ -272,8 +272,9 @@
                 </div>
             </div>
     </footer>
-
+    <div id="flashHolder"></div>
     <!-- Scripts -->
+    @include('footer')
     <script>
         window._translations = {!! cache('translations'); !!};
     </script>

@@ -35,7 +35,7 @@ export default function News(props) {
         speed: 300,
         auto: true,
         slidesToShow: slidesToShow(),
-        slidesToScroll: 1,
+        slidesToScroll: slidesToShow(),
         beforeChange: (current, next) => {
             setState(prevState => {
                 return {
@@ -48,7 +48,7 @@ export default function News(props) {
 
     const addPosts = () => {
         axios
-            .get("/api/" + window.lang + "/get_posts/" + props.data.category)
+            .get("/api/" + window.lang + "/posts?entity=post&category=both&offset=0&limit=20")
             .then(res => {
                 let posts = [];
                 res.data.posts.map((item, index) => {
@@ -99,8 +99,8 @@ export default function News(props) {
                     <hr />
                 </div>
                 <div className="carousel-button">
-                    <a href="#" className="btn btn-lg btn-default">
-                        ЧИТАТЬ
+                    <a href="/news" className="btn btn-lg btn-default">
+                        {__('ЧИТАТЬ')}
                     </a>
                 </div>
                 <div className="carousel-counter">
@@ -170,13 +170,8 @@ export default function News(props) {
                     <br />
                 </div>
                 <div className="text-center">
-                    <a href="#" className="show-more">
-                        Показать больше
-                    </a>
-                </div>
-                <div className="text-center button-wrapper pt-4">
-                    <a href="#" className="btn btn-default btn-lg">
-                        ВСЕ АННОНСЫ
+                    <a href="/news" className="show-more">
+                        {__('Показать больше')}
                     </a>
                 </div>
             </React.Fragment>

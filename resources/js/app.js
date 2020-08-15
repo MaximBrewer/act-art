@@ -35,12 +35,13 @@ import { __ } from "./trans.js";
 import Gallery from "./components/Gallery";
 import HomeCarousel from "./components/HomeCarousel";
 import HomeWaterfall from "./components/HomeWaterfall";
-import HomeAnnounce from "./components/HomeAnnounce";
+import Announce from "./components/Announce";
 import News from "./components/News";
 import Waterfall from "./components/Waterfall";
 import Postsgrid from "./components/Postsgrid";
 import Carousel from "./components/Carousel";
 import Experts from "./components/Experts";
+import Flash from './components/Flash';
 
 import SearchForm from "./components/SearchForm";
 
@@ -174,12 +175,13 @@ const changeWindow = () => {
     }
 };
 document.addEventListener("DOMContentLoaded", () => {
+    render(<Flash />, document.getElementById("flashHolder"));
     if (window.innerWidth > 991) {
         !document.getElementById("galleryHolder") ||
             render(<Gallery />, document.getElementById("galleryHolder"));
     }
     !document.getElementById("announceSlider") ||
-        render(<HomeAnnounce />, document.getElementById("announceSlider"));
+        render(<Announce />, document.getElementById("announceSlider"));
     !document.getElementById("bannerCarousel") ||
         render(<HomeCarousel />, document.getElementById("bannerCarousel"));
     !document.getElementById("artWaterfall") ||

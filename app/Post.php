@@ -36,7 +36,7 @@ class Post extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAll(Builder $query)
+    public function scopeBoth(Builder $query)
     {
         return $query;
     }

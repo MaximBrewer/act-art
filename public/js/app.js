@@ -56493,13 +56493,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Gallery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Gallery */ "./resources/js/components/Gallery.js");
 /* harmony import */ var _components_HomeCarousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/HomeCarousel */ "./resources/js/components/HomeCarousel.js");
 /* harmony import */ var _components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/HomeWaterfall */ "./resources/js/components/HomeWaterfall.js");
-/* harmony import */ var _components_HomeAnnounce__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/HomeAnnounce */ "./resources/js/components/HomeAnnounce.js");
+/* harmony import */ var _components_Announce__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Announce */ "./resources/js/components/Announce.js");
 /* harmony import */ var _components_News__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/News */ "./resources/js/components/News.js");
 /* harmony import */ var _components_Waterfall__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Waterfall */ "./resources/js/components/Waterfall.js");
 /* harmony import */ var _components_Postsgrid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Postsgrid */ "./resources/js/components/Postsgrid.js");
 /* harmony import */ var _components_Carousel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Carousel */ "./resources/js/components/Carousel.js");
 /* harmony import */ var _components_Experts__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Experts */ "./resources/js/components/Experts.js");
-/* harmony import */ var _components_SearchForm__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/SearchForm */ "./resources/js/components/SearchForm.js");
+/* harmony import */ var _components_Flash__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Flash */ "./resources/js/components/Flash.js");
+/* harmony import */ var _components_SearchForm__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/SearchForm */ "./resources/js/components/SearchForm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -56528,6 +56529,7 @@ if (typeof io !== "undefined") {
 // const HomeAnnounce = lazy(() => import("./components/HomeAnnounce"));
 // const HomeNews = lazy(() => import("./components/HomeNews"));
 // const HomeExperts = lazy(() => import("./components/HomeExperts"));
+
 
 
 
@@ -56653,11 +56655,13 @@ var changeWindow = function changeWindow() {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
+  Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Flash__WEBPACK_IMPORTED_MODULE_14__["default"], null), document.getElementById("flashHolder"));
+
   if (window.innerWidth > 991) {
     !document.getElementById("galleryHolder") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Gallery__WEBPACK_IMPORTED_MODULE_5__["default"], null), document.getElementById("galleryHolder"));
   }
 
-  !document.getElementById("announceSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeAnnounce__WEBPACK_IMPORTED_MODULE_8__["default"], null), document.getElementById("announceSlider"));
+  !document.getElementById("announceSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Announce__WEBPACK_IMPORTED_MODULE_8__["default"], null), document.getElementById("announceSlider"));
   !document.getElementById("bannerCarousel") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeCarousel__WEBPACK_IMPORTED_MODULE_6__["default"], null), document.getElementById("bannerCarousel"));
   !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("artWaterfall"));
   !document.getElementById("newsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_News__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -56754,6 +56758,303 @@ window.addEventListener("resize", function () {
   !document.getElementById("artWaterfall") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_HomeWaterfall__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("artWaterfall"));
   changeWindow();
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/Announce.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Announce.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Announce; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
+/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+
+
+function Announce() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    slideIndex: 0,
+    slidesTotal: 0
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var grid = window.grid;
+  var gridCount = {
+    xs: 1,
+    sm: 1,
+    md: 3,
+    lg: 3,
+    xl: 4,
+    xxl: 4
+  };
+
+  var slidesToShow = function slidesToShow() {
+    var size = "xs";
+
+    for (size in grid) {
+      if (window.innerWidth < grid[size]) break;
+    }
+
+    return gridCount[size];
+  };
+
+  var setting = {
+    arrows: false,
+    infinite: true,
+    dots: false,
+    speed: 300,
+    auto: true,
+    slidesToShow: slidesToShow(),
+    slidesToScroll: slidesToShow(),
+    onInit: function onInit() {
+      setState({
+        slideIndex: 0,
+        slidesTotal: 20
+      });
+    },
+    beforeChange: function beforeChange(current, next) {
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          slideIndex: next
+        });
+      });
+    }
+  };
+
+  var createSlides = function createSlides() {
+    var slides = [];
+
+    for (var i = 0; i < 20; i++) {
+      slides.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "slide-wrapper",
+        key: i
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "slide-inner"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "image mb-4",
+        style: {
+          backgroundImage: 'url("/storage/images/200.jpg")'
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "fio"
+      }, "\u0412\u0430\u0441\u0438\u043B\u0438\u0439 \u0426\u0432\u0435\u0442\u0430\u0435\u0432:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title"
+      }, " Generation Ready Now"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "subtitle"
+      }, "\u0420\u0435\u0442\u0440\u043E\u0441\u043F\u0435\u043A\u0442\u0438\u0432\u0430 \u0441\u043E\u0432\u0435\u0442\u0441\u043A\u043E\u0433\u043E \u043F\u043B\u0430\u043A\u0430\u0442\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "date"
+      }, "12 \u043C\u0430\u044F - 15 \u0438\u044E\u043D\u044F 2020 \u0433."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "exhibit"
+      }, "Act-Art \u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "address"
+      }, "\u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F \u043D\u0430\u0431., \u0434. 1"))));
+    }
+
+    return slides;
+  };
+
+  if (window.innerWidth >= grid.md) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
+      ref: refPicture
+    }), createSlides())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-button"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "btn btn-lg btn-default"
+    }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-counter"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "current"
+    }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "total"
+    }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "carousel-arrows"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-default btn-control d-flex",
+      onClick: function onClick() {
+        refPicture.current.slickPrev();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "39",
+      height: "36",
+      viewBox: "0 0 39 36",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M20.5946 3L6 18L20.5946 33",
+      stroke: "#1B292B",
+      strokeWidth: "8"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M7.62164 17.5946H38.4325",
+      stroke: "#1E2B32",
+      strokeWidth: "8"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-default btn-control d-flex",
+      onClick: function onClick() {
+        refPicture.current.slickNext();
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "39",
+      height: "36",
+      viewBox: "0 0 39 36",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M18.4054 33L33 18L18.4054 3",
+      stroke: "#1B292B",
+      strokeWidth: "8"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M31.3784 18.4054L0.567543 18.4054",
+      stroke: "#1E2B32",
+      strokeWidth: "8"
+    })))));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "d-md-flex justify-content-between flex-wrap"
+    }, createSlides()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "d-none d-md-block d-lg-none"
+    }, "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 Act-Art \u2013 \u043D\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043C\u044B\u0439 \u043A\u043E\u043C\u043C\u0435\u0440\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u0440\u043E\u0435\u043A\u0442. \u041D\u0430\u0448\u0430 \u0446\u0435\u043B\u044C \u2013 \u043F\u043E\u043F\u0443\u043B\u044F\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u0441\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E \u0440\u043E\u0441\u0441\u0438\u0439\u0441\u043A\u043E\u0433\u043E \u0438\u0441\u043A\u0443\u0441\u0442\u0432\u0430 \u0432 \u0420\u043E\u0441\u0441\u0438\u0438 \u0438 \u043C\u0438\u0440\u0435. \u041C\u044B \u043F\u043E\u043C\u043E\u0433\u0430\u0435\u043C \u043C\u043E\u043B\u043E\u0434\u044B\u043C \u0438 \u0438\u043C\u0435\u043D\u0438\u0442\u044B\u043C \u0430\u0432\u0442\u043E\u0440\u0430\u043C \u043D\u0430\u0439\u0442\u0438 \u0441\u0432\u043E\u0435\u0433\u043E \u0437\u0440\u0438\u0442\u0435\u043B\u044F \u0438 \u0446\u0435\u043D\u0438\u0442\u0435\u043B\u044F, \u0434\u0435\u043B\u0430\u044F \u043F\u0440\u043E\u0446\u0435\u0441\u0441 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E \u0443\u0434\u043E\u0431\u043D\u044B\u043C \u0438 \u0434\u0435\u043C\u043E\u043A\u0440\u0430\u0442\u0438\u0447\u043D\u044B\u043C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center button-wrapper pt-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "btn btn-default btn-lg"
+    }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")));
+  }
+}
 
 /***/ }),
 
@@ -57339,7 +57640,7 @@ function Experts() {
     speed: 300,
     auto: true,
     slidesToShow: slidesToShow(),
-    slidesToScroll: 1,
+    slidesToScroll: slidesToShow(),
     onInit: function onInit() {
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -57451,6 +57752,119 @@ function Experts() {
     href: "/gallery",
     className: "btn btn-lg btn-primary"
   }, __("Перейти в галерею"))));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Flash.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Flash.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Flash; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+
+function Flash() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      visibility = _useState2[0],
+      setVisibility = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      message = _useState4[0],
+      setMessage = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      type = _useState6[0],
+      setType = _useState6[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    window.addEventListener("flash", function (event) {
+      setVisibility(true);
+      setMessage(event.detail.message);
+      setType(event.detail.type);
+      setTimeout(function () {
+        setVisibility(false);
+      }, 4000);
+    });
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (document.querySelector(".close") !== null) {
+      document.querySelector(".close").addEventListener("click", function () {
+        return setVisibility(false);
+      });
+    }
+  });
+  return visibility && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "alert alert-".concat(type)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "close"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "\xD7")));
 }
 
 /***/ }),
@@ -57731,7 +58145,7 @@ function Gallery() {
             l: 0,
             t: 0,
             bg: getRandomColor(),
-            href: "/auction/" + res.data.auction.id + "/#lot=" + lot.id
+            href: "/auction/" + res.data.auction.id + "/lot/" + lot.id
           };
           var set = false;
 
@@ -57830,308 +58244,11 @@ function Gallery() {
     className: "sub_h2"
   }, "\u041B\u0443\u0447\u0448\u0435\u0435 \u0438\u0437 \u043A\u043E\u043B\u043B\u0435\u043A\u0446\u0438\u0438 \u0412\u0441\u0435\u043A\u043E\u0445\u0443\u0434\u043E\u0436\u043D\u0438\u043A 2020 \u0433."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "h5_underline",
-    href: "/auction/{state.auction.id}"
+    href: "/auction/" + state.auction.id
   }, __("Смотреть лоты"), " \u2192"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-inner",
     ref: ref
   }, blocks));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/HomeAnnounce.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/HomeAnnounce.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HomeAnnounce; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_1__);
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-
-
-function HomeAnnounce() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    slideIndex: 0,
-    slidesTotal: 0
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
-
-  var refPicture = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var grid = window.grid;
-  var gridCount = {
-    xs: 1,
-    sm: 1,
-    md: 3,
-    lg: 3,
-    xl: 4,
-    xxl: 4
-  };
-
-  var slidesToShow = function slidesToShow() {
-    var size = "xs";
-
-    for (size in grid) {
-      if (window.innerWidth < grid[size]) break;
-    }
-
-    return gridCount[size];
-  };
-
-  var setting = {
-    arrows: false,
-    infinite: true,
-    dots: false,
-    speed: 300,
-    auto: true,
-    slidesToShow: slidesToShow(),
-    slidesToScroll: 1,
-    onInit: function onInit() {
-      setState({
-        slideIndex: 0,
-        slidesTotal: 20
-      });
-    },
-    beforeChange: function beforeChange(current, next) {
-      setState(function (prevState) {
-        return _objectSpread(_objectSpread({}, prevState), {}, {
-          slideIndex: next
-        });
-      });
-    }
-  };
-
-  var createSlides = function createSlides() {
-    var slides = [];
-
-    for (var i = 0; i < 20; i++) {
-      slides.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "slide-wrapper",
-        key: i
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "slide-inner"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "image mb-4",
-        style: {
-          backgroundImage: 'url("/storage/images/200.jpg")'
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "fio"
-      }, "\u0412\u0430\u0441\u0438\u043B\u0438\u0439 \u0426\u0432\u0435\u0442\u0430\u0435\u0432:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "title"
-      }, " Generation Ready Now"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "subtitle"
-      }, "\u0420\u0435\u0442\u0440\u043E\u0441\u043F\u0435\u043A\u0442\u0438\u0432\u0430 \u0441\u043E\u0432\u0435\u0442\u0441\u043A\u043E\u0433\u043E \u043F\u043B\u0430\u043A\u0430\u0442\u0430"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "date"
-      }, "12 \u043C\u0430\u044F - 15 \u0438\u044E\u043D\u044F 2020 \u0433."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "exhibit"
-      }, "Act-Art \u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "address"
-      }, "\u0424\u0440\u0443\u043D\u0437\u0435\u043D\u0441\u043A\u0430\u044F \u043D\u0430\u0431., \u0434. 1"))));
-    }
-
-    return slides;
-  };
-
-  if (window.innerWidth >= grid.md) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, setting, {
-      ref: refPicture
-    }), createSlides())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "carousel-button"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
-      className: "btn btn-lg btn-default"
-    }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "carousel-counter"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "current"
-    }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "total"
-    }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "carousel-arrows"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      className: "btn btn-default btn-control d-flex",
-      onClick: function onClick() {
-        refPicture.current.slickPrev();
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-      width: "39",
-      height: "36",
-      viewBox: "0 0 39 36",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-      d: "M20.5946 3L6 18L20.5946 33",
-      stroke: "#1B292B",
-      strokeWidth: "8"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-      d: "M7.62164 17.5946H38.4325",
-      stroke: "#1E2B32",
-      strokeWidth: "8"
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      className: "btn btn-default btn-control d-flex",
-      onClick: function onClick() {
-        refPicture.current.slickNext();
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-      width: "39",
-      height: "36",
-      viewBox: "0 0 39 36",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-      d: "M18.4054 33L33 18L18.4054 3",
-      stroke: "#1B292B",
-      strokeWidth: "8"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-      d: "M31.3784 18.4054L0.567543 18.4054",
-      stroke: "#1E2B32",
-      strokeWidth: "8"
-    })))));
-  } else {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "d-md-flex justify-content-between flex-wrap"
-    }, createSlides()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "d-none d-md-block d-lg-none"
-    }, "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 Act-Art \u2013 \u043D\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043C\u044B\u0439 \u043A\u043E\u043C\u043C\u0435\u0440\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u0440\u043E\u0435\u043A\u0442. \u041D\u0430\u0448\u0430 \u0446\u0435\u043B\u044C \u2013 \u043F\u043E\u043F\u0443\u043B\u044F\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u0441\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E\u0433\u043E \u0440\u043E\u0441\u0441\u0438\u0439\u0441\u043A\u043E\u0433\u043E \u0438\u0441\u043A\u0443\u0441\u0442\u0432\u0430 \u0432 \u0420\u043E\u0441\u0441\u0438\u0438 \u0438 \u043C\u0438\u0440\u0435. \u041C\u044B \u043F\u043E\u043C\u043E\u0433\u0430\u0435\u043C \u043C\u043E\u043B\u043E\u0434\u044B\u043C \u0438 \u0438\u043C\u0435\u043D\u0438\u0442\u044B\u043C \u0430\u0432\u0442\u043E\u0440\u0430\u043C \u043D\u0430\u0439\u0442\u0438 \u0441\u0432\u043E\u0435\u0433\u043E \u0437\u0440\u0438\u0442\u0435\u043B\u044F \u0438 \u0446\u0435\u043D\u0438\u0442\u0435\u043B\u044F, \u0434\u0435\u043B\u0430\u044F \u043F\u0440\u043E\u0446\u0435\u0441\u0441 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u043F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0439 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E \u0443\u0434\u043E\u0431\u043D\u044B\u043C \u0438 \u0434\u0435\u043C\u043E\u043A\u0440\u0430\u0442\u0438\u0447\u043D\u044B\u043C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center button-wrapper pt-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
-      className: "btn btn-default btn-lg"
-    }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")));
-  }
 }
 
 /***/ }),
@@ -58442,6 +58559,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_stack_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-stack-grid */ "./node_modules/react-stack-grid/lib/index.js");
 /* harmony import */ var react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_stack_grid__WEBPACK_IMPORTED_MODULE_1__);
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -58505,12 +58671,48 @@ function _arrayWithHoles(arr) {
 function HomeWaterfall() {
   var scaleDown = react_stack_grid__WEBPACK_IMPORTED_MODULE_1__["transitions"].scaleDown;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    photos: [],
+    favorites: user ? user.favorites : null
+  }),
       _useState2 = _slicedToArray(_useState, 2),
-      photos = _useState2[0],
-      setPhotos = _useState2[1];
+      state = _useState2[0],
+      setState = _useState2[1];
 
-  var toFavorite = function toFavorite() {};
+  var toFavorite = function toFavorite(id, e) {
+    e.preventDefault();
+
+    if (!state.favorites) {
+      window.dispatchEvent(new CustomEvent("flash", {
+        detail: {
+          message: __("Для добавления в избранное необходима авторизация"),
+          type: "error"
+        }
+      }));
+      return false;
+    }
+
+    var favorites = user.favorites;
+    var action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
+    var url = "/user/favorites/" + action + "/" + id;
+    axios.patch(url).then(function (res) {
+      user = res.data.user;
+      favorites = user.favorites;
+      window.dispatchEvent(new CustomEvent("flash", {
+        detail: {
+          message: action == "add" ? __("Добавлено в избраннное") : __("Удалено из избранного"),
+          type: action == "add" ? "success" : "error"
+        }
+      }));
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          favorites: favorites
+        });
+      });
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
 
   var grid = window.grid;
   var gridCount = {
@@ -58534,76 +58736,13 @@ function HomeWaterfall() {
 
   var addGallery = function addGallery() {
     axios.get("/api/" + window.lang + "/lots/gallery").then(function (res) {
-      setPhotos(res.data.auction.lots.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: index,
-          className: "waterfall-item"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "image",
-          style: {
-            backgroundImage: "url(" + item.thumbnail + ")",
-            paddingTop: item.height / item.width * 100 + "%"
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "#",
-          onClick: toFavorite(item.id),
-          style: {
-            position: "absolute",
-            top: "-.5rem",
-            right: ".5rem"
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-          width: "22",
-          height: "22",
-          viewBox: "0 0 22 22",
-          fill: "none",
-          xmlns: "http://www.w3.org/2000/svg"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
-          cx: "11",
-          cy: "11",
-          r: "10.5",
-          fill: "white",
-          stroke: "#818486"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-          d: "M11.007 7C4.16959 7 2.08566 11.8388 2 12.0451L4.14935 13.02C4.1914 12.9242 4.88293 11.3952 6.85005 10.3715C6.75156 10.7502 6.70181 11.1409 6.70209 11.5333C6.70127 12.1194 6.8112 12.7 7.02559 13.2418C7.23998 13.7836 7.55463 14.2759 7.95155 14.6908C8.34846 15.1056 8.81987 15.4348 9.3388 15.6594C9.85773 15.884 10.414 15.9998 10.9759 16H11.0335C12.1662 16.0009 13.2528 15.5326 14.0548 14.6981C14.8567 13.8637 15.3083 12.7312 15.3104 11.5496C15.3113 11.1658 15.2647 10.7835 15.1718 10.4122C17.1077 11.4472 17.8288 12.955 17.8709 13.046L20 12.0159C19.9112 11.8112 17.6933 7 11.007 7ZM13.4694 13.5969H10.75V10.7599H13.4694V13.5969Z",
-          fill: "#818486"
-        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "title"
-        }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "d-flex justify-content-between"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "author"
-        }, item.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "price"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-          style: {
-            position: "relative",
-            top: "-1px",
-            marginRight: "3px"
-          },
-          width: "15",
-          height: "14",
-          viewBox: "0 0 15 14",
-          fill: "none",
-          xmlns: "http://www.w3.org/2000/svg"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
-          width: "10",
-          height: "5",
-          rx: "1",
-          transform: "matrix(0.734421 0.678694 -0.678693 0.734423 7.18018 -0.401611)",
-          fill: "#FF665E"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
-          width: "2",
-          height: "8",
-          transform: "matrix(0.734421 0.678694 -0.678693 0.734423 6.0457 6.71973)",
-          fill: "#FF665E"
-        })), item.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "matherial"
-        }, item.matherials), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "size"
-        }, item.width, " \u0445 ", item.height, __("см")));
-      }));
-    })["catch"](function (err) {});
+      setState({
+        photos: res.data.auction.lots,
+        favorites: state.favorites
+      });
+    })["catch"](function (err) {
+      console.log(err);
+    });
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -58643,14 +58782,77 @@ function HomeWaterfall() {
     gutterWidth: 40,
     gutterHeight: 40,
     className: "art-waterfall-inner"
-  }, photos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, state.photos.map(function (item, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index,
+      className: "waterfall-item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "image",
+      style: {
+        backgroundImage: "url(" + item.thumbnail + ")",
+        paddingTop: item.pxheight / item.pxwidth * 100 + "%"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      onClick: function onClick(e) {
+        return toFavorite(item.id, e);
+      },
+      className: state.favorites && state.favorites.indexOf(item.id) > -1 ? "favorit-link active" : "favorit-link",
+      style: {
+        position: "absolute",
+        top: "-.5rem",
+        right: ".5rem"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      width: "22",
+      height: "22",
+      viewBox: "0 0 22 22",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+      cx: "11",
+      cy: "11",
+      r: "10.5"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+      d: "M11.007 7C4.16959 7 2.08566 11.8388 2 12.0451L4.14935 13.02C4.1914 12.9242 4.88293 11.3952 6.85005 10.3715C6.75156 10.7502 6.70181 11.1409 6.70209 11.5333C6.70127 12.1194 6.8112 12.7 7.02559 13.2418C7.23998 13.7836 7.55463 14.2759 7.95155 14.6908C8.34846 15.1056 8.81987 15.4348 9.3388 15.6594C9.85773 15.884 10.414 15.9998 10.9759 16H11.0335C12.1662 16.0009 13.2528 15.5326 14.0548 14.6981C14.8567 13.8637 15.3083 12.7312 15.3104 11.5496C15.3113 11.1658 15.2647 10.7835 15.1718 10.4122C17.1077 11.4472 17.8288 12.955 17.8709 13.046L20 12.0159C19.9112 11.8112 17.6933 7 11.007 7ZM13.4694 13.5969H10.75V10.7599H13.4694V13.5969Z"
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "title"
+    }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "d-flex justify-content-between"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "author"
+    }, item.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "price"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      viewBox: "0 0 15 14",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+      width: "10",
+      height: "5",
+      rx: "1",
+      transform: "matrix(0.734421 0.678694 -0.678693 0.734423 7.18018 -0.401611)",
+      fill: "#FF665E"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+      width: "2",
+      height: "8",
+      transform: "matrix(0.734421 0.678694 -0.678693 0.734423 6.0457 6.71973)",
+      fill: "#FF665E"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "matherial"
+    }, item.materials.map(function (m, mi) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        key: mi
+      }, m.title);
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "size"
+    }, item.width, " \u0445 ", item.height, __("см")));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center h5 color-primary"
   }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
+    className: "text-center d-none d-md-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    className: "show-more",
-    onClick: addGallery
+    href: "/gallery",
+    className: "show-more"
   }, __("Показать больше"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center pt-5 pb-4 d-md-none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -58844,7 +59046,7 @@ function News(props) {
     speed: 300,
     auto: true,
     slidesToShow: slidesToShow(),
-    slidesToScroll: 1,
+    slidesToScroll: slidesToShow(),
     beforeChange: function beforeChange(current, next) {
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
@@ -58855,7 +59057,7 @@ function News(props) {
   };
 
   var addPosts = function addPosts() {
-    axios.get("/api/" + window.lang + "/get_posts/" + props.data.category).then(function (res) {
+    axios.get("/api/" + window.lang + "/posts?entity=post&category=both&offset=0&limit=20").then(function (res) {
       var posts = [];
       res.data.posts.map(function (item, index) {
         posts.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -58901,9 +59103,9 @@ function News(props) {
     }), slides), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "carousel-button"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
+      href: "/news",
       className: "btn btn-lg btn-default"
-    }, "\u0427\u0418\u0422\u0410\u0422\u042C")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, __('ЧИТАТЬ'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "carousel-counter"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "current"
@@ -58956,14 +59158,9 @@ function News(props) {
     }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "text-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
+      href: "/news",
       className: "show-more"
-    }, "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center button-wrapper pt-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
-      className: "btn btn-default btn-lg"
-    }, "\u0412\u0421\u0415 \u0410\u041D\u041D\u041E\u041D\u0421\u042B")));
+    }, __('Показать больше'))));
   }
 }
 
@@ -59049,7 +59246,7 @@ function Postsgrid(props) {
       setState = _useState2[1];
 
   var addItems = function addItems(page) {
-    axios.get("/api/" + window.lang + "/get_posts/" + props.data.entity + "/" + props.data.category + "/" + page + "/" + props.data.count).then(function (res) {
+    axios.get("/api/" + window.lang + "/posts?entity=post&category=both&offset=0&limit=20").then(function (res) {
       var items = [];
       res.data.posts.map(function (item, index) {
         items.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

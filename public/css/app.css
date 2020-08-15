@@ -18458,6 +18458,35 @@ iframe {
   }
 }
 
+.alert {
+  color: white;
+  position: fixed;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 100000;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert-error {
+  background: #ff665e;
+}
+
+.alert-success {
+  background: #00db93;
+}
+
+.close {
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 /* Slider */
 
 .slick-slider {
@@ -19016,6 +19045,36 @@ iframe {
   background-position: center;
 }
 
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link circle {
+  fill: #ffffff;
+  stroke: #818486;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link path {
+  fill: #818486;
+  stroke: #818486;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link:hover circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link:hover path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link.active circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link.active path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
 #art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .title {
   margin-top: 1rem;
   font-size: 16px;
@@ -19041,7 +19100,15 @@ iframe {
   line-height: 21px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  line-height: 32px;
+  line-height: 2rem;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .price svg {
+  margin-right: 0.5rem;
+  position: relative;
+  top: -1px;
+  width: 15px;
+  height: 14px;
 }
 
 #art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial {
@@ -19050,6 +19117,18 @@ iframe {
   letter-spacing: 0.05em;
   line-height: 24px;
   color: #818486;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial span {
+  text-transform: lowercase;
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial span:after {
+  content: ", ";
+}
+
+#art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .matherial span:last-child:after {
+  content: "";
 }
 
 #art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .size {
@@ -19369,14 +19448,15 @@ iframe {
   background-image: url("/images/dot.png");
 }
 
-#popularCategories > div a {
+#popularCategories > div .categories a {
   display: block;
   padding: 4vw 0;
   width: 15%;
   position: relative;
+  background-color: #ffffff;
 }
 
-#popularCategories > div a p {
+#popularCategories > div .categories a p {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
   font-size: 22px;
@@ -19391,7 +19471,7 @@ iframe {
   line-height: 0.875rem;
 }
 
-#popularCategories > div a:before {
+#popularCategories > div .categories a:before {
   width: 110%;
   height: 110%;
   left: -5%;
@@ -19400,11 +19480,11 @@ iframe {
   position: absolute;
 }
 
-#popularCategories > div a:hover:before {
+#popularCategories > div .categories a:hover:before {
   content: "";
 }
 
-#popularCategories > div button {
+#popularCategories > div .btn {
   margin-top: 1.5rem;
   margin-bottom: -1.5rem;
   font-size: 24px;
@@ -19417,7 +19497,7 @@ iframe {
     margin-bottom: 4rem;
   }
 
-  #popularCategories > div a p {
+  #popularCategories > div .categories a p {
     font-family: "Roboto Condensed", sans-serif;
     font-weight: bold;
     font-size: 22px;
@@ -19425,13 +19505,13 @@ iframe {
     letter-spacing: 0.05em;
   }
 
-  #popularCategories > div button {
+  #popularCategories > div .btn {
     padding: 0.475rem 4.25rem;
   }
 }
 
 @media (min-width: 1440px) {
-  #popularCategories > div a {
+  #popularCategories > div .categories a {
     padding: 5rem 0;
   }
 }

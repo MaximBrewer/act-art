@@ -39,35 +39,17 @@
 <section id="popularCategories" class="d-none d-sm-none d-md-block">
     <div class="pt-5 mb-5">
         <div class="container">
-            <h3 class="py-4">Популярные категории</h3>
-            <div class="py-4 d-flex justify-content-between">
-                <a href="#" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('/storage/images/photo-1590311825124-73ec5233cb0a.jpeg')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">Живопись</p>
+            <h3 class="py-4">{{ __('Популярные категории') }}</h3>
+            <div class="py-4 d-flex justify-content-between categories">
+                @foreach($categories as $category)
+                <a href="/gallery/category/{{ $category->id }}" class="text-decoration-none d-flex justify-content-center align-items-center"
+                    style="background-image: url('{{ Voyager::image($category->thumbnail('preview', 'image')) }}')">
+                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">{{ $category->getTranslatedAttribute('title') }}</p>
                 </a>
-                <a href="#" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('/storage/images/photo-1592250619768-9adfd4c776c9.jpeg')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">Графика</p>
-                </a>
-                <a href="#" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('/storage/images/photo-1592268594767-ead5c74ee773.jpeg')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">инсталяции</p>
-                </a>
-                <a href="#" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('/storage/images/photo-1591726185073-8a8e17e42e20.jpeg')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">скульптура</p>
-                </a>
-                <a href="#" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('/storage/images/photo-1590781585743-7b5fb00a0cc9.jpeg')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">прикладное</p>
-                </a>
-                <a href="#" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('/storage/images/photo-1590653273912-89e0c5b46d97.jpeg')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">другое</p>
-                </a>
+                @endforeach
             </div>
             <div class="d-flex mt-5 justify-content-center align-items-end">
-                <button class="btn btn-xl btn-primary">СМОТРЕТЬ ВСЕ РАБОТЫ</button>
+                <a href="/gallery" class="btn btn-xl btn-primary">{{ __('СМОТРЕТЬ ВСЕ РАБОТЫ') }}</a>
             </div>
         </div>
     </div>
@@ -98,9 +80,9 @@
                     средств идёт на обеспечение и развитие мастерских, выставок, поддержку творческих проектов,
                     образовательные инициативы для горожан.</p>
                 <ul class="list-unstyled d-md-flex justify-content-between">
-                    <li class="h5 h5_underline"><a href="#">Подробнее о&nbsp;платформе</a></li>
-                    <li class="h5 h5_underline"><a href="#">Выставочные пространства</a></li>
-                    <li class="h5 h5_underline"><a href="#">Мастерские «ВсекоХудожник»</a></li>
+                    <li class="h5 h5_underline"><a href="/about">Подробнее о&nbsp;платформе</a></li>
+                    <li class="h5 h5_underline"><a href="/spaces#exhibitions">Выставочные пространства</a></li>
+                    <li class="h5 h5_underline"><a href="/spaces#workshops">Мастерские «ВсекоХудожник»</a></li>
                 </ul>
             </div>
         </div>

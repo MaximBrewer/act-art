@@ -3,36 +3,39 @@
     margin-bottom: 6rem;
     > div {
         background-image: url("/images/dot.png");
-        a {
-            display: block;
-            padding: 4vw 0;
-            width: 15%;
-            position: relative;
-            p {
-                @include txt_menu_1;
-                color: $white;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-                margin: 0;
-                padding: 0;
-                font-size: 0.875rem;
-                line-height: 0.875rem;
-            }
-            &:before {
-                width: 110%;
-                height: 110%;
-                left: -5%;
-                top: -5%;
-                border: 1px solid $gray;
-                position: absolute;
-            }
-            &:hover {
+        .categories {
+            a {
+                display: block;
+                padding: 4vw 0;
+                width: 15%;
+                position: relative;
+                background-color: $white;
+                p {
+                    @include txt_menu_1;
+                    color: $white;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 0.875rem;
+                    line-height: 0.875rem;
+                }
                 &:before {
-                    content: "";
+                    width: 110%;
+                    height: 110%;
+                    left: -5%;
+                    top: -5%;
+                    border: 1px solid $gray;
+                    position: absolute;
+                }
+                &:hover {
+                    &:before {
+                        content: "";
+                    }
                 }
             }
         }
-        button {
+        .btn {
             margin-top: 1.5rem;
             margin-bottom: -1.5rem;
             font-size: 24px;
@@ -43,26 +46,30 @@
     @media (min-width: map.get($grid-breakpoints, "md")) {
         margin-bottom: 4rem;
         > div {
-            a {
-                p {
-                    @include txt_menu_1;
-                }
-                &:before {
-                }
-                &:hover {
+            .categories {
+                a {
+                    p {
+                        @include txt_menu_1;
+                    }
                     &:before {
+                    }
+                    &:hover {
+                        &:before {
+                        }
                     }
                 }
             }
-            button {
+            .btn {
                 padding: 0.475rem 4.25rem;
             }
         }
     }
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
         > div {
-            a {
-                padding: 5rem 0;
+            .categories {
+                a {
+                    padding: 5rem 0;
+                }
             }
         }
     }

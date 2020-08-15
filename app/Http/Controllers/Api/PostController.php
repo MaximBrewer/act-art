@@ -15,11 +15,13 @@ class PostController extends Controller
     {
         $limit = $request->get('limit') ? $request->get('limit') : 24;
         $offset = $request->get('offset') ? $request->get('offset') : 0;
-        $cat = $request->get('category') ?  $request->get('category') : 'all';
-        $posts = Post::{$cat}()->published()->orderBy('created_at');
+        $cat = $request->get('category') ?  $request->get('category') : 'both';
+        $posts = Post::{$cat}();
         return json_encode([
             'posts' => PostResource::collection(
                 $posts
+                    ->published()
+                    ->orderBy('created_at')
                     ->limit($limit)
                     ->offset($offset)
                     ->get()

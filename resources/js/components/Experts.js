@@ -34,7 +34,7 @@ export default function Experts() {
         speed: 300,
         auto: true,
         slidesToShow: slidesToShow(),
-        slidesToScroll: 1,
+        slidesToScroll: slidesToShow(),
         onInit: () => {
             setState(prevState => {
                 return {

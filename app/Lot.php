@@ -49,6 +49,12 @@ class Lot extends Model
     }
 
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+
     public function auction()
     {
         return $this->belongsTo('App\Auction');
@@ -57,27 +63,27 @@ class Lot extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany('App\Category', 'category_lot');
     }
 
     public function frames()
     {
-        return $this->belongsToMany('App\Frame');
+        return $this->belongsToMany('App\Frame', 'frame_lot');
     }
 
     public function styles()
     {
-        return $this->belongsToMany('App\Style');
+        return $this->belongsToMany('App\Style', 'style_lot');
     }
 
     public function techniques()
     {
-        return $this->belongsToMany('App\Technique');
+        return $this->belongsToMany('App\Technique', 'technique_lot');
     }
 
     public function materials()
     {
-        return $this->belongsToMany('App\Material');
+        return $this->belongsToMany('App\Material', 'material_lot');
     }
 
     

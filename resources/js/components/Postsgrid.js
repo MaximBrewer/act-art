@@ -10,14 +10,7 @@ export default function Postsgrid(props) {
             .get(
                 "/api/" +
                     window.lang +
-                    "/get_posts/" +
-                    props.data.entity +
-                    "/" +
-                    props.data.category +
-                    "/" +
-                    page +
-                    "/" +
-                    props.data.count
+                    "/posts?entity=post&category=both&offset=0&limit=20"
             )
             .then(res => {
                 let items = [];

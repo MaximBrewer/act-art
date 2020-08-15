@@ -48,6 +48,13 @@ Route::group(['prefix' => 'auction'], function () {
     });
 });
 
+Route::group(['prefix' => 'user'], function () {
+    Route::group(['prefix' => 'favorites'], function () {
+        Route::patch('/add/{id}', '\App\Http\Controllers\UserController@favoritesAdd');
+        Route::patch('/remove/{id}', '\App\Http\Controllers\UserController@favoritesRemove');
+    });
+});
+
 Route::group(['prefix' => 'admin'], function () {
     Route::patch('/resort', '\App\Http\Controllers\Voyager\VoyagerBaseController@resort')->name('voyager.base.resort');
     Voyager::routes();

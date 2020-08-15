@@ -59,6 +59,36 @@
                         background-size: cover;
                         background-repeat: no-repeat;
                         background-position: center;
+                        .favorit-link {
+                            circle {
+                                fill: $white;
+                                stroke: $gray;
+                            }
+                            path {
+                                fill: $gray;
+                                stroke: $gray;
+                            }
+                            &:hover {
+                                circle {
+                                    fill: $white;
+                                    stroke: $red;
+                                }
+                                path {
+                                    fill: $red;
+                                    stroke: $red;
+                                }
+                            }
+                            &.active {
+                                circle {
+                                    fill: $white;
+                                    stroke: $red;
+                                }
+                                path {
+                                    fill: $red;
+                                    stroke: $red;
+                                }
+                            }
+                        }
                     }
                     .title {
                         margin-top: 1rem;
@@ -70,12 +100,28 @@
                     }
                     .price {
                         @include Text_Name_18;
-                        line-height: 32px;
+                        line-height: 2rem;
+                        svg {
+                            margin-right: .5rem;
+                            position: relative;
+                            top: -1px;
+                            width: 15px;
+                            height: 14px;
+                        }
                     }
                     .matherial {
                         @include text_supersmall_13;
                         line-height: 24px;
                         color: $grey;
+                        span {
+                            text-transform: lowercase;
+                            &:after {
+                                content: ", ";
+                            }
+                            &:last-child:after {
+                                content: "";
+                            }
+                        }
                     }
                     .size {
                         @include text_supersmall_13;

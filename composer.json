@@ -15,6 +15,7 @@
         "jenssegers/date": "^4.0",
         "laracasts/utilities": "^3.1",
         "laravel/framework": "^7.0",
+        "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "predis/predis": "^1.1",

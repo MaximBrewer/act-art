@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Lot as LotResource;
 
 class User extends JsonResource
 {
@@ -14,6 +15,11 @@ class User extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->getTranslatedAttribute('name'),
+            'lastname' => $this->getTranslatedAttribute('lastname'),
+            'favorites' => $this->fids
+        ];
     }
 }

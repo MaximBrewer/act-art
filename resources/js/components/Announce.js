@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 
-export default function HomeAnnounce() {
+export default function Announce() {
     const [state, setState] = useState({
         slideIndex: 0,
         slidesTotal: 0
@@ -32,7 +32,7 @@ export default function HomeAnnounce() {
         speed: 300,
         auto: true,
         slidesToShow: slidesToShow(),
-        slidesToScroll: 1,
+        slidesToScroll: slidesToShow(),
         onInit: () => {
             setState({
                 slideIndex: 0,
