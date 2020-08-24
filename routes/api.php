@@ -32,10 +32,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function () {
 
     Route::get('posts', '\App\Http\Controllers\Api\PostController@index')->name('post.index');
+    Route::get('events', '\App\Http\Controllers\Api\EventController@index')->name('event.index');
 
     Route::get('auctions/coming', '\App\Http\Controllers\Api\AuctionController@coming')->name('auction.coming');
 
     Route::get('lots/gallery', '\App\Http\Controllers\Api\LotController@gallery')->name('lot.gallery');
+    Route::get('lots', '\App\Http\Controllers\Api\LotController@index')->name('lot.index');
 
     
     Route::get('experts/all', '\App\Http\Controllers\Api\ExpertController@all')->name('expert.all');

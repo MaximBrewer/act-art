@@ -16,7 +16,7 @@ class TranslationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Cache::rememberForever('translations', function () {
+        Cache::rememberForever('translations.' . App::getLocale(), function () {
             return collect([
                 'php' => $this->phpTranslations(),
                 'json' => $this->jsonTranslations(),

@@ -1,16 +1,16 @@
 @extends('layouts.app')
-{{-- @section('title'){{ 'Act-Art.ru | ' }}{!! $post->getTranslatedAttribute('title') !!}@endsection
-@section('description'){!! $post->getTranslatedAttribute('meta_description') !!}@endsection
-@section('keywords'){!! $post->getTranslatedAttribute('meta_keywords') !!}@endsection --}}
+{{-- @section('title'){{ 'Act-Art.ru | ' }}{!! $event->getTranslatedAttribute('title') !!}@endsection
+@section('description'){!! $event->getTranslatedAttribute('meta_description') !!}@endsection
+@section('keywords'){!! $event->getTranslatedAttribute('meta_keywords') !!}@endsection --}}
 @section('meta_tags')
-@if($post)
-<title>{{$post->getTranslatedAttribute('title')}}</title>
-<meta name='description' itemprop='description' content='{{$post->getTranslatedAttribute('meta_description')}}' />
-<meta name='keywords' content='{{$post->getTranslatedAttribute('meta_keywords')}}' />
-<meta property='article:published_time' content='{{$post->created_at}}' />
+@if($event)
+<title>{{$event->getTranslatedAttribute('title')}}</title>
+<meta name='description' itemprop='description' content='{{$event->getTranslatedAttribute('meta_description')}}' />
+<meta name='keywords' content='{{$event->getTranslatedAttribute('meta_keywords')}}' />
+<meta property='article:published_time' content='{{$event->created_at}}' />
 {{-- <meta property='article:section' content='event' /> --}}
-<meta property="og:description" content="{{$post->getTranslatedAttribute('meta_description')}}" />
-<meta property="og:title" content="{{$post->getTranslatedAttribute('title')}}" />
+<meta property="og:description" content="{{$event->getTranslatedAttribute('meta_description')}}" />
+<meta property="og:title" content="{{$event->getTranslatedAttribute('title')}}" />
 <meta property="og:url" content="{{url()->current()}}" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="en-us" />
@@ -19,11 +19,11 @@
 {{-- @foreach($obj->images as $image)
             <meta property="og:image" content="{{$image->url}}" />
 @endforeach --}}
-<meta property="og:image:url" content="/storage/{{$post->image}}" />
+<meta property="og:image:url" content="/storage/{{$event->image}}" />
 <meta property="og:image:size" content="300" />
 
 {{-- <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="{{$post->getTranslatedAttribute('title')}}" />
+<meta name="twitter:title" content="{{$event->getTranslatedAttribute('title')}}" />
 <meta name="twitter:site" content="@BrnBhaskar" /> --}}
 @endif
 @endsection
@@ -31,25 +31,25 @@
 <section id="page">
     {{-- <div class="background-text d-none d-xl-block">ПРОСТРАНСТВА</div> --}}
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{!! $post->getTranslatedAttribute('title') !!}</span></div>
+        <div class="sticky-section d-none d-xl-flex"><span>{!! $event->getTranslatedAttribute('title') !!}</span></div>
         <div class="row pb-2 pb-lg-5">
             <div class="col-xl-30 col-xxl-28">
-                <h2 class="h2">{!! $post->getTranslatedAttribute('title') !!}</h2>
+                <h2 class="h2">{!! $event->getTranslatedAttribute('title') !!}</h2>
                 <hr>
-                <p class="sub_h2 d-none d-xl-block">{!! $post->getTranslatedAttribute('excerpt') !!}</p>
+                <p class="sub_h2 d-none d-xl-block">{!! $event->getTranslatedAttribute('excerpt') !!}</p>
             </div>
             <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
-                <div class="image-wrapper" style="background-image: url('/storage/{!! $post->image !!}')"></div>
+                <div class="image-wrapper" style="background-image: url('/storage/{!! $event->image !!}')"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-60">
-                {!! $post->getTranslatedAttribute('body') !!}
+                {!! $event->getTranslatedAttribute('body') !!}
             </div>
         </div>
         <hr>
         <div class="sharing">
-            <p>{{  __('Понравилось? Поделитесь с друзьями!') }}</p>
+            <p>{{  __('Liked? Share with your friends!') }}</p>
             <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
             <script src="https://yastatic.net/share2/share.js"></script>
             <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin"></div>
@@ -61,10 +61,14 @@
     <div class="gallery-holder" id="galleryHolder"></div>
 </section>
 
-<section class="blog-section">
+<section class="announces">
     <div class="container">
-        <div class="waterfall-wrapper">
-            <div class="waterfall" data-entity="post" data-preview="waterfall" data-category="blog" data-count='{"xs":4,"sm":3,"md":3,"xl":4,"lg":4,"xxl":4}' data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-first-count='{"xs":12,"sm":12,"md":12,"xl":12,"lg":12,"xxl":12}'></div>
+        <div class="h2">{{ __('See also') }}</div>
+        <div class="announce-slider-wrapper">
+            <div class="waterfall" data-entity="events" data-action="go" data-preview="preview"
+                data-category="exhibition" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
+                data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                data-first-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'></div>
         </div>
     </div>
 </section>

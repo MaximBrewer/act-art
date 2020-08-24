@@ -207,14 +207,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let waterfalls = document.getElementsByClassName("waterfall");
 
     [].forEach.call(waterfalls, function(waterfall) {
-        let data = {
-            limit: JSON.parse(waterfall.dataset.limit),
-            firstLimit: JSON.parse(waterfall.dataset.firstLimit),
-            view: JSON.parse(waterfall.dataset.view),
-            entity: waterfall.dataset.entity,
-            category: waterfall.dataset.category,
-            preview: waterfall.dataset.preview,
-            action: waterfall.dataset.action
+        let data = {}
+        for(let i in waterfall.dataset){
+            try {
+                data[i] = JSON.parse(waterfall.dataset[i]);
+            } catch (e) {
+                data[i] = waterfall.dataset[i];
+            }
         }
         render(<Waterfall data={data} />, waterfall);
     });

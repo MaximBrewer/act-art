@@ -101,6 +101,7 @@
                     .price {
                         @include Text_Name_18;
                         line-height: 2rem;
+                        white-space: nowrap;
                         svg {
                             margin-right: .5rem;
                             position: relative;

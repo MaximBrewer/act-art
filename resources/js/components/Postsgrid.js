@@ -64,7 +64,7 @@ export default function Postsgrid(props) {
             </div>
             <div className="text-center">
                 <a href="#" className="show-more">
-                    {__("Показать больше")}
+                    {__("Show more")}
                 </a>
             </div>
         </React.Fragment>

@@ -23,12 +23,12 @@ class Post extends JsonResource
             'excerpt' => $this->getTranslatedAttribute('excerpt'),
             'date' => $this->dateout,
             'slug' => $this->slug,
-            'category' => $this->category == 'NEWS' ? __('Новости') :  __('Блог'),
+            'category' => $this->category == 'NEWS' ? __('NEWS') :  __('BLOG'),
             'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
             'waterfall' => Voyager::image($this->thumbnail('waterfall', 'image')),
             'width' => $size[0],
             'height' => $size[1],
-            'url' => '/news/' . $this->slug
+            'url' => "/" . strtolower($this->category) . "/" . $this->slug
         ];
     }
 }

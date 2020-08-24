@@ -30,9 +30,12 @@ class Lot extends JsonResource
                 'techniques' => $this->techniques,
                 'styles' => $this->styles,
                 'author' => trim($this->user->name . " " . $this->user->surname),
+                'author_url' => "/authors/" . $this->user->id,
+                'url' => "/auction/" . $this->auction->id . '/lot/' . $this->id,
                 'pxwidth' => $size[0],
                 'pxheight' => $size[1],
-                'price' => $this->price
+                'price' => $this->price,
+                'status' => $this->status
             ];
         }
     }

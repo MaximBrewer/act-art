@@ -56684,15 +56684,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   var waterfalls = document.getElementsByClassName("waterfall");
   [].forEach.call(waterfalls, function (waterfall) {
-    var data = {
-      limit: JSON.parse(waterfall.dataset.limit),
-      firstLimit: JSON.parse(waterfall.dataset.firstLimit),
-      view: JSON.parse(waterfall.dataset.view),
-      entity: waterfall.dataset.entity,
-      category: waterfall.dataset.category,
-      preview: waterfall.dataset.preview,
-      action: waterfall.dataset.action
-    };
+    var data = {};
+
+    for (var i in waterfall.dataset) {
+      try {
+        data[i] = JSON.parse(waterfall.dataset[i]);
+      } catch (e) {
+        data[i] = waterfall.dataset[i];
+      }
+    }
+
     Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Waterfall__WEBPACK_IMPORTED_MODULE_10__["default"], {
       data: data
     }), waterfall);
@@ -57751,7 +57752,7 @@ function Experts() {
   }, __("Смотреть аукционы")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/gallery",
     className: "btn btn-lg btn-primary"
-  }, __("Перейти в галерею"))));
+  }, __("To Gallery"))));
 }
 
 /***/ }),
@@ -58022,7 +58023,7 @@ function Block(props) {
   var size = props.size,
       auction = props.auction;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    // index={index}
+    key: props.index,
     className: "gallery-body",
     style: {
       width: cols * size + "px",
@@ -58082,12 +58083,7 @@ function Gallery() {
     if (!gals.length || gals[0].offsetLeft + gals[0].offsetWidth <= 0) {
       setBlocks(function (prevState) {
         prevState.splice(0, 1);
-        return prevState.concat( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Block, {
-          auction: auction,
-          cols: cols,
-          size: size,
-          rows: rows
-        }));
+        return prevState.concat(auction);
       });
       position = 0;
     }
@@ -58200,12 +58196,7 @@ function Gallery() {
       var arr = [];
 
       for (; c > 0; c--) {
-        arr.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Block, {
-          auction: auction,
-          cols: cols,
-          size: size,
-          rows: rows
-        }));
+        arr.push(auction);
       }
 
       setBlocks(function (prevState) {
@@ -58248,7 +58239,15 @@ function Gallery() {
   }, __("Смотреть лоты"), " \u2192"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "gallery-inner",
     ref: ref
-  }, blocks));
+  }, blocks.map(function (auction, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Block, {
+      key: index,
+      auction: auction,
+      cols: cols,
+      size: size,
+      rows: rows
+    });
+  })));
 }
 
 /***/ }),
@@ -58814,12 +58813,14 @@ function HomeWaterfall() {
       r: "10.5"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
       d: "M11.007 7C4.16959 7 2.08566 11.8388 2 12.0451L4.14935 13.02C4.1914 12.9242 4.88293 11.3952 6.85005 10.3715C6.75156 10.7502 6.70181 11.1409 6.70209 11.5333C6.70127 12.1194 6.8112 12.7 7.02559 13.2418C7.23998 13.7836 7.55463 14.2759 7.95155 14.6908C8.34846 15.1056 8.81987 15.4348 9.3388 15.6594C9.85773 15.884 10.414 15.9998 10.9759 16H11.0335C12.1662 16.0009 13.2528 15.5326 14.0548 14.6981C14.8567 13.8637 15.3083 12.7312 15.3104 11.5496C15.3113 11.1658 15.2647 10.7835 15.1718 10.4122C17.1077 11.4472 17.8288 12.955 17.8709 13.046L20 12.0159C19.9112 11.8112 17.6933 7 11.007 7ZM13.4694 13.5969H10.75V10.7599H13.4694V13.5969Z"
-    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "title"
+    })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "title",
+      href: item.url
     }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex justify-content-between"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "author"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "author",
+      href: item.author_url
     }, item.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "price"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -58853,12 +58854,12 @@ function HomeWaterfall() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/gallery",
     className: "show-more"
-  }, __("Показать больше"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, __("Show more"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center pt-5 pb-4 d-md-none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-primary btn-lg to-gallery",
     href: "/gallery"
-  }, __("ПЕРЕЙТИ В ГАЛЕРЕЮ"))));
+  }, __("To Gallery"))));
 }
 
 /***/ }),
@@ -59160,7 +59161,7 @@ function News(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "/news",
       className: "show-more"
-    }, __('Показать больше'))));
+    }, __('Show&nbsp;more'))));
   }
 }
 
@@ -59294,7 +59295,7 @@ function Postsgrid(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "show-more"
-  }, __("Показать больше"))));
+  }, __("Show more"))));
 }
 
 /***/ }),
@@ -59374,6 +59375,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_stack_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-stack-grid */ "./node_modules/react-stack-grid/lib/index.js");
 /* harmony import */ var react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_stack_grid__WEBPACK_IMPORTED_MODULE_1__);
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -59437,22 +59487,50 @@ function _arrayWithHoles(arr) {
 function Waterfall(props) {
   var scaleDown = react_stack_grid__WEBPACK_IMPORTED_MODULE_1__["transitions"].scaleDown;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    photos: [],
+    favorites: user ? user.favorites : null,
+    more: true,
+    page: 0
+  }),
       _useState2 = _slicedToArray(_useState, 2),
-      photos = _useState2[0],
-      setPhotos = _useState2[1];
+      state = _useState2[0],
+      setState = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      page = _useState4[0],
-      setPage = _useState4[1];
+  var toFavorite = function toFavorite(id, e) {
+    e.preventDefault();
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
-      _useState6 = _slicedToArray(_useState5, 2),
-      more = _useState6[0],
-      setMore = _useState6[1];
+    if (!state.favorites) {
+      window.dispatchEvent(new CustomEvent("flash", {
+        detail: {
+          message: __("To add to favorites, authorization is required"),
+          type: "error"
+        }
+      }));
+      return false;
+    }
 
-  var toFavorite = function toFavorite() {};
+    var favorites = user.favorites;
+    var action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
+    var url = "/user/favorites/" + action + "/" + id;
+    axios.patch(url).then(function (res) {
+      user = res.data.user;
+      favorites = user.favorites;
+      window.dispatchEvent(new CustomEvent("flash", {
+        detail: {
+          message: action == "add" ? __("Added to favorites") : __("Removed from favorites"),
+          type: action == "add" ? "success" : "error"
+        }
+      }));
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          favorites: favorites
+        });
+      });
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
 
   var grid = window.grid;
   var gridCount = props.data.view;
@@ -59474,7 +59552,7 @@ function Waterfall(props) {
       if (window.innerWidth < grid[size]) break;
     }
 
-    return photos.length ? props.data.limit[size] : props.data.firstLimit[size];
+    return state.photos.length ? props.data.limit[size] : props.data.firstLimit[size];
   };
 
   var getOffset = function getOffset() {
@@ -59484,94 +59562,50 @@ function Waterfall(props) {
       if (window.innerWidth < grid[size]) break;
     }
 
-    return page ? (page - 1) * props.data.limit[size] + props.data.firstLimit[size] : 0;
+    return state.page ? (state.page - 1) * props.data.limit[size] + props.data.firstLimit[size] : 0;
   };
 
   var addGallery = function addGallery(e) {
     if (!!e) e.preventDefault();
-    axios.get("/api/" + window.lang + "/posts?entity=" + props.data.entity + "&category=" + props.data.category + "&offset=" + getOffset() + "&limit=" + getLimit()).then(function (res) {
-      setMore(res.data.next > 0);
-      setPage(page + 1);
-      var arr;
-      var start = photos.length;
-
-      if (props.data.preview == "waterfall") {
-        arr = res.data.posts.map(function (item, index) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: index + start,
-            className: "waterfall-item"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "d-flex justify-content-between py-2 align-items-center"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "category"
-          }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "date"
-          }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "image",
-            style: {
-              backgroundImage: "url(" + item[props.data.preview] + ")",
-              paddingTop: item.height / item.width * 100 + "%"
-            }
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "title"
-          }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "excerpt"
-          }, item.excerpt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "link"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-            href: item.url
-          }, __("Читать дальше"))));
+    var url = props.data.entity == "blog" || props.data.entity == "post" ? "/posts?entity=" + props.data.entity + "&" : "/" + props.data.entity + "?";
+    props.data.category && (url += "category=" + props.data.category);
+    props.data.author && (url += "author=" + props.data.author);
+    axios.get("/api/" + window.lang + url + "&offset=" + getOffset() + "&limit=" + getLimit()).then(function (res) {
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          photos: state.photos.concat(res.data.items),
+          page: state.page + 1,
+          more: res.data.next > 0
         });
-      } else {
-        arr = res.data.posts.map(function (item, index) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-            key: index + start,
-            className: "waterfall-item",
-            href: item.url
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "d-flex justify-content-between py-2 align-items-center"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "category"
-          }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "date"
-          }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "image",
-            style: {
-              backgroundImage: "url(" + item[props.data.preview] + ")",
-              paddingTop: item.height / item.width * 100 + "%"
-            }
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "title"
-          }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "announce"
-          }, item.excerpt));
-        });
-      }
-
-      setPhotos(photos.concat(arr));
+      });
     })["catch"](function (err) {
       console.log(err);
     });
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.data.firstLimit = props.data.firstLimit ? props.data.firstLimit : props.data.limit;
     addGallery();
   }, []);
 
   var showMoreElems = function showMoreElems() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    if (props.data.entity == "events") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center pt-5 pb-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "btn btn-primary-inverse btn-lg"
+    }, __("All announcements"))));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "text-center h5 color-primary"
     }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "text-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: props.data.action == "add" ? "#" : "/" + props.data.category,
       className: "show-more",
-      onClick: props.data.action == "add" ? addGallery : ""
-    }, __("Показать больше"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      onClick: props.data.action == "add" ? addGallery : function () {}
+    }, __("Show more"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "text-center pt-5 pb-4 d-md-none"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn btn-primary btn-lg to-gallery"
-    }, __("ПЕРЕЙТИ В ГАЛЕРЕЮ"))));
+    }, __("To Gallery"))));
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -59585,7 +59619,150 @@ function Waterfall(props) {
     gutterWidth: 40,
     gutterHeight: 40,
     className: "waterfall-inner"
-  }, photos), more ? showMoreElems() : "");
+  }, state.photos.map(function (item, index) {
+    if (props.data.entity == "lots") {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        key: index,
+        className: "lot-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "image",
+        style: {
+          backgroundImage: "url(" + item.thumbnail + ")",
+          paddingTop: item.pxheight / item.pxwidth * 100 + "%"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        onClick: function onClick(e) {
+          return toFavorite(item.id, e);
+        },
+        className: state.favorites && state.favorites.indexOf(item.id) > -1 ? "favorit-link active" : "favorit-link",
+        style: {
+          position: "absolute",
+          top: "-.5rem",
+          right: ".5rem"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "22",
+        height: "22",
+        viewBox: "0 0 22 22",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+        cx: "11",
+        cy: "11",
+        r: "10.5"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M11.007 7C4.16959 7 2.08566 11.8388 2 12.0451L4.14935 13.02C4.1914 12.9242 4.88293 11.3952 6.85005 10.3715C6.75156 10.7502 6.70181 11.1409 6.70209 11.5333C6.70127 12.1194 6.8112 12.7 7.02559 13.2418C7.23998 13.7836 7.55463 14.2759 7.95155 14.6908C8.34846 15.1056 8.81987 15.4348 9.3388 15.6594C9.85773 15.884 10.414 15.9998 10.9759 16H11.0335C12.1662 16.0009 13.2528 15.5326 14.0548 14.6981C14.8567 13.8637 15.3083 12.7312 15.3104 11.5496C15.3113 11.1658 15.2647 10.7835 15.1718 10.4122C17.1077 11.4472 17.8288 12.955 17.8709 13.046L20 12.0159C19.9112 11.8112 17.6933 7 11.007 7ZM13.4694 13.5969H10.75V10.7599H13.4694V13.5969Z"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "title",
+        href: props.data.author ? "/authors/" + props.data.author + "/lots/" + item.id : "auction" + item.id
+      }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-between"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "author",
+        href: item.author_url
+      }, item.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "price"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        viewBox: "0 0 15 14",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+        width: "10",
+        height: "5",
+        rx: "1",
+        transform: "matrix(0.734421 0.678694 -0.678693 0.734423 7.18018 -0.401611)",
+        fill: "#FF665E"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+        width: "2",
+        height: "8",
+        transform: "matrix(0.734421 0.678694 -0.678693 0.734423 6.0457 6.71973)",
+        fill: "#FF665E"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", item.price))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "matherial"
+      }, item.materials.map(function (m, mi) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          key: mi
+        }, m.title);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "size"
+      }, item.width, " \u0445 ", item.height, __("см")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: item.status + " status"
+      }, __("status-" + item.status)));
+    } else if (props.data.entity == "events") {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "event-wrapper",
+        key: index,
+        href: item.url
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-inner"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "image mb-4",
+        style: {
+          backgroundImage: "url(" + item[props.data.preview] + ")",
+          paddingTop: item.height / item.width * 100 + "%"
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title"
+      }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "subtitle"
+      }, item.excerpt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "date"
+      }, item.dates), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "exhibit"
+      }, item.space.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "address"
+      }, item.space.address)));
+    } else {
+      if (props.data.preview == "waterfall") {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: index,
+          className: "waterfall-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "d-flex justify-content-between py-2 align-items-center"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category"
+        }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "date"
+        }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "image",
+          style: {
+            backgroundImage: "url(" + item[props.data.preview] + ")",
+            paddingTop: item.height / item.width * 100 + "%"
+          }
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title"
+        }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "excerpt"
+        }, item.excerpt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "link"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: item.url
+        }, __("Читать дальше"))));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          key: index + start,
+          className: "waterfall-item",
+          href: item.url
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "d-flex justify-content-between py-2 align-items-center"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category"
+        }, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "date"
+        }, item.date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "image",
+          style: {
+            backgroundImage: "url(" + item[props.data.preview] + ")",
+            paddingTop: item.height / item.width * 100 + "%"
+          }
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "title"
+        }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "announce"
+        }, item.excerpt));
+      }
+    }
+  })), state.more || props.data.action != "add" ? showMoreElems() : "");
 }
 
 /***/ }),

@@ -18,7 +18,7 @@ class PostController extends Controller
         $cat = $request->get('category') ?  $request->get('category') : 'both';
         $posts = Post::{$cat}();
         return json_encode([
-            'posts' => PostResource::collection(
+            'items' => PostResource::collection(
                 $posts
                     ->published()
                     ->orderBy('created_at')

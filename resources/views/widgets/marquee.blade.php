@@ -1,6 +1,6 @@
 <section class="bk-main-awards-ticker bg-black white overflow-hidden relative d-none d-lg-block">
     <div class="bk-main-ticker-line-1 flex">
-        @for($i=0;$i<15;$i++) <span class="sub_h1">современное • актуальное • избранное • российское •</span>
+        @for($i=0;$i<15;$i++) <span class="sub_h1"> {!! __('modern&nbsp;•&nbsp;topical&nbsp;•&nbsp;favorites&nbsp;•&nbsp;russian&nbsp;•&nbsp;') !!} </span>
             @endfor
     </div>
     <div class="bk-main-ticker-line-2 flex">

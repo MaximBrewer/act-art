@@ -166,9 +166,9 @@ export default function HomeWaterfall() {
                                 </svg>
                             </a>
                         </div>
-                        <div className="title">{item.title}</div>
+                        <a className="title" href={item.url}>{item.title}</a>
                         <div className="d-flex justify-content-between">
-                            <div className="author">{item.author}</div>
+                            <a className="author" href={item.author_url}>{item.author}</a>
                             <div className="price">
                                 <svg
                                     viewBox="0 0 15 14"
@@ -206,7 +206,7 @@ export default function HomeWaterfall() {
             </div>
             <div className="text-center d-none d-md-block">
                 <a href="/gallery" className="show-more">
-                    {__("Показать больше")}
+                    {__("Show more")}
                 </a>
             </div>
             <div className="text-center pt-5 pb-4 d-md-none">
@@ -214,7 +214,7 @@ export default function HomeWaterfall() {
                     className="btn btn-primary btn-lg to-gallery"
                     href="/gallery"
                 >
-                    {__("ПЕРЕЙТИ В ГАЛЕРЕЮ")}
+                    {__("To Gallery")}
                 </a>
             </div>
         </React.Fragment>

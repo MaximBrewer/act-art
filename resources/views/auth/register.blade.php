@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-40">
             <div class="card">
-                <div class="card-header">{{ __('Регистрация') }}</div>
+                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-20 col-form-label text-md-right">{{ __('Пароль') }}</label>
+                            <label for="password" class="col-md-20 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-30">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-20 col-form-label text-md-right">{{ __('Подтвердите пароль') }}</label>
+                            <label for="password-confirm" class="col-md-20 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-30">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -64,7 +64,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-30 offset-md-20">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Регистрация') }}
+                                    {{ __('Register') }}
                                 </button>
                             </div>
                         </div>

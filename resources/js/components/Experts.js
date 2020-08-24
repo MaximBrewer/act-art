@@ -177,7 +177,7 @@ export default function Experts() {
                     {__("Смотреть аукционы")}
                 </a>
                 <a href="/gallery" className="btn btn-lg btn-primary">
-                    {__("Перейти в галерею")}
+                    {__("To Gallery")}
                 </a>
             </div>
         </React.Fragment>

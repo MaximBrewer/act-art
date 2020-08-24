@@ -34,9 +34,20 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/{slug}', '\App\Http\Controllers\NewsController@show');
 });
 
+Route::group(['prefix' => 'events'], function () {
+    Route::get('/', '\App\Http\Controllers\EventController@index')->name('event.index');
+    Route::get('/{id}', '\App\Http\Controllers\EventController@show');
+});
+
 Route::group(['prefix' => 'blog'], function () {
     Route::get('/', '\App\Http\Controllers\BlogController@index')->name('blog.index');
     Route::get('/{slug}', '\App\Http\Controllers\BlogController@show');
+});
+
+Route::group(['prefix' => 'authors'], function () {
+    Route::get('/', '\App\Http\Controllers\AuthorController@index')->name('author.index');
+    Route::get('/{id}', '\App\Http\Controllers\AuthorController@show');
+    Route::get('/{id}/lots/{lot_id}', '\App\Http\Controllers\AuthorController@lot');
 });
 
 Route::group(['prefix' => 'auction'], function () {

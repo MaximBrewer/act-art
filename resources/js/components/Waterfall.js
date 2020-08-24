@@ -3,11 +3,57 @@ import StackGrid, { transitions } from "react-stack-grid";
 
 export default function Waterfall(props) {
     const { scaleDown } = transitions;
-    const [photos, setPhotos] = useState([]);
-    const [page, setPage] = useState(0);
-    const [more, setMore] = useState(true);
+    const [state, setState] = useState({
+        photos: [],
+        favorites: user ? user.favorites : null,
+        more: true,
+        page: 0
+    });
 
-    const toFavorite = () => {};
+    const toFavorite = (id, e) => {
+        e.preventDefault();
+        if (!state.favorites) {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
+                        message: __(
+                            "To add to favorites, authorization is required"
+                        ),
+                        type: "error"
+                    }
+                })
+            );
+            return false;
+        }
+
+        let favorites = user.favorites;
+        let action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
+        let url = "/user/favorites/" + action + "/" + id;
+
+        axios
+            .patch(url)
+            .then(res => {
+                user = res.data.user;
+                favorites = user.favorites;
+                window.dispatchEvent(
+                    new CustomEvent("flash", {
+                        detail: {
+                            message:
+                                action == "add"
+                                    ? __("Added to favorites")
+                                    : __("Removed from favorites"),
+                            type: action == "add" ? "success" : "error"
+                        }
+                    })
+                );
+                setState(prevState => {
+                    return { ...prevState, favorites };
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
     const grid = window.grid;
 
@@ -22,7 +68,7 @@ export default function Waterfall(props) {
     const getLimit = () => {
         let size = "xs";
         for (size in grid) if (window.innerWidth < grid[size]) break;
-        return photos.length
+        return state.photos.length
             ? props.data.limit[size]
             : props.data.firstLimit[size];
     };
@@ -30,80 +76,39 @@ export default function Waterfall(props) {
     const getOffset = () => {
         let size = "xs";
         for (size in grid) if (window.innerWidth < grid[size]) break;
-        return page
-            ? (page - 1) * props.data.limit[size] + props.data.firstLimit[size]
+        return state.page
+            ? (state.page - 1) * props.data.limit[size] +
+                  props.data.firstLimit[size]
             : 0;
     };
 
     const addGallery = e => {
         if (!!e) e.preventDefault();
+        let url =
+            props.data.entity == "blog" || props.data.entity == "post"
+                ? "/posts?entity=" + props.data.entity + "&"
+                : "/" + props.data.entity + "?";
+        props.data.category && (url += "category=" + props.data.category);
+        props.data.author && (url += "author=" + props.data.author);
         axios
             .get(
                 "/api/" +
                     window.lang +
-                    "/posts?entity=" +
-                    props.data.entity +
-                    "&category=" +
-                    props.data.category +
+                    url +
                     "&offset=" +
                     getOffset() +
                     "&limit=" +
                     getLimit()
             )
             .then(res => {
-                setMore(res.data.next > 0);
-                setPage(page + 1);
-                let arr;
-                let start = photos.length;
-                if (props.data.preview == "waterfall") {
-                    arr = res.data.posts.map((item, index) => (
-                        <div key={index + start} className="waterfall-item">
-                            <div className="d-flex justify-content-between py-2 align-items-center">
-                                <div className="category">{item.category}</div>
-                                <div className="date">{item.date}</div>
-                            </div>
-                            <div
-                                className="image"
-                                style={{
-                                    backgroundImage:
-                                        "url(" + item[props.data.preview] + ")",
-                                    paddingTop:
-                                        (item.height / item.width) * 100 + "%"
-                                }}
-                            ></div>
-                            <div className="title">{item.title}</div>
-                            <div className="excerpt">{item.excerpt}</div>
-                            <div className="link">
-                                <a href={item.url}>{__("Читать дальше")}</a>
-                            </div>
-                        </div>
-                    ));
-                } else {
-                    arr = res.data.posts.map((item, index) => (
-                        <a
-                            key={index + start}
-                            className="waterfall-item"
-                            href={item.url}
-                        >
-                            <div className="d-flex justify-content-between py-2 align-items-center">
-                                <div className="category">{item.category}</div>
-                                <div className="date">{item.date}</div>
-                            </div>
-                            <div
-                                className="image"
-                                style={{
-                                    backgroundImage:
-                                        "url(" + item[props.data.preview] + ")",
-                                    paddingTop:
-                                        (item.height / item.width) * 100 + "%"
-                                }}
-                            ></div>
-                            <div className="title">{item.title}</div>
-                            <div className="announce">{item.excerpt}</div>
-                        </a>
-                    ));
-                }
-                setPhotos(photos.concat(arr));
+                setState(prevState => {
+                    return {
+                        ...prevState,
+                        photos: state.photos.concat(res.data.items),
+                        page: state.page + 1,
+                        more: res.data.next > 0
+                    };
+                });
             })
             .catch(err => {
                 console.log(err);
@@ -111,36 +116,54 @@ export default function Waterfall(props) {
     };
 
     useEffect(() => {
+        props.data.firstLimit = props.data.firstLimit
+            ? props.data.firstLimit
+            : props.data.limit;
         addGallery();
     }, []);
 
     const showMoreElems = () => {
-        return (
-            <React.Fragment>
-                <div className="text-center h5 color-primary">
-                    &bull;&bull;&bull;
-                    <br />
-                </div>
-                <div className="text-center">
-                    <a
-                        href={
-                            props.data.action == "add"
-                                ? "#"
-                                : "/" + props.data.category
-                        }
-                        className="show-more"
-                        onClick={props.data.action == "add" ? addGallery : ""}
-                    >
-                        {__("Показать больше")}
-                    </a>
-                </div>
-                <div className="text-center pt-5 pb-4 d-md-none">
-                    <button className="btn btn-primary btn-lg to-gallery">
-                        {__("ПЕРЕЙТИ В ГАЛЕРЕЮ")}
-                    </button>
-                </div>
-            </React.Fragment>
-        );
+        if (props.data.entity == "events")
+            return (
+                <React.Fragment>
+                    <div className="text-center pt-5 pb-4">
+                        <button className="btn btn-primary-inverse btn-lg">
+                            {__("All announcements")}
+                        </button>
+                    </div>
+                </React.Fragment>
+            );
+        else
+            return (
+                <React.Fragment>
+                    <div className="text-center h5 color-primary">
+                        &bull;&bull;&bull;
+                        <br />
+                    </div>
+                    <div className="text-center">
+                        <a
+                            href={
+                                props.data.action == "add"
+                                    ? "#"
+                                    : "/" + props.data.category
+                            }
+                            className="show-more"
+                            onClick={
+                                props.data.action == "add"
+                                    ? addGallery
+                                    : () => {}
+                            }
+                        >
+                            {__("Show more")}
+                        </a>
+                    </div>
+                    <div className="text-center pt-5 pb-4 d-md-none">
+                        <button className="btn btn-primary btn-lg to-gallery">
+                            {__("To Gallery")}
+                        </button>
+                    </div>
+                </React.Fragment>
+            );
     };
 
     return (
@@ -157,9 +180,211 @@ export default function Waterfall(props) {
                 gutterHeight={40}
                 className="waterfall-inner"
             >
-                {photos}
+                {state.photos.map((item, index) => {
+                    if (props.data.entity == "lots") {
+                        return (
+                            <div key={index} className="lot-item">
+                                <div
+                                    className="image"
+                                    style={{
+                                        backgroundImage:
+                                            "url(" + item.thumbnail + ")",
+                                        paddingTop:
+                                            (item.pxheight / item.pxwidth) *
+                                                100 +
+                                            "%"
+                                    }}
+                                >
+                                    <a
+                                        href="#"
+                                        onClick={e => toFavorite(item.id, e)}
+                                        className={
+                                            state.favorites &&
+                                            state.favorites.indexOf(item.id) >
+                                                -1
+                                                ? `favorit-link active`
+                                                : `favorit-link`
+                                        }
+                                        style={{
+                                            position: "absolute",
+                                            top: "-.5rem",
+                                            right: ".5rem"
+                                        }}
+                                    >
+                                        <svg
+                                            width="22"
+                                            height="22"
+                                            viewBox="0 0 22 22"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <circle cx="11" cy="11" r="10.5" />
+                                            <path d="M11.007 7C4.16959 7 2.08566 11.8388 2 12.0451L4.14935 13.02C4.1914 12.9242 4.88293 11.3952 6.85005 10.3715C6.75156 10.7502 6.70181 11.1409 6.70209 11.5333C6.70127 12.1194 6.8112 12.7 7.02559 13.2418C7.23998 13.7836 7.55463 14.2759 7.95155 14.6908C8.34846 15.1056 8.81987 15.4348 9.3388 15.6594C9.85773 15.884 10.414 15.9998 10.9759 16H11.0335C12.1662 16.0009 13.2528 15.5326 14.0548 14.6981C14.8567 13.8637 15.3083 12.7312 15.3104 11.5496C15.3113 11.1658 15.2647 10.7835 15.1718 10.4122C17.1077 11.4472 17.8288 12.955 17.8709 13.046L20 12.0159C19.9112 11.8112 17.6933 7 11.007 7ZM13.4694 13.5969H10.75V10.7599H13.4694V13.5969Z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <a
+                                    className="title"
+                                    href={
+                                        props.data.author
+                                            ? `/authors/` +
+                                              props.data.author +
+                                              `/lots/` +
+                                              item.id
+                                            : `auction` + item.id
+                                    }
+                                >
+                                    {item.title}
+                                </a>
+                                <div className="d-flex justify-content-between">
+                                    <a
+                                        className="author"
+                                        href={item.author_url}
+                                    >
+                                        {item.author}
+                                    </a>
+                                    <div className="price">
+                                        <svg
+                                            viewBox="0 0 15 14"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <rect
+                                                width="10"
+                                                height="5"
+                                                rx="1"
+                                                transform="matrix(0.734421 0.678694 -0.678693 0.734423 7.18018 -0.401611)"
+                                                fill="#FF665E"
+                                            />
+                                            <rect
+                                                width="2"
+                                                height="8"
+                                                transform="matrix(0.734421 0.678694 -0.678693 0.734423 6.0457 6.71973)"
+                                                fill="#FF665E"
+                                            />
+                                        </svg>
+                                        <span>${item.price}</span>
+                                    </div>
+                                </div>
+                                <div className="matherial">
+                                    {item.materials.map((m, mi) => (
+                                        <span key={mi}>{m.title}</span>
+                                    ))}
+                                </div>
+                                <div className="size">
+                                    {item.width} х {item.height}
+                                    {__("см")}
+                                </div>
+                                <a className={item.status + ` status`}>
+                                    {__("status-" + item.status)}
+                                </a>
+                            </div>
+                        );
+                    } else if (props.data.entity == "events") {
+                        return (
+                            <a
+                                className="event-wrapper"
+                                key={index}
+                                href={item.url}
+                            >
+                                <div className="event-inner">
+                                    <div
+                                        className="image mb-4"
+                                        style={{
+                                            backgroundImage:
+                                                "url(" +
+                                                item[props.data.preview] +
+                                                ")",
+                                            paddingTop:
+                                                (item.height / item.width) *
+                                                    100 +
+                                                "%"
+                                        }}
+                                    ></div>
+                                    <div className="title">{item.title}</div>
+                                    <div className="subtitle">
+                                        {item.excerpt}
+                                    </div>
+                                    <div className="date">{item.dates}</div>
+                                    <div className="exhibit">
+                                        {item.space.title}
+                                    </div>
+                                    <div className="address">
+                                        {item.space.address}
+                                    </div>
+                                </div>
+                            </a>
+                        );
+                    } else {
+                        if (props.data.preview == "waterfall") {
+                            return (
+                                <div key={index} className="waterfall-item">
+                                    <div className="d-flex justify-content-between py-2 align-items-center">
+                                        <div className="category">
+                                            {item.category}
+                                        </div>
+                                        <div className="date">{item.date}</div>
+                                    </div>
+                                    <div
+                                        className="image"
+                                        style={{
+                                            backgroundImage:
+                                                "url(" +
+                                                item[props.data.preview] +
+                                                ")",
+                                            paddingTop:
+                                                (item.height / item.width) *
+                                                    100 +
+                                                "%"
+                                        }}
+                                    ></div>
+                                    <div className="title">{item.title}</div>
+                                    <div className="excerpt">
+                                        {item.excerpt}
+                                    </div>
+                                    <div className="link">
+                                        <a href={item.url}>
+                                            {__("Читать дальше")}
+                                        </a>
+                                    </div>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <a
+                                    key={index + start}
+                                    className="waterfall-item"
+                                    href={item.url}
+                                >
+                                    <div className="d-flex justify-content-between py-2 align-items-center">
+                                        <div className="category">
+                                            {item.category}
+                                        </div>
+                                        <div className="date">{item.date}</div>
+                                    </div>
+                                    <div
+                                        className="image"
+                                        style={{
+                                            backgroundImage:
+                                                "url(" +
+                                                item[props.data.preview] +
+                                                ")",
+                                            paddingTop:
+                                                (item.height / item.width) *
+                                                    100 +
+                                                "%"
+                                        }}
+                                    ></div>
+                                    <div className="title">{item.title}</div>
+                                    <div className="announce">
+                                        {item.excerpt}
+                                    </div>
+                                </a>
+                            );
+                        }
+                    }
+                })}
             </StackGrid>
-            {more ? showMoreElems() : ""}
+            {state.more || props.data.action != "add" ? showMoreElems() : ""}
         </React.Fragment>
     );
 }

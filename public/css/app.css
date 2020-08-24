@@ -19101,6 +19101,7 @@ iframe {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   line-height: 2rem;
+  white-space: nowrap;
 }
 
 #art .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .price svg {
@@ -20557,6 +20558,105 @@ iframe {
   }
 }
 
+.author-page {
+  padding: 3rem 0 4rem;
+}
+
+.author-page .h5 {
+  font-size: 1.125rem;
+  font-weight: normal;
+}
+
+.author-page .description {
+  margin-bottom: 2rem;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+}
+
+.author-page .btn-sign {
+  margin-bottom: 2rem;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  max-width: 34rem;
+}
+
+.author-page .btn-wrap {
+  max-width: 34rem;
+}
+
+.author-page .btn-wrap button {
+  min-width: 15rem;
+  margin-left: 4rem;
+}
+
+.author-page .btn-wrap button:first-child {
+  margin-left: 0;
+}
+
+.author-page .photo-block > div {
+  margin-bottom: 1rem;
+}
+
+.author-page .photo-block .image-wrapper {
+  background-size: contain;
+}
+
+.author-page .photo-block .heading {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: #285671;
+  padding-bottom: 0.5rem;
+}
+
+.author-page .photo-block ul li {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.375rem;
+}
+
+@media (min-width: 1440px) {
+  .author-page {
+    padding: 3rem 0 5rem;
+  }
+}
+
+.author-works {
+  padding: 3rem 0 5rem;
+  background-color: #eceded;
+}
+
+.author-works .h2 {
+  border-bottom: 8px solid #1e2b32;
+}
+
+.author-works .author-works-list {
+  padding: 3rem 0 5rem;
+}
+
+.author-works .author-works-footer > div {
+  margin-bottom: 2.75rem;
+}
+
+.author-works .author-works-footer .btn {
+  min-width: 15rem;
+  margin-left: 4rem;
+}
+
+.author-works .author-works-footer .btn:first-child {
+  margin-left: 0;
+}
+
+@media (min-width: 1440px) {
+  .author-works {
+    padding: 3rem 0 5rem;
+  }
+}
+
 .auction-header {
   background-position: center;
   background-size: cover;
@@ -21600,5 +21700,286 @@ iframe {
     width: 2rem;
     height: 2rem;
   }
+}
+
+.lot-item .image {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.lot-item .image .favorit-link circle {
+  fill: #ffffff;
+  stroke: #818486;
+}
+
+.lot-item .image .favorit-link path {
+  fill: #818486;
+  stroke: #818486;
+}
+
+.lot-item .image .favorit-link:hover circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.lot-item .image .favorit-link:hover path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.lot-item .image .favorit-link.active circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.lot-item .image .favorit-link.active path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.lot-item .title {
+  margin-top: 1rem;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.lot-item .author {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+.lot-item .price {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.lot-item .price svg {
+  margin-right: 0.5rem;
+  position: relative;
+  top: -1px;
+  width: 15px;
+  height: 14px;
+}
+
+.lot-item .matherial {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  color: #818486;
+}
+
+.lot-item .matherial span {
+  text-transform: lowercase;
+}
+
+.lot-item .matherial span:after {
+  content: ", ";
+}
+
+.lot-item .matherial span:last-child:after {
+  content: "";
+}
+
+.lot-item .size {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  font-weight: bold;
+  color: #818486;
+}
+
+a.lot-item:hover {
+  padding: 19px;
+  margin: -20px;
+  border: 1px solid #1e2b32;
+  background-color: #ffffff;
+}
+
+section.announces {
+  padding: 3rem 0 2rem;
+  background-color: #eceded;
+}
+
+section.announces .background-text {
+  color: #eceded;
+  top: 5.25rem;
+  opacity: 1;
+}
+
+section.announces .announce > div .h2,
+section.announces .announce > div .h3 {
+  font-size: 8vw;
+  line-height: 9.625vw;
+  text-align: center;
+}
+
+section.announces .announce-slider-wrapper {
+  margin-top: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+section.announces .waterfall-inner {
+  margin-bottom: 3.75rem;
+}
+
+@media (min-width: 768px) {
+  section.announces {
+    background-color: #ffffff;
+    padding: 4rem 0 2rem;
+  }
+
+  section.announces .announce > div .h2,
+  section.announces .announce > div .h3 {
+    font-size: 2.125rem;
+    line-height: 3rem;
+    text-align: left;
+  }
+
+  section.announces .announce-slider-wrapper {
+    margin-top: 2rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+@media (min-width: 992px) {
+  section.announces .announce-slider-wrapper {
+    padding-bottom: 6.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  section.announces {
+    padding: 12rem 0 6rem;
+  }
+
+  section.announces .background-text {
+    color: #eceded;
+    top: 5.25rem;
+    opacity: 1;
+  }
+
+  section.announces .announce > div .h2,
+  section.announces .announce > div .h3 {
+    line-height: 3rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 8px solid #1e2b32;
+  }
+
+  section.announces .announce > div dl {
+    font-family: "TT Severs";
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: initial;
+  }
+
+  section.announces .announce > div dl dt {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  section.announces .announce > div dl dd {
+    margin-bottom: 1rem;
+  }
+
+  section.announces .announce-slider-wrapper {
+    margin-top: 4rem;
+    padding-bottom: 9.75rem;
+  }
+}
+
+section.announces.bggray {
+  background-color: #eceded;
+}
+
+section.announces.bggray .background-text {
+  color: #ffffff;
+}
+
+.event-wrapper {
+  text-decoration: none !important;
+  display: block;
+}
+
+.event-wrapper:hover {
+  padding: 19px;
+  margin: -20px;
+  border: 1px solid #1e2b32;
+  background-color: #ffffff;
+}
+
+.event-wrapper .event-inner {
+  padding: 2rem 0;
+  border-top: 0.25rem solid #1e2b32;
+  border-bottom: 0.25rem solid #1e2b32;
+  display: block;
+}
+
+.event-wrapper .event-inner .fio {
+  font-family: "TT Severs";
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  height: 1.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.event-wrapper .event-inner .title {
+  margin-bottom: 0;
+  font-family: "TT Severs";
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  height: 4.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.event-wrapper .event-inner .subtitle {
+  padding: 0.5rem 0 1.5rem;
+  font-size: 1rem;
+}
+
+.event-wrapper .event-inner .date {
+  font-size: 1.125rem;
+  padding-bottom: 1.25rem;
+  font-weight: bold;
+}
+
+.event-wrapper .event-inner .image {
+  padding-top: 82%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.event-wrapper .event-inner .address,
+.event-wrapper .event-inner .exhibit {
+  font-size: 1rem;
+}
+
+.event-wrapper .event-inner .exhibit {
+  font-weight: bold;
 }
 

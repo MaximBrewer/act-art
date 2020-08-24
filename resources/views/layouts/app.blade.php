@@ -38,7 +38,7 @@
                                             <div id="searchForm" class="search-form">
                                                 <form action="#">
                                                     <div class="search-container">
-                                                        <input type="text" placeholder="{{ __('Поиск..') }}"
+                                                        <input type="text" placeholder="{{ __('Search..') }}"
                                                             name="search" class="form-control">
                                                         <div class="btn-container">
                                                             <button type="submit" class="btn p-1 btn-link">
@@ -66,7 +66,7 @@
                                         <div class="align-items-center d-flex d-md-none">
                                             @include('svg.header.small-top-logo')</div>
                                         <div class="text-nowrap ml-4 align-items-center lh-1125rem d-none d-xl-flex">
-                                            {!! __('онлайн-аукцион<br>современного искусства') !!}</div>
+                                            {!! __('online-auction<br>of contemporary art') !!}</div>
                                     </a>
                                     {{-- <a href="/" class="logo">@include('svg.header.small-top-logo')</a> --}}
                                 </div>
@@ -75,16 +75,18 @@
                                         class="burger text-decoration-none align-items-center justify-content-between"
                                         id="burgerMenuToggle">
                                         <div>@include('svg.header.top-burger')</div>
-                                        <div>{{  __('Меню') }}</div>
+                                        <div>{{  __('Menu') }}</div>
                                     </a>
                                 </div>
                                 <div class="col-md-20 flex-row-reverse right-position d-none d-md-flex">
                                     <div>
                                         @guest
-                                        <a class="btn btn-default-inverse" type="submit" href="/login">{!! __('Войти')
+                                        <a class="btn btn-default-inverse" type="submit" href="/login">{!!
+                                            __('Log&nbsp;In')
                                             !!}</a>
                                         @else
-                                        <a class="icon profile" type="submit" href="/profile">@include('svg.header.profile')</a>
+                                        <a class="icon profile" type="submit"
+                                            href="/profile">@include('svg.header.profile')</a>
                                         @endguest
                                     </div>
                                     <div class="header-lang">
@@ -109,7 +111,7 @@
                         <div class="header-bottom-logo">
                             <a href="/" class="header-logo">
                                 @include('svg.header.logo')
-                                <p class="h5 py-4">{!! __('онлайн-аукцион<br>современного<br>искусства') !!}</p>
+                                <p class="h5 py-4">{!! __('online-auction<br>of contemporary art') !!}</p>
                             </a>
                         </div>
                         <div class="row header-bottom-menu flex-row-reverse">
@@ -160,7 +162,7 @@
                         </div>
                         <div class="p-4 d-flex justify-content-between d-md-none">
                             @guest
-                            <a href="/login">{{  __('Войти')  }}</a>
+                            <a href="/login">{{  __('Log&nbsp;In')  }}</a>
                             @else
                             <a href="/profile">{{  __('кабинет')  }}</a>
                             @endguest
@@ -187,14 +189,14 @@
                             @include('svg.footer.logo')
                         </a>
                         <div class="mail-to d-flex flex-column">
-                            <div class="mb-1">{{  __('По вопросам сотрудничества:') }}</div>
+                            <div class="mb-1">{{  __('For partnership:') }}</div>
                             <div class="h5"><a href="mailto:info@act-art.ru">info@act-art.ru</a></div>
                         </div>
                     </div>
                     <div class="d-flex flex-column order-2 flex-xl-row">
                         <div class="order-2 d-flex flex-column d-md-none">
                             <div class="mail-to d-flex flex-column">
-                                <div class="mb-1">{{  __('По вопросам сотрудничества:') }}</div>
+                                <div class="mb-1">{{  __('For partnership:') }}</div>
                                 <div class="h5"><a href="mailto:info@act-art.ru">info@act-art.ru</a></div>
                             </div>
                             <a href="/" class="footer-logo">
@@ -254,7 +256,7 @@
                 <div class="row">
                     <div class="col-md-20 align-items-center align-items-md-start d-flex">
                         <p class="pb-2">
-                            {{ __('ООО “ВОЛОН”  © 2020') }}<br>{{ __('При использовании материалов с сайта обязательна ссылка на сайт.') }}
+                            {{ __('ООО “ВОЛОН”  © 2020') }}<br>{{ __('When using materials from the site, a link to the site is required.') }}
                         </p>
                     </div>
                     <div class="col-md-20 align-items-center align-items-md-start d-none d-sm-flex">
@@ -275,8 +277,11 @@
     <div id="flashHolder"></div>
     <!-- Scripts -->
     @include('footer')
+    @php
+    $k = 'translations.' . App::getLocale();
+    @endphp
     <script>
-        window._translations = {!! cache('translations'); !!};
+        window._translations = {!! cache($k); !!};
     </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>

@@ -10,7 +10,7 @@ class Space extends Model
 {
     use Spatial;
     use Translatable;
-    protected $translatable = ['title'];
+    protected $translatable = ['title', 'address'];
     protected $spatial = ['coords'];
     //
 }

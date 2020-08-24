@@ -24,7 +24,7 @@ function Block(props) {
     const { size, auction } = props;
     return (
         <div
-            // index={index}
+            key={props.index}
             className="gallery-body"
             style={{
                 width: cols * size + "px",
@@ -78,14 +78,7 @@ export default function Gallery() {
         if (!gals.length || gals[0].offsetLeft + gals[0].offsetWidth <= 0) {
             setBlocks(prevState => {
                 prevState.splice(0, 1);
-                return prevState.concat(
-                    <Block
-                        auction={auction}
-                        cols={cols}
-                        size={size}
-                        rows={rows}
-                    />
-                );
+                return prevState.concat(auction);
             });
             position = 0;
         }
@@ -139,10 +132,7 @@ export default function Gallery() {
                         t: 0,
                         bg: getRandomColor(),
                         href:
-                            "/auction/" +
-                            res.data.auction.id +
-                            "/lot/" +
-                            lot.id
+                            "/auction/" + res.data.auction.id + "/lot/" + lot.id
                     };
                     let set = false;
                     loop2: for (let j in grid) {
@@ -186,14 +176,7 @@ export default function Gallery() {
 
                 let arr = [];
                 for (; c > 0; c--) {
-                    arr.push(
-                        <Block
-                            auction={auction}
-                            cols={cols}
-                            size={size}
-                            rows={rows}
-                        />
-                    );
+                    arr.push(auction);
                 }
                 setBlocks(prevState => {
                     return prevState.concat(arr);
@@ -240,7 +223,15 @@ export default function Gallery() {
                 </div>
             </div>
             <div className="gallery-inner" ref={ref}>
-                {blocks}
+                {blocks.map((auction, index) => (
+                    <Block
+                        key={index}
+                        auction={auction}
+                        cols={cols}
+                        size={size}
+                        rows={rows}
+                    />
+                ))}
             </div>
         </React.Fragment>
     );

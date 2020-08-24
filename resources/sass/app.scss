@@ -20,11 +20,13 @@
 
 @import 'home';
 @import 'page';
+@import 'author';
 @import 'auction';
-
 
 @import './blocks/news';
 @import './blocks/auction.announce';
 @import './blocks/auction.preview';
 @import './blocks/carousel';
 @import './blocks/waterfall';
+@import './blocks/lot';
+@import './blocks/announces';

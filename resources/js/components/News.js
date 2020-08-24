@@ -171,7 +171,7 @@ export default function News(props) {
                 </div>
                 <div className="text-center">
                     <a href="/news" className="show-more">
-                        {__('Показать больше')}
+                        {__('Show&nbsp;more')}
                     </a>
                 </div>
             </React.Fragment>

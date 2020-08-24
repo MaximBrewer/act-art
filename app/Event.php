@@ -18,13 +18,15 @@ class Event extends Model
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'meta_description', 'meta_keywords'];
 
     const PUBLISHED = 'PUBLISHED';
-    const EXHIBIT = 'NEWS';
-    const BLOG = 'BLOG';
+    const EXHIBITION = 'exhibition';
+    const WORKSHOP = 'workshop';
 
     protected $dateFormat = 'Y-m-d H:i:s';
-    protected $dateTimeOutFormat = 'j/m/Y';
+    protected $dateStartFormat = 'j F';
+    protected $dateFinishFormat = 'j F Y';
     protected $dates = [
-        'date',
+        'start',
+        'finish',
     ];
 
     protected $guarded = [];
@@ -48,9 +50,9 @@ class Event extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeNews(Builder $query)
+    public function scopeExhibition(Builder $query)
     {
-        return $query->where('category', '=', static::NEWS);
+        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->where('spaces.type', '=', static::EXHIBITION);
     }
 
 
@@ -61,9 +63,9 @@ class Event extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeBlog(Builder $query)
+    public function scopeWorkshop(Builder $query)
     {
-        return $query->where('category', '=', static::BLOG);
+        // return $query->where('category', '=', static::BLOG);
     }
 
 
@@ -86,9 +88,20 @@ class Event extends Model
     }
 
 
-    public function getDateoutAttribute()
+    public function space()
     {
-        return Date::createFromFormat($this->dateFormat, $this->date)->format($this->dateTimeOutFormat);
+        return $this->belongsTo('App\Space');
     }
 
+
+    public function getDatesAttribute()
+    {
+        if (
+            Date::createFromFormat($this->dateFormat, $this->start)->format("Y") ==
+            Date::createFromFormat($this->dateFormat, $this->finish)->format("Y")
+        )
+            return
+                Date::createFromFormat($this->dateFormat, $this->start)->format($this->dateStartFormat) . ' - ' .
+                Date::createFromFormat($this->dateFormat, $this->finish)->format($this->dateFinishFormat);
+    }
 }

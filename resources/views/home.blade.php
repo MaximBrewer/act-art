@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('body-class')class="home"@endsection
-@section('title'){{ __('Act-Art.ru | онлайн-аукцион современного искусства') }}@endsection
+@section('title'){{ __('Act-Art.ru | online auction of contemporary art') }}@endsection
 
 @section('content')
 <section class="home-banner">
