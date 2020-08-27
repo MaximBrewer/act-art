@@ -74449,8 +74449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AuctionProfile; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/AuctionPreviewLeft */ "./resources/js/components/blocks/AuctionPreviewLeft.js");
-/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
+/* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-countdown */ "./node_modules/react-countdown/dist/index.es.js");
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
@@ -74512,7 +74511,6 @@ function _arrayWithHoles(arr) {
 
 
 
-
 var declOfNum = function declOfNum(number, titles) {
   var cases = [2, 0, 1, 1, 1, 2];
   return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
@@ -74547,25 +74545,25 @@ var renderer = function renderer(_ref) {
       className: "days"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "number h5"
-    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(days)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(days, [__("день"), __("дня"), __("дней")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(days)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(days, [__("день"), __("дня"), __("дней")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "separator h5"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "ours"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "number h5"
-    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(hours)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(hours, [__("час"), __("часа"), __("часов")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(hours)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(hours, [__("час"), __("часа"), __("часов")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "separator h5"
     }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "minutes"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "number h5"
-    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(minutes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(minutes, [__("мин."), __("мин."), __("мин.")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(minutes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(minutes, [__("мин."), __("мин."), __("мин.")]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "separator h5"
     }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "seconds"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "number h5"
-    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_2__["zeroPad"])(seconds)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(seconds, [__("сек."), __("сек."), __("сек.")])))));
+    }, Object(react_countdown__WEBPACK_IMPORTED_MODULE_1__["zeroPad"])(seconds)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, declOfNum(seconds, [__("сек."), __("сек."), __("сек.")])))));
   }
 };
 
@@ -74578,7 +74576,7 @@ function AuctionProfile(props) {
       setState = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    axios.get("/api/" + window.lang + "/auctions/coming?attr=" + props.data.attr).then(function (res) {
+    axios.get("/api/" + window.lang + "/auctions/coming?ids=" + user.auctions.join(",")).then(function (res) {
       setState({
         auctions: res.data.auctions
       });
@@ -74597,7 +74595,7 @@ function AuctionProfile(props) {
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "countdown-wrapp"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       date: item.dateatom,
       renderer: renderer
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

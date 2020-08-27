@@ -82,4 +82,13 @@ class User extends \TCG\Voyager\Models\User
             ->select('lot_id')
             ->where('user_id', $this->id)->get()->toArray());
     }
+
+    public function getAidsAttribute()
+    {
+        return array_map(function ($a) {
+            return $a->auction_id;
+        }, DB::table('user_auction')
+            ->select('auction_id')
+            ->where('user_id', $this->id)->get()->toArray());
+    }
 }

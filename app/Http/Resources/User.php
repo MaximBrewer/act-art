@@ -19,7 +19,8 @@ class User extends JsonResource
             'id' => $this->id,
             'name' => $this->getTranslatedAttribute('name'),
             'lastname' => $this->getTranslatedAttribute('lastname'),
-            'favorites' => $this->fids
+            'favorites' => $this->fids,
+            'auctions' => $this->aids
         ];
     }
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import AuctionPreviewLeft from "./blocks/AuctionPreviewLeft";
 import Countdown, {
     zeroPad,
     calcTimeDelta,
@@ -92,8 +91,7 @@ export default function AuctionProfile(props) {
             .get(
                 "/api/" +
                     window.lang +
-                    "/auctions/coming?attr=" +
-                    props.data.attr
+                    "/auctions/coming?ids=" + user.auctions.join(",")
             )
             .then(res => {
                 setState({
