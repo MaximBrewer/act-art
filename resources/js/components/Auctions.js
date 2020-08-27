@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
-import AuctionPreviewLeft from "./AuctionPreviewLeft";
-import AuctionPreviewRight from "./AuctionPreviewRight";
+import AuctionPreviewLeft from "./blocks/AuctionPreviewLeft";
+import AuctionPreviewRight from "./blocks/AuctionPreviewRight";
 
 export default function AuctionCarousel() {
     const [state, setState] = useState({

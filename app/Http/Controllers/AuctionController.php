@@ -14,7 +14,10 @@ class AuctionController extends Controller
      */
     public function index()
     {
-        return view('auction.index');
+        return view('auction.index', [
+            'regular' => Auction::coming()->where('attr', 'regular')->get(),
+            'special' => Auction::coming()->where('attr', 'special')->get()
+        ]);
     }
 
     /**

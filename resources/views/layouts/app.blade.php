@@ -217,19 +217,7 @@
                         <div
                             class="order-1 order-md-1 d-flex flex-column flex-md-row flex-xl-column order-xl-2 col-xl-30">
                             <div class="order-2 order-md-1 pb-md-5">
-                                <form>
-                                    <div class="form-group mb-0">
-                                        <label
-                                            for="subscribeFooterEmail">{{  __('Узнавайте первым о новых лотах, специальных предложениях, новых выставках в нашей рассылке') }}</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend d-none d-lg-block">
-                                                @include('svg.footer.mail')
-                                            </div>
-                                            <input type="email" class="form-control" aria-describedby="email"
-                                                placeholder="{{  __('Ваш E-mail') }}" id="subscribeFooterEmail">
-                                        </div>
-                                    </div>
-                                </form>
+                                @widget('subscribe')
                             </div>
                             <div class="order-1 order-md-2 d-flex flex-row soc-wr pb-md-5">
                                 <div class="d-none d-xl-block flex-fill">

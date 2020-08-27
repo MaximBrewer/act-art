@@ -37,6 +37,7 @@
         }
     }
     .title {
+        display: block;
         margin-top: 1rem;
         @include sssmal_text_16_medium;
     }

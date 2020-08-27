@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="announce-slider-wrapper">
-            <div class="waterfall" data-entity="events" data-action="add" data-preview="preview"
+            <div class="act-waterfall" data-entity="events" data-action="add" data-preview="preview"
                 data-category="exhibition" data-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'
                 data-view='{"xs":1,"sm":2,"md":2,"lg":6,"xl":3,"xxl":4}'
                 data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'></div>
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="announce-slider-wrapper">
-            <div class="waterfall" data-entity="events" data-action="add" data-preview="preview" data-category="workshop"
+            <div class="act-waterfall" data-entity="events" data-action="add" data-preview="preview" data-category="workshop"
                 data-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'
                 data-view='{"xs":1,"sm":2,"md":2,"lg":6,"xl":3,"xxl":4}'
                 data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'></div>
@@ -85,7 +85,7 @@
     <div class="container">
         <div class="sticky-section"><span>{{ __('act•art blog') }}</span></div>
         <div class="waterfall-wrapper">
-            <div class="waterfall" data-entity="post" data-action="go" data-preview="waterfall" data-category="blog"
+            <div class="act-waterfall" data-entity="post" data-action="go" data-preview="waterfall" data-category="blog"
                 data-limit=         '{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":3}'
                 data-view=          '{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}'
                 data-first-limit=   '{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":3}'></div>

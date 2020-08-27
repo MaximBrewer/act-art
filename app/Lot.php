@@ -48,6 +48,11 @@ class Lot extends Model
         return (float) $value / 100;
     }
 
+    public function bets()
+    {
+        return $this->hasMany('App\Bet')->orderBy('created_at', 'DESC');;
+    }
+
 
     public function user()
     {

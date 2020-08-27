@@ -1,0 +1,30 @@
+.sorting {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+    span {
+        display: flex;
+        margin-left: 1rem;
+    }
+    a {
+        display: flex;
+        margin-left: 1rem;
+        span {
+            margin-right: 0.5rem;
+        }
+        svg {
+            fill: $primary;
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+        &.active,
+        &:hover {
+            text-decoration: none;
+            color: $red;
+            svg {
+                fill: $red;
+            }
+        }
+    }
+}

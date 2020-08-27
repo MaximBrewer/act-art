@@ -65,7 +65,7 @@
     <div class="container">
         <div class="h2">{{ __('See also') }}</div>
         <div class="announce-slider-wrapper">
-            <div class="waterfall" data-entity="events" data-action="go" data-preview="preview"
+            <div class="act-waterfall" data-entity="events" data-action="go" data-preview="preview"
                 data-category="exhibition" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
                 data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
                 data-first-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'></div>

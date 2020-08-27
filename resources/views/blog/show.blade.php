@@ -52,7 +52,9 @@
             <p>{{  __('Liked? Share with your friends!') }}</p>
             <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
             <script src="https://yastatic.net/share2/share.js"></script>
-            <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin"></div>
+            <div class="ya-share2"
+                data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin">
+            </div>
         </div>
     </div>
 </section>
@@ -64,7 +66,10 @@
 <section class="blog-section">
     <div class="container">
         <div class="waterfall-wrapper">
-            <div class="waterfall" data-entity="post" data-action="go" data-preview="waterfall" data-category="blog" data-limit='{"xs":4,"sm":3,"md":3,"xl":4,"lg":4,"xxl":4}' data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-first-limit='{"xs":3,"sm":3,"md":3,"xl":3,"lg":3,"xxl":3}'></div>
+            <div class="act-waterfall" data-entity="post" data-action="go" data-preview="waterfall" data-category="blog"
+                data-limit='{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                data-first-limit='{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'></div>
         </div>
     </div>
 </section>

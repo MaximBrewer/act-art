@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
-class HomeController extends Controller
+class ProfileController extends Controller
 {
+    //
     /**
      * Show the application dashboard.
      *
@@ -16,9 +18,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) return redirect('/');
         JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
+            'user' => new UserResource(Auth::user())
         ]);
-        return view('home');
+        return view('profile.index', ["user" => Auth::user()]);
     }
 }

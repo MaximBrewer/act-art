@@ -21,8 +21,10 @@ if (typeof io !== "undefined") {
     });
 }
 
-import React, { useRef, lazy } from "react";
+import React from "react";
 import { render } from "react-dom";
+import Flash from "./components/Flash";
+import { __ } from "./trans.js";
 
 // const HomeGalleries = lazy(() => import("./components/HomeGalleries"));
 // const HomeCarousel = lazy(() => import("./components/HomeCarousel"));
@@ -31,17 +33,18 @@ import { render } from "react-dom";
 // const HomeNews = lazy(() => import("./components/HomeNews"));
 // const HomeExperts = lazy(() => import("./components/HomeExperts"));
 
-import { __ } from "./trans.js";
 import Gallery from "./components/Gallery";
-import HomeCarousel from "./components/HomeCarousel";
-import HomeWaterfall from "./components/HomeWaterfall";
-import Announce from "./components/Announce";
+import Auctions from "./components/Auctions";
+import AuctionsList from "./components/AuctionsList";
+import AuctionsProfile from "./components/AuctionsProfile";
+// import HomeWaterfall from "./components/HomeWaterfall";
+// import Announce from "./components/Carousels";
+// import Postsgrid from "./components/Postsgrid";
+
 import News from "./components/News";
 import Waterfall from "./components/Waterfall";
-import Postsgrid from "./components/Postsgrid";
 import Carousel from "./components/Carousel";
 import Experts from "./components/Experts";
-import Flash from './components/Flash';
 
 import SearchForm from "./components/SearchForm";
 
@@ -174,18 +177,19 @@ const changeWindow = () => {
         });
     }
 };
+
 document.addEventListener("DOMContentLoaded", () => {
     render(<Flash />, document.getElementById("flashHolder"));
     if (window.innerWidth > 991) {
         !document.getElementById("galleryHolder") ||
             render(<Gallery />, document.getElementById("galleryHolder"));
     }
-    !document.getElementById("announceSlider") ||
-        render(<Announce />, document.getElementById("announceSlider"));
-    !document.getElementById("bannerCarousel") ||
-        render(<HomeCarousel />, document.getElementById("bannerCarousel"));
-    !document.getElementById("artWaterfall") ||
-        render(<HomeWaterfall />, document.getElementById("artWaterfall"));
+    // !document.getElementById("announceSlider") ||
+    //     render(<Announce />, document.getElementById("announceSlider"));
+    !document.getElementById("actAuctions") ||
+        render(<Auctions />, document.getElementById("actAuctions"));
+    // !document.getElementById("artWaterfall") ||
+    //     render(<HomeWaterfall />, document.getElementById("artWaterfall"));
     !document.getElementById("newsSlider") ||
         render(
             <News data={document.getElementById("newsSlider").dataset} />,
@@ -195,20 +199,30 @@ document.addEventListener("DOMContentLoaded", () => {
         !document.getElementById("expertsSlider") ||
             render(<Experts />, document.getElementById("expertsSlider"));
     }
-    changeWindow();
-    setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
 
-    let carousels = document.getElementsByClassName("carousel-wrapper");
+    let sliders = document.getElementsByClassName("act-slider");
 
-    [].forEach.call(carousels, function(carousel) {
-        render(<Carousel data={carousel.dataset} />, carousel);
+    [].forEach.call(sliders, function(slider) {
+        render(<Slider data={slider.dataset} />, slider);
     });
 
-    let waterfalls = document.getElementsByClassName("waterfall");
+    let auctionsLists = document.getElementsByClassName("act-auctions-list");
+
+    [].forEach.call(auctionsLists, function(auctionsList) {
+        render(<AuctionsList data={auctionsList.dataset} />, auctionsList);
+    });
+
+    let auctionsProfiles = document.getElementsByClassName("act-auctions-profile");
+
+    [].forEach.call(auctionsProfiles, function(auctionsProfile) {
+        render(<AuctionsProfile data={auctionsProfile.dataset} />, auctionsProfile);
+    });
+
+    let waterfalls = document.getElementsByClassName("act-waterfall");
 
     [].forEach.call(waterfalls, function(waterfall) {
-        let data = {}
-        for(let i in waterfall.dataset){
+        let data = {};
+        for (let i in waterfall.dataset) {
             try {
                 data[i] = JSON.parse(waterfall.dataset[i]);
             } catch (e) {
@@ -217,6 +231,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         render(<Waterfall data={data} />, waterfall);
     });
+
+    let carousels = document.getElementsByClassName("act-carousel");
+
+    [].forEach.call(carousels, function(carousel) {
+        let data = {};
+        for (let i in carousel.dataset) {
+            try {
+                data[i] = JSON.parse(carousel.dataset[i]);
+            } catch (e) {
+                data[i] = carousel.dataset[i];
+            }
+        }
+        render(<Carousel data={data} />, carousel);
+    });
+
+    changeWindow();
+    setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
         if (window.innerWidth > 1279) {
@@ -273,10 +304,25 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     });
 
-    // console.log(Echo)
-    // console.log(window.Echo)
-    window.Echo.channel("Auction.1").listen("AuctionUpdate", function(e) {
-        //that.$emit("gotAuction", e.auction);
+    window.Echo.channel("Auction").listen("Auction", function(e) {
+        console.log(e);
+        window.dispatchEvent(
+            new CustomEvent("auction", {
+                detail: {
+                    auction: e.auction
+                }
+            })
+        );
+    });
+
+    window.Echo.channel("Lot").listen("Lot", function(e) {
+        window.dispatchEvent(
+            new CustomEvent("lot", {
+                detail: {
+                    lot: e.lot
+                }
+            })
+        );
     });
 });
 document.addEventListener("scroll", () => changeWindow());
@@ -285,3 +331,30 @@ window.addEventListener("resize", () => {
         render(<HomeWaterfall />, document.getElementById("artWaterfall"));
     changeWindow();
 });
+window.scrollToElement = e => {
+    let elem = document.getElementById(e.dataset.id),
+        toY = elem.offsetTop * 1 - 48,
+        fromY = document.scrollingElement.scrollTop * 1,
+        scrollY = fromY * 1,
+        oldTimestamp = null;
+
+        console.log(toY)
+
+    function step(newTimestamp) {
+        if (oldTimestamp !== null) {
+            if (fromY < toY) {
+                scrollY += 100;
+                if (scrollY >= toY) return false;
+                document.scrollingElement.scrollTop = scrollY;
+            } else {
+                scrollY -= 100;
+                document.scrollingElement.scrollTop = scrollY;
+                if (scrollY <= toY) return false;
+            }
+        }
+        oldTimestamp = newTimestamp;
+        window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+    return false;
+};

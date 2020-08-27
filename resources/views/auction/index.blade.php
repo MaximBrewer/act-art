@@ -1,24 +1,88 @@
 @extends('layouts.app')
 @section('content')
-<section class="auction-header"
-    style="background-image: url({{Voyager::image($auction->thumbnail('big', 'header_image'))}});background-position: top center;">
-    <div class="darkener">
-        <div class="container">
-            <div class="h1">{!! $auction->getTranslatedAttribute('announce_text') !!}</div>
-            <div class="h3">{{ $auction->dateout }} &nbsp;&nbsp;&nbsp;
-                <a href="/auction/{{ $auction->id }}" class="btn btn-default-inverse">{{ __('подробнее') }}</a></div>
-        </div>
-    </div>
-</section>
-
-
-<section class="auction-section">
+<section class="auctions-section regular-list" id="regularAuctionsList">
     <div class="container">
-        <div class="sticky-section"><span>{!! $auction->getTranslatedAttribute('title') !!}</span></div>
-        <div class="waterfall-wrapper">
-            <div class="waterfall" data-entity="post" data-action="add" data-preview="waterfall" data-category="blog" data-limit='{"xs":4,"sm":3,"md":3,"xl":4,"lg":4,"xxl":4}' data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-first-limit='{"xs":3,"sm":3,"md":3,"xl":3,"lg":3,"xxl":3}'></div>
+        <div class="sticky-section"><span>{{ __('regular auctions') }}</span></div>
+        <div class="row announce mb-5">
+            <div class="col col-xl-40 col-xxl-38">
+                <h2 class="h1">{{ __('Regular auctions') }}</h2>
+                <div class="sub_h1 d-none d-xl-block">
+                    {{ __('Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update.') }}
+                </div>
+            </div>
+            <div class="col col-xl-20 col-xxl-22 d-none d-xl-block">
+                <a class="see-other" href="#" onclick="scrollToElement(this);return false;"
+                    data-id="specialAuctionsList">
+                    <div class="text-14">{{  __("see also:") }}</div>
+                    <div class="h5">{{  __('Themed auctions') }}</div>
+                    <svg viewBox="0 0 36 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 17.8378L18 32.4324L33 17.8378" stroke="white" stroke-width="8" />
+                        <path d="M17.5947 30.8108L17.5947 -2.2471e-05" stroke="white" stroke-width="8" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="act-auctions-list" data-attr="regular"></div>
+    </div>
+</section>
+<section class="auctions-section special-list" id="specialAuctionsList">
+    <div class="container">
+        <div class="sticky-section"><span>{{ __('themed auctions') }}</span></div>
+        <div class="row announce mb-5">
+            <div class="col col-xl-40 col-xxl-38">
+                <h2 class="h1">{{ __('Themed auctions') }}</h2>
+                <div class="sub_h1 d-none d-xl-block">
+                    {{ __('Permanent exhibition and sale of works by young authors, on the auction platform. Follow, choose, bargain, collect your collection. Weekly update.') }}
+                </div>
+            </div>
+            <div class="col col-xl-20 col-xxl-22 d-none d-xl-block">
+                <a class="see-other" href="#" onclick="scrollToElement(this);return false;"
+                    data-id="regularAuctionsList">
+                    <div class="text-14">{{  __("see also:") }}</div>
+                    <div class="h5">{{  __('Regular auctions') }}</div>
+                    <svg viewBox="0 0 36 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M33 20.5946L18 6L3 20.5946" stroke="white" stroke-width="8" />
+                        <path d="M18.4053 7.62158L18.4053 38.4324" stroke="white" stroke-width="8" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="act-auctions-list" data-attr="special"></div>
+    </div>
+</section>
+<section class="auctions-section">
+    <div class="container">
+        <div class="row announce">
+            <div class="col col-xl-40 col-xxl-38">
+            </div>
+            <div class="col col-xl-20 col-xxl-22 text-center">
+                <a href="/auctions/archive" class="btn btn-default">{{ __('ARCHIVE OF AUCTIONS') }}</a>
+            </div>
         </div>
     </div>
 </section>
+<section class="subscribe-section">
+    <div class="container">
+        <div class="row announce justify-content-center">
+            <div class="col col-xl-40">
+                <div class="text-center">
+                    @widget('subscribe')
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="auctions-section d-none d-md-block">
+    <div class="container">
+        <div class="row announce justify-content-center">
+            <div class="col col-xl-40">
+                <div class="text-center sub_h1">
+                    {{ __('You can also purchase selected works by contemporary Russian authors in our permanent online gallery.') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@widget('popular_categories')
 @widget('marquee')
 @endsection

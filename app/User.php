@@ -7,11 +7,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use TCG\Voyager\Traits\Translatable;
 use Illuminate\Support\Facades\DB;
+use TCG\Voyager\Traits\Resizable;
 
 class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
     use Translatable;
+    use Resizable;
     protected $translatable = ['name', 'surname', 'middlename', 'text'];
 
     /**
@@ -50,6 +52,11 @@ class User extends \TCG\Voyager\Models\User
     public function groups()
     {
         return $this->belongsToMany('App\Group');
+    }
+
+    public function auctions()
+    {
+        return $this->belongsToMany('App\Auction');
     }
 
     public function professions()

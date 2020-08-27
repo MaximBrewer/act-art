@@ -50,8 +50,12 @@ Route::group(['prefix' => 'authors'], function () {
     Route::get('/{id}/lots/{lot_id}', '\App\Http\Controllers\AuthorController@lot');
 });
 
-Route::group(['prefix' => 'auction'], function () {
-    Route::get('/', '\App\Http\Controllers\AuctionController@index')->name('auction.index');
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/', '\App\Http\Controllers\ProfileController@index')->name('profile.index');
+});
+
+Route::group(['prefix' => 'auctions'], function () {
+    Route::get('/', '\App\Http\Controllers\AuctionController@index')->name('auctions.index');
     Route::group(['prefix' => '{id}'], function () {
         Route::get('/', '\App\Http\Controllers\AuctionController@show');
         Route::get('/online', '\App\Http\Controllers\AuctionController@online');

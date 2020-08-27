@@ -5,6 +5,10 @@ use TCG\Voyager\Facades\Voyager;
 
 use Illuminate\Support\ServiceProvider;
 use App\FormFields\MultipleListHandler;
+use App\Observers\Lot as LotObserver;
+use App\Observers\Auction as AuctionObserver;
+use App\Lot;
+use App\Auction;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         //
     }
 
@@ -25,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Lot::observe(LotObserver::class);
+        Auction::observe(AuctionObserver::class);
     }
 }

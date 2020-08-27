@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import StackGrid, { transitions } from "react-stack-grid";
+import { sortBy } from "lodash";
 
 export default function Waterfall(props) {
     const { scaleDown } = transitions;
@@ -7,7 +8,11 @@ export default function Waterfall(props) {
         photos: [],
         favorites: user ? user.favorites : null,
         more: true,
-        page: 0
+        page: 0,
+        sort: {},
+        filter: {
+            status: "all"
+        }
     });
 
     const toFavorite = (id, e) => {
@@ -46,6 +51,7 @@ export default function Waterfall(props) {
                         }
                     })
                 );
+                props.data.entity == "favorites" && getGallery();
                 setState(prevState => {
                     return { ...prevState, favorites };
                 });
@@ -83,23 +89,20 @@ export default function Waterfall(props) {
     };
 
     const addGallery = e => {
-        if (!!e) e.preventDefault();
+        e.preventDefault();
         let url =
             props.data.entity == "blog" || props.data.entity == "post"
                 ? "/posts?entity=" + props.data.entity + "&"
                 : "/" + props.data.entity + "?";
         props.data.category && (url += "category=" + props.data.category);
         props.data.author && (url += "author=" + props.data.author);
+        props.data.lastbets && (url += "lastbets=1");
+        props.data.entity == "lots" &&
+            (url += "&status=" + state.filter.status);
+        props.data.entity == "favorites" ||
+            (url += "&limit=" + getLimit() + "&offset=" + getOffset());
         axios
-            .get(
-                "/api/" +
-                    window.lang +
-                    url +
-                    "&offset=" +
-                    getOffset() +
-                    "&limit=" +
-                    getLimit()
-            )
+            .get("/api/" + window.lang + url)
             .then(res => {
                 setState(prevState => {
                     return {
@@ -115,11 +118,66 @@ export default function Waterfall(props) {
             });
     };
 
+    const getGallery = filter => {
+        let url =
+            props.data.entity == "blog" || props.data.entity == "post"
+                ? "/posts?entity=" + props.data.entity + "&"
+                : "/" + props.data.entity + "?";
+        props.data.category && (url += "category=" + props.data.category);
+        props.data.author && (url += "author=" + props.data.author);
+        props.data.lastbets && (url += "lastbets=1");
+        props.data.entity == "lots" && (url += "&status=" + filter.status);
+        (props.data.entity == "favorites" &&
+            (url += "&ids=" + user.favorites.join(","))) ||
+            (url += "&offset=0" + "&limit=" + getLimit());
+        axios
+            .get("/api/" + window.lang + url)
+            .then(res => {
+                setState(prevState => {
+                    return {
+                        ...prevState,
+                        photos: res.data.items,
+                        page: 1,
+                        more: res.data.next > 0,
+                        filter: filter
+                    };
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    const updateLot = event => {
+        setState(prevState => {
+            console.log(prevState);
+            let photos = [];
+            for (let i in prevState.photos) {
+                if (event.detail.lot.id == prevState.photos[i].id) {
+                    photos.push(event.detail.lot);
+                } else {
+                    photos.push(prevState.photos[i]);
+                }
+            }
+            return {
+                ...prevState,
+                photos
+            };
+        });
+    };
+
+    const FilterBy = (field, values) => {
+        let filter = {};
+        filter[field] = values;
+        getGallery(filter);
+    };
+
     useEffect(() => {
+        window.addEventListener("lot", updateLot);
         props.data.firstLimit = props.data.firstLimit
             ? props.data.firstLimit
             : props.data.limit;
-        addGallery();
+        getGallery(state.filter);
     }, []);
 
     const showMoreElems = () => {
@@ -168,6 +226,74 @@ export default function Waterfall(props) {
 
     return (
         <React.Fragment>
+            {props.data.sortable && (
+                <div className="sorting">
+                    <span>{__("Sort by")}: </span>
+                    <a
+                        href="#"
+                        className={
+                            !!state.filter.status &&
+                            state.filter.status == "all"
+                                ? `active`
+                                : ``
+                        }
+                        onClick={e => {
+                            e.preventDefault();
+                            FilterBy("status", "all");
+                        }}
+                    >
+                        <span>{__("All")}</span>
+                        <svg
+                            viewBox="0 0 18 18"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                        </svg>
+                    </a>
+                    <a
+                        href="#"
+                        className={
+                            !!state.filter.status &&
+                            state.filter.status == "available"
+                                ? `active`
+                                : ``
+                        }
+                        onClick={e => {
+                            e.preventDefault();
+                            FilterBy("status", "available");
+                        }}
+                    >
+                        <span>{__("Available for purchase")}</span>
+                        <svg
+                            viewBox="0 0 18 18"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                        </svg>
+                    </a>
+                    <a
+                        href="#"
+                        className={
+                            !!state.filter.status &&
+                            state.filter.status == "sold"
+                                ? `active`
+                                : ``
+                        }
+                        onClick={e => {
+                            e.preventDefault();
+                            FilterBy("status", "sold");
+                        }}
+                    >
+                        <span>{__("Sold")}</span>
+                        <svg
+                            viewBox="0 0 18 18"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M9 18L0.339746 3L17.6603 3L9 18Z" />
+                        </svg>
+                    </a>
+                </div>
+            )}
             <StackGrid
                 appear={scaleDown.appear}
                 appeared={scaleDown.appeared}
@@ -181,7 +307,10 @@ export default function Waterfall(props) {
                 className="waterfall-inner"
             >
                 {state.photos.map((item, index) => {
-                    if (props.data.entity == "lots") {
+                    if (
+                        props.data.entity == "lots" ||
+                        props.data.entity == "favorites"
+                    ) {
                         return (
                             <div key={index} className="lot-item">
                                 <div
@@ -207,7 +336,7 @@ export default function Waterfall(props) {
                                         }
                                         style={{
                                             position: "absolute",
-                                            top: "-.5rem",
+                                            top: ".5rem",
                                             right: ".5rem"
                                         }}
                                     >
@@ -262,7 +391,12 @@ export default function Waterfall(props) {
                                                 fill="#FF665E"
                                             />
                                         </svg>
-                                        <span>${item.price}</span>
+                                        <span>
+                                            $
+                                            {item.bets.length
+                                                ? item.bets[0].bet
+                                                : item.price}
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="matherial">
@@ -274,8 +408,35 @@ export default function Waterfall(props) {
                                     {item.width} х {item.height}
                                     {__("см")}
                                 </div>
-                                <a className={item.status + ` status`}>
-                                    {__("status-" + item.status)}
+                                {props.data.lastbets || (
+                                    <a
+                                        className={item.status + ` status`}
+                                        href="#"
+                                    >
+                                        {__("#status-" + item.status + "#")}
+                                    </a>
+                                )}
+                            </div>
+                        );
+                    } else if (props.data.entity == "authors") {
+                        return (
+                            <div key={index} className="author-item">
+                                <div
+                                    className="image"
+                                    style={{
+                                        backgroundImage:
+                                            "url(" + item.preview + ")",
+                                        paddingTop:
+                                            (item.pxheight / item.pxwidth) *
+                                                100 +
+                                            "%"
+                                    }}
+                                ></div>
+                                <a
+                                    className="title"
+                                    href={`/authors/` + item.id}
+                                >
+                                    {item.name + ` ` + item.surname}
                                 </a>
                             </div>
                         );
@@ -351,7 +512,7 @@ export default function Waterfall(props) {
                         } else {
                             return (
                                 <a
-                                    key={index + start}
+                                    key={index}
                                     className="waterfall-item"
                                     href={item.url}
                                 >

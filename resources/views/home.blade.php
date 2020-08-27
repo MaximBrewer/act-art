@@ -9,7 +9,7 @@
     <div class="container">
         <div class="h5 d-xl-none">{{ __('АУКЦИОНЫ') }}</div>
         <div class="sticky-section d-none d-xl-flex"><span>{{ __('ближайшие аукционы') }}</span></div>
-        <div id="bannerCarousel" class="carousel"></div>
+        <div id="actAuctions" class="carousel"></div>
     </div>
 </section>
 
@@ -21,12 +21,17 @@
         <div class="row announce">
             <div class="col col-xl-40 col-xxl-38">
                 <h2 class="h2">{{ __('ОНЛАЙН-ГАЛЕРЕЯ') }}</h2>
-                <div class="sub_h1 d-none d-xl-block">{{ __('Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.') }}</div>
+                <div class="sub_h1 d-none d-xl-block">
+                    {{ __('Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.') }}
+                </div>
                 <a href="/how-to-buy" class="h5 h5_underline d-none d-xl-block">{{ __('Как купить?') }}</a>
             </div>
         </div>
         <div class="art-waterfall-wrapper">
-            <div class="art-waterfall" id="artWaterfall"></div>
+            <div class="act-waterfall" data-entity="lots" data-action="go" data-preview="preview" data-lastbets="true"
+                data-limit='{"xs":12,"sm":12,"md":12,"lg":12,"xl":12,"xxl":12}'
+                data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'>
+            </div>
         </div>
     </div>
     <div class="dotted-gallery d-none d-xl-block">
@@ -35,25 +40,7 @@
     </div>
 </section>
 
-
-<section id="popularCategories" class="d-none d-sm-none d-md-block">
-    <div class="pt-5 mb-5">
-        <div class="container">
-            <h3 class="py-4">{{ __('Популярные категории') }}</h3>
-            <div class="py-4 d-flex justify-content-between categories">
-                @foreach($categories as $category)
-                <a href="/gallery/category/{{ $category->id }}" class="text-decoration-none d-flex justify-content-center align-items-center"
-                    style="background-image: url('{{ Voyager::image($category->thumbnail('preview', 'image')) }}')">
-                    <p class="px-1 text-center text-nowrap w-100 overflow-hidden text-truncate">{{ $category->getTranslatedAttribute('title') }}</p>
-                </a>
-                @endforeach
-            </div>
-            <div class="d-flex mt-5 justify-content-center align-items-end">
-                <a href="/gallery" class="btn btn-xl btn-primary">{{ __('СМОТРЕТЬ ВСЕ РАБОТЫ') }}</a>
-            </div>
-        </div>
-    </div>
-</section>
+@widget('popular_categories')
 
 <section id="homeAbout">
     <div class="dotted-bg"></div>

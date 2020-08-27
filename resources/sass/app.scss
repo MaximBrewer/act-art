@@ -21,12 +21,17 @@
 @import 'home';
 @import 'page';
 @import 'author';
+@import 'profile';
 @import 'auction';
 
+@import './blocks/sorting';
 @import './blocks/news';
+@import './blocks/author';
 @import './blocks/auction.announce';
 @import './blocks/auction.preview';
 @import './blocks/carousel';
 @import './blocks/waterfall';
 @import './blocks/lot';
+@import './blocks/subscribe';
 @import './blocks/announces';
+@import './blocks/popularCategories';

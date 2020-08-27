@@ -13,3 +13,57 @@
         max-width: 60rem;
     }
 }
+.auctions-section {
+    padding: 3rem 0 5rem;
+}
+.see-other {
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    display: flex;
+    text-decoration: none !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: -3rem;
+    top: 0;
+    float: right;
+    .h5 {
+        text-align: center;
+        max-width: 80%;
+        text-transform: uppercase;
+    }
+    svg {
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .text-14 {
+        color: $white;
+        text-align: center;
+        max-width: 80%;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+    }
+}
+.regular-list {
+    background-color: $fonlight;
+    .see-other {
+        background-color: $red;
+        .h5 {
+            color: $primary;
+        }
+    }
+}
+.special-list {
+    .see-other {
+        background-color: $primary;
+        .h5 {
+            color: $red;
+        }
+    }
+}

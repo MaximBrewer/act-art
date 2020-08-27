@@ -10,19 +10,19 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class AuctionUpdate
+class Lot implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $auction;
+    public $lot;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($auction)
+    public function __construct($lot)
     {
-        $this->auction = $auction;
+        $this->lot = $lot;
         //
     }
 
@@ -33,6 +33,6 @@ class AuctionUpdate
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('Auction.' . $this->auction);
+        return new Channel('Lot');
     }
 }

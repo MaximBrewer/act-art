@@ -38,10 +38,12 @@ Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function ()
 
     Route::get('lots/gallery', '\App\Http\Controllers\Api\LotController@gallery')->name('lot.gallery');
     Route::get('lots', '\App\Http\Controllers\Api\LotController@index')->name('lot.index');
+    Route::get('favorites', '\App\Http\Controllers\Api\LotController@favorites')->name('lot.favorites');
 
     
     Route::get('experts/all', '\App\Http\Controllers\Api\ExpertController@all')->name('expert.all');
 
+    Route::get('authors', '\App\Http\Controllers\Api\AuthorController@index')->name('author.index');
 
     // Route::get('posts/{type}', function ($lang, $type) {
     //     App::setLocale($lang);

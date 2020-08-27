@@ -132,7 +132,7 @@ export default function Gallery() {
                         t: 0,
                         bg: getRandomColor(),
                         href:
-                            "/auction/" + res.data.auction.id + "/lot/" + lot.id
+                            "/auctions/" + res.data.auction.id + "/lot/" + lot.id
                     };
                     let set = false;
                     loop2: for (let j in grid) {
@@ -214,7 +214,7 @@ export default function Gallery() {
                             </div>
                             <a
                                 className="h5_underline"
-                                href={"/auction/" + state.auction.id}
+                                href={"/auctions/" + state.auction.id}
                             >
                                 {__("Смотреть лоты")} →
                             </a>

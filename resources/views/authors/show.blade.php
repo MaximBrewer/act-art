@@ -33,15 +33,13 @@ $dir = storage_path("app/public/");
 $size = getimagesize($dir . $author->avatar);
 @endphp
 <section class="author-page">
-    {{-- <div class="background-text d-none d-xl-block">ПРОСТРАНСТВА</div> --}}
     <div class="container">
-        {{-- <div class="sticky-section d-none d-xl-flex"><span>{!! $author->getTranslatedAttribute('title') !!}</span></div> --}}
         <div class="row pb-2 pb-lg-5">
             <div class="col-xl-40">
                 <h2 class="h2">
                     {!! $author->getTranslatedAttribute('name') !!} {!! $author->getTranslatedAttribute('surname') !!}
                 </h2>
-                @if(!empty($author->groups))
+                @if(count($author->groups))
                 <div class="h5">/{!! $author->groups[0]->getTranslatedAttribute('title') !!}/</div>
                 @endif
                 <hr>
@@ -87,7 +85,7 @@ $size = getimagesize($dir . $author->avatar);
     <div class="container">
         <div class="h2">{{ __('Author\'s works') }}</div>
         <div class="author-works-list">
-            <div class="waterfall" data-entity="lots" data-action="add" data-preview="preview"
+            <div class="act-waterfall" data-entity="lots" data-action="add" data-preview="preview"
                 data-author="{{ $author->id }}" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
                 data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}' data-sortable='true' data-show-status='true'></div>
         </div>

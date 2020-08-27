@@ -87,7 +87,7 @@ $size = getimagesize($dir . $author->avatar);
     <div class="container">
         <div class="h2">{{ __('Other author\'s works') }}</div>
         <div class="author-works-list">
-            <div class="waterfall" data-entity="lots" data-action="add" data-preview="preview"
+            <div class="act-waterfall" data-entity="lots" data-action="add" data-preview="preview"
                 data-author="{{ $author->id }}" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
                 data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}' data-sortable='true' data-show-status='true'></div>
         </div>

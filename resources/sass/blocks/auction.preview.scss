@@ -5,8 +5,18 @@
         padding: 87.5% 1rem 0;
         color: $white;
         background-size: cover;
+        width: 100%;
         background-position: center;
         position: relative;
+        .countdown-wrapp {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            p {
+                text-align: center;
+                margin-bottom: 0.2rem;
+            }
+        }
         .banner-inner-text {
             position: absolute;
             top: 35%;

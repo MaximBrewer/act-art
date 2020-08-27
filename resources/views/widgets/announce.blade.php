@@ -5,7 +5,7 @@
         <div class="container">
             <div class="h1">{!! $auction->getTranslatedAttribute('announce_text') !!}</div>
             <div class="h3">{{ $auction->dateout }} &nbsp;&nbsp;&nbsp;
-                <a href="/auction/{{ $auction->id }}" class="btn btn-default-inverse">{{ __('подробнее') }}</a></div>
+                <a href="/auctions/{{ $auction->id }}" class="btn btn-default-inverse">{{ __('подробнее') }}</a></div>
         </div>
     </div>
 </section>
