@@ -91,7 +91,7 @@ export default function AuctionProfile(props) {
             .get(
                 "/api/" +
                     window.lang +
-                    "/auctions/coming?ids=" + user.auctions.join(",")
+                    "/auctions/coming?ids=" + (user.auctions.length ? user.auctions.join(",") : "0")
             )
             .then(res => {
                 setState({

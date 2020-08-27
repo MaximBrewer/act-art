@@ -74576,7 +74576,7 @@ function AuctionProfile(props) {
       setState = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    axios.get("/api/" + window.lang + "/auctions/coming?ids=" + user.auctions.join(",")).then(function (res) {
+    axios.get("/api/" + window.lang + "/auctions/coming?ids=" + (user.auctions.length ? user.auctions.join(",") : "0")).then(function (res) {
       setState({
         auctions: res.data.auctions
       });
@@ -76300,7 +76300,7 @@ function Waterfall(props) {
     props.data.author && (url += "author=" + props.data.author);
     props.data.lastbets && (url += "lastbets=1");
     props.data.entity == "lots" && (url += "&status=" + filter.status);
-    props.data.entity == "favorites" && (url += "&ids=" + user.favorites.join(",")) || (url += "&offset=0" + "&limit=" + getLimit());
+    props.data.entity == "favorites" && (url += "&ids=" + (user.favorites.length ? user.favorites.join(",") : "0")) || (url += "&offset=0" + "&limit=" + getLimit());
     axios.get("/api/" + window.lang + url).then(function (res) {
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {

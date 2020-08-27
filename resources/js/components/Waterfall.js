@@ -128,7 +128,7 @@ export default function Waterfall(props) {
         props.data.lastbets && (url += "lastbets=1");
         props.data.entity == "lots" && (url += "&status=" + filter.status);
         (props.data.entity == "favorites" &&
-            (url += "&ids=" + user.favorites.join(","))) ||
+            (url += "&ids=" + (user.favorites.length ? user.favorites.join(",") : "0"))) ||
             (url += "&offset=0" + "&limit=" + getLimit());
         axios
             .get("/api/" + window.lang + url)
