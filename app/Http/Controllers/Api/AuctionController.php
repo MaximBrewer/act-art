@@ -12,9 +12,10 @@ class AuctionController extends Controller
     //
     public function coming(Request $request)
     {
-        $auctions = Auction::coming()->get();
+        $auctions = Auction::coming();
+        if ($request->get('attr')) $auctions->where('attr', $request->get('attr'));
         return [
-            'auctions' => AuctionResource::collection($auctions)
+            'auctions' => AuctionResource::collection($auctions->get())
         ];
     }
 }
