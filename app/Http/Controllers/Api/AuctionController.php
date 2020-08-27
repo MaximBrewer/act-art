@@ -12,11 +12,14 @@ class AuctionController extends Controller
     //
     public function coming(Request $request)
     {
-        $auctions = Auction::coming();
+        $auctions = Auction::where(function ($query) {
+            $query;
+        });
         if ($request->get('attr')) $auctions->where('attr', $request->get('attr'));
-        if ($request->get('ids')) $auctions->whereIn('id', explode(",", $request->get('ids')));
+        if (strlen($request->get('ids'))) $auctions->whereIn('id', explode(",", $request->get('ids')));
+
         return [
-            'auctions' => AuctionResource::collection($auctions->get())
+            'auctions' => AuctionResource::collection($auctions->coming()->get())
         ];
     }
 }
