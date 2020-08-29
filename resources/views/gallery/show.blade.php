@@ -33,15 +33,13 @@ $dir = storage_path("app/public/");
 $size = getimagesize($dir . $author->avatar);
 @endphp
 <section class="author-page">
-    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
     <div class="container">
-        {{-- <div class="sticky-section"><span>{!! $author->getTranslatedAttribute('title') !!}</span></div> --}}
         <div class="row pb-2 pb-lg-5">
             <div class="col-xl-40">
                 <h2 class="h2">
                     {!! $author->getTranslatedAttribute('name') !!} {!! $author->getTranslatedAttribute('surname') !!}
                 </h2>
-                @if(!empty($author->groups))
+                @if(count($author->groups))
                 <div class="h5">/{!! $author->groups[0]->getTranslatedAttribute('title') !!}/</div>
                 @endif
                 <hr>
@@ -85,7 +83,7 @@ $size = getimagesize($dir . $author->avatar);
 
 <section class="author-works">
     <div class="container">
-        <div class="h2">{{ __('Other author\'s works') }}</div>
+        <div class="h2">{{ __('Author\'s works') }}</div>
         <div class="author-works-list">
             <div class="act-waterfall" data-entity="lots" data-action="add" data-preview="preview"
                 data-author="{{ $author->id }}" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'

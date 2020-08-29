@@ -54,6 +54,10 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/', '\App\Http\Controllers\ProfileController@index')->name('profile.index');
 });
 
+Route::group(['prefix' => 'gallery'], function () {
+    Route::get('/', '\App\Http\Controllers\GalleryController@index')->name('gallery.index');
+});
+
 Route::group(['prefix' => 'auctions'], function () {
     Route::get('/', '\App\Http\Controllers\AuctionController@index')->name('auctions.index');
     Route::group(['prefix' => '{id}'], function () {

@@ -4,9 +4,9 @@
 
 
 <section class="authors">
-    <div class="background-text d-none d-xl-block">{{ __('Authors') }}</div>
+    <div class="background-text">{{ __('Authors') }}</div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{{ __('authors') }}</span></div>
+        <div class="sticky-section"><span>{{ __('authors') }}</span></div>
         <div class="row announce">
             <div class="col-xxl-45 col-xl-40">
                 <h2 class="h2">{{ __('Authors') }}</h2>

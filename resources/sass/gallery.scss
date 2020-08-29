@@ -1,5 +1,46 @@
 @use "sass:map";
-#art {
+.gallery-section {
+    .gallery-works {
+        .h2 {
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 0.25rem solid $dark;
+        }
+        .stack-grid {
+            padding-top: 1.75rem;
+        }
+        ul {
+            list-style: outside none;
+            padding: 0;
+            margin: 0;
+            li {
+                padding: 0;
+                margin: 0;
+                span {
+                    font-weight: bold;
+                    display: block;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1rem;
+                    border-bottom: 0.25rem solid $dark;
+                }
+                ul {
+                    padding: 0 0 2rem 2rem;
+                    li {
+                        a {
+                            font-size: 0.875rem;
+                            line-height: 1rem;
+                            font-weight: 300;
+                            text-decoration: none !important;
+                            &:hover,
+                            &.active {
+                                color: $red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     padding: 3rem 0 2rem;
     .announce {
         > div {
@@ -103,7 +144,7 @@
                         line-height: 2rem;
                         white-space: nowrap;
                         svg {
-                            margin-right: .5rem;
+                            margin-right: 0.5rem;
                             position: relative;
                             top: -1px;
                             width: 15px;
@@ -150,13 +191,18 @@
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
         padding: 10rem 0 6rem;
+        .gallery-works {
+            .h2 {
+                border-bottom-width: 0.5rem;
+            }
+        }
         .dotted-gallery {
             z-index: -1;
             position: absolute;
-            top: 8.75rem;
+            top: 2.75rem;
             right: 0;
             width: 40%;
-            min-height: 26.625rem;
+            min-height: 32.625rem;
             display: flex;
             align-items: flex-end;
             overflow: hidden;
@@ -170,6 +216,7 @@
             }
             svg {
                 fill: white;
+                max-width: 40rem;
                 stroke: white;
                 position: absolute;
                 bottom: 3rem;
@@ -191,8 +238,6 @@
                 .sub_h1 {
                     padding-top: 2rem;
                     font-weight: 300;
-                    font-size: 18px;
-                    line-height: 21px;
                 }
                 ol {
                     padding-top: 3rem;
@@ -268,27 +313,9 @@
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
         padding: 10rem 0 6rem;
         .dotted-gallery {
-            z-index: -1;
-            position: absolute;
-            top: 8.75rem;
-            right: 0;
-            width: 40%;
-            min-height: 700px;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
             .dotted-bg {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-image: url("/images/dot.png");
             }
             svg {
-                position: absolute;
-                bottom: 3rem;
-                left: 3rem;
             }
         }
         .background-text {
@@ -306,8 +333,6 @@
                 .sub_h1 {
                     padding-top: 2rem;
                     font-weight: 300;
-                    font-size: 18px;
-                    line-height: 21px;
                 }
                 ol {
                     padding-top: 3rem;

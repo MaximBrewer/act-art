@@ -29,9 +29,9 @@
 @endsection
 @section('content')
 <section id="page"@if($page->image) class="dotted"@endif>
-    {{-- <div class="background-text d-none d-xl-block">ПРОСТРАНСТВА</div> --}}
+    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{!! $page->getTranslatedAttribute('title') !!}</span></div>
+        <div class="sticky-section"><span>{!! $page->getTranslatedAttribute('title') !!}</span></div>
         <div class="row pb-2 pb-lg-5">
             <div @if($page->image)class="col-xl-30 col-xxl-28"@else class="col-xl-60"@endif>
                 <h2 class="h2">{!! $page->getTranslatedAttribute('title') !!}</h2>

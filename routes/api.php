@@ -38,6 +38,7 @@ Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function ()
 
     Route::get('lots/gallery', '\App\Http\Controllers\Api\LotController@gallery')->name('lot.gallery');
     Route::get('lots', '\App\Http\Controllers\Api\LotController@index')->name('lot.index');
+    Route::get('lots/options', '\App\Http\Controllers\Api\LotController@options')->name('lot.options');
     Route::get('favorites', '\App\Http\Controllers\Api\LotController@favorites')->name('lot.favorites');
 
     

@@ -4,9 +4,9 @@
 
 
 <section class="announces" id="exhibitions">
-    <div class="background-text d-none d-xl-block">{{ __('Exhibitions') }}</div>
+    <div class="background-text">{{ __('Exhibitions') }}</div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{{ __('event announcements') }}</span></div>
+        <div class="sticky-section"><span>{{ __('event announcements') }}</span></div>
         <div class="row announce">
             <div class="col-xxl-45 col-xl-40">
                 <h2 class="h2">{{ __('EXHIBITIONS') }}</h2>
@@ -40,9 +40,9 @@
 </section>
 
 <section class="announces bggray" id="workshops">
-    <div class="background-text d-none d-xl-block">{{ __('Workshops') }}</div>
+    <div class="background-text">{{ __('Workshops') }}</div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{{ __('event announcements') }}</span></div>
+        <div class="sticky-section"><span>{{ __('event announcements') }}</span></div>
         <div class="row announce">
             <div class="col-xxl-45 col-xl-40">
                 <h2 class="h2">{{ __('Workshops') }}</h2>

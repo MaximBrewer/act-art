@@ -83,6 +83,12 @@
         </div>
     </div>
 </section>
-@widget('popular_categories')
+<section class="d-none d-md-block popular-categories-section">
+    <div class="pt-5 mb-5">
+        <div class="container">
+            @widget('popular_categories')
+        </div>
+    </div>
+</section>
 @widget('marquee')
 @endsection

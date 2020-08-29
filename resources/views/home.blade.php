@@ -5,26 +5,26 @@
 
 @section('content')
 <section class="home-banner">
-    <div class="background-text d-none d-xl-block">{{ __('АУКЦИОНЫ') }}</div>
+    <div class="background-text">{{ __('АУКЦИОНЫ') }}</div>
     <div class="container">
         <div class="h5 d-xl-none">{{ __('АУКЦИОНЫ') }}</div>
-        <div class="sticky-section d-none d-xl-flex"><span>{{ __('ближайшие аукционы') }}</span></div>
+        <div class="sticky-section"><span>{{ __('ближайшие аукционы') }}</span></div>
         <div id="actAuctions" class="carousel"></div>
     </div>
 </section>
 
 
-<section id="art">
-    <div class="background-text d-none d-xl-block">{{ __('Галерея') }}</div>
+<section class="gallery-section">
+    <div class="background-text">{{ __('Gallery') }}</div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{{ __('работы в продаже') }}</span></div>
+        <div class="sticky-section"><span>{{ __('works for sale') }}</span></div>
         <div class="row announce">
             <div class="col col-xl-40 col-xxl-38">
-                <h2 class="h2">{{ __('ОНЛАЙН-ГАЛЕРЕЯ') }}</h2>
+                <h2 class="h2">{{ __('ONLINE-GALLERY') }}</h2>
                 <div class="sub_h1 d-none d-xl-block">
-                    {{ __('Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.') }}
+                    {{ __('A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.') }}
                 </div>
-                <a href="/how-to-buy" class="h5 h5_underline d-none d-xl-block">{{ __('Как купить?') }}</a>
+                <a href="/how-to-buy" class="h5 h5_underline d-none d-xl-block pt-4">{{ __('How to buy') }}?</a>
             </div>
         </div>
         <div class="art-waterfall-wrapper">
@@ -39,31 +39,39 @@
         @include('svg.home.art-logo')
     </div>
 </section>
-
-@widget('popular_categories')
+<section class="d-none d-md-block popular-categories-section">
+    <div class="pt-5 mb-5">
+        <div class="container">
+            @widget('popular_categories')
+        </div>
+    </div>
+</section>
 
 <section id="homeAbout">
     <div class="dotted-bg"></div>
-    <div class="background-text d-none d-xl-block">
+    <div class="background-text">
         @include('svg.home.about-logo')
     </div>
     <div class="background-logo">
         @include('svg.home.about-bg-logo')
     </div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>о проекте</span></div>
+        <div class="sticky-section"><span>о проекте</span></div>
         <div class="row">
             <div class="col-xl-20">
             </div>
             <div class="col-xl-40">
                 <h2 class="h2">ПЛАТФОРМА<span class="d-xl-none"> ACT•ART</h2>
                 <hr>
-                <p class="sub_h2">Платформа Act-Art – независимый социально-ориентированный коммерческий проект. Наша
+                <p class="sub_h2">Платформа Act-Art – независимый социально-ориентированный коммерческий проект.
+                    Наша
                     цель – популяризация современного российского искуства в России и мире. Мы помогаем молодым и
                     именитым авторам найти своего зрителя и ценителя, делая процесс приобретения произведений
                     максимально удобным и демократичным.</p>
-                <p class="sub_h2">Являясь куратором возрождённого легендарного творческого объединения “ВсекоХудожник”,
-                    платформа Аct-Art эксклюзивно представляет лучшие работы его авторов. Часть вырученных на аукционах
+                <p class="sub_h2">Являясь куратором возрождённого легендарного творческого объединения
+                    “ВсекоХудожник”,
+                    платформа Аct-Art эксклюзивно представляет лучшие работы его авторов. Часть вырученных на
+                    аукционах
                     средств идёт на обеспечение и развитие мастерских, выставок, поддержку творческих проектов,
                     образовательные инициативы для горожан.</p>
                 <ul class="list-unstyled d-md-flex justify-content-between">
@@ -100,9 +108,9 @@
 
 
 <section id="announces">
-    <div class="background-text d-none d-xl-block">ПРОСТРАНСТВА</div>
+    <div class="background-text">ПРОСТРАНСТВА</div>
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>анонсы мероприятий</span></div>
+        <div class="sticky-section"><span>анонсы мероприятий</span></div>
         <div class="row announce">
             <div class="col-xl-40 col-xxl-38">
                 <h2 class="h2">ВЫСТАВКИ <span>и</span>&nbsp;МАСТЕРСКИЕ</h2>
@@ -110,7 +118,8 @@
                     собственными творческими
                     мастерскими и выставочными галереями.
                     Все кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
-                <p class="sub_h2 d-none d-xl-block">Все кластеры находятся в историческом центре Москвы и далее какой-то
+                <p class="sub_h2 d-none d-xl-block">Все кластеры находятся в историческом центре Москвы и далее
+                    какой-то
                     текст. Все
                     кластеры находятся в историческом центре Москвы и далее какой-то текст.</p>
             </div>
@@ -138,10 +147,10 @@
 
 
 <section id="news">
-    <div class="background-text d-none d-xl-block">НОВОСТИ</div>
+    <div class="background-text">НОВОСТИ</div>
     <div class="container">
         <div class="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
-        <div class="sticky-section d-none d-xl-flex"><span>последние заметки</span></div>
+        <div class="sticky-section"><span>последние заметки</span></div>
         <div class="news-slider-wrapper">
             <div class="news-slider" id="newsSlider"></div>
         </div>
@@ -151,7 +160,7 @@
 
 <section id="experts" class="d-none d-sm-none d-md-block">
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>экспертный совет</span></div>
+        <div class="sticky-section"><span>экспертный совет</span></div>
         <h2 class="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>
         <div class="experts-slider-wrapper">
             <div class="experts-slider" id="expertsSlider"></div>

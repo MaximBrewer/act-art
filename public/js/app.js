@@ -76194,10 +76194,11 @@ function Waterfall(props) {
     photos: [],
     favorites: user ? user.favorites : null,
     more: true,
+    options: [],
     page: 0,
     sort: {},
     filter: {
-      status: "all"
+      status: props.data.gallery ? "gallery" : "all"
     }
   }),
       _useState2 = _slicedToArray(_useState, 2),
@@ -76299,7 +76300,14 @@ function Waterfall(props) {
     props.data.category && (url += "category=" + props.data.category);
     props.data.author && (url += "author=" + props.data.author);
     props.data.lastbets && (url += "lastbets=1");
-    props.data.entity == "lots" && (url += "&status=" + filter.status);
+
+    if (props.data.entity == "lots") {
+      url += "&status=" + filter.status;
+      state.options.map(function (option) {
+        !!filter[option.id] && (url += "&" + option.id + "=" + filter[option.id]);
+      });
+    }
+
     props.data.entity == "favorites" && (url += "&ids=" + (user.favorites.length ? user.favorites.join(",") : "0")) || (url += "&offset=0" + "&limit=" + getLimit());
     axios.get("/api/" + window.lang + url).then(function (res) {
       setState(function (prevState) {
@@ -76317,7 +76325,6 @@ function Waterfall(props) {
 
   var updateLot = function updateLot(event) {
     setState(function (prevState) {
-      console.log(prevState);
       var photos = [];
 
       for (var i in prevState.photos) {
@@ -76334,16 +76341,30 @@ function Waterfall(props) {
     });
   };
 
-  var FilterBy = function FilterBy(field, values) {
-    var filter = {};
-    filter[field] = values;
+  var setFilter = function setFilter(field, value) {
+    var filter = state.filter;
+    filter[field] = value;
+    setState(function (prevState) {
+      return _objectSpread(_objectSpread({}, prevState), {}, {
+        filter: filter
+      });
+    });
     getGallery(filter);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    axios.get("/api/" + window.lang + "/lots/options").then(function (res) {
+      setState(function (prevState) {
+        return _objectSpread(_objectSpread({}, prevState), {}, {
+          options: res.data
+        });
+      });
+      getGallery(state.filter);
+    })["catch"](function (err) {
+      console.log(err);
+    });
     window.addEventListener("lot", updateLot);
     props.data.firstLimit = props.data.firstLimit ? props.data.firstLimit : props.data.limit;
-    getGallery(state.filter);
   }, []);
 
   var showMoreElems = function showMoreElems() {
@@ -76366,14 +76387,18 @@ function Waterfall(props) {
     }, __("To Gallery"))));
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.data.sortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "waterfall-outer row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "col-60"
+  }, props.data.sortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sorting"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("Sort by"), ": "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: !!state.filter.status && state.filter.status == "all" ? "active" : "",
+    className: !!state.filter.status && state.filter.status == (props.data.gallery ? "gallery" : "all") ? "active" : "",
     onClick: function onClick(e) {
       e.preventDefault();
-      FilterBy("status", "all");
+      setFilter("status", props.data.gallery ? "gallery" : "all");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("All")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
@@ -76382,10 +76407,10 @@ function Waterfall(props) {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: !!state.filter.status && state.filter.status == "available" ? "active" : "",
+    className: !!state.filter.status && state.filter.status == props.data.gallery ? "gallery-available" : "available" ? "active" : undefined,
     onClick: function onClick(e) {
       e.preventDefault();
-      FilterBy("status", "available");
+      setFilter("status", props.data.gallery ? "gallery-available" : "available");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("Available for purchase")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
@@ -76397,14 +76422,33 @@ function Waterfall(props) {
     className: !!state.filter.status && state.filter.status == "sold" ? "active" : "",
     onClick: function onClick(e) {
       e.preventDefault();
-      FilterBy("status", "sold");
+      setFilter("status", "sold");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("Sold")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }))))), props.data.sidebar && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "waterfall-sidebar col-15"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, state.options.map(function (option, option_index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: option_index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, option.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, option.items.map(function (item, index) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: index
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: state.filter[option.id] == item.id ? "active" : "",
+        href: "#",
+        onClick: function onClick(e) {
+          e.preventDefault();
+          setFilter(option.id, state.filter[option.id] == item.id ? false : item.id);
+        }
+      }, item.title));
+    })));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-45 stack-grid"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
     appear: scaleDown.appear,
     appeared: scaleDown.appeared,
     enter: scaleDown.enter,
@@ -76573,7 +76617,7 @@ function Waterfall(props) {
         }, item.excerpt));
       }
     }
-  })), state.more || props.data.action != "add" ? showMoreElems() : "");
+  })), state.more || props.data.action != "add" ? showMoreElems() : ""));
 }
 
 /***/ }),

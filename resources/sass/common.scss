@@ -67,6 +67,7 @@ h4,
 .h4 {
     font-family: "TT Severs";
     font-weight: 300;
+    font-weight: bold;
     line-height: 1em;
     letter-spacing: initial;
 }
@@ -301,7 +302,7 @@ h6,
     position: relative;
 }
 .sticky-section {
-    display: flex;
+    display: none;
     z-index: 1;
     flex-direction: row-reverse;
     width: 1.5rem;
@@ -311,6 +312,9 @@ h6,
     top: 0;
     left: -4rem;
     text-align: right;
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        display: flex;
+    }
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
         left: -6vw;
     }
@@ -320,16 +324,17 @@ h6,
     font-family: TT Severs;
     font-style: normal;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     line-height: 1.5rem;
     color: $red;
     display: block;
     text-decoration-line: underline;
-    @media screen and (max-width: 1919px) {
-        font-size: 1.125rem;
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        font-size: 1.5rem;
     }
 }
 .background-text {
+    display: none;
     transform: translateX(80%);
     position: absolute;
     top: 1.5rem;
@@ -338,8 +343,8 @@ h6,
     font-family: TT Severs;
     font-style: normal;
     font-weight: bold;
-    font-size: 20rem;
-    line-height: 20rem;
+    font-size: 12.5rem;
+    line-height: 12.5rem;
     text-transform: uppercase;
     color: $white;
     opacity: 70%;
@@ -348,9 +353,10 @@ h6,
     -khtml-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
-    @media screen and (max-width: 1919px) {
-        font-size: 12.5rem;
-        line-height: 12.5rem;
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        display: block;
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
     }
 }
 

@@ -29,9 +29,9 @@
 @endsection
 @section('content')
 <section id="page">
-    {{-- <div class="background-text d-none d-xl-block">ПРОСТРАНСТВА</div> --}}
+    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
     <div class="container">
-        <div class="sticky-section d-none d-xl-flex"><span>{!! $event->getTranslatedAttribute('title') !!}</span></div>
+        <div class="sticky-section"><span>{!! $event->getTranslatedAttribute('title') !!}</span></div>
         <div class="row pb-2 pb-lg-5">
             <div class="col-xl-30 col-xxl-28">
                 <h2 class="h2">{!! $event->getTranslatedAttribute('title') !!}</h2>
