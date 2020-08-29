@@ -359,7 +359,11 @@ export default function Waterfall(props) {
                     </ul>
                 </div>
             )}
-            <div className="col-45 stack-grid">
+            <div
+                className={
+                    props.data.sidebar ? `col-45 stack-grid` : `stack-grid`
+                }
+            >
                 <StackGrid
                     appear={scaleDown.appear}
                     appeared={scaleDown.appeared}

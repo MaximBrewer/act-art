@@ -76447,7 +76447,7 @@ function Waterfall(props) {
       }, item.title));
     })));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-45 stack-grid"
+    className: props.data.sidebar ? "col-45 stack-grid" : "stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
     appear: scaleDown.appear,
     appeared: scaleDown.appeared,
