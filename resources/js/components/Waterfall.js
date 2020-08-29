@@ -361,7 +361,7 @@ export default function Waterfall(props) {
             )}
             <div
                 className={
-                    props.data.sidebar ? `col-45 stack-grid` : `stack-grid`
+                    `col-` + (props.data.sidebar ? `45` : `60`) + `stack-grid`
                 }
             >
                 <StackGrid
