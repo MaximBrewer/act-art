@@ -12,7 +12,7 @@ export default function Waterfall(props) {
         page: 0,
         sort: {},
         filter: {
-            status: props.data.gallery ? "gallery" : "all"
+            status: "all"
         }
     });
 
@@ -258,13 +258,13 @@ export default function Waterfall(props) {
                             href="#"
                             className={
                                 !!state.filter.status &&
-                                state.filter.status == (props.data.gallery ? "gallery" : "all")
+                                state.filter.status == "all"
                                     ? `active`
                                     : ``
                             }
                             onClick={e => {
                                 e.preventDefault();
-                                setFilter("status", props.data.gallery ? "gallery" : "all");
+                                setFilter("status", "all");
                             }}
                         >
                             <span>{__("All")}</span>
@@ -279,13 +279,13 @@ export default function Waterfall(props) {
                             href="#"
                             className={
                                 !!state.filter.status &&
-                                state.filter.status == props.data.gallery ? "gallery-available" : "available"
+                                state.filter.status == "available"
                                     ? `active`
                                     : ``
                             }
                             onClick={e => {
                                 e.preventDefault();
-                                setFilter("status", props.data.gallery ? "gallery-available" : "available");
+                                setFilter("status", "available");
                             }}
                         >
                             <span>{__("Available for purchase")}</span>

@@ -76198,7 +76198,7 @@ function Waterfall(props) {
     page: 0,
     sort: {},
     filter: {
-      status: props.data.gallery ? "gallery" : "all"
+      status: "all"
     }
   }),
       _useState2 = _slicedToArray(_useState, 2),
@@ -76395,10 +76395,10 @@ function Waterfall(props) {
     className: "sorting"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("Sort by"), ": "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: !!state.filter.status && state.filter.status == (props.data.gallery ? "gallery" : "all") ? "active" : "",
+    className: !!state.filter.status && state.filter.status == "all" ? "active" : "",
     onClick: function onClick(e) {
       e.preventDefault();
-      setFilter("status", props.data.gallery ? "gallery" : "all");
+      setFilter("status", "all");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("All")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
@@ -76407,10 +76407,10 @@ function Waterfall(props) {
     d: "M9 18L0.339746 3L17.6603 3L9 18Z"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
-    className: !!state.filter.status && state.filter.status == props.data.gallery ? "gallery-available" : "available" ? "active" : undefined,
+    className: !!state.filter.status && state.filter.status == "available" ? "active" : "",
     onClick: function onClick(e) {
       e.preventDefault();
-      setFilter("status", props.data.gallery ? "gallery-available" : "available");
+      setFilter("status", "available");
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, __("Available for purchase")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 18 18",
