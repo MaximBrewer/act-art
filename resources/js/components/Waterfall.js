@@ -250,7 +250,7 @@ export default function Waterfall(props) {
 
     return (
         <div className="waterfall-outer row">
-            <div class="col-60">
+            <div className="col-60">
                 {props.data.sortable && (
                     <div className="sorting">
                         <span>{__("Sort by")}: </span>
