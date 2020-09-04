@@ -4,16 +4,18 @@
 @import "~slick-carousel/slick/slick-theme.scss";
 .home-banner {
     padding: 2rem 0;
-    background: $fonlight;
     .h5 {
         text-align: center;
     }
+    .background-text {
+        color: #eceded;
+    }
     &:before {
         display: block;
-        width: 40%;
+        width: 80%;
         height: 80%;
         position: absolute;
-        top: 10%;
+        top: 0;
         z-index: 1;
         background-image: url("/images/dot.png");
     }
@@ -23,6 +25,10 @@
         &.container {
             z-index: 3;
         }
+    }
+    .carousel-controls > div {
+        display: flex;
+        justify-content: space-between;
     }
     .carousel {
         padding-bottom: 6.75rem;
@@ -37,33 +43,12 @@
             border-bottom: 0.25rem solid $dark;
         }
         .carousel-button {
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            bottom: 0;
-            text-align: center;
-            width: 100%;
             .btn {
                 margin: 0;
                 font-weight: bold;
-                font-size: 1.125rem;
-                line-height: 2rem;
-                background-color: white !important;
-                padding: 0.25rem 2.25rem;
+                padding-left: 2.25rem;
+                padding-right: 2.25rem;
             }
-        }
-        .carousel-arrows {
-            right: 0;
-            z-index: 1;
-            bottom: 3.875rem;
-        }
-        .carousel-counter {
-            @include txt_menu_1;
-            font-weight: normal;
-            position: absolute;
-            z-index: 0;
-            bottom: 3.875rem;
-            color: $dark;
         }
         .btn {
             margin-bottom: 1.25rem;
@@ -88,22 +73,13 @@
                 padding: 0;
             }
             .carousel-button {
-                width: auto;
-                bottom: 1.875rem;
                 .btn {
-                    padding: 0.22rem 3.25rem;
+                    padding-left: 3.25rem;
+                    padding-right: 3.25rem;
                 }
             }
             hr {
                 border-bottom-width: 0.5rem;
-            }
-            .carousel-counter {
-                bottom: 1.875rem;
-                right: 9.125rem;
-                line-height: 3.125rem;
-            }
-            .carousel-arrows {
-                bottom: 1.875rem;
             }
             .h5_underline {
                 font-size: 1.125rem;
@@ -111,7 +87,6 @@
             }
             .btn {
                 margin-bottom: 2rem;
-                font-size: 1.475rem;
                 padding-right: 2rem;
                 padding-left: 2rem;
             }
@@ -121,35 +96,19 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
-        padding: 10rem 0 3.725rem;
+        padding: 3rem 0 1.725rem;
+        margin-bottom: 4.8125rem;
         &:before {
             content: "";
-            height: 85%;
+            height: 100%;
         }
         .carousel {
-            padding-bottom: 8.75rem;
-            .carousel-button {
-                .btn {
-                    font-size: 1.5rem;
-                    line-height: 1.5rem;
-                    padding: 0.875rem 3.25rem;
-                }
-            }
+            padding-bottom: 3.8125rem;
             .carousel-counter {
-                line-height: 3.75rem;
-                right: auto;
-                left: 50%;
-                margin-left: -1rem;
             }
             .h5_underline {
                 font-size: 18px;
                 line-height: 21px;
-            }
-            .btn {
-                // padding: 0.75rem 3rem;
-                // margin-bottom: 1.25rem;
-                font-size: 1.5rem;
-                line-height: 1.5rem;
             }
             .btn-control {
                 margin: 0;
@@ -157,29 +116,19 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
-        padding: 10rem 0 2.725rem;
-        &:before {
-            height: 85%;
-        }
+        padding: 3rem 0 2.725rem;
         .carousel {
-            // padding-bottom: 9.75rem;
-            .carousel-button {
-                .btn {
-                    padding: 0.22rem 3.25rem;
-                }
-            }
             .h5_underline {
                 font-size: 18px;
                 line-height: 21px;
             }
             .btn {
-                margin-bottom: 1.25rem;
-                font-size: 18px;
-                line-height: 18px;
             }
             .btn-control {
-                margin: 0;
             }
+        }
+        .carousel-controls {
+            padding-top: 3rem;
         }
     }
 }

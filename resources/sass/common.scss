@@ -38,7 +38,7 @@ h1,
     font-family: "TT Severs";
     font-weight: bold;
     text-transform: uppercase;
-    line-height: 1em;
+    line-height: 1.4em;
     letter-spacing: initial;
 }
 h2,
@@ -116,25 +116,56 @@ h6,
     letter-spacing: initial;
 }
 .sub_h2 {
+    margin-top: 2rem;
     font-family: "TT Severs";
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
     letter-spacing: initial;
+}
 
-    @media screen and (max-width: 1919px) {
-        font-weight: 300;
-        font-size: 18px;
-        line-height: 21px;
+.show-more {
+    padding-top: 2rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    text-align: center;
+    font-family: TT Severs;
+    color: $red !important;
+    .dots {
+        font-size: 1.5rem;
+    }
+    a.text {
+        color: $red;
+        text-decoration: underline;
     }
 }
 .btn {
     font-family: "Roboto Condensed", sans-serif;
     font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 0.03em;
     outline: none !important;
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        line-height: 1.5rem;
+        border-width: 0.25rem;
+        padding-top: 0.4375rem;
+        padding-bottom: 0.4375rem;
+    }
+}
+.link-how-to-buy {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.125rem;
+    margin-top: 2rem;
+    color: $red;
+}
+.p3bgw {
+    padding-top: 1rem;
+    margin-top: -1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background-color: $white;
 }
 
 .btn-default-inverse {
@@ -260,20 +291,20 @@ h6,
 
 .btn-default {
     color: $primary;
-    background-color: transparent;
+    background-color: $white;
     border-color: $primary;
 }
 
 .btn-default:hover {
     color: $primary;
-    background-color: transparent;
+    background-color: $white;
     border-color: $primary;
 }
 
 .btn-default:focus,
 .btn-default.focus {
     color: $primary;
-    background-color: transparent;
+    background-color: $white;
     border-color: $primary;
     // box-shadow: 0 0 0 0.2rem rgba(76, 112, 133, 0.5);
 }
@@ -281,7 +312,7 @@ h6,
 .btn-default.disabled,
 .btn-default:disabled {
     color: $primary;
-    background-color: transparent;
+    background-color: $white;
     border-color: $primary;
 }
 
@@ -289,7 +320,7 @@ h6,
 .btn-default:not(:disabled):not(.disabled).active,
 .show > .btn-default.dropdown-toggle {
     color: $primary;
-    background-color: transparent;
+    background-color: $white;
     border-color: $primary;
 }
 
@@ -375,20 +406,17 @@ h6,
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
         border-width: 4px;
-        width: 3.125rem;
-        height: 3.125rem;
-        line-height: 3.125rem;
+        width: 2.875rem;
+        height: 2.875rem;
+        line-height: 2.875rem;
         svg {
-            width: 2rem;
-            height: 2rem;
+            width: 1.875rem;
+            height: 1.875rem;
         }
     }
     @media (min-width: map.get($grid-breakpoints, "lg")) {
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
-        width: 3.75rem;
-        height: 3.75rem;
-        line-height: 3.75rem;
     }
 }
 section {
@@ -436,22 +464,27 @@ section {
 }
 
 .carousel-arrows {
-    position: absolute;
     z-index: 1;
     display: flex;
     width: 4.125rem;
     z-index: 1;
     justify-content: space-between;
 }
+.carousel-counter {
+    @include txt_menu_1;
+    font-weight: normal;
+    color: $dark;
+    display: flex;
+    align-items: center;
+}
 @media (min-width: map.get($grid-breakpoints, "md")) {
     .carousel-arrows {
-        width: 7.125rem;
+        width: 6.75rem;
     }
 }
 
 @media (min-width: map.get($grid-breakpoints, "xl")) {
     .carousel-arrows {
-        width: 8.8125rem;
     }
 }
 iframe {

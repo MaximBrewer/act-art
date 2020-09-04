@@ -205,46 +205,12 @@ export default function Waterfall(props) {
     }, []);
 
     const showMoreElems = () => {
-        if (props.data.entity == "events")
+        if (props.data.action == "add")
             return (
-                <React.Fragment>
-                    <div className="text-center pt-5 pb-4">
-                        <button className="btn btn-primary-inverse btn-lg">
-                            {__("All announcements")}
-                        </button>
-                    </div>
-                </React.Fragment>
-            );
-        else
-            return (
-                <React.Fragment>
-                    <div className="text-center h5 color-primary">
-                        &bull;&bull;&bull;
-                        <br />
-                    </div>
-                    <div className="text-center">
-                        <a
-                            href={
-                                props.data.action == "add"
-                                    ? "#"
-                                    : "/" + props.data.category
-                            }
-                            className="show-more"
-                            onClick={
-                                props.data.action == "add"
-                                    ? addGallery
-                                    : () => {}
-                            }
-                        >
-                            {__("Show more")}
-                        </a>
-                    </div>
-                    <div className="text-center pt-5 pb-4 d-md-none">
-                        <button className="btn btn-primary btn-lg to-gallery">
-                            {__("To Gallery")}
-                        </button>
-                    </div>
-                </React.Fragment>
+                <div className="show-more">
+                    <div className="dots">•••</div>
+                    <a href="#" className="text" onClick={addGallery}>{__('Show more')}</a>
+                </div>
             );
     };
 
@@ -361,7 +327,7 @@ export default function Waterfall(props) {
             )}
             <div
                 className={
-                    `col-` + (props.data.sidebar ? `45` : `60`) + `stack-grid`
+                    `col-` + (props.data.sidebar ? `45` : `60`) + ` stack-grid`
                 }
             >
                 <StackGrid

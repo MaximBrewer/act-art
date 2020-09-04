@@ -98,7 +98,7 @@ export default function AuctionPreviewRight(props) {
             <div className="text-xs-center mb-3">
                 <a
                     href={"/auctions/" + props.auction.id + "/online"}
-                    className="btn btn-danger btn-lg"
+                    className="btn btn-danger"
                 >
                     {__("PARTICIPATE")}
                 </a>

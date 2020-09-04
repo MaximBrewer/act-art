@@ -99,16 +99,6 @@
             bottom: 3.875rem;
             color: $primary;
         }
-        .carousel-arrows {
-            position: absolute;
-            right: 0;
-            z-index: 1;
-            bottom: 3.25rem;
-            display: flex;
-            width: 8.8125rem;
-            z-index: 1;
-            justify-content: space-between;
-        }
         .btn {
             margin-bottom: 1.25rem;
         }
@@ -181,16 +171,6 @@
                 z-index: 0;
                 bottom: 3.875rem;
                 color: $primary;
-            }
-            .carousel-arrows {
-                position: absolute;
-                right: 0;
-                z-index: 1;
-                bottom: 3.25rem;
-                display: flex;
-                width: 8.8125rem;
-                z-index: 1;
-                justify-content: space-between;
             }
             .btn {
                 margin-bottom: 1.25rem;
@@ -295,16 +275,6 @@
                 z-index: 0;
                 bottom: 3.875rem;
                 color: $primary;
-            }
-            .carousel-arrows {
-                position: absolute;
-                right: 0;
-                z-index: 1;
-                bottom: 3.25rem;
-                display: flex;
-                width: 8.8125rem;
-                z-index: 1;
-                justify-content: space-between;
             }
             .btn {
                 margin-bottom: 1.25rem;

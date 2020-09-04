@@ -1,15 +1,19 @@
 @use "sass:map";
 .popular-categories-section {
-    > div {
-        background-image: url("/images/dot.png");
+    background-image: url("/images/dot.png");
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
+        margin-bottom: 9rem;
     }
 }
 .popular-categories {
-    margin-bottom: 6rem;
-    .h4{
+    .h4 {
         text-align: center;
     }
     .categories {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
         a {
             display: block;
             padding: 4vw 0;
@@ -42,14 +46,10 @@
         }
     }
     .btn {
-        margin-top: 1.5rem;
-        margin-bottom: -1.5rem;
-        font-size: 24px;
-        line-height: 171%;
-        padding: 0.275rem 2.5rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
-        margin-bottom: 4rem;
         .categories {
             a {
                 p {

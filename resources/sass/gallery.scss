@@ -44,11 +44,10 @@
     padding: 3rem 0 2rem;
     .announce {
         > div {
-            .h2 {
+            .h1 {
                 font-size: 8vw;
                 line-height: 9.625vw;
                 white-space: nowrap;
-                padding-bottom: 0.5rem;
                 text-align: center;
                 border-bottom: 0.25rem solid $dark;
             }
@@ -78,8 +77,6 @@
                     }
                 }
             }
-        }
-        .show-more {
         }
         .to-gallery {
             font-weight: normal;
@@ -137,7 +134,7 @@
                     }
                     .author {
                         @include Text_Name_18;
-                        line-height: 32px;
+                        line-height: 2rem;
                     }
                     .price {
                         @include Text_Name_18;
@@ -179,11 +176,10 @@
         padding: 6.75rem 0 2.725rem;
         .announce {
             > div {
-                .h2 {
+                .h1 {
                     font-size: 2.25rem;
-                    line-height: 3rem;
+                    line-height: 1.4em;
                     text-align: left;
-                    padding-bottom: 1.5rem;
                     border-bottom-width: 0.5rem;
                 }
             }

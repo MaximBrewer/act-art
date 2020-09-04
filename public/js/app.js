@@ -60197,7 +60197,7 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var React__default = _interopDefault(React);
 var ReactDOM = _interopDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
 var invariant = _interopDefault(__webpack_require__(/*! invariant */ "./node_modules/invariant/browser.js"));
-var throttleDebounce = __webpack_require__(/*! throttle-debounce */ "./node_modules/throttle-debounce/index.esm.js");
+var throttleDebounce = __webpack_require__(/*! throttle-debounce */ "./node_modules/throttle-debounce/index.umd.js");
 var createResizeDetector = _interopDefault(__webpack_require__(/*! element-resize-detector */ "./node_modules/element-resize-detector/src/element-resize-detector.js"));
 var isShallowEqual = _interopDefault(__webpack_require__(/*! shallowequal */ "./node_modules/shallowequal/index.js"));
 
@@ -73291,157 +73291,163 @@ module.exports = camel2hyphen;
 
 /***/ }),
 
-/***/ "./node_modules/throttle-debounce/index.esm.js":
+/***/ "./node_modules/throttle-debounce/index.umd.js":
 /*!*****************************************************!*\
-  !*** ./node_modules/throttle-debounce/index.esm.js ***!
+  !*** ./node_modules/throttle-debounce/index.umd.js ***!
   \*****************************************************/
-/*! exports provided: debounce, throttle */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttle", function() { return throttle; });
-/* eslint-disable no-undefined,no-param-reassign,no-shadow */
+(function (global, factory) {
+	 true ? factory(exports) :
+	undefined;
+}(this, (function (exports) { 'use strict';
 
-/**
- * Throttle execution of a function. Especially useful for rate limiting
- * execution of handlers on events like resize and scroll.
- *
- * @param  {number}    delay -          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  {boolean}   [noTrailing] -   Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
- *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
- *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
- *                                    the internal counter is reset).
- * @param  {Function}  callback -       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
- *                                    to `callback` when the throttled-function is executed.
- * @param  {boolean}   [debounceMode] - If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
- *                                    schedule `callback` to execute after `delay` ms.
- *
- * @returns {Function}  A new, throttled, function.
- */
-function throttle (delay, noTrailing, callback, debounceMode) {
-  /*
-   * After wrapper has stopped being called, this timeout ensures that
-   * `callback` is executed at the proper times in `throttle` and `end`
-   * debounce modes.
-   */
-  var timeoutID;
-  var cancelled = false; // Keep track of the last time `callback` was executed.
+	/* eslint-disable no-undefined,no-param-reassign,no-shadow */
 
-  var lastExec = 0; // Function to clear existing timeout
+	/**
+	 * Throttle execution of a function. Especially useful for rate limiting
+	 * execution of handlers on events like resize and scroll.
+	 *
+	 * @param  {number}    delay -          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+	 * @param  {boolean}   [noTrailing] -   Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
+	 *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
+	 *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
+	 *                                    the internal counter is reset).
+	 * @param  {Function}  callback -       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+	 *                                    to `callback` when the throttled-function is executed.
+	 * @param  {boolean}   [debounceMode] - If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
+	 *                                    schedule `callback` to execute after `delay` ms.
+	 *
+	 * @returns {Function}  A new, throttled, function.
+	 */
+	function throttle (delay, noTrailing, callback, debounceMode) {
+	  /*
+	   * After wrapper has stopped being called, this timeout ensures that
+	   * `callback` is executed at the proper times in `throttle` and `end`
+	   * debounce modes.
+	   */
+	  var timeoutID;
+	  var cancelled = false; // Keep track of the last time `callback` was executed.
 
-  function clearExistingTimeout() {
-    if (timeoutID) {
-      clearTimeout(timeoutID);
-    }
-  } // Function to cancel next exec
+	  var lastExec = 0; // Function to clear existing timeout
 
-
-  function cancel() {
-    clearExistingTimeout();
-    cancelled = true;
-  } // `noTrailing` defaults to falsy.
+	  function clearExistingTimeout() {
+	    if (timeoutID) {
+	      clearTimeout(timeoutID);
+	    }
+	  } // Function to cancel next exec
 
 
-  if (typeof noTrailing !== 'boolean') {
-    debounceMode = callback;
-    callback = noTrailing;
-    noTrailing = undefined;
-  }
-  /*
-   * The `wrapper` function encapsulates all of the throttling / debouncing
-   * functionality and when executed will limit the rate at which `callback`
-   * is executed.
-   */
+	  function cancel() {
+	    clearExistingTimeout();
+	    cancelled = true;
+	  } // `noTrailing` defaults to falsy.
 
 
-  function wrapper() {
-    for (var _len = arguments.length, arguments_ = new Array(_len), _key = 0; _key < _len; _key++) {
-      arguments_[_key] = arguments[_key];
-    }
-
-    var self = this;
-    var elapsed = Date.now() - lastExec;
-
-    if (cancelled) {
-      return;
-    } // Execute `callback` and update the `lastExec` timestamp.
-
-
-    function exec() {
-      lastExec = Date.now();
-      callback.apply(self, arguments_);
-    }
-    /*
-     * If `debounceMode` is true (at begin) this is used to clear the flag
-     * to allow future `callback` executions.
-     */
+	  if (typeof noTrailing !== 'boolean') {
+	    debounceMode = callback;
+	    callback = noTrailing;
+	    noTrailing = undefined;
+	  }
+	  /*
+	   * The `wrapper` function encapsulates all of the throttling / debouncing
+	   * functionality and when executed will limit the rate at which `callback`
+	   * is executed.
+	   */
 
 
-    function clear() {
-      timeoutID = undefined;
-    }
+	  function wrapper() {
+	    for (var _len = arguments.length, arguments_ = new Array(_len), _key = 0; _key < _len; _key++) {
+	      arguments_[_key] = arguments[_key];
+	    }
 
-    if (debounceMode && !timeoutID) {
-      /*
-       * Since `wrapper` is being called for the first time and
-       * `debounceMode` is true (at begin), execute `callback`.
-       */
-      exec();
-    }
+	    var self = this;
+	    var elapsed = Date.now() - lastExec;
 
-    clearExistingTimeout();
-
-    if (debounceMode === undefined && elapsed > delay) {
-      /*
-       * In throttle mode, if `delay` time has been exceeded, execute
-       * `callback`.
-       */
-      exec();
-    } else if (noTrailing !== true) {
-      /*
-       * In trailing throttle mode, since `delay` time has not been
-       * exceeded, schedule `callback` to execute `delay` ms after most
-       * recent execution.
-       *
-       * If `debounceMode` is true (at begin), schedule `clear` to execute
-       * after `delay` ms.
-       *
-       * If `debounceMode` is false (at end), schedule `callback` to
-       * execute after `delay` ms.
-       */
-      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
-    }
-  }
-
-  wrapper.cancel = cancel; // Return the wrapper function.
-
-  return wrapper;
-}
-
-/* eslint-disable no-undefined */
-/**
- * Debounce execution of a function. Debouncing, unlike throttling,
- * guarantees that a function is only executed a single time, either at the
- * very beginning of a series of calls, or at the very end.
- *
- * @param  {number}   delay -         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  {boolean}  [atBegin] -     Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
- *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
- *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
- * @param  {Function} callback -      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
- *                                  to `callback` when the debounced-function is executed.
- *
- * @returns {Function} A new, debounced function.
- */
-
-function debounce (delay, atBegin, callback) {
-  return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
-}
+	    if (cancelled) {
+	      return;
+	    } // Execute `callback` and update the `lastExec` timestamp.
 
 
-//# sourceMappingURL=index.esm.js.map
+	    function exec() {
+	      lastExec = Date.now();
+	      callback.apply(self, arguments_);
+	    }
+	    /*
+	     * If `debounceMode` is true (at begin) this is used to clear the flag
+	     * to allow future `callback` executions.
+	     */
+
+
+	    function clear() {
+	      timeoutID = undefined;
+	    }
+
+	    if (debounceMode && !timeoutID) {
+	      /*
+	       * Since `wrapper` is being called for the first time and
+	       * `debounceMode` is true (at begin), execute `callback`.
+	       */
+	      exec();
+	    }
+
+	    clearExistingTimeout();
+
+	    if (debounceMode === undefined && elapsed > delay) {
+	      /*
+	       * In throttle mode, if `delay` time has been exceeded, execute
+	       * `callback`.
+	       */
+	      exec();
+	    } else if (noTrailing !== true) {
+	      /*
+	       * In trailing throttle mode, since `delay` time has not been
+	       * exceeded, schedule `callback` to execute `delay` ms after most
+	       * recent execution.
+	       *
+	       * If `debounceMode` is true (at begin), schedule `clear` to execute
+	       * after `delay` ms.
+	       *
+	       * If `debounceMode` is false (at end), schedule `callback` to
+	       * execute after `delay` ms.
+	       */
+	      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
+	    }
+	  }
+
+	  wrapper.cancel = cancel; // Return the wrapper function.
+
+	  return wrapper;
+	}
+
+	/* eslint-disable no-undefined */
+	/**
+	 * Debounce execution of a function. Debouncing, unlike throttling,
+	 * guarantees that a function is only executed a single time, either at the
+	 * very beginning of a series of calls, or at the very end.
+	 *
+	 * @param  {number}   delay -         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+	 * @param  {boolean}  [atBegin] -     Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
+	 *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
+	 *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
+	 * @param  {Function} callback -      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+	 *                                  to `callback` when the debounced-function is executed.
+	 *
+	 * @returns {Function} A new, debounced function.
+	 */
+
+	function debounce (delay, atBegin, callback) {
+	  return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
+	}
+
+	exports.debounce = debounce;
+	exports.throttle = throttle;
+
+	Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=index.umd.js.map
 
 
 /***/ }),
@@ -74274,7 +74280,7 @@ function AuctionCarousel() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-xl-40 col-xxl-38"
+    className: "col-xl-40 col-xxl-38 p3bgw"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     className: "d-lg-none"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsPicture, {
@@ -74286,7 +74292,7 @@ function AuctionCarousel() {
       auction: item
     }));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-xl-20 col-xxl-22"
+    className: "col-xl-20 col-xxl-22 p3bgw"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, _extends({}, settingsAnnounce, {
     ref: refAnnounce
   }), state.auctions.map(function (item, index) {
@@ -74298,17 +74304,15 @@ function AuctionCarousel() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     className: "d-lg-none"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row carousel-controls"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-xl-40 col-xxl-38"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/auctions",
     className: "btn btn-default"
   }, __("ВСЕ АУКЦИОНЫ"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "carousel-counter"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "current"
-  }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "total"
-  }, state.slidesTotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "carousel-arrows"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "btn btn-default btn-control d-flex",
@@ -74348,7 +74352,15 @@ function AuctionCarousel() {
     d: "M31.3784 18.4054L0.567543 18.4054",
     stroke: "#1E2B32",
     strokeWidth: "8"
-  })))));
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-xl-20 col-xxl-22"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-counter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "current"
+  }, state.slideIndex + 1), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "total"
+  }, state.slidesTotal)))));
 }
 
 /***/ }),
@@ -75357,9 +75369,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Gallery; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _createForOfIteratorHelper(o) {
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it;
+
   if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-    if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
       var i = 0;
 
       var F = function F() {};
@@ -75385,8 +75400,7 @@ function _createForOfIteratorHelper(o) {
     throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  var it,
-      normalCompletion = true,
+  var normalCompletion = true,
       didErr = false,
       err;
   return {
@@ -76398,23 +76412,15 @@ function Waterfall(props) {
   }, []);
 
   var showMoreElems = function showMoreElems() {
-    if (props.data.entity == "events") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center pt-5 pb-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn btn-primary-inverse btn-lg"
-    }, __("All announcements"))));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center h5 color-primary"
-    }, "\u2022\u2022\u2022", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: props.data.action == "add" ? "#" : "/" + props.data.category,
-      className: "show-more",
-      onClick: props.data.action == "add" ? addGallery : function () {}
-    }, __("Show more"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center pt-5 pb-4 d-md-none"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn btn-primary btn-lg to-gallery"
-    }, __("To Gallery"))));
+    if (props.data.action == "add") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "show-more"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "dots"
+    }, "\u2022\u2022\u2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "text",
+      onClick: addGallery
+    }, __('Show more')));
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76477,7 +76483,7 @@ function Waterfall(props) {
       }, item.title));
     })));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-" + (props.data.sidebar ? "45" : "60") + "stack-grid"
+    className: "col-" + (props.data.sidebar ? "45" : "60") + " stack-grid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_stack_grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
     appear: scaleDown.appear,
     appeared: scaleDown.appeared,
@@ -76770,7 +76776,7 @@ function AuctionPreviewRight(props) {
     className: "text-xs-center mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/auctions/" + props.auction.id + "/online",
-    className: "btn btn-danger btn-lg"
+    className: "btn btn-danger"
   }, __("PARTICIPATE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/auctions/" + props.auction.id + "/lots",
     className: "h5_underline d-none d-xl-block"
