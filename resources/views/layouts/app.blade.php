@@ -263,7 +263,11 @@
             </div>
     </footer>
     <div id="flashHolder"></div>
-    <!-- Scripts -->
+    @if(Auth::check())
+    @php
+    JavaScript::put(['user' => new \App\Http\Resources\User(Auth::user())]);
+    @endphp
+    @endif
     @include('footer')
     @php
     $k = 'translations.' . App::getLocale();

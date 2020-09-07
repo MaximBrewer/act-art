@@ -18,9 +18,6 @@ class AuctionController extends Controller
      */
     public function index()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('auction.index', [
             'regular' => Auction::coming()->where('attr', 'regular')->get(),
             'special' => Auction::coming()->where('attr', 'special')->get()
@@ -33,9 +30,6 @@ class AuctionController extends Controller
      */
     public function archive()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('auction.archive');
     }
 
@@ -46,9 +40,6 @@ class AuctionController extends Controller
      */
     public function show($id)
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         $auction = Auction::find($id);
         return view('auction.show', ['auction' => $auction]);
     }

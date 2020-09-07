@@ -21,9 +21,6 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('authors.index');
     }
 
@@ -34,9 +31,6 @@ class AuthorController extends Controller
      */
     public function show($id)
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         $author = User::findOrFail($id);
         return view('authors.show', ['author' => $author])->withShortcodes();
     }
@@ -48,9 +42,6 @@ class AuthorController extends Controller
      */
     public function lot($id, $lot_id)
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         $author = User::findOrFail($id);
         $lot = Lot::findOrFail($lot_id);
         return view('authors.lot', ['author' => $author, 'lot' => $lot])->withShortcodes();

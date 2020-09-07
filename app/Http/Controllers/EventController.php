@@ -21,9 +21,6 @@ class EventController extends Controller
      */
     public function index()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('events.index', ['spaces' => Space::all()]);
     }
 
@@ -34,9 +31,6 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         $event = Event::findOrFail($id);
         return view('events.show', ['event' => $event])->withShortcodes();
     }

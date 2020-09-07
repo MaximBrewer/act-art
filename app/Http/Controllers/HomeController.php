@@ -16,9 +16,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('home');
     }
 }

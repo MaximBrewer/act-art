@@ -18,9 +18,6 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('gallery.index');
     }
     //
@@ -31,9 +28,6 @@ class GalleryController extends Controller
      */
     public function archive()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('gallery.archive');
     }
     //
@@ -44,9 +38,6 @@ class GalleryController extends Controller
      */
     public function lot($id)
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         $lot = Lot::where('status', 'gallery')->findOrfail($id);
         return view('gallery.lot', ['lot' => $lot]);
     }

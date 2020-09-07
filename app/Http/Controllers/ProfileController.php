@@ -19,9 +19,6 @@ class ProfileController extends Controller
     public function index()
     {
         if (!Auth::check()) return redirect('/');
-        JavaScript::put([
-            'user' => new UserResource(Auth::user())
-        ]);
         return view('profile.index', ["user" => Auth::user()]);
     }
 }

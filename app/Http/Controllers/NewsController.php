@@ -18,9 +18,6 @@ class NewsController extends Controller
      */
     public function index()
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         return view('news.index');
     }
 
@@ -31,9 +28,6 @@ class NewsController extends Controller
      */
     public function show($slug)
     {
-        JavaScript::put([
-            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
-        ]);
         $post = Post::where('slug', $slug)->first();
         if (!$post) abort(404, 'Page not found');
         return view('news.show', ['post' => $post])->withShortcodes();
