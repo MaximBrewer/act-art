@@ -91,6 +91,9 @@ const calculateHeader = () => {
         document.getElementById("header-content").classList.add("bg-dark");
     }
 };
+const participate = id => {
+    location.href = "/auctions/" + id;
+};
 const changeWindow = () => {
     let mf = document.getElementById("header-full-menu-fixed");
     if (mf) {
@@ -189,7 +192,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // !document.getElementById("announceSlider") ||
     //     render(<Announce />, document.getElementById("announceSlider"));
     !document.getElementById("actAuctions") ||
-        render(<Auctions />, document.getElementById("actAuctions"));
+        render(
+            <Auctions participate={participate} />,
+            document.getElementById("actAuctions")
+        );
     // !document.getElementById("artWaterfall") ||
     //     render(<HomeWaterfall />, document.getElementById("artWaterfall"));
     !document.getElementById("newsSlider") ||
@@ -211,7 +217,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let auctionsLists = document.getElementsByClassName("act-auctions-list");
 
     [].forEach.call(auctionsLists, function(auctionsList) {
-        render(<AuctionsList data={auctionsList.dataset} />, auctionsList);
+        render(
+            <AuctionsList
+                data={auctionsList.dataset}
+                participate={participate}
+            />,
+            auctionsList
+        );
     });
 
     let lotGalleries = document.getElementsByClassName("lot-gallery");
@@ -220,14 +232,25 @@ document.addEventListener("DOMContentLoaded", () => {
         render(<LotGallery data={lotGallery.dataset} />, lotGallery);
     });
 
-    let auctionsProfiles = document.getElementsByClassName("act-auctions-profile");
+    let auctionsProfiles = document.getElementsByClassName(
+        "act-auctions-profile"
+    );
 
     [].forEach.call(auctionsProfiles, function(auctionsProfile) {
-        render(<AuctionsProfile data={auctionsProfile.dataset} />, auctionsProfile);
+        render(
+            <AuctionsProfile data={auctionsProfile.dataset} />,
+            auctionsProfile
+        );
     });
 
     !document.getElementById("appAuction") ||
-        render(<Auction   data={document.getElementById("appAuction").dataset}/>, document.getElementById("appAuction"));
+        render(
+            <Auction
+                data={document.getElementById("appAuction").dataset}
+                participate={participate}
+            />,
+            document.getElementById("appAuction")
+        );
 
     let waterfalls = document.getElementsByClassName("act-waterfall");
 
@@ -349,7 +372,7 @@ window.scrollToElement = e => {
         scrollY = fromY * 1,
         oldTimestamp = null;
 
-        console.log(toY)
+    console.log(toY);
 
     function step(newTimestamp) {
         if (oldTimestamp !== null) {

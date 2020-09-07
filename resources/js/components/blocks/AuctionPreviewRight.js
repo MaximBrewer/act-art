@@ -14,8 +14,6 @@ const declOfNum = (number, titles) => {
     ];
 };
 
-const participate = id => {};
-
 // Random component
 const Completionist = () => (
     <div className="banner-counter d-flex">You are good to go!</div>
@@ -103,7 +101,7 @@ export default function AuctionPreviewRight(props) {
                     className="btn btn-danger"
                     onClick={e => {
                         e.preventDefault();
-                        participate(props.auction.id);
+                        props.participate(props.auction.id);
                     }}
                 >
                     {__("PARTICIPATE")}

@@ -62,6 +62,7 @@ Route::group(['prefix' => 'gallery'], function () {
 
 Route::group(['prefix' => 'auctions'], function () {
     Route::get('/', '\App\Http\Controllers\AuctionController@index')->name('auctions.index');
+    Route::get('/archive', '\App\Http\Controllers\AuctionController@archive')->name('auctions.archive');
     Route::group(['prefix' => '{id}'], function () {
         Route::get('/', '\App\Http\Controllers\AuctionController@show');
         Route::group(['prefix' => 'lots'], function () {

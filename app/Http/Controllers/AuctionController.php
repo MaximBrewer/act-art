@@ -26,6 +26,18 @@ class AuctionController extends Controller
             'special' => Auction::coming()->where('attr', 'special')->get()
         ]);
     }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function archive()
+    {
+        JavaScript::put([
+            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
+        ]);
+        return view('auction.archive');
+    }
 
     /**
      * Show the application dashboard.

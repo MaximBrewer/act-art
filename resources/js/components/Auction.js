@@ -22,7 +22,6 @@ export default function Auction(props) {
         }
     });
 
-
     const updateAuction = event => {
         setState(prevState => {
             return {
@@ -50,13 +49,22 @@ export default function Auction(props) {
         <Router>
             <Switch>
                 <Route exact path={`/auctions/` + props.data.id}>
-                    <AuctionBase auction={state.auction} />
+                    <AuctionBase
+                        auction={state.auction}
+                        participate={props.participate}
+                    />
                 </Route>
                 <Route exact path={`/auctions/` + props.data.id + `/lots`}>
-                    <AuctionLots auction={state.auction} />
+                    <AuctionLots
+                        auction={state.auction}
+                        participate={props.participate}
+                    />
                 </Route>
                 <Route exact path={`/auctions/` + props.data.id + `/lots/:id`}>
-                    <AuctionLot auction={state.auction} />
+                    <AuctionLot
+                        auction={state.auction}
+                        participate={props.participate}
+                    />
                 </Route>
             </Switch>
         </Router>

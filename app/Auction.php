@@ -72,6 +72,20 @@ class Auction extends Model
     }
 
 
+
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeArchive(Builder $query)
+    {
+        return $query->where('status', 'finished');
+    }
+
+
     /**
      * Scope a query to only published scopes.
      *

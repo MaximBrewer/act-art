@@ -197,7 +197,7 @@ const Header = props => {
                                     className="btn btn-danger mb-3"
                                     onClick={e => {
                                         e.preventDefault();
-                                        participate(props.auction.id);
+                                        props.participate(props.auction.id);
                                     }}
                                 >
                                     {__("PARTICIPATE")}

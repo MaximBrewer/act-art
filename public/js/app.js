@@ -86340,6 +86340,10 @@ var calculateHeader = function calculateHeader() {
   }
 };
 
+var participate = function participate(id) {
+  location.href = "/auctions/" + id;
+};
+
 var changeWindow = function changeWindow() {
   var mf = document.getElementById("header-full-menu-fixed");
 
@@ -86425,7 +86429,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //     render(<Announce />, document.getElementById("announceSlider"));
 
 
-  !document.getElementById("actAuctions") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Auctions__WEBPACK_IMPORTED_MODULE_7__["default"], null), document.getElementById("actAuctions")); // !document.getElementById("artWaterfall") ||
+  !document.getElementById("actAuctions") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Auctions__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    participate: participate
+  }), document.getElementById("actAuctions")); // !document.getElementById("artWaterfall") ||
   //     render(<HomeWaterfall />, document.getElementById("artWaterfall"));
 
   !document.getElementById("newsSlider") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_News__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -86445,7 +86451,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var auctionsLists = document.getElementsByClassName("act-auctions-list");
   [].forEach.call(auctionsLists, function (auctionsList) {
     Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_AuctionsList__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      data: auctionsList.dataset
+      data: auctionsList.dataset,
+      participate: participate
     }), auctionsList);
   });
   var lotGalleries = document.getElementsByClassName("lot-gallery");
@@ -86461,7 +86468,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }), auctionsProfile);
   });
   !document.getElementById("appAuction") || Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["render"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_components_Auction__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    data: document.getElementById("appAuction").dataset
+    data: document.getElementById("appAuction").dataset,
+    participate: participate
   }), document.getElementById("appAuction"));
   var waterfalls = document.getElementsByClassName("act-waterfall");
   [].forEach.call(waterfalls, function (waterfall) {
@@ -86766,17 +86774,20 @@ function Auction(props) {
     exact: true,
     path: "/auctions/" + props.data.id
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionBase__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    auction: state.auction
+    auction: state.auction,
+    participate: props.participate
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/auctions/" + props.data.id + "/lots"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLots__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    auction: state.auction
+    auction: state.auction,
+    participate: props.participate
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/auctions/" + props.data.id + "/lots/:id"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AuctionLot__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    auction: state.auction
+    auction: state.auction,
+    participate: props.participate
   }))));
 }
 
@@ -86973,7 +86984,7 @@ var Header = function Header(props) {
         className: "btn btn-danger mb-3",
         onClick: function onClick(e) {
           e.preventDefault();
-          participate(props.auction.id);
+          props.participate(props.auction.id);
         }
       }, __("PARTICIPATE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "h3"
@@ -87569,7 +87580,9 @@ function AuctionList(props) {
       setState = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    axios.get("/api/" + window.lang + "/auctions/coming?attr=" + props.data.attr).then(function (res) {
+    var url = "/api/" + window.lang + "/auctions/";
+    if (props.data.archive) url += "archive";else if (props.data.attr) url += "coming/?attr=" + props.data.attr;
+    axios.get(url).then(function (res) {
       setState({
         auctions: res.data.auctions
       });
@@ -87586,11 +87599,13 @@ function AuctionList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
       className: "d-lg-none"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_blocks_AuctionPreviewLeft__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      auction: item
+      auction: item,
+      participate: props.participate
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "col-xl-20 col-xxl-22"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_blocks_AuctionPreviewRight__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      auction: item
+      auction: item,
+      participate: props.participate
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
       className: "d-lg-none"
     })));
@@ -90101,9 +90116,7 @@ __webpack_require__.r(__webpack_exports__);
 var declOfNum = function declOfNum(number, titles) {
   var cases = [2, 0, 1, 1, 1, 2];
   return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
-};
-
-var participate = function participate(id) {}; // Random component
+}; // Random component
 
 
 var Completionist = function Completionist() {
@@ -90175,7 +90188,7 @@ function AuctionPreviewRight(props) {
     className: "btn btn-danger",
     onClick: function onClick(e) {
       e.preventDefault();
-      participate(props.auction.id);
+      props.participate(props.auction.id);
     }
   }, __("PARTICIPATE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/auctions/" + props.auction.id + "/lots",
