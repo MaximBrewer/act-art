@@ -22,4 +22,12 @@ class AuctionController extends Controller
             'auctions' => AuctionResource::collection($auctions->coming()->get())
         ];
     }
+    //
+    public function show(Request $request, $lang, $id)
+    {
+        $auction = Auction::findOrfail($id);
+        return [
+            'auction' => new \App\Http\Resources\Auction($auction)
+        ];
+    }
 }

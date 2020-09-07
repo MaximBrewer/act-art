@@ -20,6 +20,7 @@ class CreateAuctionsTable extends Migration
             $table->string('preview')->nullable();
             $table->string('text')->nullable();
             $table->enum('attr', ["regular", "special"])->default('regular');
+            $table->enum('status', ["coming", "started", "finished", "canceled"])->default('coming');
             $table->timestamp('date')->nullable();
             $table->timestamps();
         });

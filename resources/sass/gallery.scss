@@ -1,5 +1,6 @@
 @use "sass:map";
 .gallery-section {
+    padding: 3rem 0 2rem;
     .gallery-works {
         .h2 {
             padding-bottom: 1rem;
@@ -41,7 +42,9 @@
             }
         }
     }
-    padding: 3rem 0 2rem;
+    &.other-works-section{
+        background-color: $greylight;
+    }
     .announce {
         > div {
             .h1 {

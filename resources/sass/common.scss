@@ -490,3 +490,27 @@ section {
 iframe {
     min-height: 480px;
 }
+* {
+    outline: none !important;
+}
+
+@media (min-width: 480px) {
+    .portal {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+}
+.react-transform-component,
+.react-transform-element {
+    width: 100% !important;
+}
+
+.tools {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}

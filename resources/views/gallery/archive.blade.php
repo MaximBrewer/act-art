@@ -2,26 +2,17 @@
 @section('content')
 @widget('announce')
 <section class="gallery-section">
-    <div class="background-text">{{ __('Gallery') }}</div>
+    <div class="background-text">{{ __('Archive') }}</div>
     <div class="container">
-        <div class="sticky-section"><span>{{ __('works for sale') }}</span></div>
-        <div class="row announce mb-5">
-            <div class="col col-xl-40 col-xxl-38">
-                <h2 class="h1">{{ __('ONLINE-GALLERY') }}</h2>
-                <div class="sub_h1 d-none d-xl-block">
-                    {{ __('A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.') }}
-                </div>
-                <a href="/how-to-buy" class="h5 h5_underline d-none d-xl-block pt-4">{{ __('How to buy') }}?</a>
-            </div>
-        </div>
-        @widget('popular_categories')
+        <div class="sticky-section"><span>{{ __('archive') }}</span></div>
+        {{-- @widget('popular_categories') --}}
         <div class="gallery-works">
-            <div class="h2">{{ __('Works for sale') }}</div>
+            <div class="h2">{{ __('Archive') }}</div>
             <div class="gallery-works-list">
                 <div class="act-waterfall" data-entity="lots" data-action="add" data-preview="preview"
                     data-limit='{"xs":12,"sm":12,"md":12,"lg":12,"xl":12,"xxl":12}'
-                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-sidebar='true' data-sortable='true'
-                    data-gallery='true'></div>
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-archive='true' data-sidebar='true'
+                    data-sortable='true' data-gallery='true'></div>
             </div>
         </div>
     </div>

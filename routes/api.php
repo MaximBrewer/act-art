@@ -35,10 +35,12 @@ Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function ()
     Route::get('events', '\App\Http\Controllers\Api\EventController@index')->name('event.index');
 
     Route::get('auctions/coming', '\App\Http\Controllers\Api\AuctionController@coming')->name('auction.coming');
+    Route::get('auctions/{id}', '\App\Http\Controllers\Api\AuctionController@show')->name('auction.show');
 
     Route::get('lots/gallery', '\App\Http\Controllers\Api\LotController@gallery')->name('lot.gallery');
     Route::get('lots', '\App\Http\Controllers\Api\LotController@index')->name('lot.index');
     Route::get('lots/options', '\App\Http\Controllers\Api\LotController@options')->name('lot.options');
+    Route::get('lot/{id}', '\App\Http\Controllers\Api\LotController@show');
     Route::get('favorites', '\App\Http\Controllers\Api\LotController@favorites')->name('lot.favorites');
 
     

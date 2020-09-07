@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\Auth;
+use App\Lot;
 
 class GalleryController extends Controller
 {
@@ -21,5 +22,32 @@ class GalleryController extends Controller
             'user' => Auth::check() ? new UserResource(Auth::user()) : null,
         ]);
         return view('gallery.index');
+    }
+    //
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function archive()
+    {
+        JavaScript::put([
+            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
+        ]);
+        return view('gallery.archive');
+    }
+    //
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function lot($id)
+    {
+        JavaScript::put([
+            'user' => Auth::check() ? new UserResource(Auth::user()) : null,
+        ]);
+        $lot = Lot::where('status', 'gallery')->findOrfail($id);
+        return view('gallery.lot', ['lot' => $lot]);
     }
 }

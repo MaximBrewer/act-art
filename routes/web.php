@@ -56,14 +56,18 @@ Route::group(['prefix' => 'profile'], function () {
 
 Route::group(['prefix' => 'gallery'], function () {
     Route::get('/', '\App\Http\Controllers\GalleryController@index')->name('gallery.index');
+    Route::get('/archive', '\App\Http\Controllers\GalleryController@archive')->name('gallery.archive');
+    Route::get('/lot/{id}', '\App\Http\Controllers\GalleryController@lot')->name('gallery.lot');
 });
 
 Route::group(['prefix' => 'auctions'], function () {
     Route::get('/', '\App\Http\Controllers\AuctionController@index')->name('auctions.index');
     Route::group(['prefix' => '{id}'], function () {
         Route::get('/', '\App\Http\Controllers\AuctionController@show');
-        Route::get('/online', '\App\Http\Controllers\AuctionController@online');
-        Route::get('/lots', '\App\Http\Controllers\AuctionController@lots');
+        Route::group(['prefix' => 'lots'], function () {
+            Route::get('/', '\App\Http\Controllers\AuctionController@show');
+            Route::get('/{lot_id}', '\App\Http\Controllers\AuctionController@show');
+        });
     });
 });
 

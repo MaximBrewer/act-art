@@ -19,6 +19,7 @@ class AuctionShort extends JsonResource
             return [
                 'id' => $this->id,
                 'date' => $this->dateout,
+                'status' => $this->status,
                 'dateatom' => $this->date,
                 'title' => $this->getTranslatedAttribute('title'),
                 'announce_text' => $this->getTranslatedAttribute('announce_text'),

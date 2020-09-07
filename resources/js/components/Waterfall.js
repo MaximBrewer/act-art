@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import StackGrid, { transitions } from "react-stack-grid";
-import { sortBy, filter } from "lodash";
+import { sortBy } from "lodash";
 
 export default function Waterfall(props) {
     const { scaleDown } = transitions;
@@ -10,9 +10,10 @@ export default function Waterfall(props) {
         more: true,
         options: [],
         page: 0,
-        sort: {},
+        sortBy: "id",
+        order: "asc",
         filter: {
-            status: "all"
+            status: props.data.archive ? "sold" : "gallery"
         }
     });
 
@@ -52,7 +53,8 @@ export default function Waterfall(props) {
                         }
                     })
                 );
-                props.data.entity == "favorites" && getGallery();
+                props.data.entity == "favorites" &&
+                    getGallery(state.filter, state.sortBy, state.order);
                 setState(prevState => {
                     return { ...prevState, favorites };
                 });
@@ -98,8 +100,14 @@ export default function Waterfall(props) {
         props.data.category && (url += "category=" + props.data.category);
         props.data.author && (url += "author=" + props.data.author);
         props.data.lastbets && (url += "lastbets=1");
-        props.data.entity == "lots" &&
-            (url += "&status=" + state.filter.status);
+        if (props.data.entity == "lots") {
+            url += "&status=" + state.filter.status;
+            url += "&sortBy=" + state.sortBy;
+            url += "&order=" + state.order;
+        }
+        if(!!props.data.exclude){
+            url += "&exclude=" + props.data.exclude;
+        }
         props.data.entity == "favorites" ||
             (url += "&limit=" + getLimit() + "&offset=" + getOffset());
         axios
@@ -119,7 +127,7 @@ export default function Waterfall(props) {
             });
     };
 
-    const getGallery = filter => {
+    const getGallery = (filter, sortBy, order) => {
         let url =
             props.data.entity == "blog" || props.data.entity == "post"
                 ? "/posts?entity=" + props.data.entity + "&"
@@ -133,6 +141,11 @@ export default function Waterfall(props) {
                 !!filter[option.id] &&
                     (url += "&" + option.id + "=" + filter[option.id]);
             });
+            url += "&sortBy=" + sortBy;
+            url += "&order=" + order;
+        }
+        if(!!props.data.exclude){
+            url += "&exclude=" + props.data.exclude;
         }
         (props.data.entity == "favorites" &&
             (url +=
@@ -148,7 +161,9 @@ export default function Waterfall(props) {
                         photos: res.data.items,
                         page: 1,
                         more: res.data.next > 0,
-                        filter: filter
+                        filter: filter,
+                        sortBy: sortBy,
+                        order: order
                     };
                 });
             })
@@ -174,16 +189,31 @@ export default function Waterfall(props) {
         });
     };
 
+    const setSortBy = field => {
+        let order = "asc";
+        if (field == state.sortBy)
+            if (state.order == "asc") order = "desc";
+            else order = "asc";
+        setState(prevState => {
+            return {
+                ...prevState,
+                sortBy: field,
+                order: order
+            };
+        });
+        getGallery(state.filter, field, order);
+    };
+
     const setFilter = (field, value) => {
         let filter = state.filter;
         filter[field] = value;
+        getGallery(filter, state.sortBy, state.order);
         setState(prevState => {
             return {
                 ...prevState,
                 filter
             };
         });
-        getGallery(filter);
     };
 
     useEffect(() => {
@@ -193,7 +223,7 @@ export default function Waterfall(props) {
                 setState(prevState => {
                     return { ...prevState, options: res.data };
                 });
-                getGallery(state.filter);
+                getGallery(state.filter, state.sortBy, state.order);
             })
             .catch(err => {
                 console.log(err);
@@ -209,7 +239,9 @@ export default function Waterfall(props) {
             return (
                 <div className="show-more">
                     <div className="dots">•••</div>
-                    <a href="#" className="text" onClick={addGallery}>{__('Show more')}</a>
+                    <a href="#" className="text" onClick={addGallery}>
+                        {__("Show more")}
+                    </a>
                 </div>
             );
     };
@@ -223,17 +255,18 @@ export default function Waterfall(props) {
                         <a
                             href="#"
                             className={
-                                !!state.filter.status &&
-                                state.filter.status == "all"
-                                    ? `active`
+                                !!state.sortBy && state.sortBy == "price"
+                                    ? state.order == "asc"
+                                        ? `active asc`
+                                        : `active desc`
                                     : ``
                             }
                             onClick={e => {
                                 e.preventDefault();
-                                setFilter("status", "all");
+                                setSortBy("price");
                             }}
                         >
-                            <span>{__("All")}</span>
+                            <span>{__("#BYPRICE#")}</span>
                             <svg
                                 viewBox="0 0 18 18"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -244,17 +277,18 @@ export default function Waterfall(props) {
                         <a
                             href="#"
                             className={
-                                !!state.filter.status &&
-                                state.filter.status == "available"
-                                    ? `active`
+                                !!state.sortBy && state.sortBy == "author"
+                                    ? state.order == "asc"
+                                        ? `active asc`
+                                        : `active desc`
                                     : ``
                             }
                             onClick={e => {
                                 e.preventDefault();
-                                setFilter("status", "available");
+                                setSortBy("author");
                             }}
                         >
-                            <span>{__("Available for purchase")}</span>
+                            <span>{__("#BYAUTHOR#")}</span>
                             <svg
                                 viewBox="0 0 18 18"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -265,17 +299,18 @@ export default function Waterfall(props) {
                         <a
                             href="#"
                             className={
-                                !!state.filter.status &&
-                                state.filter.status == "sold"
-                                    ? `active`
+                                !!state.sortBy && state.sortBy == "id"
+                                    ? state.order == "asc"
+                                        ? `active asc`
+                                        : `active desc`
                                     : ``
                             }
                             onClick={e => {
                                 e.preventDefault();
-                                setFilter("status", "sold");
+                                setSortBy("id");
                             }}
                         >
-                            <span>{__("Sold")}</span>
+                            <span>{__("#BYLOTNUMBER#")}</span>
                             <svg
                                 viewBox="0 0 18 18"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -402,7 +437,11 @@ export default function Waterfall(props) {
                                                   props.data.author +
                                                   `/lots/` +
                                                   item.id
-                                                : `auction` + item.id
+                                                : props.data.gallery
+                                                ? props.data.archive
+                                                    ? `javascript:void(0)`
+                                                    : `/gallery/lot/` + item.id
+                                                : `/auction/lot/`
                                         }
                                     >
                                         {item.title}

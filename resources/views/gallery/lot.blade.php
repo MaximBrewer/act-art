@@ -1,108 +1,40 @@
 @extends('layouts.app')
-{{-- @section('title'){{ 'Act-Art.ru | ' }}{!! $author->getTranslatedAttribute('title') !!}@endsection
-@section('description'){!! $author->getTranslatedAttribute('meta_description') !!}@endsection
-@section('keywords'){!! $author->getTranslatedAttribute('meta_keywords') !!}@endsection --}}
-@section('meta_tags')
-@if($author)
-<title>{{$author->getTranslatedAttribute('title')}}</title>
-<meta name='description' itemprop='description' content='{{$author->getTranslatedAttribute('meta_description')}}' />
-<meta name='keywords' content='{{$author->getTranslatedAttribute('meta_keywords')}}' />
-<meta property='article:published_time' content='{{$author->created_at}}' />
-{{-- <meta property='article:section' content='event' /> --}}
-<meta property="og:description" content="{{$author->getTranslatedAttribute('meta_description')}}" />
-<meta property="og:title" content="{{$author->getTranslatedAttribute('title')}}" />
-<meta property="og:url" content="{{url()->current()}}" />
-<meta property="og:type" content="article" />
-<meta property="og:locale" content="en-us" />
-<meta property="og:locale:alternate" content="en-us" />
-<meta property="og:site_name" content="{{env('SITE_URL', 'Act-Art.ru')}}" />
-{{-- @foreach($obj->images as $image)
-            <meta property="og:image" content="{{$image->url}}" />
-@endforeach --}}
-<meta property="og:image:url" content="/storage/{{$author->image}}" />
-<meta property="og:image:size" content="300" />
-
-{{-- <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="{{$author->getTranslatedAttribute('title')}}" />
-<meta name="twitter:site" content="@BrnBhaskar" /> --}}
-@endif
-@endsection
 @section('content')
-@php
-$dir = storage_path("app/public/");
-$size = getimagesize($dir . $author->avatar);
-@endphp
-<section class="author-page">
-    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
+@widget('announce')
+<section class="gallery-section">
+    <div class="background-text">{{ __('Gallery') }}</div>
     <div class="container">
-        {{-- <div class="sticky-section"><span>{!! $author->getTranslatedAttribute('title') !!}</span></div> --}}
-        <div class="row pb-2 pb-lg-5">
-            <div class="col-xl-40">
-                <h2 class="h2">
-                    {!! $author->getTranslatedAttribute('name') !!} {!! $author->getTranslatedAttribute('surname') !!}
-                </h2>
-                @if(!empty($author->groups))
-                <div class="h5">/{!! $author->groups[0]->getTranslatedAttribute('title') !!}/</div>
-                @endif
-                <hr>
-                <div class="d-none d-xl-block description">{!! $author->getTranslatedAttribute('text') !!}</div>
-                <div class="btn-sign">
-                    {{ __('You can follow the update of the author\'s collection or leave a request for the purchase of new works') }}
-                </div>
-                <div class="btn-wrap d-flex">
-                    <button type="button" class="btn btn-default">{{ __('Follow') }}</button>
-                    <button type="button" class="btn btn-primary">{{ __('Purchase requisition') }}</button>
-                </div>
+        <div class="sticky-section"><span>{{ __('online-gallery') }}</span></div>
+        <div class="row announce mb-5">
+            <div class="col col-xl-40 col-xxl-38">
+                <div class="lot-gallery" data-id="{{ $lot->id }}"></div>
             </div>
-            <div class="col-xl-20 d-none d-xl-block photo-block">
-                <div class="image-wrapper"
-                    style="background-image: url('{!! Voyager::image($author->avatar) !!}');padding-top:{!! 100 * $size[1] / $size[0] !!}%">
-                </div>
-                @if(count($author->studies))
-                <div class="educations">
-                    <div class="heading">{{ __('Studies') }}</div>
-                    <ul class="list-unstyled">
-                        @foreach($author->studies as $study)
-                        <li>{{  $study->getTranslatedAttribute('title') }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                @if(count($author->exhibits))
-                <div class="exhibitions">
-                    <div class="heading">{{ __('Exhibits') }}</div>
-                    <ul class="list-unstyled">
-                        @foreach($author->exhibits as $exhibition)
-                        <li>{{  $exhibition->getTranslatedAttribute('title') }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
+            <div class="col col-xl-20 col-xxl-22">
+                <div id="portal" class="portal"></div>
             </div>
         </div>
     </div>
 </section>
-
-<section class="author-works">
+<section class="gallery-section other-works-section">
     <div class="container">
-        <div class="h2">{{ __('Other author\'s works') }}</div>
-        <div class="author-works-list">
-            <div class="act-waterfall" data-entity="lots" data-action="add" data-preview="preview"
-                data-author="{{ $author->id }}" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
-                data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}' data-sortable='true' data-show-status='true'></div>
-        </div>
-        <div class="author-works-footer">
-            <div class="d-flex justify-content-center">
-                <a href="/auctions" class="btn btn-default">{{ __('Closest auctions') }}</a>
-                <a href="/gallery" class="btn btn-default">{{ __('Online-Gallery') }}</a>
-            </div>
-            <div class="d-flex justify-content-center">
-                <a href="/authors">{{ __('All authors') }}</a>
+        <div class="gallery-works">
+            <div class="h2">{{ __('Other works') }}</div>
+            <div class="gallery-works-list">
+                <div class="act-waterfall" data-entity="lots" data-exclude="{{ $lot->id }}" data-action="add"
+                    data-preview="preview" data-limit='{"xs":12,"sm":12,"md":12,"lg":12,"xl":12,"xxl":12}'
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}' data-sidebar='true' data-sortable='true'
+                    data-gallery='true'></div>
             </div>
         </div>
     </div>
+    <div class="dotted-gallery d-none d-xl-block">
+        <div class="dotted-bg"></div>
+        <svg viewBox="0 0 683 327" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M341.766 0C82.3241 0 3.25041 175.809 0 183.307L81.5558 218.728C83.1514 215.245 109.391 159.692 184.032 122.5C180.295 136.259 178.407 150.454 178.418 164.71C178.387 186.006 182.558 207.1 190.693 226.784C198.828 246.469 210.767 264.359 225.828 279.431C240.889 294.504 258.776 306.463 278.467 314.625C298.157 322.787 319.265 326.992 340.584 327H342.771C385.749 327.031 426.982 310.018 457.411 279.699C487.84 249.38 504.976 208.234 505.055 165.301C505.089 151.357 503.321 137.467 499.795 123.975C573.254 161.581 600.617 216.367 602.213 219.673L683 182.244C679.631 174.805 595.475 0 341.766 0ZM435.2 239.686H332.015V136.609H435.2V239.686Z">
+            </path>
+        </svg>
+    </div>
 </section>
-
 @widget('marquee')
-
 @endsection

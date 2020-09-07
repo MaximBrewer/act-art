@@ -26,5 +26,10 @@
                 fill: $red;
             }
         }
+        &.desc{
+            svg {
+                transform: scale(1, -1)
+            }
+        }
     }
 }

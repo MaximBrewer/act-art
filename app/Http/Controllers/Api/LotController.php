@@ -50,11 +50,14 @@ class LotController extends Controller
                 $query->where('id', $style);
             });
         };
+        if ($request->get('exclude'))
+            $lots->where('id', '<>', $request->get('exclude'));
+
+        $lots->orderBy($request->get('sortBy') ? 'lots.' . $request->get('sortBy') : 'lots.id', $request->get('order') ? $request->get('order') : 'asc');
         return json_encode([
             'next' => $lots->count() - $offset - $limit,
             'items' => LotResource::collection(
                 $lots
-                    ->orderBy('lots.created_at')
                     ->limit($limit)
                     ->offset($offset)
                     ->with('bets')
@@ -74,6 +77,14 @@ class LotController extends Controller
         $auction = Auction::gallery();
         return [
             'auction' => new AuctionResource($auction)
+        ];
+    }
+
+    public function show($lang, $id)
+    {
+        $lot = Lot::findOrfail($id);
+        return [
+            'lot' => new LotResource($lot)
         ];
     }
 

@@ -20,7 +20,13 @@ class Auction extends JsonResource
         if ($this)
             return [
                 'id' => $this->id,
+                'date' => $this->dateout,
+                'dateatom' => $this->date,
+                'status' => $this->status,
                 'title' => $this->getTranslatedAttribute('title'),
+                'announce_text' => $this->getTranslatedAttribute('announce_text'),
+                'sublime' => $this->getTranslatedAttribute('sublime'),
+                'thumbnail' => Voyager::image($this->thumbnail('xxxl', 'announce_image')),
                 'lots' => LotResource::collection($this->lots)
             ];
     }

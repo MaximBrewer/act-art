@@ -35,6 +35,7 @@ import { __ } from "./trans.js";
 
 import Gallery from "./components/Gallery";
 import Auctions from "./components/Auctions";
+import Auction from "./components/Auction";
 import AuctionsList from "./components/AuctionsList";
 import AuctionsProfile from "./components/AuctionsProfile";
 // import HomeWaterfall from "./components/HomeWaterfall";
@@ -45,6 +46,7 @@ import News from "./components/News";
 import Waterfall from "./components/Waterfall";
 import Carousel from "./components/Carousel";
 import Experts from "./components/Experts";
+import LotGallery from "./components/LotGallery";
 
 import SearchForm from "./components/SearchForm";
 
@@ -212,11 +214,20 @@ document.addEventListener("DOMContentLoaded", () => {
         render(<AuctionsList data={auctionsList.dataset} />, auctionsList);
     });
 
+    let lotGalleries = document.getElementsByClassName("lot-gallery");
+
+    [].forEach.call(lotGalleries, function(lotGallery) {
+        render(<LotGallery data={lotGallery.dataset} />, lotGallery);
+    });
+
     let auctionsProfiles = document.getElementsByClassName("act-auctions-profile");
 
     [].forEach.call(auctionsProfiles, function(auctionsProfile) {
         render(<AuctionsProfile data={auctionsProfile.dataset} />, auctionsProfile);
     });
+
+    !document.getElementById("appAuction") ||
+        render(<Auction   data={document.getElementById("appAuction").dataset}/>, document.getElementById("appAuction"));
 
     let waterfalls = document.getElementsByClassName("act-waterfall");
 

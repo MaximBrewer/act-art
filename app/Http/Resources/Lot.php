@@ -18,6 +18,19 @@ class Lot extends JsonResource
         if ($this) {
             $dir = storage_path("app/public/");
             $size = getimagesize($dir . $this->photo);
+            $phArr = json_decode($this->photos);
+            $photos = [];
+            if (is_array($phArr)) {
+                foreach ($phArr as $ph) {
+                    $size = getimagesize($dir . $ph);
+                    $photos[] = [
+                        'full' => Voyager::image($ph), 
+                        'thumbnail' => Voyager::image($this->getThumbnail($ph, 'preview')),
+                        'pxwidth' => $size[0],
+                        'pxheight' => $size[1],
+                    ];
+                }
+            }
             return [
                 'id' => $this->id,
                 'title' => $this->getTranslatedAttribute('title'),
@@ -28,6 +41,7 @@ class Lot extends JsonResource
                 'materials' => $this->materials,
                 'frames' => $this->frames,
                 'techniques' => $this->techniques,
+                'photos' => $photos,
                 'styles' => $this->styles,
                 'author' => trim($this->user->name . " " . $this->user->surname),
                 'author_url' => "/authors/" . $this->user->id,
