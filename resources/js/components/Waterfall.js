@@ -54,7 +54,12 @@ export default function Waterfall(props) {
                     })
                 );
                 props.data.entity == "favorites" &&
-                    getGallery(state.filter, state.sortBy, state.order);
+                    getGallery(
+                        state.filter,
+                        state.sortBy,
+                        state.order,
+                        state.options
+                    );
                 setState(prevState => {
                     return { ...prevState, favorites };
                 });
@@ -105,7 +110,7 @@ export default function Waterfall(props) {
             url += "&sortBy=" + state.sortBy;
             url += "&order=" + state.order;
         }
-        if(!!props.data.exclude){
+        if (!!props.data.exclude) {
             url += "&exclude=" + props.data.exclude;
         }
         props.data.entity == "favorites" ||
@@ -127,7 +132,7 @@ export default function Waterfall(props) {
             });
     };
 
-    const getGallery = (filter, sortBy, order) => {
+    const getGallery = (filter, sortBy, order, options) => {
         let url =
             props.data.entity == "blog" || props.data.entity == "post"
                 ? "/posts?entity=" + props.data.entity + "&"
@@ -137,14 +142,14 @@ export default function Waterfall(props) {
         props.data.lastbets && (url += "lastbets=1");
         if (props.data.entity == "lots") {
             url += "&status=" + filter.status;
-            state.options.map(option => {
+            options.map(option => {
                 !!filter[option.id] &&
                     (url += "&" + option.id + "=" + filter[option.id]);
             });
             url += "&sortBy=" + sortBy;
             url += "&order=" + order;
         }
-        if(!!props.data.exclude){
+        if (!!props.data.exclude) {
             url += "&exclude=" + props.data.exclude;
         }
         (props.data.entity == "favorites" &&
@@ -201,13 +206,13 @@ export default function Waterfall(props) {
                 order: order
             };
         });
-        getGallery(state.filter, field, order);
+        getGallery(state.filter, field, order, state.options);
     };
 
     const setFilter = (field, value) => {
         let filter = state.filter;
         filter[field] = value;
-        getGallery(filter, state.sortBy, state.order);
+        getGallery(filter, state.sortBy, state.order, state.options);
         setState(prevState => {
             return {
                 ...prevState,
@@ -216,14 +221,49 @@ export default function Waterfall(props) {
         });
     };
 
+    const setCategory = () => {
+        if (location.hash.indexOf("#category-") == -1) return false;
+        let catId = location.hash.replace(/#category-/, "");
+        let filter = state.filter;
+        filter.category = catId * 1;
+        setState(prevState => {
+            getGallery(
+                filter,
+                prevState.sortBy,
+                prevState.order,
+                prevState.options
+            );
+            return {
+                ...prevState,
+                filter
+            };
+        });
+        scrollToElement("galleryWorksList");
+        location.hash = '';
+        return true;
+    };
+
     useEffect(() => {
+        window.addEventListener(
+            "hashchange",
+            () => {
+                setCategory();
+            },
+            false
+        );
         axios
             .get("/api/" + window.lang + "/lots/options")
             .then(res => {
                 setState(prevState => {
                     return { ...prevState, options: res.data };
                 });
-                getGallery(state.filter, state.sortBy, state.order);
+                if (!setCategory())
+                    getGallery(
+                        state.filter,
+                        state.sortBy,
+                        state.order,
+                        state.options
+                    );
             })
             .catch(err => {
                 console.log(err);

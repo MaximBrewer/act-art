@@ -14,45 +14,5 @@
         <div class="act-auctions-list" data-archive="true"></div>
     </div>
 </section>
-{{-- <section class="auctions-section">
-    <div class="container">
-        <div class="row announce">
-            <div class="col col-xl-40 col-xxl-38">
-            </div>
-            <div class="col col-xl-20 col-xxl-22 text-center">
-                <a href="/auctions/archive" class="btn btn-default">{{ __('ARCHIVE OF AUCTIONS') }}</a>
-            </div>
-        </div>
-    </div>
-</section> --}}
-{{-- <section class="subscribe-section">
-    <div class="container">
-        <div class="row announce justify-content-center">
-            <div class="col col-xl-40">
-                <div class="text-center">
-                    @widget('subscribe')
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="auctions-section d-none d-md-block">
-    <div class="container">
-        <div class="row announce justify-content-center">
-            <div class="col col-xl-40">
-                <div class="text-center sub_h1">
-                    {{ __('You can also purchase selected works by contemporary Russian authors in our permanent online gallery.') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="d-none d-md-block popular-categories-section">
-    <div class="pt-5 mb-5">
-        <div class="container">
-            @widget('popular_categories')
-        </div>
-    </div>
-</section> --}}
 @widget('marquee')
 @endsection

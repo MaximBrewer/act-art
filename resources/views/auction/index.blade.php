@@ -86,7 +86,15 @@
 <section class="d-none d-md-block popular-categories-section">
     <div class="pt-5 mb-5">
         <div class="container">
-            @widget('popular_categories')
+            <div class="popular-categories">
+                <h4 class="h4">{{ __('Popular Categories') }}</h4>
+                <div class="d-flex justify-content-between categories">
+                    @widget('popular_categories')
+                </div>
+                <div class="d-flex justify-content-center align-items-end">
+                    <a href="/gallery" class="btn btn-default">{{ __('VIEW ALL WORKS') }}</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -10,6 +10,7 @@ use App\Http\Resources\Auction as AuctionResource;
 use App\Lot;
 use App\Http\Resources\Lot as LotResource;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class LotController extends Controller
 {
@@ -27,16 +28,8 @@ class LotController extends Controller
                 case "available":
                     $lots->whereIn('status', ["auction", "gallery"]);
                     break;
-                case "gallery":
-                    $lots->whereIn('status', ["gallery"]);
-                    break;
-                case "gallery-available":
-                    $lots->whereIn('status', ["gallery"]);
-                    break;
-                case "sold":
-                    $lots->where('status', "sold");
-                    break;
                 default:
+                    $lots->where('status', $request->get('status'));
                     break;
             }
         };
@@ -50,10 +43,19 @@ class LotController extends Controller
                 $query->where('id', $style);
             });
         };
+
+        $sortBy = $request->get('sortBy') ? 'lots.' . $request->get('sortBy') : false;
+        if ($request->get('sortBy') == 'author') {
+            $lots->leftJoin('users', 'lots.user_id', '=', 'users.id');
+            $lots->select(DB::raw("lots.*, users.name"));
+            $sortBy = 'users.name';
+        }
+        
         if ($request->get('exclude'))
             $lots->where('id', '<>', $request->get('exclude'));
 
-        $lots->orderBy($request->get('sortBy') ? 'lots.' . $request->get('sortBy') : 'lots.id', $request->get('order') ? $request->get('order') : 'asc');
+
+        $lots->orderBy($sortBy ? $sortBy : 'lots.id', $request->get('order') ? $request->get('order') : 'asc');
         return json_encode([
             'next' => $lots->count() - $offset - $limit,
             'items' => LotResource::collection(

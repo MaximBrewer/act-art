@@ -14,8 +14,13 @@
                 <a href="/how-to-buy" class="h5 h5_underline d-none d-xl-block pt-4">{{ __('How to buy') }}?</a>
             </div>
         </div>
-        @widget('popular_categories')
-        <div class="gallery-works">
+        <div class="popular-categories">
+            <h4 class="h4">{{ __('Popular Categories') }}</h4>
+            <div class="d-flex justify-content-between categories">
+                @widget('popular_categories')
+            </div>
+        </div>
+        <div class="gallery-works" id="galleryWorksList">
             <div class="h2">{{ __('Works for sale') }}</div>
             <div class="gallery-works-list">
                 <div class="act-waterfall" data-entity="lots" data-action="add" data-preview="preview"

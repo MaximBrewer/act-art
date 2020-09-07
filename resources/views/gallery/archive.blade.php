@@ -5,7 +5,12 @@
     <div class="background-text">{{ __('Archive') }}</div>
     <div class="container">
         <div class="sticky-section"><span>{{ __('archive') }}</span></div>
-        {{-- @widget('popular_categories') --}}
+        <div class="popular-categories">
+            <h4 class="h4">{{ __('Popular Categories') }}</h4>
+            <div class="d-flex justify-content-between categories">
+                @widget('popular_categories')
+            </div>
+        </div>
         <div class="gallery-works">
             <div class="h2">{{ __('Archive') }}</div>
             <div class="gallery-works-list">

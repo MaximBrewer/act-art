@@ -86581,12 +86581,14 @@ window.addEventListener("resize", function () {
 });
 
 window.scrollToElement = function (e) {
-  var elem = document.getElementById(e.dataset.id),
-      toY = elem.offsetTop * 1 - 48,
+  var elem;
+  if (typeof e == "string") elem = document.getElementById(e);else elem = document.getElementById(e.dataset.id);
+  if (!elem) return false;
+  var toY = elem.offsetTop * 1 - 48,
       fromY = document.scrollingElement.scrollTop * 1,
       scrollY = fromY * 1,
       oldTimestamp = null;
-  console.log(toY);
+  if (typeof e == "string") toY = elem.offsetTop + 350;
 
   function step(newTimestamp) {
     if (oldTimestamp !== null) {
@@ -89653,7 +89655,7 @@ function Waterfall(props) {
           type: action == "add" ? "success" : "error"
         }
       }));
-      props.data.entity == "favorites" && getGallery(state.filter, state.sortBy, state.order);
+      props.data.entity == "favorites" && getGallery(state.filter, state.sortBy, state.order, state.options);
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           favorites: favorites
@@ -89728,7 +89730,7 @@ function Waterfall(props) {
     });
   };
 
-  var getGallery = function getGallery(filter, sortBy, order) {
+  var getGallery = function getGallery(filter, sortBy, order, options) {
     var url = props.data.entity == "blog" || props.data.entity == "post" ? "/posts?entity=" + props.data.entity + "&" : "/" + props.data.entity + "?";
     props.data.category && (url += "category=" + props.data.category);
     props.data.author && (url += "author=" + props.data.author);
@@ -89736,7 +89738,7 @@ function Waterfall(props) {
 
     if (props.data.entity == "lots") {
       url += "&status=" + filter.status;
-      state.options.map(function (option) {
+      options.map(function (option) {
         !!filter[option.id] && (url += "&" + option.id + "=" + filter[option.id]);
       });
       url += "&sortBy=" + sortBy;
@@ -89791,13 +89793,13 @@ function Waterfall(props) {
         order: order
       });
     });
-    getGallery(state.filter, field, order);
+    getGallery(state.filter, field, order, state.options);
   };
 
   var setFilter = function setFilter(field, value) {
     var filter = state.filter;
     filter[field] = value;
-    getGallery(filter, state.sortBy, state.order);
+    getGallery(filter, state.sortBy, state.order, state.options);
     setState(function (prevState) {
       return _objectSpread(_objectSpread({}, prevState), {}, {
         filter: filter
@@ -89805,14 +89807,33 @@ function Waterfall(props) {
     });
   };
 
+  var setCategory = function setCategory() {
+    if (location.hash.indexOf("#category-") == -1) return false;
+    var catId = location.hash.replace(/#category-/, "");
+    var filter = state.filter;
+    filter.category = catId * 1;
+    setState(function (prevState) {
+      getGallery(filter, prevState.sortBy, prevState.order, prevState.options);
+      return _objectSpread(_objectSpread({}, prevState), {}, {
+        filter: filter
+      });
+    });
+    scrollToElement("galleryWorksList");
+    location.hash = '';
+    return true;
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    window.addEventListener("hashchange", function () {
+      setCategory();
+    }, false);
     axios.get("/api/" + window.lang + "/lots/options").then(function (res) {
       setState(function (prevState) {
         return _objectSpread(_objectSpread({}, prevState), {}, {
           options: res.data
         });
       });
-      getGallery(state.filter, state.sortBy, state.order);
+      if (!setCategory()) getGallery(state.filter, state.sortBy, state.order, state.options);
     })["catch"](function (err) {
       console.log(err);
     });

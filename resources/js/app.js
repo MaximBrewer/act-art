@@ -366,14 +366,15 @@ window.addEventListener("resize", () => {
     changeWindow();
 });
 window.scrollToElement = e => {
-    let elem = document.getElementById(e.dataset.id),
-        toY = elem.offsetTop * 1 - 48,
+    let elem;
+    if (typeof e == "string") elem = document.getElementById(e);
+    else elem = document.getElementById(e.dataset.id);
+    if (!elem) return false;
+    let toY = elem.offsetTop * 1 - 48,
         fromY = document.scrollingElement.scrollTop * 1,
         scrollY = fromY * 1,
         oldTimestamp = null;
-
-    console.log(toY);
-
+    if (typeof e == "string") toY = elem.offsetTop + 350;
     function step(newTimestamp) {
         if (oldTimestamp !== null) {
             if (fromY < toY) {
