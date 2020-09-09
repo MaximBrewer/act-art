@@ -135,32 +135,23 @@ const changeWindow = () => {
         [].forEach.call(stickies, function(sticky) {
             sticky.style.display = "flex";
             let c = sticky.parentNode,
-                s = sticky.parentNode.parentNode,
-                sp = sticky.children[0];
-            if (
-                s.offsetTop + (s.offsetHeight - c.offsetHeight) / 2 <
-                scrollTop + 50
-            ) {
-                if (
-                    s.offsetTop +
-                        s.offsetHeight -
-                        sp.offsetWidth -
-                        (s.offsetHeight - c.offsetHeight) / 2 >
-                    scrollTop + 90
-                ) {
-                    sticky.style.marginLeft =
-                        (s.offsetWidth - c.offsetWidth) / 2 + "px";
-                    sticky.style.top = "90px";
+                sp = sticky.children[0],
+                egr = c.getBoundingClientRect();
+            if (egr.top < 80) {
+                if (egr.top + egr.height - 80 > 80 + sp.offsetWidth ) {
                     sticky.style.position = "fixed";
+                    sticky.style.top = 80 + "px";
+                    sticky.style.bottom = "auto";
                 } else {
                     sticky.style.marginLeft = "0";
-                    sticky.style.top =
-                        c.offsetHeight - sp.offsetWidth - 50 + "px";
+                    sticky.style.top = "auto";
+                    sticky.style.bottom = sp.offsetWidth - 24 + 80 + "px";
                     sticky.style.position = "absolute";
                 }
             } else {
                 sticky.style.marginLeft = "0";
                 sticky.style.top = "0";
+                sticky.style.bottom = "auto";
                 sticky.style.position = "absolute";
             }
         });
@@ -280,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
         render(<Carousel data={data} />, carousel);
     });
 
-    changeWindow();
+    setTimeout(() => changeWindow(), 700);
     setTimeout(() => document.getElementById("sitePreloader").remove(), 700);
 
     document.getElementById("burgerMenuToggle").addEventListener("click", e => {
@@ -339,7 +330,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.Echo.channel("Auction").listen("Auction", function(e) {
-        console.log(e);
         window.dispatchEvent(
             new CustomEvent("auction", {
                 detail: {

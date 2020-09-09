@@ -14,6 +14,7 @@
     "How to buy": "Как купить",
     "How to sell": "Как продать",
     "Rules": "Правила",
+    "Participation rules": "Правила участия",
     "Delivery": "Доставка",
 
     "Search..": "Поиск..",
@@ -88,7 +89,10 @@
     "Status:": "Статус:",
     "View lots": "Смотреть лоты",
     "PARTICIPATE": "ПРИНЯТЬ УЧАСТИЕ",
+    "Participate": "Принять участие",
     "ONLINE-GALLERY": "ОНЛАЙН-ГАЛЕРЕЯ",
+    "Online-gallery": "Онлайн-галерея",
+    "All auctions": "Все аукционы",
     "A permanent gallery-auction where you can purchase selected works of young Russian authors. Follow, choose, bargain, collect your collection. Weekly update.": "Постоянно действующая галерея-аукцион, в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.",
     "Gallery": "Галерея",
     "works for sale": "работы в продаже",
@@ -105,8 +109,8 @@
     "Archive": "Архив",
     "archive": "архив",
     "Bidding is over": "Торги законечны",
-    "BLOG": "БЛОГ",
-    "BLOG": "БЛОГ",
+    "Auction lots": "Лоты аукциона",
+    "to start auction": "до начала аукциона",
     "BLOG": "БЛОГ",
     "BLOG": "БЛОГ"
 }

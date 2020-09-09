@@ -35,7 +35,8 @@
             background-size: contain;
         }
         .heading {
-            @include small_text_bold_14;
+            @include small_text_14;
+            font-weight: 500;
             color: $cyanmedium;
             padding-bottom: 0.5rem;
         }

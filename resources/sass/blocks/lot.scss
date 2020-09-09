@@ -1,5 +1,8 @@
 @use "sass:map";
 .lot-item {
+    .image-holder{
+        background-color: $white;
+    }
     .image {
         position: relative;
         background-size: cover;

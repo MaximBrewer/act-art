@@ -58,10 +58,6 @@ h3,
     font-weight: bold;
     line-height: 1.11em;
     letter-spacing: initial;
-    @media screen and (max-width: 1919px) {
-        font-size: 24px;
-        line-height: 28px;
-    }
 }
 h4,
 .h4 {
@@ -332,6 +328,9 @@ h6,
 .container {
     position: relative;
 }
+.sticky-wrapper{
+    position: relative;
+}
 .sticky-section {
     display: none;
     z-index: 1;
@@ -341,13 +340,13 @@ h6,
     transform: rotate(-90deg);
     position: absolute;
     top: 0;
-    left: -4rem;
+    left: 4rem;
     text-align: right;
     @media (min-width: map.get($grid-breakpoints, "xl")) {
         display: flex;
     }
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
-        left: -6vw;
+        left: 6vw;
     }
 }
 .sticky-section span {

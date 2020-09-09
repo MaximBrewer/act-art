@@ -26,6 +26,7 @@
 @import 'gallery';
 
 @import './blocks/sorting';
+@import './blocks/counter';
 @import './blocks/news';
 @import './blocks/author';
 @import './blocks/auction.announce';
@@ -36,3 +37,6 @@
 @import './blocks/subscribe';
 @import './blocks/announces';
 @import './blocks/popularCategories';
+
+
+@import './auction/index';

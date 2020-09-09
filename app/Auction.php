@@ -21,44 +21,7 @@ class Auction extends Model
     protected $dates = [
         'date',
     ];
-
-
-    public static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            // ... code here
-            if ($model->to_announce)
-                DB::table($model->table)->update(['to_announce' => 0]);
-        });
-
-        self::created(function ($model) {
-            // ... code here
-        });
-
-        self::updating(function ($model) {
-            // ... code here
-            if ($model->to_announce)
-                DB::table($model->table)->update(['to_announce' => 0]);
-            if ($model->to_gallery)
-                DB::table($model->table)->update(['to_gallery' => 0]);
-        });
-
-        self::updated(function ($model) {
-            // ... code here
-        });
-
-        self::deleting(function ($model) {
-            // ... code here
-        });
-
-        self::deleted(function ($model) {
-            // ... code here
-        });
-    }
-
-
+    
     /**
      * Scope a query to only published scopes.
      *
@@ -68,7 +31,7 @@ class Auction extends Model
      */
     public function scopeComing(Builder $query)
     {
-        return $query->where('date', '>', Carbon::now())->orderBy('sort', 'ASC');
+        return $query->where('status', 'coming')->orderBy('sort', 'ASC');
     }
 
 
@@ -86,6 +49,34 @@ class Auction extends Model
     }
 
 
+
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeStarted(Builder $query)
+    {
+        return $query->where('status', 'started');
+    }
+
+
+
+    /**
+     * Scope a query to only published scopes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCanceled(Builder $query)
+    {
+        return $query->where('status', 'canceled');
+    }
+
+
     /**
      * Scope a query to only published scopes.
      *
@@ -95,7 +86,7 @@ class Auction extends Model
      */
     public static function gallery()
     {
-        $auction = self::where('to_gallery', '=', 1)->where('date', '>', Carbon::now())->first();
+        $auction = self::coming()->where('to_gallery', '=', 1)->first();
         return $auction ? $auction : self::nearest();
     }
     /**
@@ -107,7 +98,7 @@ class Auction extends Model
      */
     public static function nearest()
     {
-        return self::where('date', '>', Carbon::now())->orderBy('date', 'ASC')->first();
+        return self::coming()->orderBy('date', 'ASC')->first();
     }
     /**
      * Scope a query to only published scopes.
@@ -118,7 +109,7 @@ class Auction extends Model
      */
     public static function announce()
     {
-        $auction = self::where('to_announce', 1)->where('date', '>', Carbon::now())->first();
+        $auction = self::coming()->where('to_announce', 1)->first();
         return $auction ? $auction : self::nearest();
     }
 
