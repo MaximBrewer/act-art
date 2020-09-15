@@ -84,30 +84,34 @@ export default function AuctionCarousel() {
     return (
         <React.Fragment>
             <div className="row">
-                <div className="col-xl-40 col-xxl-38 p3bgw">
-                    <hr className="d-lg-none" />
-                    <Slider {...settingsPicture} ref={refPicture}>
-                        {state.auctions.map((item, index) => (
-                            <div index={index}>
-                                <AuctionPreviewLeft auction={item} />
-                            </div>
-                        ))}
-                    </Slider>
+                <div className="col-xl-40 col-xxl-38">
+                    <div className="left-auction-side">
+                        <hr className="d-xl-none" />
+                        <Slider {...settingsPicture} ref={refPicture}>
+                            {state.auctions.map((item, index) => (
+                                <div key={index}>
+                                    <AuctionPreviewLeft auction={item} />
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
                 </div>
-                <div className="col-xl-20 col-xxl-22 p3bgw">
-                    <Slider {...settingsAnnounce} ref={refAnnounce}>
-                        {state.auctions.map((item, index) => (
-                            <div index={index}>
-                                <AuctionPreviewRight auction={item} />
-                            </div>
-                        ))}
-                    </Slider>
-                    <hr className="d-lg-none" />
+                <div className="col-xl-20 col-xxl-22">
+                    <div className="right-auction-side">
+                        <Slider {...settingsAnnounce} ref={refAnnounce}>
+                            {state.auctions.map((item, index) => (
+                                <div key={index}>
+                                    <AuctionPreviewRight auction={item} />
+                                </div>
+                            ))}
+                        </Slider>
+                        <hr className="d-xl-none" />
+                    </div>
                 </div>
             </div>
-            <div className="row carousel-controls">
-                <div className="col-xl-40 col-xxl-38">
-                    <div className="carousel-button">
+            <div className="row carousel-controls py-3">
+                <div className="col-30 col-md-15 col-xl-40 col-xxl-38">
+                    <div className="carousel-button d-none d-xl-block">
                         <a href="/auctions" className="btn btn-default">
                             {__("ВСЕ АУКЦИОНЫ")}
                         </a>
@@ -165,12 +169,22 @@ export default function AuctionCarousel() {
                         </a>
                     </div>
                 </div>
-                <div className="col-xl-20 col-xxl-22">
+                <div className="col-30 col-md-45 col-xl-20 col-xxl-22">
+                    <div className="carousel-button d-none d-md-block d-xl-none">
+                        <a href="/auctions" className="btn btn-default">
+                            {__("ВСЕ АУКЦИОНЫ")}
+                        </a>
+                    </div>
                     <div className="carousel-counter">
                         <span className="current">{state.slideIndex + 1}</span>/
                         <span className="total">{state.slidesTotal}</span>
                     </div>
                 </div>
+            </div>
+            <div className="carousel-button d-md-none">
+                <a href="/auctions" className="btn btn-default">
+                    {__("ВСЕ АУКЦИОНЫ")}
+                </a>
             </div>
         </React.Fragment>
     );

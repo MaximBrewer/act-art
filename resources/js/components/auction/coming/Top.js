@@ -1,6 +1,8 @@
 import React from "react";
-export default function Header(props) {
-    const auction = { props };
+import Countdown from "../../Countdown";
+
+export default function Top(props) {
+    const { auction } = props;
     return (
         <section
             className="auction-announce auction-coming"
@@ -11,6 +13,7 @@ export default function Header(props) {
         >
             <div className="darkener">
                 <div className="container">
+                    <Countdown date={auction.dateatom} />
                     <div className="h1">{auction.title}</div>
                     <a
                         href={"/auctions/" + auction.id}

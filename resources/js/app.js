@@ -137,8 +137,8 @@ const changeWindow = () => {
             let c = sticky.parentNode,
                 sp = sticky.children[0],
                 egr = c.getBoundingClientRect();
-            if (egr.top < 80) {
-                if (egr.top + egr.height - 80 > 80 + sp.offsetWidth ) {
+            if (egr.top < 32) {
+                if (egr.top + egr.height - 80 > 80 + sp.offsetWidth) {
                     sticky.style.position = "fixed";
                     sticky.style.top = 80 + "px";
                     sticky.style.bottom = "auto";
@@ -150,26 +150,28 @@ const changeWindow = () => {
                 }
             } else {
                 sticky.style.marginLeft = "0";
-                sticky.style.top = "0";
+                sticky.style.top = "48px";
                 sticky.style.bottom = "auto";
                 sticky.style.position = "absolute";
             }
         });
         [].forEach.call(bgts, function(bgt) {
             bgt.style.display = "block";
-            let s = bgt.parentNode;
-            if (s.offsetTop < scrollTop + 300) {
-                if (s.offsetTop - scrollTop > 100) {
+            let egr = bgt.getBoundingClientRect();
+            if (egr.top < 500) {
+                if (egr.top > 100) {
                     bgt.style.transform =
-                        "translateX(" +
-                        (80 * (s.offsetTop - scrollTop - 100)) / 200 +
-                        "%)";
+                        "translateX(" + (egr.top - 100) * 80 / 400 + "%)";
                 } else {
                     bgt.style.transform = "translateX(0%)";
                 }
             } else {
                 bgt.style.transform = "translateX(80%)";
             }
+        });
+    } else {
+        [].forEach.call(stickies, function(sticky) {
+            sticky.style.display = "none";
         });
     }
 };
@@ -360,21 +362,30 @@ window.scrollToElement = e => {
     if (typeof e == "string") elem = document.getElementById(e);
     else elem = document.getElementById(e.dataset.id);
     if (!elem) return false;
-    let toY = elem.offsetTop * 1 - 48,
+    let toY =
+            (elem.getBoundingClientRect().top +
+                document.scrollingElement.scrollTop) *
+                1 -
+            68,
         fromY = document.scrollingElement.scrollTop * 1,
         scrollY = fromY * 1,
         oldTimestamp = null;
-    if (typeof e == "string") toY = elem.offsetTop + 350;
     function step(newTimestamp) {
         if (oldTimestamp !== null) {
             if (fromY < toY) {
                 scrollY += 100;
-                if (scrollY >= toY) return false;
+                if (scrollY >= toY) {
+                    document.scrollingElement.scrollTop = toY;
+                    return false;
+                }
                 document.scrollingElement.scrollTop = scrollY;
             } else {
                 scrollY -= 100;
                 document.scrollingElement.scrollTop = scrollY;
-                if (scrollY <= toY) return false;
+                if (scrollY <= toY) {
+                    document.scrollingElement.scrollTop = toY;
+                    return false;
+                }
             }
         }
         oldTimestamp = newTimestamp;

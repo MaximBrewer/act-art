@@ -50,6 +50,7 @@ class Lot extends JsonResource
                 'pxheight' => $size[1],
                 'price' => $this->price,
                 'bets' => $this->bets,
+                'sort' => $this->sort,
                 'status' => $this->status
             ];
         }

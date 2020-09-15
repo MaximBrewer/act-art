@@ -33,10 +33,14 @@
 @import './blocks/auction.preview';
 @import './blocks/carousel';
 @import './blocks/waterfall';
-@import './blocks/lot';
 @import './blocks/subscribe';
 @import './blocks/announces';
 @import './blocks/popularCategories';
 
 
 @import './auction/index';
+
+
+@import './tizers/favoriteLink';
+@import './tizers/auction';
+@import './tizers/gallery';

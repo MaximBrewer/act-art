@@ -143,6 +143,7 @@ h6,
     outline: none !important;
     @media (min-width: map.get($grid-breakpoints, "md")) {
         line-height: 1.5rem;
+        font-size: 1.25rem;
         border-width: 0.25rem;
         padding-top: 0.4375rem;
         padding-bottom: 0.4375rem;
@@ -156,14 +157,6 @@ h6,
     margin-top: 2rem;
     color: $red;
 }
-.p3bgw {
-    padding-top: 1rem;
-    margin-top: -1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    background-color: $white;
-}
-
 .btn-default-inverse {
     color: $white;
     background-color: transparent;
@@ -339,11 +332,15 @@ h6,
     height: 1.5rem;
     transform: rotate(-90deg);
     position: absolute;
-    top: 0;
-    left: 4rem;
+    top: 48px;
+    left: 1rem;
     text-align: right;
     @media (min-width: map.get($grid-breakpoints, "xl")) {
         display: flex;
+    }
+    @media (min-width:1360px) {
+        display: flex;
+        left: 4rem;
     }
     @media (min-width: map.get($grid-breakpoints, "xxl")) {
         left: 6vw;

@@ -1,6 +1,6 @@
 import React from "react";
 import Countdown from "../../Countdown";
-export default function Footer(props) {
+export default function Bottom(props) {
     const { auction, participate } = props;
     return (
         <div className="auction-footer">

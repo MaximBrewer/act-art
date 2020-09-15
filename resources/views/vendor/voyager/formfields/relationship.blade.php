@@ -191,7 +191,7 @@ $options->sort->field : 'sort', isset($options->sort) ? $options->sort->directio
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
     Sortable.create(photoSortable, { 
-	onChange: function(evt) {
+        onEnd: function(evt) {
         let ids = [];
         [].forEach.call(
             evt.target.children,

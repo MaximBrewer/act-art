@@ -68,11 +68,11 @@ export default function Waterfall(props) {
             });
     };
 
-    const columnWidth = () => {
+    const columns = () => {
         let size = "xs";
         for (size in window.grid)
             if (window.innerWidth < window.grid[size]) break;
-        return Math.round(100 / data.view[size], 2) + "%";
+        return data.view[size];
     };
 
     const getLimit = () => {
@@ -91,8 +91,7 @@ export default function Waterfall(props) {
             : 0;
     };
 
-    const addGallery = e => {
-        e.preventDefault();
+    const addGallery = () => {
         let url =
             data.entity == "blog" || data.entity == "post"
                 ? "/posts?entity=" + data.entity + "&"
@@ -362,7 +361,7 @@ export default function Waterfall(props) {
                         <a
                             href="#"
                             className={
-                                state.sortBy == "id"
+                                state.sortBy == "sort"
                                     ? state.order == "asc"
                                         ? `active asc`
                                         : `active desc`
@@ -371,8 +370,8 @@ export default function Waterfall(props) {
                             onClick={e => {
                                 e.preventDefault();
                                 setSortBy(
-                                    "id",
-                                    state.sortBy == "id" && state.order == "asc"
+                                    "sort",
+                                    state.sortBy == "sort" && state.order == "asc"
                                         ? "desc"
                                         : "asc"
                                 );
@@ -434,16 +433,11 @@ export default function Waterfall(props) {
                 }
             >
                 <EntityGrid
-                    columnWidth={columnWidth}
-                    showMoreElems={showMoreElems}
-                    gutterWidth={40}
-                    gutterHeight={40}
+                    columns={columns}
                     items={state.photos}
                     toFavorite={toFavorite}
                     data={data}
                     favorites={state.favorites}
-                    itemComponent={"div"}
-                    className="waterfall-inner"
                 />
                 {state.more && data.action == "add" ? showMoreElems() : ""}
             </div>

@@ -7857,8 +7857,8 @@ textarea.form-control.is-invalid {
   background-color: transparent;
   border: 0.125rem solid transparent;
   padding: 0.275rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
   border-radius: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -17320,6 +17320,7 @@ h6,
 @media (min-width: 768px) {
   .btn {
     line-height: 1.5rem;
+    font-size: 1.25rem;
     border-width: 0.25rem;
     padding-top: 0.4375rem;
     padding-bottom: 0.4375rem;
@@ -17333,14 +17334,6 @@ h6,
   font-size: 1.125rem;
   margin-top: 2rem;
   color: #ff665e;
-}
-
-.p3bgw {
-  padding-top: 1rem;
-  margin-top: -1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  background-color: #ffffff;
 }
 
 .btn-default-inverse {
@@ -17494,14 +17487,21 @@ h6,
   height: 1.5rem;
   transform: rotate(-90deg);
   position: absolute;
-  top: 0;
-  left: 4rem;
+  top: 48px;
+  left: 1rem;
   text-align: right;
 }
 
 @media (min-width: 1280px) {
   .sticky-section {
     display: flex;
+  }
+}
+
+@media (min-width: 1360px) {
+  .sticky-section {
+    display: flex;
+    left: 4rem;
   }
 }
 
@@ -18786,10 +18786,12 @@ iframe {
 }
 
 .home-banner {
-  padding: 2rem 0;
+  background-color: #eceded;
+  padding: 1rem 0;
 }
 
-.home-banner .h5 {
+.home-banner > .container > .h5 {
+  text-transform: uppercase;
   text-align: center;
 }
 
@@ -18799,7 +18801,7 @@ iframe {
 
 .home-banner:before {
   display: block;
-  width: 80%;
+  width: calc(50% + 25rem);
   height: 80%;
   position: absolute;
   top: 0;
@@ -18821,13 +18823,18 @@ iframe {
   justify-content: space-between;
 }
 
-.home-banner .carousel {
-  padding-bottom: 6.75rem;
+.home-banner .carousel-controls > div:first-child {
+  order: 2;
+  justify-content: flex-end;
 }
 
-.home-banner .carousel > div:first-child {
-  background-color: #ffffff;
-  padding: 1.255rem 0.875rem;
+.home-banner .carousel-controls > div:last-child {
+  order: 1;
+}
+
+.home-banner .carousel-button.d-md-none {
+  text-align: center;
+  margin: 1rem auto;
 }
 
 .home-banner .carousel hr {
@@ -18857,10 +18864,18 @@ iframe {
     padding: 3.75rem 0 2.725rem;
   }
 
-  .home-banner .h5 {
+  .home-banner > .container > .h5 {
     font-size: 2.25rem;
     line-height: 3rem;
     text-align: left;
+  }
+
+  .home-banner .carousel-controls > div:first-child {
+    justify-content: flex-end;
+  }
+
+  .home-banner .carousel {
+    background-color: none;
   }
 
   .home-banner .carousel > div:first-child {
@@ -18895,8 +18910,18 @@ iframe {
 
 @media (min-width: 1280px) {
   .home-banner {
+    background-color: transparent;
     padding: 3rem 0 1.725rem;
     margin-bottom: 4.8125rem;
+  }
+
+  .home-banner .carousel-controls > div:first-child {
+    order: 1;
+    justify-content: space-between;
+  }
+
+  .home-banner .carousel-controls > div:last-child {
+    order: 2;
   }
 
   .home-banner:before {
@@ -19051,7 +19076,6 @@ iframe {
 
   #homeAbout .background-logo {
     position: absolute;
-    top: 22rem;
     width: 28.75rem;
     max-width: none;
     right: auto;
@@ -20077,6 +20101,18 @@ iframe {
 
 .auctions-section {
   padding: 3rem 0 5rem;
+}
+
+.auctions-section .banner-counter-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.auctions-section .banner-counter-wrapper p {
+  text-align: left;
+}
+
+.auctions-section .banner-counter-wrapper .banner-counter {
+  justify-content: flex-start;
 }
 
 .see-other {
@@ -21106,7 +21142,19 @@ iframe {
   max-width: 60rem;
 }
 
-.auction-preview .banner-image {
+.left-auction-side {
+  padding: 1rem 0.5rem 0;
+  margin: auto -0.5rem;
+  background-color: #ffffff;
+}
+
+.right-auction-side {
+  padding: 0 0.5rem 1rem;
+  margin: auto -0.5rem;
+  background-color: #ffffff;
+}
+
+.banner-image {
   padding: 87.5% 1rem 0;
   color: #ffffff;
   background-size: cover;
@@ -21115,18 +21163,18 @@ iframe {
   position: relative;
 }
 
-.auction-preview .banner-image .countdown-wrapp {
+.banner-image .countdown-wrapp {
   position: absolute;
   right: 1rem;
   top: 1rem;
 }
 
-.auction-preview .banner-image .countdown-wrapp p {
+.banner-image .countdown-wrapp p {
   text-align: center;
   margin-bottom: 0.2rem;
 }
 
-.auction-preview .banner-image .banner-inner-text {
+.banner-image .banner-inner-text {
   position: absolute;
   top: 35%;
   left: 0;
@@ -21134,143 +21182,171 @@ iframe {
   padding: 0 1rem;
 }
 
-.auction-preview .banner-image .banner-inner-text .h1,
-.auction-preview .banner-image .banner-inner-text .h2 {
+.banner-image .banner-inner-text .h1,
+.banner-image .banner-inner-text .h2 {
   font-size: 6vw;
   line-height: 7.675vw;
 }
 
-.auction-preview .banner-image .banner-inner-text .h1 {
+.banner-image .banner-inner-text .h1 {
   margin-bottom: 6vw;
 }
 
-.auction-preview .banner-image .banner-inner-text .h2 {
+.banner-image .banner-inner-text .h2 {
   margin-bottom: 0rem;
 }
 
-.auction-preview .banner-announce {
+.banner-announce {
   padding: 1rem 1px 0;
 }
 
-.auction-preview .banner-announce .h3 {
+.banner-announce .h3 {
   margin-bottom: 1.75rem;
   font-size: 5.25vw;
   line-height: 6.625vw;
 }
 
-.auction-preview .banner-announce .text-xs-center {
+.banner-announce .text-xs-center {
   text-align: center;
 }
 
-.auction-preview .banner-announce a:not(.btn) {
+.banner-announce a:not(.btn) {
   color: #ff665e;
 }
 
+.banner-announce .row > div:nth-child(2) {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.banner-announce .row > div:nth-child(2) .banner-counter-wrapper {
+  margin-bottom: 3rem;
+}
+
+.banner-announce .row > div:nth-child(2) .banner-counter-wrapper p {
+  text-align: left;
+}
+
+.banner-announce .row > div:nth-child(2) .banner-counter-wrapper .banner-counter {
+  justify-content: flex-start;
+}
+
 @media (min-width: 768px) {
-  .auction-preview .banner-image {
+  .left-auction-side,
+  .right-auction-side {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+
+  .banner-image {
     padding: 50% 1rem 0;
     color: #ffffff;
   }
 
-  .auction-preview .banner-image .banner-inner-text {
+  .banner-image .banner-inner-text {
     top: 25%;
     max-width: 30rem;
   }
 
-  .auction-preview .banner-image .banner-inner-text .h1 {
+  .banner-image .banner-inner-text .h1 {
     margin-bottom: 3rem;
     font-size: 2.25rem;
     line-height: 2.75rem;
   }
 
-  .auction-preview .banner-image .banner-inner-text .h2 {
+  .banner-image .banner-inner-text .h2 {
     font-size: 1.75rem;
     line-height: 2.25rem;
   }
 
-  .auction-preview .banner-announce {
-    padding-top: 3rem;
+  .banner-announce {
+    padding-top: 1rem;
   }
 
-  .auction-preview .banner-announce .h3 {
+  .banner-announce .h3 {
     font-size: 22.4333px;
     line-height: 26px;
-    margin-bottom: 4.3125rem;
+    margin-bottom: 1rem;
   }
 
-  .auction-preview .banner-announce .text-xs-center {
-    text-align: right;
+  .banner-announce .text-xs-center {
+    text-align: left;
   }
 }
 
 @media (min-width: 1280px) {
-  .auction-preview .banner-image {
+  .banner-image {
     color: #ffffff;
     min-height: 30rem;
   }
 
-  .auction-preview .banner-image .banner-inner-text {
+  .banner-image .banner-inner-text {
     bottom: 2rem;
     left: 2rem;
     max-width: 40rem;
     top: auto;
   }
 
-  .auction-preview .banner-image .banner-inner-text .h1 {
+  .banner-image .banner-inner-text .h1 {
     margin-bottom: 3rem;
     font-size: 3rem;
     line-height: 3rem;
   }
 
-  .auction-preview .banner-image .banner-inner-text .h2 {
+  .banner-image .banner-inner-text .h2 {
     font-size: 2.25rem;
     line-height: 2.75rem;
   }
 
-  .auction-preview .banner-announce {
+  .banner-announce {
     min-height: 30rem;
     border-top: 8px solid #1e2b32;
     border-bottom: 8px solid #1e2b32;
     padding-top: 3rem;
   }
 
-  .auction-preview .banner-announce .h3 {
+  .banner-announce .h3 {
     font-size: 22.4333px;
     line-height: 26px;
-    margin-bottom: 4.3125rem;
+    margin-bottom: 3.3125rem;
   }
 
-  .auction-preview .banner-announce .text-xs-center {
+  .banner-announce .text-xs-center {
     text-align: left;
+  }
+
+  .banner-announce .row > div:nth-child(2) {
+    display: block;
   }
 }
 
 @media (min-width: 1600px) {
-  .auction-preview .banner-image {
+  .banner-image {
     min-height: 30rem;
     padding: 11.4375rem 2.375rem 1.625rem;
     color: #ffffff;
   }
 
-  .auction-preview .banner-image .h1 {
+  .banner-image .h1 {
     margin-bottom: 3rem;
     font-size: 48px;
     line-height: 48px;
   }
 
-  .auction-preview .banner-image .h2 {
+  .banner-image .h2 {
     font-size: 36px;
     line-height: 48px;
   }
 
-  .auction-preview .banner-announce {
+  .banner-announce {
     min-height: 30rem;
     border-top: 8px solid #1e2b32;
     border-bottom: 8px solid #1e2b32;
     padding-top: 3rem;
   }
 
-  .auction-preview .banner-announce .h3 {
+  .banner-announce .h3 {
     font-size: 22.4333px;
     line-height: 26px;
     margin-bottom: 4.3125rem;
@@ -21294,6 +21370,27 @@ iframe {
 .carousel-wrapper .carousel-arrows {
   bottom: 2rem;
   right: 0;
+}
+
+.my-masonry-grid {
+  /* Not needed if autoprefixing */
+  /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -40px;
+  /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 40px;
+  /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+
+.my-masonry-grid_column > div {
+  margin-bottom: 40px;
 }
 
 .news-section,
@@ -21663,121 +21760,6 @@ iframe {
     width: 2rem;
     height: 2rem;
   }
-}
-
-.lot-item .image-holder {
-  background-color: #ffffff;
-}
-
-.lot-item .image {
-  position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.lot-item .image .favorit-link circle {
-  fill: #ffffff;
-  stroke: #818486;
-}
-
-.lot-item .image .favorit-link path {
-  fill: #818486;
-  stroke: #818486;
-}
-
-.lot-item .image .favorit-link:hover circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.lot-item .image .favorit-link:hover path {
-  fill: #ff665e;
-  stroke: #ff665e;
-}
-
-.lot-item .image .favorit-link.active circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.lot-item .image .favorit-link.active path {
-  fill: #ff665e;
-  stroke: #ff665e;
-}
-
-.lot-item .title {
-  display: block;
-  margin-top: 1rem;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 0.05em;
-  font-weight: 500;
-}
-
-.lot-item .author {
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  line-height: 32px;
-}
-
-.lot-item .price {
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  line-height: 2rem;
-  white-space: nowrap;
-}
-
-.lot-item .price svg {
-  margin-right: 0.5rem;
-  position: relative;
-  top: -1px;
-  width: 15px;
-  height: 14px;
-}
-
-.lot-item .matherial {
-  font-size: 13px;
-  line-height: 15px;
-  letter-spacing: 0.05em;
-  line-height: 24px;
-  color: #818486;
-}
-
-.lot-item .matherial span {
-  text-transform: lowercase;
-}
-
-.lot-item .matherial span:after {
-  content: ", ";
-}
-
-.lot-item .matherial span:last-child:after {
-  content: "";
-}
-
-.lot-item .size {
-  font-size: 13px;
-  line-height: 15px;
-  letter-spacing: 0.05em;
-  line-height: 24px;
-  font-weight: bold;
-  color: #818486;
-}
-
-a.lot-item:hover {
-  padding: 19px;
-  margin: -20px;
-  border: 1px solid #1e2b32;
-  background-color: #ffffff;
 }
 
 .subscribe-section {
@@ -22158,8 +22140,237 @@ section.announces.bggray .background-text {
   border-bottom: 0.5rem solid #1e2b32;
 }
 
-.auction-page-wrapper .auction-page-inner .auction-works-list .image {
+.auction-page-wrapper .auction-announce .banner-counter-wrapper p {
+  text-align: left;
+}
+
+.auction-page-wrapper .auction-announce .banner-counter-wrapper .banner-counter {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.favorit-link circle {
+  fill: #ffffff;
+  stroke: #818486;
+}
+
+.favorit-link path {
+  fill: #818486;
+  stroke: #818486;
+}
+
+.favorit-link:hover circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.favorit-link:hover path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.favorit-link.active circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.favorit-link.active path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.auction-item {
+  padding-top: 1.25rem;
+  border-top: 0.25rem solid #1e2b32;
+}
+
+.auction-item .image {
+  display: block;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
   padding-top: 111% !important;
-  background-size: contain !important;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.auction-item .number {
+  display: block;
+  overflow: hidden;
+  font-family: TT Severs;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.auction-item .title {
+  display: block;
+  overflow: hidden;
+  font-size: 1rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.auction-item .author {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.auction-item .matherial-size {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 0.7rem;
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: #818486;
+  text-transform: lowercase;
+}
+
+.auction-item .matherial-size .m-span:after {
+  content: ",\A0";
+}
+
+.auction-item .matherial-size .m-span:last-child:after {
+  content: "\A0/\A0";
+}
+
+.auction-item .price {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 0.5rem;
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: #818486;
+}
+
+.auction-item .price span {
+  font-weight: bold;
+}
+
+.gallery-item .image-holder {
+  background-color: #ffffff;
+}
+
+.gallery-item .image {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.gallery-item .image .favorit-link circle {
+  fill: #ffffff;
+  stroke: #818486;
+}
+
+.gallery-item .image .favorit-link path {
+  fill: #818486;
+  stroke: #818486;
+}
+
+.gallery-item .image .favorit-link:hover circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.gallery-item .image .favorit-link:hover path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.gallery-item .image .favorit-link.active circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.gallery-item .image .favorit-link.active path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.gallery-item .title {
+  display: block;
+  margin-top: 1rem;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.gallery-item .author {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+.gallery-item .price {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.gallery-item .price svg {
+  margin-right: 0.5rem;
+  position: relative;
+  top: -1px;
+  width: 15px;
+  height: 14px;
+}
+
+.gallery-item .matherial {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  color: #818486;
+}
+
+.gallery-item .matherial span {
+  text-transform: lowercase;
+}
+
+.gallery-item .matherial span:after {
+  content: ", ";
+}
+
+.gallery-item .matherial span:last-child:after {
+  content: "";
+}
+
+.gallery-item .size {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  line-height: 24px;
+  font-weight: bold;
+  color: #818486;
+}
+
+a.lot-item:hover {
+  padding: 19px;
+  margin: -20px;
+  border: 1px solid #1e2b32;
+  background-color: #ffffff;
 }
 

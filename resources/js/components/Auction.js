@@ -4,11 +4,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    Redirect,
-    useHistory,
-    useParams,
-    useLocation
 } from "react-router-dom";
 
 import AuctionBase from "./auction/AuctionBase";

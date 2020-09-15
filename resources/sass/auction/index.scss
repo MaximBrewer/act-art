@@ -63,9 +63,16 @@
             .h3 {
                 border-bottom: 0.5rem solid $primary;
             }
-            .image{
-                padding-top:111% !important;
-                background-size: contain !important;
+        }
+    }
+    .auction-announce {
+        .banner-counter-wrapper {
+            p {
+                text-align: left;
+            }
+            .banner-counter {
+                justify-content: flex-start;
+                text-align: left;
             }
         }
     }

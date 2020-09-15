@@ -43,7 +43,7 @@ class VoyagerBaseController extends \TCG\Voyager\Http\Controllers\VoyagerBaseCon
         foreach ($ids as $key => $id) {
             $model = ("App\\" . $modelName)::find($id);
             $model->update([
-                'sort' => $key
+                'sort' => $key * 1 + 1
             ]);
         }
         return $ids;

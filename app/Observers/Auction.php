@@ -6,6 +6,7 @@ use App\Auction as AuctionModel;
 use App\Events\Auction as AuctionEvent;
 use App\Http\Resources\Auction as AuctionResource;
 use Illuminate\Support\Facades\DB;
+use Exception;
 
 class Auction
 {
@@ -32,6 +33,9 @@ class Auction
 
     public function updated(AuctionModel $model)
     {
-        event(new AuctionEvent(new AuctionResource($model)));
+        try {
+            event(new AuctionEvent(new AuctionResource($model)));
+        } catch (Exception $e) {
+        }
     }
 }

@@ -4,10 +4,10 @@ export default function AuctionPreviewRight(props) {
     return (
         <div className="banner-announce">
             <div className="row">
-                <div className="h3 col-md-38 col-lg-60">
+                <div className="h3 col-md-38 col-xl-60">
                     {props.auction.sublime}
                 </div>
-                <div className="d-none d-md-block col-md-22 col-lg-60">
+                <div className="d-none d-md-flex d-xl-block col-22 col-xl-60">
                     <Countdown date={props.auction.dateatom} />
                 </div>
             </div>

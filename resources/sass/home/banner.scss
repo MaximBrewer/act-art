@@ -3,8 +3,10 @@
 @import "~slick-carousel/slick/slick.scss";
 @import "~slick-carousel/slick/slick-theme.scss";
 .home-banner {
-    padding: 2rem 0;
-    .h5 {
+    background-color: $fonlight;
+    padding: 1rem 0;
+    > .container > .h5 {
+        text-transform: uppercase;
         text-align: center;
     }
     .background-text {
@@ -12,7 +14,7 @@
     }
     &:before {
         display: block;
-        width: 80%;
+        width: calc(50% + 25rem);
         height: 80%;
         position: absolute;
         top: 0;
@@ -30,11 +32,19 @@
         display: flex;
         justify-content: space-between;
     }
+    .carousel-controls > div:first-child {
+        order: 2;
+        justify-content: flex-end;
+    }
+    .carousel-controls > div:last-child {
+        order: 1;
+    }
+    .carousel-button.d-md-none {
+        text-align: center;
+        margin: 1rem auto;
+    }
     .carousel {
-        padding-bottom: 6.75rem;
         > div:first-child {
-            background-color: $white;
-            padding: 1.255rem 0.875rem;
         }
         hr {
             margin-top: 0rem;
@@ -61,13 +71,16 @@
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
         padding: 3.75rem 0 2.725rem;
-        .h5 {
+        > .container > .h5 {
             font-size: 2.25rem;
             line-height: 3rem;
             text-align: left;
         }
+        .carousel-controls > div:first-child {
+            justify-content: flex-end;
+        }
         .carousel {
-            // padding-bottom: 9.75rem;
+            background-color: none;
             > div:first-child {
                 background-color: transparent;
                 padding: 0;
@@ -96,8 +109,16 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
+        background-color: transparent;
         padding: 3rem 0 1.725rem;
         margin-bottom: 4.8125rem;
+        .carousel-controls > div:first-child {
+            order: 1;
+            justify-content: space-between;
+        }
+        .carousel-controls > div:last-child {
+            order: 2;
+        }
         &:before {
             content: "";
             height: 100%;

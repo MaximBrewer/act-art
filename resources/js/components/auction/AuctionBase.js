@@ -1,50 +1,64 @@
 import React from "react";
-import Waterfall from "../Waterfall";
-import AuctionComingHeader from "./coming/Header.js";
-import AuctionComingInfo from "./coming/Info.js";
-import AuctionComingFooter from "./coming/Footer.js";
-import AuctionOnlineHeader from "./online/Header.js";
-import AuctionOnlineInfo from "./online/Info.js";
-import AuctionOnlineFooter from "./online/Footer.js";
-import AuctionArchiveHeader from "./archive/Header.js";
-import AuctionArchiveInfo from "./archive/Info.js";
-import AuctionArchiveFooter from "./archive/Footer.js";
+import AuctionComingTop from "./coming/Top.js";
+import AuctionComingCenter from "./coming/Center.js";
+import AuctionComingBottom from "./coming/Bottom.js";
+import AuctionComingLotsList from "./coming/LotsList.js";
+import AuctionOnlineTop from "./online/Top.js";
+import AuctionOnlineCenter from "./online/Center.js";
+import AuctionOnlineBottom from "./online/Bottom.js";
+import AuctionOnlineLotsList from "./coming/LotsList.js";
+import AuctionArchiveTop from "./archive/Top.js";
+import AuctionArchiveCenter from "./archive/Center.js";
+import AuctionArchiveBottom from "./archive/Bottom.js";
+import AuctionArchiveLotsList from "./coming/LotsList.js";
 
 export default function AuctionBase(props) {
     const { auction } = props;
-    const Footer = props => {
+    const Bottom = props => {
         if (props.auction.title)
             switch (props.auction.status) {
                 case "started":
-                    return <AuctionOnlineFooter {...props} />;
+                    return <AuctionOnlineBottom {...props} />;
                 case "finished":
-                    return <AuctionArchiveFooter {...props} />;
+                    return <AuctionArchiveBottom {...props} />;
                 case "coming":
-                    return <AuctionComingFooter {...props} />;
+                    return <AuctionComingBottom {...props} />;
             }
         return false;
     };
-    const Header = props => {
+    const Top = props => {
         if (props.auction.title)
             switch (props.auction.status) {
                 case "started":
-                    return <AuctionOnlineHeader {...props} />;
+                    return <AuctionOnlineTop {...props} />;
                 case "finished":
-                    return <AuctionArchiveHeader {...props} />;
+                    return <AuctionArchiveTop {...props} />;
                 case "coming":
-                    return <AuctionComingHeader {...props} />;
+                    return <AuctionComingTop {...props} />;
             }
         return false;
     };
-    const Info = props => {
+    const LotsList = props => {
         if (props.auction.title)
             switch (props.auction.status) {
                 case "started":
-                    return <AuctionOnlineInfo {...props} />;
+                    return <AuctionOnlineLotsList {...props} />;
                 case "finished":
-                    return <AuctionArchiveInfo {...props} />;
+                    return <AuctionArchiveLotsList {...props} />;
                 case "coming":
-                    return <AuctionComingInfo {...props} />;
+                    return <AuctionComingLotsList {...props} />;
+            }
+        return false;
+    };
+    const Center = props => {
+        if (props.auction.title)
+            switch (props.auction.status) {
+                case "started":
+                    return <AuctionOnlineCenter {...props} />;
+                case "finished":
+                    return <AuctionArchiveCenter {...props} />;
+                case "coming":
+                    return <AuctionComingCenter {...props} />;
             }
         return false;
     };
@@ -52,49 +66,18 @@ export default function AuctionBase(props) {
         <section className="auction-page-wrapper">
             {auction ? (
                 <div className={`status-` + auction.status}>
-                    <Header {...props} />
+                    <Top {...props} />
                     <div className="sticky-wrapper">
                         <div className="sticky-section">
                             <span>{auction.title}</span>
                         </div>
-                        <Info {...props} />
+                        <Center {...props} />
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
-                                <div className="container">
-                                    <div className="h3">
-                                        {__("Auction lots")}
-                                    </div>
-                                    <Waterfall
-                                        data={{
-                                            auction: auction,
-                                            entity: "lots",
-                                            action: "add",
-                                            preview: "preview",
-                                            sortable: true,
-                                            tizerView: "auction",
-                                            limit: {
-                                                xs: 1200,
-                                                sm: 1200,
-                                                md: 1200,
-                                                lg: 1200,
-                                                xl: 1200,
-                                                xxl: 1200
-                                            },
-                                            view: {
-                                                xs: 1,
-                                                sm: 2,
-                                                md: 2,
-                                                lg: 4,
-                                                xl: 4,
-                                                xxl: 4
-                                            },
-                                            action: "none"
-                                        }}
-                                    />
-                                </div>
+                                <LotsList {...props} />
                             </div>
                             <div className="my-5">
-                                <Footer {...props} />
+                                <Bottom {...props} />
                             </div>
                         </div>
                     </div>
