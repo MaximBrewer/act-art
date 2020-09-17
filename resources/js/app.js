@@ -26,24 +26,16 @@ import { render } from "react-dom";
 import Flash from "./components/Flash";
 import { __ } from "./trans.js";
 
-// const HomeGalleries = lazy(() => import("./components/HomeGalleries"));
-// const HomeCarousel = lazy(() => import("./components/HomeCarousel"));
-// const HomeWaterfall = lazy(() => import("./components/HomeWaterfall"));
-// const HomeAnnounce = lazy(() => import("./components/HomeAnnounce"));
-// const HomeNews = lazy(() => import("./components/HomeNews"));
-// const HomeExperts = lazy(() => import("./components/HomeExperts"));
+// const Experts = lazy(() => import("./components/Experts"));
 
 import Gallery from "./components/Gallery";
 import Auctions from "./components/Auctions";
 import Auction from "./components/Auction";
 import AuctionsList from "./components/AuctionsList";
 import AuctionsProfile from "./components/AuctionsProfile";
-// import HomeWaterfall from "./components/HomeWaterfall";
-// import Announce from "./components/Carousels";
-// import Postsgrid from "./components/Postsgrid";
 
 import News from "./components/News";
-import Waterfall from "./components/Waterfall";
+import Waterfall from "./components/waterfall/Waterfall";
 import Carousel from "./components/Carousel";
 import Experts from "./components/Experts";
 import LotGallery from "./components/LotGallery";

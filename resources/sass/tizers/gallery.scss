@@ -1,11 +1,12 @@
 @use "sass:map";
 .gallery-item {
-    .image-holder{
+    .image-holder {
         background-color: $white;
     }
     .image {
         position: relative;
         background-size: cover;
+        display: block;
         background-repeat: no-repeat;
         background-position: center;
         .favorit-link {
@@ -53,9 +54,9 @@
         line-height: 2rem;
         white-space: nowrap;
         svg {
-            margin-right: .5rem;
+            margin-right: 0.5rem;
             position: relative;
-            top: -1px;
+            top: -2px;
             width: 15px;
             height: 14px;
         }

@@ -49,6 +49,7 @@ class Lot extends JsonResource
                 'pxwidth' => $size[0],
                 'pxheight' => $size[1],
                 'price' => $this->price,
+                'auction_id' => $this->auction_id,
                 'bets' => $this->bets,
                 'sort' => $this->sort,
                 'status' => $this->status

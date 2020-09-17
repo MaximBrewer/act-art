@@ -22149,6 +22149,17 @@ section.announces.bggray .background-text {
   text-align: left;
 }
 
+.favorit-link {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.favorit-link svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
 .favorit-link circle {
   fill: #ffffff;
   stroke: #818486;
@@ -22266,6 +22277,7 @@ section.announces.bggray .background-text {
 .gallery-item .image {
   position: relative;
   background-size: cover;
+  display: block;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -22333,7 +22345,7 @@ section.announces.bggray .background-text {
 .gallery-item .price svg {
   margin-right: 0.5rem;
   position: relative;
-  top: -1px;
+  top: -2px;
   width: 15px;
   height: 14px;
 }

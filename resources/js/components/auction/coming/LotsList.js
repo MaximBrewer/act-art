@@ -1,5 +1,5 @@
 import React from "react";
-import Waterfall from "../../Waterfall";
+import Waterfall from "../../waterfall/Waterfall";
 export default function LotsList(props) {
     const { auction } = props;
     return (

@@ -1,4 +1,16 @@
 {
+    "HOME_TITLE": "Act-Art.ru | online auction of contemporary art",
+    "AUCTIONS_BLOCK_TITLE": "Auctions",
+    "AUCTIONS_BLOCK_STICKY": "closest auctions",
+    "GALLERY_BLOCK_TITLE": "Online-gallery",
+    "GALLERY_BLOCK_INTROTEXT": "Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление. Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.",
+    "GALLERY_BLOCK_HOW_TO_BUY_LINK": "How to buy",
+    "GALLERY_BLOCK_LATEST_BIDS": "Latest bids",
+    "GALLERY_BLOCK_SHOW_MORE_LINK":"Show more",
+    "GALLERY_BLOCK_STICKY":"works for sale",
+
+    "MEASURE_CM": "cm",
+
     "#status-gallery#": "Available in the gallery",
     "#status-auction#": "Participates in the auction",
     "#status-discontinued#": "Discontinued",

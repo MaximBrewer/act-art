@@ -4,7 +4,7 @@ import AuctionTizer from "./tizers/Auction.js";
 import GalleryTizer from "./tizers/Gallery.js";
 import NewsTizer from "./tizers/Auction.js";
 import BlogTizer from "./tizers/Auction.js";
-import AuthorTizer from "./tizers/Auction.js";
+import LastbetsTizer from "./tizers/Lastbets.js";
 
 export default function EntityGrid(props) {
     const { items, columns, data } = props;
@@ -20,6 +20,8 @@ export default function EntityGrid(props) {
                 return <BlogTizer {...props} />;
             case "author":
                 return <AuthorTizer {...props} />;
+            case "lastbets":
+                return <LastbetsTizer {...props} />;
             default:
                 return <AuctionTizer {...props} />;
         }

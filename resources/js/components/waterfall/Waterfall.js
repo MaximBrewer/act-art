@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import EntityGrid from "./waterfall/EntityGrid";
+import EntityGrid from "./EntityGrid";
 
 export default function Waterfall(props) {
     const { data } = props;
@@ -12,7 +12,7 @@ export default function Waterfall(props) {
         sortBy: "id",
         order: "asc",
         filter: {
-            status: data.archive ? "sold" : "gallery"
+            status: data.archive ? "sold" : "available"
         }
     });
 

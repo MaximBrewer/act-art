@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('body-class')class="home"@endsection
-@section('title'){{ __('Act-Art.ru | online auction of contemporary art') }}@endsection
+@section('title'){{ __('HOME_TITLE') }}@endsection
 @section('content')
 <div class="sticky-wrapper">
     <section class="home-banner">
         <div class="container">
-            <div class="h5 d-xl-none">{{ __('Auctions') }}</div>
+            <div class="h5 d-xl-none">{{ __('AUCTIONS_BLOCK_TITLE') }}</div>
             <div id="actAuctions" class="carousel"></div>
         </div>
     </section>
-    <div class="sticky-section"><span>{{ __('closest auctions') }}</span></div>
+    <div class="sticky-section"><span>{{ __('AUCTIONS_BLOCK_STICKY') }}</span></div>
 </div>
 @widget('marquee')
 <section class="gallery-section">
@@ -17,16 +17,16 @@
         <div class="container">
             <div class="row announce">
                 <div class="col col-md-40 offset-md-20 col-xl-45 offset-xl-15">
-                    <h2 class="h1">{{ __('ONLINE-GALLERY') }}</h2>
+                    <h2 class="h1">{{ __('GALLERY_BLOCK_TITLE') }}</h2>
                     <div class="sub_h2 d-none d-xl-block">
-                        {{ __('Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление. Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.') }}
+                        {{ __('GALLERY_BLOCK_INTROTEXT') }}
                     </div>
-                    <a href="/how-to-buy" class="link-how-to-buy">{{ __('How to buy') }}?</a>
+                    <a href="/how-to-buy" class="link-how-to-buy">{{ __('GALLERY_BLOCK_HOW_TO_BUY_LINK') }}?</a>
                 </div>
             </div>
             <div class="art-waterfall-wrapper">
                 <h3 class="d-none d-md-block pb-4">
-                    {{ __("Latest bids") }}:
+                    {{ __("GALLERY_BLOCK_LATEST_BIDS") }}:
                     <svg class="hummer" width="42" height="42" viewBox="0 0 42 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="25.1066" width="23.6707" height="11.8354" rx="1" transform="rotate(45 25.1066 0)"
@@ -35,17 +35,17 @@
                             transform="rotate(45 21.7591 16.7378)" fill="#FF665E" />
                     </svg>
                 </h3>
-                <div class="act-waterfall" data-entity="lots" data-action="none" data-preview="preview"
-                    data-lastbets="true" data-limit='{"xs":12,"sm":12,"md":12,"lg":12,"xl":12,"xxl":12}'
-                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'>
+                <div class="act-waterfall" data-entity="lots" data-action="none"
+                    data-lastbets="true" data-limit='{"xs":6,"sm":6,"md":12,"lg":12,"xl":24,"xxl":24}'
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}' data-tizer-view="lastbets">
                 </div>
                 <div class="show-more">
                     <div class="dots">•••</div>
-                    <a href="/gallery" class="text">{{ __('Show more') }}</a>
+                    <a href="/gallery" class="text">{{ __('GALLERY_BLOCK_SHOW_MORE_LINK') }}</a>
                 </div>
             </div>
         </div>
-        <div class="sticky-section"><span>{{ __('works for sale') }}</span></div>
+        <div class="sticky-section"><span>{{ __('GALLERY_BLOCK_STICKY') }}</span></div>
     </div>
 </section>
 <section class="d-none d-md-block popular-categories-section">
