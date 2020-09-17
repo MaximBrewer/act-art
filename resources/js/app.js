@@ -33,6 +33,7 @@ import Auctions from "./components/Auctions";
 import Auction from "./components/Auction";
 import AuctionsList from "./components/AuctionsList";
 import AuctionsProfile from "./components/AuctionsProfile";
+import Announce from "./components/Carousel";
 
 import News from "./components/News";
 import Waterfall from "./components/waterfall/Waterfall";
@@ -174,8 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
         !document.getElementById("galleryHolder") ||
             render(<Gallery />, document.getElementById("galleryHolder"));
     }
-    // !document.getElementById("announceSlider") ||
-    //     render(<Announce />, document.getElementById("announceSlider"));
+    !document.getElementById("announceSlider") ||
+        render(<Announce />, document.getElementById("announceSlider"));
     !document.getElementById("actAuctions") ||
         render(
             <Auctions participate={participate} />,

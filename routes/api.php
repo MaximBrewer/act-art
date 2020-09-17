@@ -43,6 +43,7 @@ Route::group(['prefix' => '{lang}', 'middleware' => ['api.locale']], function ()
     Route::get('lot/{id}', '\App\Http\Controllers\Api\LotController@show');
     Route::get('favorites', '\App\Http\Controllers\Api\LotController@favorites')->name('lot.favorites');
 
+    Route::get('events', '\App\Http\Controllers\Api\EventController@index')->name('event.index');
     
     Route::get('experts/all', '\App\Http\Controllers\Api\ExpertController@all')->name('expert.all');
 

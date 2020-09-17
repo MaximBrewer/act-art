@@ -15,13 +15,12 @@ class EventController extends Controller
     {
         $limit = $request->get('limit') ? $request->get('limit') : 24;
         $offset = $request->get('offset') ? $request->get('offset') : 0;
-        $cat = $request->get('category') ?  $request->get('category') : 'both';
-        $events = Event::{$cat}();
+        $events = $request->get('category') ? Event::{$request->get('category')}() : new Event();
         return json_encode([
             'items' => EventResource::collection(
                 $events
                     ->published()
-                    ->orderBy('events.created_at')
+                    ->orderBy('events.created_at', 'desc')
                     ->limit($limit)
                     ->offset($offset)
                     ->get()

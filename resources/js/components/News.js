@@ -51,7 +51,7 @@ export default function News(props) {
             .get("/api/" + window.lang + "/posts?entity=post&category=both&offset=0&limit=20")
             .then(res => {
                 let posts = [];
-                res.data.posts.map((item, index) => {
+                res.data.items.map((item, index) => {
                     posts.push(
                         <a className="slide-wrapper" key={index} href={'/news/' + item.slug}>
                             <div className="slide-inner">
@@ -82,7 +82,9 @@ export default function News(props) {
                     slidesTotal: posts.length
                 });
             })
-            .catch(err => {});
+            .catch(err => {
+                console.log(err)
+            });
     };
 
     useEffect(() => {

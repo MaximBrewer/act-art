@@ -45,11 +45,9 @@ export default function Tizer(props) {
                 {item.width} х {item.height}
                 {__("MEASURE_CM")}
             </div>
-            {data.lastbets || (
-                <a className={item.status + ` status`} href="#">
-                    {__("#status-" + item.status + "#")}
-                </a>
-            )}
+            <a className={item.status + ` status`} href="#">
+                {__("#status-" + item.status + "#")}
+            </a>
         </div>
     );
 }

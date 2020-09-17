@@ -38,18 +38,6 @@ class Event extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAll(Builder $query)
-    {
-        return $query;
-    }
-
-    /**
-     * Scope a query to only published scopes.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeExhibition(Builder $query)
     {
         return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->where('spaces.type', '=', static::EXHIBITION);
