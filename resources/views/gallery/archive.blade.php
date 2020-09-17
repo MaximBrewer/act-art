@@ -2,7 +2,6 @@
 @section('content')
 @widget('announce')
 <div class="sticky-wrapper">
-    <div class="sticky-section"><span>{{ __('archive') }}</span></div>
     <section class="gallery-section">
         <div class="background-text">{{ __('Archive') }}</div>
         <div class="container">
@@ -31,6 +30,7 @@
             </svg>
         </div>
     </section>
+    <div class="sticky-section"><span>{{ __('archive') }}</span></div>
 </div>
 @widget('marquee')
 @endsection

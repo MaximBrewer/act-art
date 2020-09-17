@@ -14,7 +14,6 @@
 @widget('marquee')
 <section class="gallery-section">
     <div class="sticky-wrapper">
-        <div class="sticky-section"><span>{{ __('works for sale') }}</span></div>
         <div class="container">
             <div class="row announce">
                 <div class="col col-md-40 offset-md-20 col-xl-45 offset-xl-15">
@@ -46,6 +45,7 @@
                 </div>
             </div>
         </div>
+        <div class="sticky-section"><span>{{ __('works for sale') }}</span></div>
     </div>
 </section>
 <section class="d-none d-md-block popular-categories-section">
@@ -67,7 +67,6 @@
         @include('svg.home.about-logo')
     </div>
     <div class="sticky-wrapper">
-        <div class="sticky-section"><span>{{ __('о проекте') }}</span></div>
         <div class="dotted-bg"></div>
         <div class="background-logo">
             @include('svg.home.about-bg-logo')
@@ -118,6 +117,7 @@
                 </div>
             </div>
         </div>
+        <div class="sticky-section"><span>{{ __('о проекте') }}</span></div>
     </div>
 </section>
 
@@ -126,7 +126,6 @@
 
 <section id="announces">
     <div class="sticky-wrapper">
-        <div class="sticky-section"><span>анонсы мероприятий</span></div>
         <div class="container">
             <div class="row announce">
                 <div class="col-xl-40 col-xxl-38">
@@ -156,6 +155,7 @@
                 <div class="announce-slider" id="announceSlider"></div>
             </div>
         </div>
+        <div class="sticky-section"><span>анонсы мероприятий</span></div>
     </div>
 </section>
 
@@ -167,26 +167,26 @@
 <section id="news">
     <div class="background-text">НОВОСТИ</div>
     <div class="sticky-wrapper">
-        <div class="sticky-section"><span>последние заметки</span></div>
         <div class="container">
             <div class="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
             <div class="news-slider-wrapper">
                 <div class="news-slider" id="newsSlider"></div>
             </div>
         </div>
+        <div class="sticky-section"><span>последние заметки</span></div>
     </div>
 </section>
 
 
 <section id="experts" class="d-none d-sm-none d-md-block">
     <div class="sticky-wrapper">
-        <div class="sticky-section"><span>экспертный совет</span></div>
         <div class="container">
             <h2 class="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>
             <div class="experts-slider-wrapper">
                 <div class="experts-slider" id="expertsSlider"></div>
             </div>
         </div>
+        <div class="sticky-section"><span>экспертный совет</span></div>
     </div>
 </section>
 

@@ -68,9 +68,6 @@ export default function AuctionBase(props) {
                 <div className={`status-` + auction.status}>
                     <Top {...props} />
                     <div className="sticky-wrapper">
-                        <div className="sticky-section">
-                            <span>{auction.title}</span>
-                        </div>
                         <Center {...props} />
                         <div className="auction-page-inner">
                             <div className="auction-works-list my-5">
@@ -79,6 +76,9 @@ export default function AuctionBase(props) {
                             <div className="my-5">
                                 <Bottom {...props} />
                             </div>
+                        </div>
+                        <div className="sticky-section">
+                            <span>{auction.title}</span>
                         </div>
                     </div>
                 </div>

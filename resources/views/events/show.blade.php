@@ -28,34 +28,38 @@
 @endif
 @endsection
 @section('content')
-<section id="page">
-    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
-    <div class="container">
-        <div class="sticky-section"><span>{!! $event->getTranslatedAttribute('title') !!}</span></div>
-        <div class="row pb-2 pb-lg-5">
-            <div class="col-xl-30 col-xxl-28">
-                <h2 class="h2">{!! $event->getTranslatedAttribute('title') !!}</h2>
-                <hr>
-                <p class="sub_h2 d-none d-xl-block">{!! $event->getTranslatedAttribute('excerpt') !!}</p>
+<div class="sticky-wrapper">
+    <section id="page">
+        {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
+        <div class="container">
+            <div class="row pb-2 pb-lg-5">
+                <div class="col-xl-30 col-xxl-28">
+                    <h2 class="h2">{!! $event->getTranslatedAttribute('title') !!}</h2>
+                    <hr>
+                    <p class="sub_h2 d-none d-xl-block">{!! $event->getTranslatedAttribute('excerpt') !!}</p>
+                </div>
+                <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
+                    <div class="image-wrapper" style="background-image: url('/storage/{!! $event->image !!}')"></div>
+                </div>
             </div>
-            <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
-                <div class="image-wrapper" style="background-image: url('/storage/{!! $event->image !!}')"></div>
+            <div class="row">
+                <div class="col-60">
+                    {!! $event->getTranslatedAttribute('body') !!}
+                </div>
+            </div>
+            <hr>
+            <div class="sharing">
+                <p>{{  __('Liked? Share with your friends!') }}</p>
+                <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                <script src="https://yastatic.net/share2/share.js"></script>
+                <div class="ya-share2"
+                    data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin">
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-60">
-                {!! $event->getTranslatedAttribute('body') !!}
-            </div>
-        </div>
-        <hr>
-        <div class="sharing">
-            <p>{{  __('Liked? Share with your friends!') }}</p>
-            <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-            <script src="https://yastatic.net/share2/share.js"></script>
-            <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin"></div>
-        </div>
-    </div>
-</section>
+    </section>
+    <div class="sticky-section"><span>{!! $event->getTranslatedAttribute('title') !!}</span></div>
+</div>
 
 <section id="gallery">
     <div class="gallery-holder" id="galleryHolder"></div>

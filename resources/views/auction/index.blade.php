@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="sticky-wrapper">
-    <div class="sticky-section"><span>{{ __('closest auctions') }}</span></div>
     <section class="auctions-section regular-list" id="regularAuctionsList">
         <div class="container">
             <div class="row announce mb-5">
@@ -50,6 +49,7 @@
             <div class="act-auctions-list" data-attr="special"></div>
         </div>
     </section>
+    <div class="sticky-section"><span>{{ __('closest auctions') }}</span></div>
 </div>
 <section class="auctions-section">
     <div class="container">

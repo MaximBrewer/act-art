@@ -28,29 +28,31 @@
 @endif
 @endsection
 @section('content')
-<section id="page"@if($page->image) class="dotted"@endif>
-    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
-    <div class="container">
-        <div class="sticky-section"><span>{!! $page->getTranslatedAttribute('title') !!}</span></div>
-        <div class="row pb-2 pb-lg-5">
-            <div @if($page->image)class="col-xl-30 col-xxl-28"@else class="col-xl-60"@endif>
-                <h2 class="h2">{!! $page->getTranslatedAttribute('title') !!}</h2>
-                <hr>
-                <p class="sub_h2 d-none d-xl-block">{!! $page->getTranslatedAttribute('excerpt') !!}</p>
+<div class="sticky-wrapper">
+    <section id="page" @if($page->image) class="dotted"@endif>
+        {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
+        <div class="container">
+            <div class="row pb-2 pb-lg-5">
+                <div @if($page->image)class="col-xl-30 col-xxl-28"@else class="col-xl-60"@endif>
+                    <h2 class="h2">{!! $page->getTranslatedAttribute('title') !!}</h2>
+                    <hr>
+                    <p class="sub_h2 d-none d-xl-block">{!! $page->getTranslatedAttribute('excerpt') !!}</p>
+                </div>
+                @if($page->image)
+                <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
+                    <div class="image-wrapper" style="background-image: url('/storage/{!! $page->image !!}')"></div>
+                </div>
+                @endif
             </div>
-            @if($page->image)
-            <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
-                <div class="image-wrapper" style="background-image: url('/storage/{!! $page->image !!}')"></div>
+            <div class="row">
+                <div class="col-60">
+                    {!! $page->getTranslatedAttribute('body') !!}
+                </div>
             </div>
-            @endif
+            <hr>
+            @widget('sharing')
         </div>
-        <div class="row">
-            <div class="col-60">
-                {!! $page->getTranslatedAttribute('body') !!}
-            </div>
-        </div>
-        <hr>
-        @widget('sharing')
-    </div>
-</section>
+    </section>
+    <div class="sticky-section"><span>{!! $page->getTranslatedAttribute('title') !!}</span></div>
+</div>
 @endsection

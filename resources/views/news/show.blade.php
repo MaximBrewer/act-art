@@ -28,36 +28,38 @@
 @endif
 @endsection
 @section('content')
-<section id="page">
-    {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
-    <div class="container">
-        <div class="sticky-section"><span>{!! $post->getTranslatedAttribute('title') !!}</span></div>
-        <div class="row pb-2 pb-lg-5">
-            <div class="col-xl-30 col-xxl-28">
-                <h2 class="h2">{!! $post->getTranslatedAttribute('title') !!}</h2>
-                <hr>
-                <p class="sub_h2 d-none d-xl-block">{!! $post->getTranslatedAttribute('excerpt') !!}</p>
+<div class="sticky-wrapper">
+    <section id="page">
+        {{-- <div class="background-text">ПРОСТРАНСТВА</div> --}}
+        <div class="container">
+            <div class="row pb-2 pb-lg-5">
+                <div class="col-xl-30 col-xxl-28">
+                    <h2 class="h2">{!! $post->getTranslatedAttribute('title') !!}</h2>
+                    <hr>
+                    <p class="sub_h2 d-none d-xl-block">{!! $post->getTranslatedAttribute('excerpt') !!}</p>
+                </div>
+                <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
+                    <div class="image-wrapper" style="background-image: url('/storage/{!! $post->image !!}')"></div>
+                </div>
             </div>
-            <div class="col-xl-30 col-xxl-32 d-none d-xl-block">
-                <div class="image-wrapper" style="background-image: url('/storage/{!! $post->image !!}')"></div>
+            <div class="row">
+                <div class="col-60">
+                    {!! $post->getTranslatedAttribute('body') !!}
+                </div>
+            </div>
+            <hr>
+            <div class="sharing">
+                <p>{{  __('Liked? Share with your friends!') }}</p>
+                <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                <script src="https://yastatic.net/share2/share.js"></script>
+                <div class="ya-share2"
+                    data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin">
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-60">
-                {!! $post->getTranslatedAttribute('body') !!}
-            </div>
-        </div>
-        <hr>
-        <div class="sharing">
-            <p>{{  __('Liked? Share with your friends!') }}</p>
-            <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-            <script src="https://yastatic.net/share2/share.js"></script>
-            <div class="ya-share2"
-                data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,blogger,delicious,digg,reddit,evernote,linkedin">
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+    <div class="sticky-section"><span>{!! $post->getTranslatedAttribute('title') !!}</span></div>
+</div>
 
 <section id="gallery">
     <div class="gallery-holder" id="galleryHolder"></div>
@@ -66,10 +68,10 @@
 <section class="blog-section">
     <div class="container">
         <div class="waterfall-wrapper">
-            <div class="act-waterfall" data-entity="post" data-action="add" data-preview="waterfall" data-category="blog"
-                data-limit=         '{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
-                data-view=          '{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
-                data-first-limit=   '{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'></div>
+            <div class="act-waterfall" data-entity="post" data-action="add" data-preview="waterfall"
+                data-category="blog" data-limit='{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                data-first-limit='{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'></div>
         </div>
     </div>
 </section>

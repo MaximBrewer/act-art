@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import AuctionPreviewLeft from "./blocks/AuctionPreviewLeft";
 import AuctionPreviewRight from "./blocks/AuctionPreviewRight";
 
-export default function AuctionCarousel() {
+export default function Auctions(props) {
     const [state, setState] = useState({
         slideIndex: 0,
         slidesTotal: 0,
@@ -31,7 +31,6 @@ export default function AuctionCarousel() {
     const setting = {
         arrows: false,
         infinite: true,
-        className: "auction-preview",
         dots: false,
         speed: 300,
         auto: true,
@@ -90,7 +89,7 @@ export default function AuctionCarousel() {
                         <Slider {...settingsPicture} ref={refPicture}>
                             {state.auctions.map((item, index) => (
                                 <div key={index}>
-                                    <AuctionPreviewLeft auction={item} />
+                                    <AuctionPreviewLeft auction={item} {...props}/>
                                 </div>
                             ))}
                         </Slider>
@@ -101,7 +100,7 @@ export default function AuctionCarousel() {
                         <Slider {...settingsAnnounce} ref={refAnnounce}>
                             {state.auctions.map((item, index) => (
                                 <div key={index}>
-                                    <AuctionPreviewRight auction={item} />
+                                    <AuctionPreviewRight auction={item} {...props}/>
                                 </div>
                             ))}
                         </Slider>
@@ -113,7 +112,7 @@ export default function AuctionCarousel() {
                 <div className="col-30 col-md-15 col-xl-40 col-xxl-38">
                     <div className="carousel-button d-none d-xl-block">
                         <a href="/auctions" className="btn btn-default">
-                            {__("ВСЕ АУКЦИОНЫ")}
+                            {__("All auctions")}
                         </a>
                     </div>
                     <div className="carousel-arrows">
@@ -172,7 +171,7 @@ export default function AuctionCarousel() {
                 <div className="col-30 col-md-45 col-xl-20 col-xxl-22">
                     <div className="carousel-button d-none d-md-block d-xl-none">
                         <a href="/auctions" className="btn btn-default">
-                            {__("ВСЕ АУКЦИОНЫ")}
+                            {__("All auctions")}
                         </a>
                     </div>
                     <div className="carousel-counter">
@@ -183,7 +182,7 @@ export default function AuctionCarousel() {
             </div>
             <div className="carousel-button d-md-none">
                 <a href="/auctions" className="btn btn-default">
-                    {__("ВСЕ АУКЦИОНЫ")}
+                    {__("All auctions")}
                 </a>
             </div>
         </React.Fragment>
