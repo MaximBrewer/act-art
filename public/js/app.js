@@ -64283,7 +64283,7 @@ function EntityGrid(props) {
     breakpointCols: columns(),
     className: "my-masonry-grid",
     columnClassName: "my-masonry-grid_column"
-  }, !!items.length ? items.map(function (item, index) {
+  }, items != undefined ? items.map(function (item, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tizer, _extends({
       item: item,
       key: index
