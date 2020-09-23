@@ -36,9 +36,11 @@ export default function EntityGrid(props) {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
         >
-            {items.map((item, index) => (
-                <Tizer item={item} key={index} {...props} />
-            ))}
+            {!!items.length
+                ? items.map((item, index) => (
+                      <Tizer item={item} key={index} {...props} />
+                  ))
+                : ``}
         </Masonry>
     );
 }
