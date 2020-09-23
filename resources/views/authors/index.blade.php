@@ -13,10 +13,10 @@
                 </div>
             </div>
             <div class="announce-slider-wrapper">
-                <div class="act-waterfall" data-entity="authors" data-action="add" data-preview="preview"
-                    data-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'
-                    data-view='{"xs":1,"sm":2,"md":2,"lg":6,"xl":3,"xxl":4}'
-                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'></div>
+                <div class="act-waterfall" data-entity="authors" data-action="add"
+                    data-limit='{"xs":24,"sm":24,"md":24,"lg":24,"xl":24,"xxl":24}'
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                    data-tizer-view="author"></div>
             </div>
         </div>
     </section>

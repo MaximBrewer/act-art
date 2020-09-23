@@ -94,8 +94,6 @@ $showLatLng = $showLatLng ? 'true' : 'false';
                     var center = vm.points[vm.points.length - 1];
                     this.setLatLng(center.lat, center.lng);
 
-                    console.log(center);
-
                     vm.map = new ymaps.Map("map", {
                         center: [center.lat, center.lng],
                         zoom: vm.zoom

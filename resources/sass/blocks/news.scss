@@ -1,15 +1,18 @@
 @use "sass:map";
 #news {
+    padding: 3rem 0 4rem;
     background-color: $white;
-    padding: 3rem 0 2rem;
     .h5 {
         font-size: 7vw;
         line-height: 8.625vw;
         text-align: center;
     }
+    .container {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
     .news-slider {
         margin-top: 0;
-        padding-bottom: 1.75rem;
         position: relative;
         hr {
             margin: 0 1.5rem;
@@ -19,81 +22,19 @@
         .mx-q {
             margin: 0 -1.5rem;
         }
-        .slide-wrapper {
-            display: block;
-            text-decoration: none !important;
-            padding: 1.25rem 1.5rem;
-            border: 1px solid transparent;
-            margin-bottom: 0;
-            &:hover {
-                background-color: $white;
-                border: 1px solid $primary;
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            .carousel-button {
+                z-index: 1;
             }
-            .slide-inner {
-                padding: 1rem 0;
-                border-top: 0.25rem solid $body-color;
-                .category {
-                }
-                .date {
-                    @include small_text_bold_16;
-                }
-                .image {
-                    padding-top: 62%;
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                }
-                .title {
-                    font-weight: bold;
-                    font-size: 18px;
-                    line-height: 21px;
-                    height: 63px;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    letter-spacing: 0.03em;
-                    margin-bottom: 1rem;
-                }
-                .announce {
-                    height: 105px;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 5;
-                    -webkit-box-orient: vertical;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    font-size: 18px;
-                    line-height: 21px;
-                    letter-spacing: 0.03em;
-                }
+            .carousel-counter {
+                display: none;
             }
-        }
-        .carousel-button {
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            bottom: 3.15rem;
-            .btn {
-                margin: 0;
-                font-weight: bold;
-                font-size: 24px;
-                line-height: 171%;
-                background-color: $white;
-                padding: 0.475rem 4.25rem;
-            }
-        }
-        .carousel-counter {
-            @include txt_menu_1;
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            z-index: 0;
-            bottom: 3.875rem;
-            color: $primary;
         }
         .btn {
-            margin-bottom: 1.25rem;
+            padding-left: 3.25rem;
+            padding-right: 3.25rem;
         }
         .btn-control {
             margin: 0;
@@ -101,157 +42,32 @@
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
         background-color: $greylight;
-        padding: 3rem 0 2rem;
         .h5 {
             font-size: 2.125rem;
             line-height: 3rem;
             text-align: left;
         }
         .news-slider {
-            padding-bottom: 9.75rem;
             position: relative;
-            .mx-q {
-                margin: 0 -1.5rem;
-            }
-            .slide-wrapper {
-                padding: 1.25rem 1.5rem;
-                border: 1px solid transparent;
-                margin-bottom: 3rem;
-                &:hover {
-                    background-color: $white;
-                    border: 1px solid $primary;
-                }
-                .slide-inner {
-                    padding: 1rem 0 2rem;
-                    border-top: 0.25rem solid $body-color;
-                    .category {
-                    }
-                    .date {
-                        @include small_text_bold_16;
-                    }
-                    .image {
-                    }
-                    .title {
-                        font-weight: bold;
-                        font-size: 18px;
-                        line-height: 21px;
-                        letter-spacing: 0.03em;
-                        margin-bottom: 1rem;
-                    }
-                    .announce {
-                        font-size: 18px;
-                        line-height: 21px;
-                        letter-spacing: 0.03em;
-                    }
-                }
-            }
-            .carousel-button {
-                position: absolute;
-                z-index: 1;
-                left: 0;
-                bottom: 3.15rem;
-                right: auto;
-                .btn {
-                    margin: 0;
-                    font-weight: bold;
-                    font-size: 24px;
-                    line-height: 1.725rem;
-                    background-color: $white;
-                    padding: 0.475rem 4.25rem;
-                }
-            }
-            .carousel-counter {
-                right: 9.125rem;
-                width: auto;
-            }
-            .btn {
-                margin-bottom: 1.25rem;
-            }
-            .btn-control {
-                margin: 0;
+            .slick-list {
+                margin-left: -1.25rem;
+                margin-right: -1.25rem;
             }
         }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
         background-color: $greylight;
-        padding: 12rem 0 4rem;
+        padding: 9rem 0 6rem;
         .background-text {
             color: $white;
             top: 5.25rem;
             opacity: 1;
         }
         .news-slider {
-            margin-top: 4rem;
-            padding-bottom: 9.75rem;
-            position: relative;
             hr {
                 margin: 0 1.5rem;
                 background-color: $body-color;
                 height: 0.25rem;
-            }
-            .mx-q {
-                margin: 0 -1.5rem;
-            }
-            .slide-wrapper {
-                padding: 1.25rem 1.5rem;
-                border: 1px solid transparent;
-                margin-bottom: 3rem;
-                &:hover {
-                    background-color: $white;
-                    border: 1px solid $primary;
-                }
-                .slide-inner {
-                    padding: 1rem 0 2rem;
-                    border-top: 0.25rem solid $body-color;
-                    .category {
-                    }
-                    .date {
-                        @include small_text_bold_16;
-                    }
-                    .image {
-                    }
-                    .title {
-                        font-weight: bold;
-                        font-size: 18px;
-                        line-height: 21px;
-                        letter-spacing: 0.03em;
-                        margin-bottom: 1rem;
-                    }
-                    .announce {
-                        font-size: 18px;
-                        line-height: 21px;
-                        letter-spacing: 0.03em;
-                    }
-                }
-            }
-            .carousel-button {
-                position: absolute;
-                z-index: 1;
-                left: 0;
-                bottom: 3.15rem;
-                .btn {
-                    margin: 0;
-                    font-weight: bold;
-                    font-size: 24px;
-                    line-height: 171%;
-                    background-color: $white;
-                    padding: 0.475rem 4.25rem;
-                }
-            }
-            .carousel-counter {
-                @include txt_menu_1;
-                position: absolute;
-                width: 100%;
-                text-align: center;
-                z-index: 0;
-                bottom: 3.875rem;
-                color: $primary;
-            }
-            .btn {
-                margin-bottom: 1.25rem;
-            }
-            .btn-control {
-                margin: 0;
             }
         }
     }

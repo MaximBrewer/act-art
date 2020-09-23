@@ -6,9 +6,9 @@ import {
     Route,
 } from "react-router-dom";
 
-import AuctionBase from "./auction/AuctionBase";
-import AuctionLots from "./auction/AuctionLots";
-import AuctionLot from "./auction/AuctionLot";
+import AuctionBase from "./AuctionBase";
+import AuctionLots from "./AuctionLots";
+import AuctionLot from "./AuctionLot";
 
 export default function Auction(props) {
     const [state, setState] = useState({

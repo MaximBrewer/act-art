@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Tizer(props) {
-    const { data, item, toFavorite, favorites } = props;
+    const { data, item } = props;
     const url = "/events/" + item.id;
 
     return (
@@ -11,11 +11,13 @@ export default function Tizer(props) {
                     href={url}
                     className={`image`}
                     style={{
-                        backgroundImage: "url(" + item.thumbnail + ")"
+                        backgroundImage: "url(" + item.preview + ")"
                     }}
                 ></a>
             </div>
-            <div className="title">{item.title}</div>
+            <a className="title" href={url}>
+                {item.title}
+            </a>
             <div className="subtitle">{item.excerpt}</div>
             <div className="date">{item.dates}</div>
             <div className="exhibit">{item.space.title}</div>

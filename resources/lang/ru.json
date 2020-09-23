@@ -9,7 +9,16 @@
     "GALLERY_BLOCK_SHOW_MORE_LINK": "Показать больше",
     "GALLERY_BLOCK_STICKY": "работы в продаже",
 
+    "POSTS_BLOCK_CATEGORY_NEWS": "Новости",
+    "POSTS_BLOCK_CATEGORY_BLOG": "Блог",
+
+    "READ_MORE": "Читать дальше",
+
     "MEASURE_CM": "см",
+
+    "CATEGORIES_LIST_TITLE": "Категории",
+    "GALLERY_ARCHIVE_H2": "Архив",
+    "CATEGORY_ALL_LINK": "Все",
 
     "E-Mail": "E-Mail",
     "Password": "Пароль",

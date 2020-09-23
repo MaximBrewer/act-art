@@ -1,8 +1,11 @@
 import React from "react";
 import { Favorite, Hammer } from "../../Icons";
+import {
+    Link
+} from "react-router-dom";
 
 export default function Tizer(props) {
-    const { data, item, toFavorite, favorites } = props;
+    const { data, item } = props;
     const url =
         item.status == "gallery"
             ? "/gallery/lot/" + item.id
@@ -11,20 +14,41 @@ export default function Tizer(props) {
     return (
         <div className={`gallery-item`}>
             <div className="image-holder">
-                <a
-                    href={url}
-                    className={`image`}
-                    style={{
-                        backgroundImage: "url(" + item.thumbnail + ")",
-                        paddingTop: (item.pxheight / item.pxwidth) * 100 + "%"
-                    }}
-                >
-                    <Favorite {...props} />
-                </a>
+                {data.gallery ? (
+                    <Link
+                        className={`image l`}
+                        style={{
+                            backgroundImage: "url(" + item.thumbnail + ")",
+                            paddingTop:
+                                (item.pxheight / item.pxwidth) * 100 + "%"
+                        }}
+                        to={url}
+                    >
+                        <Favorite {...props} />
+                    </Link>
+                ) : (
+                    <a
+                        href={url}
+                        className={`image a`}
+                        style={{
+                            backgroundImage: "url(" + item.thumbnail + ")",
+                            paddingTop:
+                                (item.pxheight / item.pxwidth) * 100 + "%"
+                        }}
+                    >
+                        <Favorite {...props} />
+                    </a>
+                )}
             </div>
-            <a className="title" href={url}>
-                {item.title}
-            </a>
+            {data.gallery ? (
+                <Link className={`title`} to={url}>
+                    {item.title}
+                </Link>
+            ) : (
+                <a href={url} className={`title`}>
+                    {item.title}
+                </a>
+            )}
             <div className="d-flex justify-content-between">
                 <a className="author" href={item.author_url}>
                     {item.author}
@@ -45,6 +69,19 @@ export default function Tizer(props) {
                 {item.width} х {item.height}
                 {__("MEASURE_CM")}
             </div>
+            {data.showStatus ? (
+                data.gallery ? (
+                    <Link className={item.status + ` status`} to={url}>
+                        {__("#status-" + item.status + "#")}
+                    </Link>
+                ) : (
+                    <a className={item.status + ` status`} href={url}>
+                        {__("#status-" + item.status + "#")}
+                    </a>
+                )
+            ) : (
+                ``
+            )}
         </div>
     );
 }

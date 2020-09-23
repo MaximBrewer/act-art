@@ -2,8 +2,9 @@ import React from "react";
 import Masonry from "react-masonry-css";
 import AuctionTizer from "./tizers/Auction.js";
 import GalleryTizer from "./tizers/Gallery.js";
-import NewsTizer from "./tizers/Auction.js";
-import BlogTizer from "./tizers/Auction.js";
+import NewsTizer from "./tizers/News.js";
+import BlogTizer from "./tizers/Blog.js";
+import AuthorTizer from "./tizers/Author.js";
 import EventTizer from "./tizers/Event.js";
 import LastbetsTizer from "./tizers/Lastbets.js";
 

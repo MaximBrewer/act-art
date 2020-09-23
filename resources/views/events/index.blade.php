@@ -30,10 +30,10 @@
                 </div>
             </div>
             <div class="announce-slider-wrapper">
-                <div class="act-waterfall" data-entity="events" data-action="add" data-preview="preview"
+                <div class="act-waterfall" data-entity="events" data-action="add"
                     data-category="exhibition" data-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'
-                    data-view='{"xs":1,"sm":2,"md":2,"lg":6,"xl":3,"xxl":4}'
-                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'></div>
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}' data-tizer-view="event"></div>
             </div>
         </div>
     </section>
@@ -64,10 +64,10 @@
                 </div>
             </div>
             <div class="announce-slider-wrapper">
-                <div class="act-waterfall" data-entity="events" data-action="add" data-preview="preview"
+                <div class="act-waterfall" data-entity="events" data-action="add"
                     data-category="workshop" data-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'
-                    data-view='{"xs":1,"sm":2,"md":2,"lg":6,"xl":3,"xxl":4}'
-                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}'></div>
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":6,"xl":6,"xxl":8}' data-tizer-view="event"></div>
             </div>
         </div>
     </section>
@@ -79,19 +79,19 @@
 </section>
 
 
-<div class="sticky-wrapper">
-    <section class="blog-section">
-        <div class="background-text">{{ __('BLOG') }}</div>
+<section class="blog-section">
+    <div class="background-text">{{ __('BLOG') }}</div>
+    <div class="sticky-wrapper">
         <div class="container">
             <div class="waterfall-wrapper">
-                <div class="act-waterfall" data-entity="post" data-action="go" data-preview="waterfall"
-                    data-category="blog" data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":3}'
-                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":3}'
-                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":3}'></div>
+                <div class="act-waterfall" data-entity="post" data-action="none" data-category="blog"
+                    data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
+                    data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+                    data-first-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}' data-tizer-view="blog"></div>
             </div>
         </div>
-    </section>
-    <div class="sticky-section"><span>{{ __('act•art blog') }}</span></div>
-</div>
+        <div class="sticky-section"><span>{{ __('act•art blog') }}</span></div>
+    </div>
+</section>
 @widget('marquee')
 @endsection

@@ -1,8 +1,12 @@
 @use "sass:map";
 #homeAbout {
     color: $white;
-    padding: 8rem 0 6rem;
+    padding: 3rem 0 2rem;
     background-color: $cyanmedium;
+    .container {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
     .background-logo {
         position: absolute;
         top: 2rem;
@@ -74,7 +78,7 @@
         }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
-        padding: 12rem 0 10rem;
+        padding: 9rem 0 8rem;
         .h2 {
             margin-top: 0;
             font-size: 2.5rem;

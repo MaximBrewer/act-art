@@ -1,11 +1,14 @@
 @use "sass:map";
 #announces {
-    padding: 3rem 0 2rem;
     background-color: $fonlight;
     .background-text {
         color: $fonlight;
         top: 5.25rem;
         opacity: 1;
+    }
+    .container {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
     }
     .announce {
         > div {
@@ -15,100 +18,24 @@
                 line-height: 9.625vw;
                 text-align: center;
             }
-        }
-    }
-    .announce-slider {
-        margin-top: 1rem;
-        padding-bottom: 0.75rem;
-        position: relative;
-        .slick-list {
-            margin: 0 -1.5rem;
-            > * {
-                -webkit-user-select: none; /* Safari */
-                -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* IE10+/Edge */
-                user-select: none; /* Standard */
-            }
-        }
-
-        .slick-slide {
-            &:focus,
-            a {
-                outline: none;
-            }
-        }
-        .slide-wrapper {
-            background-color: $white;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 2rem;
-            .slide-inner {
-                padding: 2rem 0;
-                border-top: 0.25rem solid $body-color;
-                border-bottom: 0.25rem solid $body-color;
-                .fio,
-                .title {
-                    margin-bottom: 0;
-                    font-family: "TT Severs";
+            dl {
+                font-family: "TT Severs";
+                font-size: 18px;
+                line-height: 21px;
+                letter-spacing: initial;
+                dt {
                     font-weight: bold;
-                    font-size: 1.5rem;
+                    text-decoration: underline;
                 }
-                .subtitle {
-                    padding: 0.5rem 0 1.5rem;
-                    font-size: 1rem;
-                }
-                .date {
-                    font-size: 1.125rem;
-                    padding-bottom: 1.25rem;
-                    font-weight: bold;
-                }
-                .image {
-                    padding-top: 82%;
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                }
-                .address,
-                .exhibit {
-                    font-size: 1rem;
-                }
-                .exhibit {
-                    font-weight: bold;
+                dd {
+                    margin-bottom: 1rem;
                 }
             }
-        }
-        .carousel-button {
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            bottom: 3.15rem;
-            .btn {
-                margin: 0;
-                font-weight: bold;
-                font-size: 24px;
-                line-height: 171%;
-                background-color: $white;
-                padding: 0.475rem 4.25rem;
-            }
-        }
-        .carousel-counter {
-            @include txt_menu_1;
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            z-index: 0;
-            bottom: 3.875rem;
-            color: $primary;
-        }
-        .btn {
-            margin-bottom: 1.25rem;
-        }
-        .btn-control {
-            margin: 0;
         }
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
         background-color: $white;
-        padding: 4rem 0 2rem;
+        padding: 1rem 0 0rem;
         .announce {
             > div {
                 .h2,
@@ -119,74 +46,11 @@
                 }
             }
         }
-        .announce-slider {
-            margin-top: 2rem;
-            padding-bottom: 1.75rem;
-            position: relative;
-            .slick-list {
-                margin: 0 -1.5rem;
-            }
-            .slick-slide {
-                &:focus,
-                a {
-                    outline: none;
-                }
-            }
-            .slide-wrapper {
-                padding: 1.25rem 1.5rem;
-                .slide-inner {
-                    padding: 2rem 0;
-                    border-top: 0.25rem solid $body-color;
-                    border-bottom: 0.25rem solid $body-color;
-                    .image {
-                        padding-top: 82%;
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                    }
-                    .exhibit {
-                        font-weight: bold;
-                    }
-                }
-            }
-            .carousel-button {
-                position: absolute;
-                z-index: 1;
-                left: 0;
-                bottom: 3.15rem;
-                .btn {
-                    margin: 0;
-                    font-weight: bold;
-                    font-size: 24px;
-                    line-height: 171%;
-                    background-color: $white;
-                    padding: 0.475rem 4.25rem;
-                }
-            }
-            .carousel-counter {
-                @include txt_menu_1;
-                position: absolute;
-                width: 100%;
-                text-align: center;
-                z-index: 0;
-                bottom: 3.875rem;
-                color: $primary;
-            }
-            .btn {
-                margin-bottom: 1.25rem;
-            }
-            .btn-control {
-                margin: 0;
-            }
-        }
     }
     @media (min-width: map.get($grid-breakpoints, "lg")) {
-        .announce-slider {
-            padding-bottom: 6.75rem;
-        }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
-        padding: 12rem 0 6rem;
+        padding: 6rem 0 3rem;
         .background-text {
             color: $fonlight;
             top: 5.25rem;
@@ -201,87 +65,56 @@
                     margin-bottom: 2.5rem;
                     border-bottom: 8px solid $primary;
                 }
-                dl {
-                    font-family: "TT Severs";
-                    font-size: 18px;
-                    line-height: 21px;
-                    letter-spacing: initial;
-                    dt {
-                        font-weight: bold;
-                        text-decoration: underline;
-                    }
-                    dd {
-                        margin-bottom: 1rem;
-                    }
-                }
             }
         }
-        .announce-slider {
-            margin-top: 4rem;
-            padding-bottom: 9.75rem;
-            position: relative;
-            .slick-list {
-                margin: 0 -1.5rem;
-                > * {
-                    -webkit-user-select: none; /* Safari */
-                    -moz-user-select: none; /* Firefox */
-                    -ms-user-select: none; /* IE10+/Edge */
-                    user-select: none; /* Standard */
-                }
-            }
+    }
+}
 
-            .slick-slide {
-                &:focus,
-                a {
-                    outline: none;
-                }
-            }
-            .slide-wrapper {
-                padding: 1.25rem 1.5rem;
-                .slide-inner {
-                    padding: 2rem 0;
-                    border-top: 0.25rem solid $body-color;
-                    border-bottom: 0.25rem solid $body-color;
-                    .image {
-                        padding-top: 82%;
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                    }
-                    .exhibit {
-                        font-weight: bold;
-                    }
-                }
-            }
-            .carousel-button {
-                position: absolute;
-                z-index: 1;
-                left: 0;
-                bottom: 3.15rem;
-                .btn {
-                    margin: 0;
-                    font-weight: bold;
-                    font-size: 24px;
-                    line-height: 171%;
-                    background-color: $white;
-                    padding: 0.475rem 4.25rem;
-                }
-            }
-            .carousel-counter {
-                @include txt_menu_1;
-                position: absolute;
-                width: 100%;
-                text-align: center;
-                z-index: 0;
-                bottom: 3.875rem;
-                color: $primary;
-            }
-            .btn {
-                margin-bottom: 1.25rem;
-            }
-            .btn-control {
-                margin: 0;
-            }
+.announce-slider {
+    overflow: hidden;
+    margin-top: 1rem;
+    padding-bottom: 0.75rem;
+    position: relative;
+    .slick-list {
+        margin: 0 -1.25rem;
+        > * {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
         }
+    }
+
+    .slick-slide {
+        &:focus,
+        a {
+            outline: none;
+        }
+    }
+    .carousel-controls {
+        display: flex;
+        justify-content: space-between;
+        .carousel-button {
+            z-index: 1;
+        }
+        .carousel-counter {
+            display: none;
+        }
+    }
+    .btn {
+        padding-left: 3.25rem;
+        padding-right: 3.25rem;
+    }
+    .btn-control {
+        margin: 0;
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        margin-top: 2rem;
+        padding-bottom: 1.75rem;
+    }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        margin-top: 2rem;
     }
 }

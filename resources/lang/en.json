@@ -6,10 +6,19 @@
     "GALLERY_BLOCK_INTROTEXT": "Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление. Постоянно действующая галерея-аукцион в которой вы можете приобрести избранные работы молодых российских авторов. Следите, выбирайте, торгуйтесь, собирайте свою коллекцию. Еженедельное обновление.",
     "GALLERY_BLOCK_HOW_TO_BUY_LINK": "How to buy",
     "GALLERY_BLOCK_LATEST_BIDS": "Latest bids",
-    "GALLERY_BLOCK_SHOW_MORE_LINK":"Show more",
-    "GALLERY_BLOCK_STICKY":"works for sale",
+    "GALLERY_BLOCK_SHOW_MORE_LINK": "Show more",
+    "GALLERY_BLOCK_STICKY": "works for sale",
+
+    "POSTS_BLOCK_CATEGORY_NEWS": "News",
+    "POSTS_BLOCK_CATEGORY_BLOG": "Blog",
+
+    "READ_MORE": "Read more",
 
     "MEASURE_CM": "cm",
+
+    "CATEGORIES_LIST_TITLE": "Categories",
+    "GALLERY_ARCHIVE_H2": "Archive",
+    "CATEGORY_ALL_LINK": "All",
 
     "#status-gallery#": "Available in the gallery",
     "#status-auction#": "Participates in the auction",

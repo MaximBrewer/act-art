@@ -1,4 +1,4 @@
-__ = (key, replace) => {
+window.__ = (key, replace) => {
     let translation,
         translationNotFound = true;
 

@@ -52,7 +52,6 @@ export default function LotGallery(props) {
                         item.pxwidth / item.pxheight < 680 / 560
                             ? 560
                             : (item.pxheight / item.pxwidth) * 680;
-                    console.log(item.pxwidth, item.pxheight, w, h);
                     return (
                         <div key={index}>
                             <div

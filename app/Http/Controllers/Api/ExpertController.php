@@ -11,10 +11,10 @@ class ExpertController extends Controller
 {
     //
     //
-    public function all(Request $request)
+    public function index(Request $request)
     {
         return [
-            'experts' => ExpertResource::collection(Expert::all())
+            'items' => ExpertResource::collection(Expert::all())
         ];
     }
 }

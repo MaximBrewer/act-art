@@ -23,7 +23,7 @@ class Post extends JsonResource
             'excerpt' => $this->getTranslatedAttribute('excerpt'),
             'date' => $this->dateout,
             'slug' => $this->slug,
-            'category' => $this->category == 'NEWS' ? __('NEWS') :  __('BLOG'),
+            'category' => $this->category == 'NEWS' ? __('POSTS_BLOCK_CATEGORY_NEWS') :  __('POSTS_BLOCK_CATEGORY_BLOG'),
             'thumbnail' => Voyager::image($this->thumbnail('preview', 'image')),
             'waterfall' => Voyager::image($this->thumbnail('waterfall', 'image')),
             'width' => $size[0],

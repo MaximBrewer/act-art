@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Resizable;
+use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Traits\Translatable;
 use Jenssegers\Date\Date;
 
@@ -40,7 +41,7 @@ class Event extends Model
      */
     public function scopeExhibition(Builder $query)
     {
-        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->where('spaces.type', '=', static::EXHIBITION);
+        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->select(DB::raw("events.*, spaces.id, spaces.type"))->where('spaces.type', '=', static::EXHIBITION);
     }
 
 
@@ -53,7 +54,7 @@ class Event extends Model
      */
     public function scopeWorkshop(Builder $query)
     {
-        // return $query->where('category', '=', static::BLOG);
+        return $query->leftJoin('spaces', 'events.space_id', '=', 'spaces.id')->select(DB::raw("events.*, spaces.id, spaces.type"))->where('spaces.type', '=', static::WORKSHOP);
     }
 
 

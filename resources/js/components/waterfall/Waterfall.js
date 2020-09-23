@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import EntityGrid from "./EntityGrid";
+import { Link, useParams } from "react-router-dom";
 
 export default function Waterfall(props) {
-    const { data } = props;
+    const { data, lots } = props;
+    data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
     const [state, setState] = useState({
-        photos: !!data.auction ? data.auction.lots : [],
+        photos: [],
         favorites: user ? user.favorites : null,
         more: true,
         options: [],
@@ -12,7 +14,11 @@ export default function Waterfall(props) {
         sortBy: "id",
         order: "asc",
         filter: {
-            status: data.archive ? "sold" : "available"
+            status: !!data.archive
+                ? "sold"
+                : !!data.gallery
+                ? "gallery"
+                : "available"
         }
     });
 
@@ -194,7 +200,7 @@ export default function Waterfall(props) {
                 return {
                     ...prevState,
                     photos: prevState.photos.sort(function(a, b) {
-                        if ((order == "asc")) return a[field] > b[field] ? 1 : -1;
+                        if (order == "asc") return a[field] > b[field] ? 1 : -1;
                         else return b[field] > a[field] ? 1 : -1;
                     }),
                     sortBy: field,
@@ -216,46 +222,17 @@ export default function Waterfall(props) {
     const setFilter = (field, value) => {
         let filter = state.filter;
         filter[field] = value;
-        getGallery(filter, state.sortBy, state.order, state.options);
+        if (!data.auction && !data.gallery)
+            getGallery(filter, state.sortBy, state.order, state.options);
         setState(prevState => {
             return {
                 ...prevState,
                 filter
             };
         });
-    };
-
-    const setCategory = () => {
-        if (location.hash.indexOf("#category-") == -1) return false;
-        let catId = location.hash.replace(/#category-/, "");
-        let filter = state.filter;
-        filter.category = catId * 1;
-        setState(prevState => {
-            getGallery(
-                filter,
-                prevState.sortBy,
-                prevState.order,
-                prevState.options
-            );
-            return {
-                ...prevState,
-                filter
-            };
-        });
-        scrollToElement("galleryWorksList");
-        location.hash = "";
-        return true;
     };
 
     useEffect(() => {
-        if (!!data.auction) return;
-        window.addEventListener(
-            "hashchange",
-            () => {
-                setCategory();
-            },
-            false
-        );
         window.addEventListener("lot", updateLot);
         data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
         axios
@@ -264,7 +241,7 @@ export default function Waterfall(props) {
                 setState(prevState => {
                     return { ...prevState, options: res.data };
                 });
-                if (!data.auction || !setCategory())
+                if (!data.auction && !data.gallery)
                     getGallery(
                         state.filter,
                         state.sortBy,
@@ -276,6 +253,19 @@ export default function Waterfall(props) {
                 console.log(err);
             });
     }, []);
+
+    useEffect(() => {
+        setState(prevState => {
+            return {
+                ...prevState,
+                photos: lots
+            };
+        });
+    }, [lots]);
+
+    useEffect(() => {
+        setFilter("category", data.category);
+    }, [data.category]);
 
     const showMoreElems = () => {
         if (data.action == "add")
@@ -371,7 +361,8 @@ export default function Waterfall(props) {
                                 e.preventDefault();
                                 setSortBy(
                                     "sort",
-                                    state.sortBy == "sort" && state.order == "asc"
+                                    state.sortBy == "sort" &&
+                                        state.order == "asc"
                                         ? "desc"
                                         : "asc"
                                 );
@@ -397,30 +388,63 @@ export default function Waterfall(props) {
                                 <ul>
                                     {option.items.map((item, index) => (
                                         <li key={index}>
-                                            <a
-                                                className={
-                                                    state.filter[option.id] ==
-                                                    item.id
-                                                        ? `active`
-                                                        : ``
-                                                }
-                                                href="#"
-                                                onClick={e => {
-                                                    e.preventDefault();
-                                                    setFilter(
-                                                        option.id,
+                                            {option.id == "category" ? (
+                                                <Link
+                                                    className={
+                                                        data.category == item.id
+                                                            ? `active`
+                                                            : ``
+                                                    }
+                                                    to={
+                                                        `/gallery/category/` +
+                                                        item.id
+                                                    }
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            ) : (
+                                                <a
+                                                    className={
                                                         state.filter[
                                                             option.id
                                                         ] == item.id
-                                                            ? false
-                                                            : item.id
-                                                    );
-                                                }}
-                                            >
-                                                {item.title}
-                                            </a>
+                                                            ? `active`
+                                                            : ``
+                                                    }
+                                                    href="#"
+                                                    onClick={e => {
+                                                        e.preventDefault();
+                                                        setFilter(
+                                                            option.id,
+                                                            state.filter[
+                                                                option.id
+                                                            ] == item.id
+                                                                ? false
+                                                                : item.id
+                                                        );
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </a>
+                                            )}
                                         </li>
                                     ))}
+                                    {option.id == "category" ? (
+                                        <li>
+                                            <Link
+                                                className={
+                                                    !data.category
+                                                        ? `active`
+                                                        : ``
+                                                }
+                                                to={`/gallery`}
+                                            >
+                                                {__(`CATEGORY_ALL_LINK`)}
+                                            </Link>
+                                        </li>
+                                    ) : (
+                                        ``
+                                    )}
                                 </ul>
                             </li>
                         ))}

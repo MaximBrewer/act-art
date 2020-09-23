@@ -19,6 +19,52 @@ export function Favorite(props) {
     );
 }
 
+export function ArrowPrew() {
+    return (
+        <svg
+            width="39"
+            height="36"
+            viewBox="0 0 39 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M20.5946 3L6 18L20.5946 33"
+                stroke="#1B292B"
+                strokeWidth="8"
+            />
+            <path
+                d="M7.62164 17.5946H38.4325"
+                stroke="#1E2B32"
+                strokeWidth="8"
+            />
+        </svg>
+    );
+}
+
+export function ArrowNext() {
+    return (
+        <svg
+            width="39"
+            height="36"
+            viewBox="0 0 39 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M18.4054 33L33 18L18.4054 3"
+                stroke="#1B292B"
+                strokeWidth="8"
+            />
+            <path
+                d="M31.3784 18.4054L0.567543 18.4054"
+                stroke="#1E2B32"
+                strokeWidth="8"
+            />
+        </svg>
+    );
+}
+
 export function Hammer() {
     return (
         <svg viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
