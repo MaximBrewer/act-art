@@ -7,7 +7,7 @@ export default function Waterfall(props) {
     data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
     const [state, setState] = useState({
         photos: [],
-        favorites: user ? user.favorites : null,
+        favorites: window.user != undefined ? window.user.favorites : null,
         more: true,
         options: [],
         page: 0,

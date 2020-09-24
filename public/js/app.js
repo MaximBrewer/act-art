@@ -64335,7 +64335,7 @@ function Waterfall(props) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     photos: [],
-    favorites: user ? user.favorites : null,
+    favorites: window.user != undefined ? window.user.favorites : null,
     more: true,
     options: [],
     page: 0,
