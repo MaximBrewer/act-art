@@ -15,10 +15,24 @@
     "READ_MORE": "Читать дальше",
 
     "MEASURE_CM": "см",
+    "SHORT_YEAR": "г",
 
     "CATEGORIES_LIST_TITLE": "Категории",
     "GALLERY_ARCHIVE_H2": "Архив",
     "CATEGORY_ALL_LINK": "Все",
+
+    "LOT_TEXT_LOT_ID": "Лот",
+    "LOT_FAVORITE_IN": "в избранном",
+    "LOT_FAVORITE_OUT": "в избранное",
+    "LOT_YOUR_ID": "Ваш ID",
+    "LOT_LAST_PRICE": "Последняя цена",
+    "LOT_SEED": "Участник",
+    "LOT_BUTTON_OFFER": "Предложить",
+    "LOT_BUTTON_BLITZ": "Предложить блиц-цену",
+    "LOT_START_PRICE": "Стартовая цена",
+    "LOT_TEXT_LOT_ID": "Лот",
+    "LOT_TEXT_LOT_ID": "Лот",
+    "LOT_TEXT_LOT_ID": "Лот",
 
     "E-Mail": "E-Mail",
     "Password": "Пароль",
@@ -124,7 +138,7 @@
     "Authors": "Авторы",
     "#BYPRICE#": "по цене",
     "#BYAUTHOR#": "имени автора",
-    "#BYLOTNUMBER#": "номеру лота",
+    "SORT_BY_LOT_NUMBER": "номеру лота",
     "Archive": "Архив",
     "archive": "архив",
     "Bidding is over": "Торги законечны",

@@ -20,8 +20,8 @@
                                         className={
                                             favorites &&
                                             favorites.indexOf(item.id) > -1
-                                                ? `favorit-link active`
-                                                : `favorit-link`
+                                                ? `favorite-link active`
+                                                : `favorite-link`
                                         }
                                         style={{
                                             position: "absolute",

@@ -509,4 +509,19 @@ iframe {
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    display:flex;
+    justify-content: center;
+    div{
+        margin-left:1rem;
+        cursor: pointer;
+        border-radius: .3rem;
+        box-shadow: 0 0 .2rem rgba(255,255,255,0.1), inset 0 0 3rem rgba(255,255,255,.4);
+        &:first-child{
+            margin-left:0;
+        }
+        svg{
+            height:3rem;
+            fill:$white
+        }
+    }
 }

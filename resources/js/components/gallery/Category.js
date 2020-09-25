@@ -52,9 +52,9 @@ export default function Category(props) {
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">
                             <Waterfall
-                                lots={props.lots}
+                                {...props}
                                 data={{
-                                    category: id,
+                                    categories: id,
                                     entity: "lots",
                                     action: "none",
                                     preview: "preview",

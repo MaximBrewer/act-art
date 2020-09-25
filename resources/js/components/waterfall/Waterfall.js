@@ -1,78 +1,20 @@
 import React, { useState, useEffect } from "react";
 import EntityGrid from "./EntityGrid";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Waterfall(props) {
-    const { data, lots } = props;
+    const { pathname } = useLocation();
+    const { data, items } = props;
     data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
     const [state, setState] = useState({
-        photos: [],
-        favorites: window.user != undefined ? window.user.favorites : null,
+        items: [],
         more: true,
         options: [],
         page: 0,
         sortBy: "id",
         order: "asc",
-        filter: {
-            status: !!data.archive
-                ? "sold"
-                : !!data.gallery
-                ? "gallery"
-                : "available"
-        }
+        filter: {}
     });
-
-    const toFavorite = (id, e) => {
-        e.preventDefault();
-        if (!state.favorites) {
-            window.dispatchEvent(
-                new CustomEvent("flash", {
-                    detail: {
-                        message: __(
-                            "To add to favorites, authorization is required"
-                        ),
-                        type: "error"
-                    }
-                })
-            );
-            return false;
-        }
-
-        let favorites = user.favorites;
-        let action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
-        let url = "/user/favorites/" + action + "/" + id;
-
-        axios
-            .patch(url)
-            .then(res => {
-                user = res.data.user;
-                favorites = user.favorites;
-                window.dispatchEvent(
-                    new CustomEvent("flash", {
-                        detail: {
-                            message:
-                                action == "add"
-                                    ? __("Added to favorites")
-                                    : __("Removed from favorites"),
-                            type: action == "add" ? "success" : "error"
-                        }
-                    })
-                );
-                data.entity == "favorites" &&
-                    getGallery(
-                        state.filter,
-                        state.sortBy,
-                        state.order,
-                        state.options
-                    );
-                setState(prevState => {
-                    return { ...prevState, favorites };
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
 
     const columns = () => {
         let size = "xs";
@@ -81,153 +23,92 @@ export default function Waterfall(props) {
         return data.view[size];
     };
 
-    const getLimit = () => {
-        let size = "xs";
-        for (size in window.grid)
-            if (window.innerWidth < window.grid[size]) break;
-        return state.photos.length ? data.limit[size] : data.firstLimit[size];
-    };
-
-    const getOffset = () => {
-        let size = "xs";
-        for (size in window.grid)
-            if (window.innerWidth < window.grid[size]) break;
-        return state.page
-            ? (state.page - 1) * data.limit[size] + data.firstLimit[size]
-            : 0;
-    };
-
-    const addGallery = () => {
-        let url =
-            data.entity == "blog" || data.entity == "post"
-                ? "/posts?entity=" + data.entity + "&"
-                : "/" + data.entity + "?";
-        data.category && (url += "category=" + data.category);
-        data.author && (url += "author=" + data.author);
-        data.lastbets && (url += "lastbets=1");
-        if (data.entity == "lots") {
-            url += "&status=" + state.filter.status;
-            url += "&sortBy=" + state.sortBy;
-            url += "&order=" + state.order;
-        }
-        if (!!data.exclude) {
-            url += "&exclude=" + data.exclude;
-        }
-        data.entity == "favorites" ||
-            (url += "&limit=" + getLimit() + "&offset=" + getOffset());
-        axios
-            .get("/api/" + window.lang + url)
-            .then(res => {
-                setState(prevState => {
-                    return {
-                        ...prevState,
-                        photos: state.photos.concat(res.data.items),
-                        page: state.page + 1,
-                        more: res.data.next > 0
-                    };
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-
-    const getGallery = (filter, sortBy, order, options) => {
-        let url =
-            data.entity == "blog" || data.entity == "post"
-                ? "/posts?entity=" + data.entity + "&"
-                : "/" + data.entity + "?";
-        data.category && (url += "category=" + data.category);
-        data.author && (url += "author=" + data.author);
-        data.lastbets && (url += "lastbets=1");
-        if (data.entity == "lots") {
-            url += "&status=" + filter.status;
-            options.map(option => {
-                !!filter[option.id] &&
-                    (url += "&" + option.id + "=" + filter[option.id]);
-            });
-            url += "&sortBy=" + sortBy;
-            url += "&order=" + order;
-        }
-        if (!!data.exclude) {
-            url += "&exclude=" + data.exclude;
-        }
-        (data.entity == "favorites" &&
-            (url +=
-                "&ids=" +
-                (user.favorites.length ? user.favorites.join(",") : "0"))) ||
-            (url += "&offset=0" + "&limit=" + getLimit());
-        axios
-            .get("/api/" + window.lang + url)
-            .then(res => {
-                setState(prevState => {
-                    return {
-                        ...prevState,
-                        photos: res.data.items,
-                        page: 1,
-                        more: res.data.next > 0,
-                        filter: filter,
-                        sortBy: sortBy,
-                        order: order
-                    };
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-
     const updateLot = event => {
         setState(prevState => {
-            let photos = [];
-            for (let i in prevState.photos) {
-                if (event.detail.lot.id == prevState.photos[i].id) {
-                    photos.push(event.detail.lot);
+            let items = [];
+            for (let i in prevState.items) {
+                if (event.detail.lot.id == prevState.items[i].id) {
+                    items.push(event.detail.lot);
                 } else {
-                    photos.push(prevState.photos[i]);
+                    items.push(prevState.items[i]);
                 }
             }
             return {
                 ...prevState,
-                photos
+                items
             };
         });
     };
 
     const setSortBy = (field, order) => {
-        if (data.auction) {
-            setState(prevState => {
-                return {
-                    ...prevState,
-                    photos: prevState.photos.sort(function(a, b) {
-                        if (order == "asc") return a[field] > b[field] ? 1 : -1;
-                        else return b[field] > a[field] ? 1 : -1;
-                    }),
-                    sortBy: field,
-                    order: order
-                };
-            });
-        } else {
-            setState(prevState => {
-                return {
-                    ...prevState,
-                    sortBy: field,
-                    order: order
-                };
-            });
-            getGallery(state.filter, field, order, state.options);
-        }
-    };
-
-    const setFilter = (field, value) => {
-        let filter = state.filter;
-        filter[field] = value;
-        if (!data.auction && !data.gallery)
-            getGallery(filter, state.sortBy, state.order, state.options);
         setState(prevState => {
             return {
                 ...prevState,
-                filter
+                items: prevState.items.sort(function(a, b) {
+                    if (order == "asc") return a[field] > b[field] ? 1 : -1;
+                    else return b[field] > a[field] ? 1 : -1;
+                }),
+                sortBy: field,
+                order: order
+            };
+        });
+    };
+
+    useEffect(() => {
+        (!!data.categories || delFilter("categories")) &&
+            setFilter("categories", data.categories);
+    }, [pathname]);
+
+    const delFilter = field => {
+        console.log(field);
+        setState(prevState => {
+            let filter = prevState.filter,
+                items = [],
+                push;
+            delete filter[field];
+            for (const item of items) {
+                push = true;
+                loop: for (const field in filter) {
+                    for (const option of item[field]) {
+                        if (filter[field] == option.id) {
+                            continue loop;
+                        }
+                    }
+                    push = false;
+                }
+                push && items.push(item);
+            }
+            return {
+                ...prevState,
+                filter,
+                items
+            };
+        });
+    };
+
+    const setFilter = (field, value) => {
+        setState(prevState => {
+            let filter = prevState.filter,
+                items = [],
+                push;
+            filter[field] = value;
+            for (const item of items) {
+                push = false;
+                loop: for (const field in filter) {
+                    for (const option of item[field]) {
+                        if (filter[field] == option.id) {
+                            push = true;
+                            continue loop;
+                        }
+                    }
+                    push = false;
+                }
+                push && items.push(item);
+            }
+            return {
+                ...prevState,
+                filter,
+                items
             };
         });
     };
@@ -241,13 +122,6 @@ export default function Waterfall(props) {
                 setState(prevState => {
                     return { ...prevState, options: res.data };
                 });
-                if (!data.auction && !data.gallery)
-                    getGallery(
-                        state.filter,
-                        state.sortBy,
-                        state.order,
-                        state.options
-                    );
             })
             .catch(err => {
                 console.log(err);
@@ -258,33 +132,10 @@ export default function Waterfall(props) {
         setState(prevState => {
             return {
                 ...prevState,
-                photos: lots
+                items: items
             };
         });
-    }, [lots]);
-
-    useEffect(() => {
-        setFilter("category", data.category);
-    }, [data.category]);
-
-    const showMoreElems = () => {
-        if (data.action == "add")
-            return (
-                <div className="show-more">
-                    <div className="dots">•••</div>
-                    <a
-                        href="#"
-                        className="text"
-                        onClick={e => {
-                            e.preventDefault();
-                            addGallery();
-                        }}
-                    >
-                        {__("Show more")}
-                    </a>
-                </div>
-            );
-    };
+    }, [items]);
 
     return (
         <div className="waterfall-outer row">
@@ -368,7 +219,7 @@ export default function Waterfall(props) {
                                 );
                             }}
                         >
-                            <span>{__("#BYLOTNUMBER#")}</span>
+                            <span>{__("SORT_BY_LOT_NUMBER")}</span>
                             <svg
                                 viewBox="0 0 18 18"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -388,10 +239,11 @@ export default function Waterfall(props) {
                                 <ul>
                                     {option.items.map((item, index) => (
                                         <li key={index}>
-                                            {option.id == "category" ? (
+                                            {option.id == "categories" ? (
                                                 <Link
                                                     className={
-                                                        data.category == item.id
+                                                        data.categories ==
+                                                        item.id
                                                             ? `active`
                                                             : ``
                                                     }
@@ -414,14 +266,19 @@ export default function Waterfall(props) {
                                                     href="#"
                                                     onClick={e => {
                                                         e.preventDefault();
-                                                        setFilter(
-                                                            option.id,
-                                                            state.filter[
-                                                                option.id
-                                                            ] == item.id
-                                                                ? false
-                                                                : item.id
-                                                        );
+                                                        state.filter[
+                                                            option.id
+                                                        ] == undefined ||
+                                                        state.filter[
+                                                            option.id
+                                                        ] != item.id
+                                                            ? setFilter(
+                                                                  option.id,
+                                                                  item.id
+                                                              )
+                                                            : delFilter(
+                                                                  option.id
+                                                              );
                                                     }}
                                                 >
                                                     {item.title}
@@ -429,11 +286,11 @@ export default function Waterfall(props) {
                                             )}
                                         </li>
                                     ))}
-                                    {option.id == "category" ? (
+                                    {option.id == "categories" ? (
                                         <li>
                                             <Link
                                                 className={
-                                                    !data.category
+                                                    !data.categories
                                                         ? `active`
                                                         : ``
                                                 }
@@ -458,12 +315,11 @@ export default function Waterfall(props) {
             >
                 <EntityGrid
                     columns={columns}
-                    items={state.photos}
-                    toFavorite={toFavorite}
+                    items={state.items}
+                    toFavorite={props.toFavorite}
                     data={data}
-                    favorites={state.favorites}
+                    favorites={props.favorites}
                 />
-                {state.more && data.action == "add" ? showMoreElems() : ""}
             </div>
         </div>
     );

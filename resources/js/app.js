@@ -20,6 +20,7 @@ import Flash from "./helpers/Flash";
 // const Experts = lazy(() => import("./components/Experts"));
 
 import Waterfall from "./components/waterfall/Waterfall";
+import WaterfallAjax from "./components/waterfall/WaterfallAjax";
 import MovingGallery from "./components/moving/Gallery";
 import Auctions from "./components/auction/Auctions";
 import Auction from "./components/auction/Auction";
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 data[i] = waterfall.dataset[i];
             }
         }
-        render(<Waterfall data={data} />, waterfall);
+        render(<WaterfallAjax data={data} />, waterfall);
     });
 
     let auctionsLists = document.getElementsByClassName("act-auctions-list");
@@ -89,19 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
         render(<Carousel data={data} />, carousel);
     });
 
-    // !document.getElementById("announceSlider") ||
-    //     render(<Announce />, document.getElementById("announceSlider"));
-
-    // !document.getElementById("newsSlider") ||
-    //     render(
-    //         <News data={document.getElementById("newsSlider").dataset} />,
-    //         document.getElementById("newsSlider")
-    //     );
-    // if (window.innerWidth > 767) {
-    //     !document.getElementById("expertsSlider") ||
-    //         render(<Experts />, document.getElementById("expertsSlider"));
-    // }
-
     let lotGalleries = document.getElementsByClassName("lot-gallery");
 
     [].forEach.call(lotGalleries, function(lotGallery) {
@@ -119,15 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     !document.getElementById("appGallery") ||
         render(<Gallery />, document.getElementById("appGallery"));
-
-    // !document.getElementById("appGallery") ||
-    //     render(
-    //         <Auction
-    //             data={document.getElementById("appGallery").dataset}
-    //             participate={participate}
-    //         />,
-    //         document.getElementById("appGallery")
-    //     );
 
     init();
 });

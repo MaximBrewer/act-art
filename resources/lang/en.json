@@ -15,10 +15,21 @@
     "READ_MORE": "Read more",
 
     "MEASURE_CM": "cm",
+    "SHORT_YEAR": "y",
 
     "CATEGORIES_LIST_TITLE": "Categories",
     "GALLERY_ARCHIVE_H2": "Archive",
     "CATEGORY_ALL_LINK": "All",
+
+    "LOT_TEXT_LOT_ID": "Lot",
+    "LOT_FAVORITE_IN": "in favorites",
+    "LOT_FAVORITE_OUT": "add to favorites",
+    "LOT_YOUR_ID": "Your ID",
+    "LOT_LAST_PRICE": "Last price",
+    "LOT_SEED": "Participant",
+    "LOT_BUTTON_OFFER": "Offer",
+    "LOT_BUTTON_BLITZ": "Offer blitz price",
+    "LOT_START_PRICE": "Start price",
 
     "#status-gallery#": "Available in the gallery",
     "#status-auction#": "Participates in the auction",
@@ -27,5 +38,5 @@
     "#status-empty#": "HZ",
     "#BYPRICE#": "price",
     "#BYAUTHOR#": "author name",
-    "#BYLOTNUMBER#": "lot number"
+    "SORT_BY_LOT_NUMBER": "lot number"
 }

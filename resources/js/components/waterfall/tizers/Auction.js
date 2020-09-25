@@ -17,8 +17,8 @@ export default function Tizer(props) {
                     onClick={e => toFavorite(item.id, e)}
                     className={
                         favorites && favorites.indexOf(item.id) > -1
-                            ? `favorit-link active`
-                            : `favorit-link`
+                            ? `favorite-link active`
+                            : `favorite-link`
                     }
                     style={{
                         position: "absolute",

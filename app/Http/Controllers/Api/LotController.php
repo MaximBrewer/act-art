@@ -94,11 +94,11 @@ class LotController extends Controller
     public function options(Request $request)
     {
         return [
-            ['id' => 'category', 'title' => __('Category'), 'items' => \App\Category::all()],
-            ['id' => 'style', 'title' => __('Style'), 'items' => \App\Style::all()],
-            // ['id' => 'material', 'title' => __('Material'), 'items' => \App\Material::all()],
-            // ['id' => 'technique', 'title' => __('Technique'), 'items' => \App\Technique::all()],
-            // ['id' => 'frame', 'title' => __('Frame'), 'items' => \App\Frame::all()],
+            ['id' => 'categories', 'title' => __('Category'), 'items' => \App\Category::all()],
+            ['id' => 'styles', 'title' => __('Style'), 'items' => \App\Style::all()],
+            // ['id' => 'materials', 'title' => __('Material'), 'items' => \App\Material::all()],
+            // ['id' => 'techniques', 'title' => __('Technique'), 'items' => \App\Technique::all()],
+            // ['id' => 'frames', 'title' => __('Frame'), 'items' => \App\Frame::all()],
         ];
     }
 

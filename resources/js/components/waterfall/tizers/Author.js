@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Tizer(props) {
     const { data, item } = props;
-    const url = "/author/" + item.id;
+    const url = "/authors/" + item.id;
 
     return (
         <div className={`author-item`}>

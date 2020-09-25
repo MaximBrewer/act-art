@@ -121,10 +121,7 @@ export function changeWindow() {
             button.classList.add("btn-primary-inverse");
         });
     }
-    let scrollTop =
-        document.documentElement.scrollTop ||
-        (document.body && document.body.scrollTop) ||
-        0;
+    
     let stickies = document.getElementsByClassName("sticky-section");
     let bgts = document.getElementsByClassName("background-text");
 
@@ -134,7 +131,7 @@ export function changeWindow() {
             let c = sticky.parentNode,
                 sp = sticky.children[0],
                 egr = c.getBoundingClientRect();
-            if (egr.top < 32) {
+            if (egr.top < 80) {
                 if (egr.top + egr.height - 80 > 80 + sp.offsetWidth) {
                     sticky.style.position = "fixed";
                     sticky.style.top = 80 + "px";
@@ -142,12 +139,12 @@ export function changeWindow() {
                 } else {
                     sticky.style.marginLeft = "0";
                     sticky.style.top = "auto";
-                    sticky.style.bottom = sp.offsetWidth - 24 + 80 + "px";
+                    sticky.style.bottom = sp.offsetWidth + 80 + "px";
                     sticky.style.position = "absolute";
                 }
             } else {
                 sticky.style.marginLeft = "0";
-                sticky.style.top = "48px";
+                sticky.style.top = "0";
                 sticky.style.bottom = "auto";
                 sticky.style.position = "absolute";
             }

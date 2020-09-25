@@ -17687,6 +17687,24 @@ iframe {
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.tools div {
+  margin-left: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 0.2rem rgba(255, 255, 255, 0.1), inset 0 0 3rem rgba(255, 255, 255, 0.4);
+}
+
+.tools div:first-child {
+  margin-left: 0;
+}
+
+.tools div svg {
+  height: 3rem;
+  fill: #ffffff;
 }
 
 .header {
@@ -20061,36 +20079,6 @@ iframe {
   background-position: center;
 }
 
-.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link circle {
-  fill: #ffffff;
-  stroke: #818486;
-}
-
-.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link path {
-  fill: #818486;
-  stroke: #818486;
-}
-
-.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link:hover circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link:hover path {
-  fill: #ff665e;
-  stroke: #ff665e;
-}
-
-.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link.active circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .image .favorit-link.active path {
-  fill: #ff665e;
-  stroke: #ff665e;
-}
-
 .gallery-section .art-waterfall-wrapper .art-waterfall .art-waterfall-inner .waterfall-item .title {
   margin-top: 1rem;
   font-size: 16px;
@@ -20423,6 +20411,17 @@ iframe {
     line-height: 24px;
     font-weight: bold;
     color: #818486;
+  }
+}
+
+.lot-section {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1280px) {
+  .lot-section {
+    padding-top: 6rem;
   }
 }
 
@@ -21596,6 +21595,188 @@ section.announces.bggray .background-text {
   }
 }
 
+.lot-carousel {
+  position: relative;
+}
+
+.lot-carousel .carousel-arrows-wrapper {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+}
+
+.lot-carousel .lot-carousel-left {
+  border-top: 0.25rem solid #1e2b32;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.lot-carousel .lot-carousel-right {
+  border-bottom: 0.25rem solid #1e2b32;
+  margin-bottom: 3rem;
+}
+
+.lot-carousel .lot-carousel-right .lot-number {
+  font-family: TT Severs;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.lot-carousel .lot-carousel-right .lot-author {
+  font-family: TT Severs;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.lot-carousel .lot-carousel-right .lot-author {
+  font-family: TT Severs;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 1rem;
+}
+
+.lot-carousel .lot-carousel-right .lot-title {
+  font-family: TT Severs;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 1rem;
+}
+
+.lot-carousel .lot-carousel-right .matherial,
+.lot-carousel .lot-carousel-right .styles,
+.lot-carousel .lot-carousel-right .frames,
+.lot-carousel .lot-carousel-right .techniques,
+.lot-carousel .lot-carousel-right .categories {
+  margin-bottom: 0.6rem;
+}
+
+.lot-carousel .lot-carousel-right .matherial span,
+.lot-carousel .lot-carousel-right .styles span,
+.lot-carousel .lot-carousel-right .frames span,
+.lot-carousel .lot-carousel-right .techniques span,
+.lot-carousel .lot-carousel-right .categories span {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  color: #818486;
+}
+
+.lot-carousel .lot-carousel-right .size {
+  font-weight: 500;
+  color: #818486;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.lot-carousel .lot-carousel-right .start-price {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid #1e2b32;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .user-id {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 18px;
+  text-align: right;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.8rem;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .user-id span {
+  font-weight: bold;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .last-price .title {
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.6rem;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .last-price .info {
+  padding: 1rem;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.2rem;
+  background-color: #eceded;
+  border: 1px solid #818486;
+  box-sizing: border-box;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .last-price .info div:nth-child(1) {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .last-price .info div:nth-child(2) {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .last-price .info div:nth-child(2) span {
+  font-weight: bold;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .btn.btn-danger {
+  display: block;
+  padding: 1rem;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.2rem;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .btn.btn-danger div:nth-child(1) {
+  font-weight: bold;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .btn.btn-danger div:nth-child(2) {
+  font-weight: bold;
+  font-size: 24px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  font-weight: bold;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .blitz-price {
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.lot-carousel .lot-carousel-right .user-activity .blitz-price a {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
 .auction-page-wrapper .auction-info {
   position: relative;
   margin-top: 6rem;
@@ -21671,45 +21852,68 @@ section.announces.bggray .background-text {
   text-align: left;
 }
 
-.favorit-link {
+.favorite-link {
+  font-size: 1rem;
+  color: #818486;
+}
+
+.favorite-link svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.favorite-link circle {
+  fill: #ffffff;
+  stroke: #818486;
+}
+
+.favorite-link path {
+  fill: #818486;
+  stroke: #818486;
+}
+
+.favorite-link:hover {
+  color: #ff665e;
+}
+
+.favorite-link:hover circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.favorite-link:hover path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.favorite-link.active {
+  color: #ff665e;
+}
+
+.favorite-link.active circle {
+  fill: #ffffff;
+  stroke: #ff665e;
+}
+
+.favorite-link.active path {
+  fill: #ff665e;
+  stroke: #ff665e;
+}
+
+.image .favorite-link {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-.favorit-link svg {
-  width: 1.4rem;
-  height: 1.4rem;
+.lot-favorite .favorite-link {
+  display: flex;
 }
 
-.favorit-link circle {
-  fill: #ffffff;
-  stroke: #818486;
-}
-
-.favorit-link path {
-  fill: #818486;
-  stroke: #818486;
-}
-
-.favorit-link:hover circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.favorit-link:hover path {
-  fill: #ff665e;
-  stroke: #ff665e;
-}
-
-.favorit-link.active circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.favorit-link.active path {
-  fill: #ff665e;
-  stroke: #ff665e;
+.lot-favorite .favorite-link svg {
+  position: relative;
+  align-items: center;
+  margin-left: 0.5rem;
 }
 
 .auction-item {
@@ -21802,36 +22006,6 @@ section.announces.bggray .background-text {
   display: block;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.gallery-item .image .favorit-link circle {
-  fill: #ffffff;
-  stroke: #818486;
-}
-
-.gallery-item .image .favorit-link path {
-  fill: #818486;
-  stroke: #818486;
-}
-
-.gallery-item .image .favorit-link:hover circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.gallery-item .image .favorit-link:hover path {
-  fill: #ff665e;
-  stroke: #ff665e;
-}
-
-.gallery-item .image .favorit-link.active circle {
-  fill: #ffffff;
-  stroke: #ff665e;
-}
-
-.gallery-item .image .favorit-link.active path {
-  fill: #ff665e;
-  stroke: #ff665e;
 }
 
 .gallery-item .title {

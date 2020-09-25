@@ -103,36 +103,6 @@
                         background-size: cover;
                         background-repeat: no-repeat;
                         background-position: center;
-                        .favorit-link {
-                            circle {
-                                fill: $white;
-                                stroke: $gray;
-                            }
-                            path {
-                                fill: $gray;
-                                stroke: $gray;
-                            }
-                            &:hover {
-                                circle {
-                                    fill: $white;
-                                    stroke: $red;
-                                }
-                                path {
-                                    fill: $red;
-                                    stroke: $red;
-                                }
-                            }
-                            &.active {
-                                circle {
-                                    fill: $white;
-                                    stroke: $red;
-                                }
-                                path {
-                                    fill: $red;
-                                    stroke: $red;
-                                }
-                            }
-                        }
                     }
                     .title {
                         margin-top: 1rem;

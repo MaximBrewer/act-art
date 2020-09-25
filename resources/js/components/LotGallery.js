@@ -62,8 +62,8 @@ export default function LotGallery(props) {
                             >
                                 <TransformWrapper
                                     defaultScale={1}
-                                    defaultPositionX={200}
-                                    defaultPositionY={100}
+                                    defaultPositionX={0}
+                                    defaultPositionY={0}
                                 >
                                     {({
                                         zoomIn,

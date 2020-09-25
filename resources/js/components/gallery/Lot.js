@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Waterfall from "../waterfall/Waterfall";
-import { Link, useParams } from "react-router-dom";
-import { ArrowPrew, ArrowNext } from "../Icons";
+import { useParams } from "react-router-dom";
+import Carousel from "./carousel/Carousel";
 
 export default function Lot(props) {
     const { id } = useParams();
@@ -24,31 +24,15 @@ export default function Lot(props) {
         window.scrollTo(0, 0);
     }, [id]);
     return (
-        <div className="sticky-wrapper">
-            <section className="lot-section">
+        <section className="lot-section">
+            <div className="sticky-wrapper">
                 <div className="container">
-                    <div className="d-flex justify-content-end">
-                        <div class="carousel-arrows">
-                            <a class="btn btn-default btn-control d-flex">
-                                <ArrowPrew />
-                            </a>
-                            <a class="btn btn-default btn-control d-flex">
-                                <ArrowNext />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xl-40 col-xxl-38">
-                            <div className="left-lot-side"></div>
-                        </div>
-                        <div className="col-xl-20 col-xxl-22">
-                            <div className="right-lot-side"></div>
-                        </div>
-                    </div>
+                    <Carousel {...props} />
                     <div className="gallery-works" id="galleryWorksList">
                         <div className="h2">{__("Works for sale")}</div>
                         <div className="gallery-works-list">
                             <Waterfall
+                                {...props}
                                 data={{
                                     exclude: [id],
                                     entity: "lots",
@@ -78,10 +62,10 @@ export default function Lot(props) {
                         </div>
                     </div>
                 </div>
-            </section>
-            <div className="sticky-section">
-                <span>{__("works for sale")}</span>
+                <div className="sticky-section">
+                    <span>{__("works for sale")}</span>
+                </div>
             </div>
-        </div>
+        </section>
     );
 }

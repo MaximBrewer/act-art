@@ -3,13 +3,58 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GalleryLot from "./Lot";
 import GalleryArchive from "./Archive";
 import GalleryCategory from "./Category";
-import ScrollToTop from "../ScrollToTop";
 
 export default function Gallery() {
     const [state, setState] = useState({
-        lots: [],
-        categories: []
+        items: [],
+        categories: [],
+        favorites: window.user != undefined ? window.user.favorites : null
     });
+
+    const toFavorite = (id, e) => {
+        e.preventDefault();
+        if (window.user == undefined) {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
+                        message: __(
+                            "To add to favorites, authorization is required"
+                        ),
+                        type: "error"
+                    }
+                })
+            );
+            return false;
+        }
+
+        let favorites = user.favorites;
+        let action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
+        let url = "/user/favorites/" + action + "/" + id;
+
+        axios
+            .patch(url)
+            .then(res => {
+                user = res.data.user;
+                favorites = user.favorites;
+                window.dispatchEvent(
+                    new CustomEvent("flash", {
+                        detail: {
+                            message:
+                                action == "add"
+                                    ? __("Added to favorites")
+                                    : __("Removed from favorites"),
+                            type: action == "add" ? "success" : "error"
+                        }
+                    })
+                );
+                setState(prevState => {
+                    return { ...prevState, favorites };
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
     useEffect(() => {
         axios
             .get("/api/" + window.lang + "/categories/popular")
@@ -20,7 +65,7 @@ export default function Gallery() {
                         setState(prevState => {
                             return {
                                 ...prevState,
-                                lots: res2.data.items,
+                                items: res2.data.items,
                                 categories: res.data.items
                             };
                         });
@@ -38,23 +83,35 @@ export default function Gallery() {
             <Switch>
                 <Route exact path={`/gallery`}>
                     <GalleryCategory
-                        lots={state.lots}
+                        items={state.items}
                         categories={state.categories}
                         setState={setState}
                     />
                 </Route>
                 <Route exact path={`/gallery/lot/:id`}>
-                    <GalleryLot lots={state.lots} setState={setState} />
+                    <GalleryLot
+                        items={state.items}
+                        setState={setState}
+                        toFavorite={toFavorite}
+                        favorites={state.favorites}
+                    />
                 </Route>
                 <Route path={`/gallery/category/:id`}>
                     <GalleryCategory
-                        lots={state.lots}
+                        items={state.items}
                         categories={state.categories}
                         setState={setState}
+                        toFavorite={toFavorite}
+                        favorites={state.favorites}
                     />
                 </Route>
                 <Route exact path={`/gallery/archive`}>
-                    <GalleryArchive lots={state.lots} setState={setState} />
+                    <GalleryArchive
+                        items={state.items}
+                        setState={setState}
+                        toFavorite={toFavorite}
+                        favorites={state.favorites}
+                    />
                 </Route>
             </Switch>
         </Router>

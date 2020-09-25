@@ -24,6 +24,7 @@
 @import 'profile';
 @import 'auction';
 @import 'gallery';
+@import 'lot';
 
 @import './blocks/sorting';
 @import './blocks/counter';
@@ -36,6 +37,8 @@
 @import './blocks/subscribe';
 @import './blocks/announces';
 @import './blocks/popularCategories';
+@import './blocks/lotCarousel';
+
 
 
 @import './auction/index';
@@ -51,3 +54,4 @@
 @import './tizers/slides/event';
 @import './tizers/slides/expert';
 @import './tizers/slides/post';
+
