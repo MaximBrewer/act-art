@@ -132,14 +132,14 @@ export function changeWindow() {
                 sp = sticky.children[0],
                 egr = c.getBoundingClientRect();
             if (egr.top < 80) {
-                if (egr.top + egr.height - 80 > 80 + sp.offsetWidth) {
+                if (egr.top + egr.height > 80 + sp.offsetWidth) {
                     sticky.style.position = "fixed";
                     sticky.style.top = 80 + "px";
                     sticky.style.bottom = "auto";
                 } else {
                     sticky.style.marginLeft = "0";
                     sticky.style.top = "auto";
-                    sticky.style.bottom = sp.offsetWidth + 80 + "px";
+                    sticky.style.bottom = sp.offsetWidth - 24 + "px";
                     sticky.style.position = "absolute";
                 }
             } else {

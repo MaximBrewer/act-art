@@ -63,13 +63,10 @@ Route::group(['prefix' => 'gallery'], function () {
 
 Route::group(['prefix' => 'auctions'], function () {
     Route::get('/', '\App\Http\Controllers\AuctionController@index');
-    Route::get('/archive', '\App\Http\Controllers\AuctionController@index');
+    Route::get('/archive', '\App\Http\Controllers\AuctionController@archive');
     Route::group(['prefix' => '{id}'], function () {
-        Route::get('/', '\App\Http\Controllers\AuctionController@index');
-        Route::group(['prefix' => 'lot'], function () {
-            Route::get('/', '\App\Http\Controllers\AuctionController@index');
-            Route::get('/{lot_id}', '\App\Http\Controllers\AuctionController@index');
-        });
+        Route::get('/', '\App\Http\Controllers\AuctionController@show');
+        Route::get('/lot/{lot_id}', '\App\Http\Controllers\AuctionController@show');
     });
 });
 

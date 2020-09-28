@@ -11,7 +11,7 @@
         <div id="appGallery"></div>
         <div class="background-text">{{ __('Gallery') }}</div>
         <div class="container">
-            <div class="row announce mb-5">
+            <div class="row announce mb-lg-5">
                 <div class="col col-xl-40 col-xxl-38">
                     <h2 class="h1">{{ __('ONLINE-GALLERY') }}</h2>
                     <div class="sub_h1 d-none d-xl-block">

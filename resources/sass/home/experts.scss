@@ -1,15 +1,11 @@
 @use "sass:map";
 #experts {
     display: none;
-    padding: 0rem 0 4rem;
+    padding: 3rem 0 6rem;
     .background-text {
         color: $fonlight;
         top: 5.25rem;
         opacity: 1;
-    }
-    .container {
-        padding-top: 3rem;
-        padding-bottom: 2rem;
     }
     .experts-slider {
         position: relative;

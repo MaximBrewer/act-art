@@ -84,6 +84,7 @@ export default function Gallery() {
                 <Route exact path={`/gallery`}>
                     <GalleryCategory
                         items={state.items}
+                        showLink={false}
                         categories={state.categories}
                         setState={setState}
                     />
@@ -92,6 +93,7 @@ export default function Gallery() {
                     <GalleryLot
                         items={state.items}
                         setState={setState}
+                        showLink={true}
                         toFavorite={toFavorite}
                         favorites={state.favorites}
                     />
@@ -101,6 +103,7 @@ export default function Gallery() {
                         items={state.items}
                         categories={state.categories}
                         setState={setState}
+                        showLink={true}
                         toFavorite={toFavorite}
                         favorites={state.favorites}
                     />
@@ -109,6 +112,7 @@ export default function Gallery() {
                     <GalleryArchive
                         items={state.items}
                         setState={setState}
+                        showLink={true}
                         toFavorite={toFavorite}
                         favorites={state.favorites}
                     />

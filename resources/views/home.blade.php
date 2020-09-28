@@ -2,15 +2,15 @@
 @section('body-class')class="home"@endsection
 @section('title'){{ __('HOME_TITLE') }}@endsection
 @section('content')
-<div class="sticky-wrapper">
-    <section class="home-banner">
+<section class="home-banner">
+    <div class="sticky-wrapper">
         <div class="container">
             <div class="h5 d-xl-none">{{ __('AUCTIONS_BLOCK_TITLE') }}</div>
             <div id="actAuctions" class="carousel"></div>
         </div>
-    </section>
-    <div class="sticky-section"><span>{{ __('AUCTIONS_BLOCK_STICKY') }}</span></div>
-</div>
+        <div class="sticky-section"><span>{{ __('AUCTIONS_BLOCK_STICKY') }}</span></div>
+    </div>
+</section>
 @widget('marquee')
 <section class="gallery-section">
     <div class="sticky-wrapper">
@@ -35,8 +35,8 @@
                             transform="rotate(45 21.7591 16.7378)" fill="#FF665E" />
                     </svg>
                 </h3>
-                <div class="act-waterfall" data-entity="lots" data-action="none"
-                    data-lastbets="true" data-limit='{"xs":6,"sm":6,"md":12,"lg":12,"xl":24,"xxl":24}'
+                <div class="act-waterfall" data-entity="lots" data-action="none" data-lastbets="true"
+                    data-limit='{"xs":6,"sm":6,"md":12,"lg":12,"xl":24,"xxl":24}'
                     data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}' data-tizer-view="lastbets">
                 </div>
                 <div class="show-more">
@@ -152,7 +152,11 @@
                 </div>
             </div>
             <div class="announce-slider-wrapper">
-                <div class="announce-slider act-carousel" id="announceSlider" data-entity="events" data-limit='{"xs":4,"sm":4,"md":4,"lg":12,"xl":24,"xxl":24}' data-view='{"xs":1,"sm":1,"md":2,"lg":3,"xl":4,"xxl":4}' data-scroll='{"xs":1,"sm":1,"md":2,"lg":3,"xl":4,"xxl":4}' data-tizer-view="event" data-min-view="md"></div>
+                <div class="announce-slider act-carousel" id="announceSlider" data-entity="events"
+                    data-limit='{"xs":4,"sm":4,"md":4,"lg":12,"xl":24,"xxl":24}'
+                    data-view='{"xs":1,"sm":1,"md":2,"lg":3,"xl":4,"xxl":4}'
+                    data-scroll='{"xs":1,"sm":1,"md":2,"lg":3,"xl":4,"xxl":4}' data-tizer-view="event"
+                    data-min-view="md"></div>
             </div>
         </div>
         <div class="sticky-section"><span>анонсы мероприятий</span></div>
@@ -170,7 +174,11 @@
         <div class="container">
             <div class="h5 d-xl-none">БЛОГ И НОВОСТИ</div>
             <div class="news-slider-wrapper">
-                <div class="news-slider act-carousel" id="newsSlider" data-entity="posts" data-limit='{"xs":6,"sm":6,"md":12,"lg":12,"xl":24,"xxl":24}' data-view='{"xs":1,"sm":1,"md":3,"lg":3,"xl":4,"xxl":4}' data-scroll='{"xs":1,"sm":1,"md":3,"lg":3,"xl":4,"xxl":4}' data-tizer-view="post" data-min-view="sm"></div>
+                <div class="news-slider act-carousel" id="newsSlider" data-entity="posts"
+                    data-limit='{"xs":6,"sm":6,"md":12,"lg":12,"xl":24,"xxl":24}'
+                    data-view='{"xs":1,"sm":1,"md":3,"lg":3,"xl":4,"xxl":4}'
+                    data-scroll='{"xs":1,"sm":1,"md":3,"lg":3,"xl":4,"xxl":4}' data-tizer-view="post"
+                    data-min-view="sm"></div>
             </div>
         </div>
         <div class="sticky-section"><span>последние заметки</span></div>
@@ -179,17 +187,35 @@
 
 
 <section id="experts" class="d-none d-sm-none d-md-block">
-    <div class="sticky-wrapper">
-        <div class="container">
-            <h2 class="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>
-            <div class="experts-slider-wrapper">
-                <div class="experts-slider act-carousel" id="expertsSlider" data-entity="experts" data-limit='{"xs":96,"sm":96,"md":96,"lg":96,"xl":96,"xxl":96}' data-view='{"xs":1,"sm":1,"md":3,"lg":4,"xl":6,"xxl":6}' data-scroll='{"xs":1,"sm":1,"md":3,"lg":4,"xl":6,"xxl":6}' data-tizer-view="expert" data-min-view="sm"></div>
+    <div>
+        <div class="sticky-wrapper">
+            <div class="container">
+                <h2 class="h2">ЭКСПЕРТНЫЙ СОВЕТ</h2>
+                <div class="experts-slider-wrapper">
+                    <div class="experts-slider act-carousel" id="expertsSlider" data-entity="experts"
+                        data-limit='{"xs":96,"sm":96,"md":96,"lg":96,"xl":96,"xxl":96}'
+                        data-view='{"xs":1,"sm":1,"md":3,"lg":4,"xl":6,"xxl":6}'
+                        data-scroll='{"xs":1,"sm":1,"md":3,"lg":4,"xl":6,"xxl":6}' data-tizer-view="expert"
+                        data-min-view="sm"></div>
+                </div>
             </div>
+            <div class="sticky-section"><span>экспертный совет</span></div>
         </div>
-        <div class="sticky-section"><span>экспертный совет</span></div>
     </div>
 </section>
 
+<section class="mb-5">
+    <div class="container mb-5">
+        <div class="footer-buttons">
+            <a href="/auctions" class="btn btn-default">
+                {{ __("Смотреть аукционы") }}
+            </a>
+            <a href="/gallery" class="btn btn-primary">
+                {{ __("To Gallery") }}
+            </a>
+        </div>
+    </div>
+</section>
 
 @widget('marquee')
 @endsection

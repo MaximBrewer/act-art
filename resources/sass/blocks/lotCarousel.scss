@@ -168,6 +168,26 @@
     @media (min-width: map.get($grid-breakpoints, "sm")) {
     }
     @media (min-width: map.get($grid-breakpoints, "md")) {
+        .lot-carousel-left {
+            border-width: 0;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+        .lot-carousel-right {
+            border-width: 0;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+        > .row > [class^="col-"] {
+            > div {
+                min-height: 100%;
+                border-top: 0.5rem solid $primary;
+                border-bottom: 0.5rem solid $primary;
+            }
+        }
+        .carousel-arrows-wrapper {
+            top: -4rem;
+        }
     }
     @media (min-width: map.get($grid-breakpoints, "xl")) {
     }

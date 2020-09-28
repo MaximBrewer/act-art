@@ -48,14 +48,6 @@ export default function Footer(props) {
                     </div>
                 </div>
             </div>
-            <div className="carousel-buttons">
-                <a href="/auction" className="btn btn-default">
-                    {__("Смотреть аукционы")}
-                </a>
-                <a href="/gallery" className="btn btn-primary">
-                    {__("To Gallery")}
-                </a>
-            </div>
         </React.Fragment>
     );
 }

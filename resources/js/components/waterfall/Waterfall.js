@@ -4,8 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Waterfall(props) {
     const { pathname } = useLocation();
-    const { data, items } = props;
-    data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
+    const { data, items, toFavorite, favorites, category } = props;
     const [state, setState] = useState({
         items: [],
         more: true,
@@ -53,89 +52,77 @@ export default function Waterfall(props) {
             };
         });
     };
-
-    useEffect(() => {
-        (!!data.categories || delFilter("categories")) &&
-            setFilter("categories", data.categories);
-    }, [pathname]);
+    const filterItems = (filter, prevState) => {
+        let push = false,
+            newItems = [];
+        for (const item of items) {
+            push = true;
+            loop: for (const field in filter) {
+                for (const option of item[field]) {
+                    if (filter[field] == option.id) {
+                        continue loop;
+                    }
+                }
+                push = false;
+            }
+            push && newItems.push(item);
+        }
+        return {
+            ...prevState,
+            filter,
+            items: newItems
+        };
+    };
 
     const delFilter = field => {
-        console.log(field);
         setState(prevState => {
-            let filter = prevState.filter,
-                items = [],
-                push;
+            let filter = prevState.filter;
             delete filter[field];
-            for (const item of items) {
-                push = true;
-                loop: for (const field in filter) {
-                    for (const option of item[field]) {
-                        if (filter[field] == option.id) {
-                            continue loop;
-                        }
-                    }
-                    push = false;
-                }
-                push && items.push(item);
-            }
-            return {
-                ...prevState,
-                filter,
-                items
-            };
+            return filterItems(filter, prevState);
         });
     };
 
     const setFilter = (field, value) => {
         setState(prevState => {
             let filter = prevState.filter,
-                items = [],
+                itemsNew = [],
                 push;
             filter[field] = value;
-            for (const item of items) {
-                push = false;
-                loop: for (const field in filter) {
-                    for (const option of item[field]) {
-                        if (filter[field] == option.id) {
-                            push = true;
-                            continue loop;
-                        }
-                    }
-                    push = false;
-                }
-                push && items.push(item);
-            }
-            return {
-                ...prevState,
-                filter,
-                items
-            };
+            return filterItems(filter, prevState);
         });
     };
 
     useEffect(() => {
+        console.log(items);
         window.addEventListener("lot", updateLot);
-        data.firstLimit = data.firstLimit ? data.firstLimit : data.limit;
-        axios
-            .get("/api/" + window.lang + "/lots/options")
-            .then(res => {
-                setState(prevState => {
-                    return { ...prevState, options: res.data };
-                });
-            })
-            .catch(err => {
-                console.log(err);
+        if (!data.filterable) {
+            console.log(items)
+            setState(prevState => {
+                return { ...prevState, items: items };
             });
+        } else {
+            axios
+                .get("/api/" + window.lang + "/lots/options")
+                .then(res => {
+                    setState(prevState => {
+                        return { ...prevState, options: res.data };
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
     }, []);
 
     useEffect(() => {
-        setState(prevState => {
-            return {
-                ...prevState,
-                items: items
-            };
-        });
-    }, [items]);
+        if (!!data.filterable)
+            if (!!category) setFilter("categories", category);
+            else delFilter("categories");
+        else
+            setState(prevState => {
+                return { ...prevState, items: items };
+            });
+    }, [pathname, items]);
 
     return (
         <div className="waterfall-outer row">
@@ -230,8 +217,8 @@ export default function Waterfall(props) {
                     </div>
                 )}
             </div>
-            {data.sidebar && (
-                <div className="waterfall-sidebar col-15">
+            {data.filterable && (
+                <div className="waterfall-filterable col-15">
                     <ul>
                         {state.options.map((option, option_index) => (
                             <li key={option_index}>
@@ -242,8 +229,7 @@ export default function Waterfall(props) {
                                             {option.id == "categories" ? (
                                                 <Link
                                                     className={
-                                                        data.categories ==
-                                                        item.id
+                                                        category == item.id
                                                             ? `active`
                                                             : ``
                                                     }
@@ -290,9 +276,7 @@ export default function Waterfall(props) {
                                         <li>
                                             <Link
                                                 className={
-                                                    !data.categories
-                                                        ? `active`
-                                                        : ``
+                                                    !category ? `active` : ``
                                                 }
                                                 to={`/gallery`}
                                             >
@@ -310,15 +294,15 @@ export default function Waterfall(props) {
             )}
             <div
                 className={
-                    `col-` + (data.sidebar ? `45` : `60`) + ` stack-grid`
+                    `col-` + (data.filterable ? `45` : `60`) + ` stack-grid`
                 }
             >
                 <EntityGrid
                     columns={columns}
                     items={state.items}
-                    toFavorite={props.toFavorite}
+                    toFavorite={toFavorite}
                     data={data}
-                    favorites={props.favorites}
+                    favorites={favorites}
                 />
             </div>
         </div>

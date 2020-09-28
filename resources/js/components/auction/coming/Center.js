@@ -10,7 +10,7 @@ export default function Center(props) {
                             <span className="title h3">{auction.title}</span>
                             <span className="date">{auction.date}</span>
                         </div>
-                        <div className="sub_2 sublime-wrapper">{auction.sublime}</div>
+                        <div className="sub_2 sublime-wrapper">{auction.text}</div>
                         <div className="link-holder">
                             <a href="/rules">{__("Participation rules")}</a>
                         </div>

@@ -3,7 +3,7 @@
 <div class="sticky-wrapper">
     <section class="auctions-section regular-list" id="regularAuctionsList">
         <div class="container">
-            <div class="row announce mb-5">
+            <div class="row announce mb-xl-5">
                 <div class="col col-xl-40 col-xxl-38">
                     <h2 class="h1">{{ __('Regular auctions') }}</h2>
                     <div class="sub_h1 d-none d-xl-block">
@@ -27,7 +27,7 @@
     </section>
     <section class="auctions-section special-list" id="specialAuctionsList">
         <div class="container">
-            <div class="row announce mb-5">
+            <div class="row announce mb-xl-5">
                 <div class="col col-xl-40 col-xxl-38">
                     <h2 class="h1">{{ __('Themed auctions') }}</h2>
                     <div class="sub_h1 d-none d-xl-block">
@@ -49,7 +49,7 @@
             <div class="act-auctions-list" data-attr="special"></div>
         </div>
     </section>
-    <div class="sticky-section"><span>{{ __('closest auctions') }}</span></div>
+    <div class="sticky-section mt-5"><span>{{ __('closest auctions') }}</span></div>
 </div>
 <section class="auctions-section">
     <div class="container">

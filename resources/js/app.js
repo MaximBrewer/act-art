@@ -19,7 +19,6 @@ import Flash from "./helpers/Flash";
 
 // const Experts = lazy(() => import("./components/Experts"));
 
-import Waterfall from "./components/waterfall/Waterfall";
 import WaterfallAjax from "./components/waterfall/WaterfallAjax";
 import MovingGallery from "./components/moving/Gallery";
 import Auctions from "./components/auction/Auctions";
@@ -29,7 +28,6 @@ import AuctionsList from "./components/auction/AuctionsList";
 import AuctionsProfile from "./components/auction/AuctionsProfile";
 
 import Carousel from "./components/carousel/Carousel";
-import LotGallery from "./components/LotGallery";
 
 import SearchForm from "./components/SearchForm";
 
@@ -88,12 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         render(<Carousel data={data} />, carousel);
-    });
-
-    let lotGalleries = document.getElementsByClassName("lot-gallery");
-
-    [].forEach.call(lotGalleries, function(lotGallery) {
-        render(<LotGallery data={lotGallery.dataset} />, lotGallery);
     });
 
     !document.getElementById("appAuction") ||

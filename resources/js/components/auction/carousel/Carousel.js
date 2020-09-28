@@ -6,14 +6,15 @@ import { ArrowPrew, ArrowNext } from "../../Icons";
 
 export default function Carousel(props) {
     const { id, items} = props;
+    console.log(props)
     // const [state, setState] = useState({
     //     slideIndex: 0,
     //     slidesTotal: items.length
     // });
 
     useEffect(() => {
-        refPicture.current.slickGoTo(getIndex(id, true));
-        refAnnounce.current.slickGoTo(getIndex(id, true));
+        refPicture.current.slickGoTo(getIndex(id), true);
+        refAnnounce.current.slickGoTo(getIndex(id), true);
     }, [id]);
 
     const refPicture = useRef();

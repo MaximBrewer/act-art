@@ -16,7 +16,7 @@ export default function Tizer(props) {
             <div className="image-holder">
                 {data.gallery ? (
                     <Link
-                        className={`image`}
+                        className={`image l`}
                         style={{
                             backgroundImage: "url(" + item.thumbnail + ")",
                             paddingTop:
@@ -29,7 +29,7 @@ export default function Tizer(props) {
                 ) : (
                     <a
                         href={url}
-                        className={`image`}
+                        className={`image a`}
                         style={{
                             backgroundImage: "url(" + item.thumbnail + ")",
                             paddingTop:

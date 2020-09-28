@@ -24,7 +24,7 @@ export default function AuctionPreviewRight(props) {
                 </a>
             </div>
             <a
-                href={"/auctions/" + props.auction.id + "/lots"}
+                href={"/auctions/" + props.auction.id}
                 className="h5_underline d-none d-xl-block"
             >
                 {__("View lots")} →

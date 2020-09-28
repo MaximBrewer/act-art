@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 export default function Category(props) {
     const { id } = useParams();
+    const { showLink } = props;
     return (
         <div className="sticky-wrapper">
             <section className="gallery-section">
@@ -53,33 +54,34 @@ export default function Category(props) {
                         <div className="gallery-works-list">
                             <Waterfall
                                 {...props}
+                                category={id}
                                 data={{
-                                    categories: id,
-                                    entity: "lots",
-                                    action: "none",
-                                    preview: "preview",
-                                    sidebar: true,
                                     sortable: true,
                                     gallery: true,
+                                    filterable: true,
                                     tizerView: "gallery",
-                                    limit: {
-                                        xs: 12,
-                                        sm: 12,
-                                        md: 12,
-                                        lg: 12,
-                                        xl: 12,
-                                        xxl: 12
-                                    },
                                     view: {
                                         xs: 1,
                                         sm: 2,
                                         md: 2,
                                         lg: 3,
-                                        xl: 3,
-                                        xxl: 3
+                                        xl: 4,
+                                        xxl: 4
                                     }
                                 }}
                             />
+                            {!!showLink ? (
+                                <div className="text-center my-2">
+                                    <Link
+                                        to="/gallery"
+                                        className="btn btn-default"
+                                    >
+                                        {__("BTN_BACK_TO_GALLERY")}
+                                    </Link>
+                                </div>
+                            ) : (
+                                ``
+                            )}
                         </div>
                     </div>
                 </div>

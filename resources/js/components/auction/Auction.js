@@ -1,19 +1,59 @@
 import React, { useState, useEffect, useRef } from "react";
-import { propTypes } from "react-img-zoom";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AuctionBase from "./AuctionBase";
-import AuctionLots from "./AuctionLots";
 import AuctionLot from "./AuctionLot";
 
 export default function Auction(props) {
     const [state, setState] = useState({
-        auction: null
+        auction: null,
+        favorites: window.user != undefined ? window.user.favorites : null
     });
+
+    const toFavorite = (id, e) => {
+        e.preventDefault();
+        if (window.user == undefined) {
+            window.dispatchEvent(
+                new CustomEvent("flash", {
+                    detail: {
+                        message: __(
+                            "To add to favorites, authorization is required"
+                        ),
+                        type: "error"
+                    }
+                })
+            );
+            return false;
+        }
+
+        let favorites = user.favorites;
+        let action = user.favorites.indexOf(id) < 0 ? "add" : "remove";
+        let url = "/user/favorites/" + action + "/" + id;
+
+        axios
+            .patch(url)
+            .then(res => {
+                user = res.data.user;
+                favorites = user.favorites;
+                window.dispatchEvent(
+                    new CustomEvent("flash", {
+                        detail: {
+                            message:
+                                action == "add"
+                                    ? __("Added to favorites")
+                                    : __("Removed from favorites"),
+                            type: action == "add" ? "success" : "error"
+                        }
+                    })
+                );
+                setState(prevState => {
+                    return { ...prevState, favorites };
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
     const updateAuction = event => {
         setState(prevState => {
@@ -43,18 +83,18 @@ export default function Auction(props) {
             <Switch>
                 <Route exact path={`/auctions/` + props.data.id}>
                     <AuctionBase
+                        setState={setState}
+                        toFavorite={toFavorite}
+                        favorites={state.favorites}
                         auction={state.auction}
                         participate={props.participate}
                     />
                 </Route>
-                <Route exact path={`/auctions/` + props.data.id + `/lots`}>
-                    <AuctionLots
-                        auction={state.auction}
-                        participate={props.participate}
-                    />
-                </Route>
-                <Route exact path={`/auctions/` + props.data.id + `/lots/:id`}>
+                <Route exact path={`/auctions/` + props.data.id + `/lot/:id`}>
                     <AuctionLot
+                        setState={setState}
+                        toFavorite={toFavorite}
+                        favorites={state.favorites}
                         auction={state.auction}
                         participate={props.participate}
                     />

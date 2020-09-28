@@ -1,3 +1,4 @@
+@use "sass:map";
 .auction-header {
     background-position: center;
     background-size: cover;
@@ -15,6 +16,9 @@
 }
 .auctions-section {
     padding: 3rem 0 5rem;
+    .h1 {
+        font-size: 1.6rem;
+    }
     .banner-counter-wrapper {
         margin-bottom: 2.5rem;
         p {
@@ -23,6 +27,20 @@
         .banner-counter {
             justify-content: flex-start;
         }
+    }
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+    }
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+        .h1 {
+            font-size: 3rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xl")) {
+        .h1 {
+            font-size: 3rem;
+        }
+    }
+    @media (min-width: map.get($grid-breakpoints, "xxl")) {
     }
 }
 .see-other {

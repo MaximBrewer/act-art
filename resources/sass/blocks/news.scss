@@ -1,15 +1,11 @@
 @use "sass:map";
 #news {
-    padding: 3rem 0 4rem;
+    padding: 6rem 0 6rem;
     background-color: $white;
     .h5 {
         font-size: 7vw;
         line-height: 8.625vw;
         text-align: center;
-    }
-    .container {
-        padding-top: 3rem;
-        padding-bottom: 2rem;
     }
     .news-slider {
         margin-top: 0;

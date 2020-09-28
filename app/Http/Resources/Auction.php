@@ -26,6 +26,7 @@ class Auction extends JsonResource
                 'title' => $this->getTranslatedAttribute('title'),
                 'announce_text' => $this->getTranslatedAttribute('announce_text'),
                 'sublime' => $this->getTranslatedAttribute('sublime'),
+                'text' => $this->getTranslatedAttribute('text'),
                 'thumbnail' => Voyager::image($this->thumbnail('xxxl', 'announce_image')),
                 'lots' => LotResource::collection($this->lots)
             ];

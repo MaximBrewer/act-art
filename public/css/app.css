@@ -19115,6 +19115,8 @@ iframe {
 }
 
 #announces {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
   background-color: #eceded;
 }
 
@@ -19122,11 +19124,6 @@ iframe {
   color: #eceded;
   top: 5.25rem;
   opacity: 1;
-}
-
-#announces .container {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
 }
 
 #announces .announce > div .h2,
@@ -19155,7 +19152,6 @@ iframe {
 @media (min-width: 768px) {
   #announces {
     background-color: #ffffff;
-    padding: 1rem 0 0rem;
   }
 
   #announces .announce > div .h2,
@@ -19189,7 +19185,6 @@ iframe {
 .announce-slider {
   overflow: hidden;
   margin-top: 1rem;
-  padding-bottom: 0.75rem;
   position: relative;
 }
 
@@ -19238,7 +19233,6 @@ iframe {
 @media (min-width: 768px) {
   .announce-slider {
     margin-top: 2rem;
-    padding-bottom: 1.75rem;
   }
 }
 
@@ -19250,18 +19244,13 @@ iframe {
 
 #experts {
   display: none;
-  padding: 0rem 0 4rem;
+  padding: 3rem 0 6rem;
 }
 
 #experts .background-text {
   color: #eceded;
   top: 5.25rem;
   opacity: 1;
-}
-
-#experts .container {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
 }
 
 #experts .experts-slider {
@@ -19619,6 +19608,38 @@ iframe {
   animation: moveX_-100 22s linear infinite;
 }
 
+.footer-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-buttons .btn {
+  max-width: 20rem;
+  width: 100%;
+  margin: 0 auto 1rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .footer-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .footer-buttons .btn {
+    margin: 0 0 0 2rem;
+    max-width: 20rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer-buttons {
+    justify-content: flex-end;
+  }
+}
+
 #page {
   padding: 3rem 0 4rem;
 }
@@ -19894,6 +19915,10 @@ iframe {
   padding: 3rem 0 5rem;
 }
 
+.auctions-section .h1 {
+  font-size: 1.6rem;
+}
+
 .auctions-section .banner-counter-wrapper {
   margin-bottom: 2.5rem;
 }
@@ -19904,6 +19929,18 @@ iframe {
 
 .auctions-section .banner-counter-wrapper .banner-counter {
   justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .auctions-section .h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .auctions-section .h1 {
+    font-size: 3rem;
+  }
 }
 
 .see-other {
@@ -19962,11 +19999,6 @@ iframe {
 
 .special-list .see-other .h5 {
   color: #ff665e;
-}
-
-.gallery-section .container {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
 }
 
 .gallery-section .gallery-works .h2 {
@@ -20147,7 +20179,7 @@ iframe {
 
 @media (min-width: 768px) {
   .gallery-section {
-    padding: 3.75rem 0 0.725rem;
+    padding: 3.75rem 0 2.725rem;
   }
 
   .gallery-section .announce > div .h1 {
@@ -20160,7 +20192,7 @@ iframe {
 
 @media (min-width: 1280px) {
   .gallery-section {
-    padding: 7rem 0 2rem;
+    padding: 7rem 0 4rem;
   }
 
   .gallery-section .gallery-works .h2 {
@@ -20427,44 +20459,61 @@ iframe {
 
 .sorting {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: flex-end;
   font-size: 0.875rem;
   margin-bottom: 2rem;
 }
 
-.sorting span {
+.sorting > span {
   display: flex;
-  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.sorting a {
+.sorting > a {
   display: flex;
-  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.sorting a span {
+.sorting > a span {
   margin-right: 0.5rem;
 }
 
-.sorting a svg {
+.sorting > a svg {
   fill: #1e2b32;
   width: 0.875rem;
   height: 0.875rem;
 }
 
-.sorting a.active,
-.sorting a:hover {
+.sorting > a.active,
+.sorting > a:hover {
   text-decoration: none;
   color: #ff665e;
 }
 
-.sorting a.active svg,
-.sorting a:hover svg {
+.sorting > a.active svg,
+.sorting > a:hover svg {
   fill: #ff665e;
 }
 
-.sorting a.desc svg {
+.sorting > a.desc svg {
   transform: scale(1, -1);
+}
+
+@media (min-width: 768px) {
+  .sorting {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .sorting span {
+    margin-left: 1rem;
+  }
+
+  .sorting a {
+    margin-left: 1rem;
+  }
 }
 
 .banner-counter-wrapper {
@@ -20573,7 +20622,7 @@ iframe {
 }
 
 #news {
-  padding: 3rem 0 4rem;
+  padding: 6rem 0 6rem;
   background-color: #ffffff;
 }
 
@@ -20581,11 +20630,6 @@ iframe {
   font-size: 7vw;
   line-height: 8.625vw;
   text-align: center;
-}
-
-#news .container {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
 }
 
 #news .news-slider {
@@ -20686,6 +20730,25 @@ iframe {
 
 .auction-announce .h1 {
   max-width: 60rem;
+  font-size: 1.6rem;
+}
+
+.auction-announce .h3 {
+  font-size: 1.5rem;
+}
+
+.auction-announce .h3 .btn {
+  margin-top: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .auction-announce .h1 {
+    font-size: 1.6rem;
+  }
+
+  .auction-announce .h3 {
+    font-size: 1.5rem;
+  }
 }
 
 .left-auction-side {
@@ -21595,6 +21658,18 @@ section.announces.bggray .background-text {
   }
 }
 
+.gallery-works .h2 {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .gallery-works .h2 {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+}
+
 .lot-carousel {
   position: relative;
 }
@@ -21777,6 +21852,30 @@ section.announces.bggray .background-text {
           text-decoration-line: underline;
 }
 
+@media (min-width: 768px) {
+  .lot-carousel .lot-carousel-left {
+    border-width: 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .lot-carousel .lot-carousel-right {
+    border-width: 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .lot-carousel > .row > [class^=col-] > div {
+    min-height: 100%;
+    border-top: 0.5rem solid #1e2b32;
+    border-bottom: 0.5rem solid #1e2b32;
+  }
+
+  .lot-carousel .carousel-arrows-wrapper {
+    top: -4rem;
+  }
+}
+
 .auction-page-wrapper .auction-info {
   position: relative;
   margin-top: 6rem;
@@ -21832,6 +21931,11 @@ section.announces.bggray .background-text {
   font-weight: bold;
   color: #1e2b32;
   text-decoration: underline;
+}
+
+.auction-page-wrapper .auction-carousel {
+  margin-top: 6rem;
+  margin-bottom: 4rem;
 }
 
 .auction-page-wrapper .auction-page-inner {
@@ -21908,6 +22012,7 @@ section.announces.bggray .background-text {
 
 .lot-favorite .favorite-link {
   display: flex;
+  align-items: center;
 }
 
 .lot-favorite .favorite-link svg {
