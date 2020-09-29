@@ -28,6 +28,7 @@ import AuctionsList from "./components/auction/AuctionsList";
 import AuctionsProfile from "./components/auction/AuctionsProfile";
 
 import Carousel from "./components/carousel/Carousel";
+import PageCarousel from "./components/Carousel";
 
 import SearchForm from "./components/SearchForm";
 
@@ -74,11 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 
-    // let carousels = document.getElementsByClassName("carousel-wrapper");
+    let pcarousels = document.getElementsByClassName("carousel-wrapper");
 
-    // [].forEach.call(carousels, function(carousel) {
-    //     render(<Carousel data={carousel.dataset} />, carousel);
-    // });
+    [].forEach.call(pcarousels, function(carousel) {
+        render(<PageCarousel data={carousel.dataset} />, carousel);
+    });
 
     let carousels = document.getElementsByClassName("act-carousel");
 
