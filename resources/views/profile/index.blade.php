@@ -17,7 +17,7 @@
                 </dl>
                 <dl>
                     <dt>{{ __('Status:') }}</dt>
-                    <dd>VIP / подтверждён</dd>
+                    <dd>{{ __($user->role->display_name) }}</dd>
                 </dl>
                 <dl>
                     <dt>{{ __('Full name:') }}</dt>
