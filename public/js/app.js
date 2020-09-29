@@ -57245,6 +57245,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Countdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Countdown */ "./resources/js/components/auction/Countdown.js");
+/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! html-react-parser */ "./node_modules/html-react-parser/index.js");
+/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(html_react_parser__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 function AuctionPreviewRight(props) {
@@ -57254,7 +57257,7 @@ function AuctionPreviewRight(props) {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "h3 col-md-38 col-xl-60"
-  }, props.auction.sublime), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, html_react_parser__WEBPACK_IMPORTED_MODULE_2___default()(props.auction.sublime)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-none d-md-flex d-xl-block col-22 col-xl-60"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
     date: props.auction.dateatom

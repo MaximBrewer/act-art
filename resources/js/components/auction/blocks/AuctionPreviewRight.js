@@ -1,11 +1,12 @@
 import React from "react";
 import Countdown from "../Countdown";
+import Parser from "html-react-parser";
 export default function AuctionPreviewRight(props) {
     return (
         <div className="banner-announce">
             <div className="row">
                 <div className="h3 col-md-38 col-xl-60">
-                    {props.auction.sublime}
+                    {Parser(props.auction.sublime)}
                 </div>
                 <div className="d-none d-md-flex d-xl-block col-22 col-xl-60">
                     <Countdown date={props.auction.dateatom} />
