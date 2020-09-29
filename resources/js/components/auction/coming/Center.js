@@ -1,4 +1,5 @@
 import React from "react";
+import Parser from 'html-react-parser';
 export default function Center(props) {
     const { auction } = props;
     return (
@@ -10,7 +11,7 @@ export default function Center(props) {
                             <span className="title h3">{auction.title}</span>
                             <span className="date">{auction.date}</span>
                         </div>
-                        <div className="sub_2 sublime-wrapper">{auction.text}</div>
+                        <div className="sub_2 sublime-wrapper">{Parser(auction.text)}</div>
                         <div className="link-holder">
                             <a href="/rules">{__("Participation rules")}</a>
                         </div>
