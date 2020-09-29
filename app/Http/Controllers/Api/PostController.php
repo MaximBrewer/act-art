@@ -21,7 +21,7 @@ class PostController extends Controller
             'items' => PostResource::collection(
                 $posts
                     ->published()
-                    ->orderBy('created_at')
+                    ->orderBy('created_at', 'desc')
                     ->limit($limit)
                     ->offset($offset)
                     ->get()
