@@ -53547,7 +53547,11 @@ document.addEventListener("DOMContentLoaded", function () {
       data: auctionsList.dataset,
       participate: _helpers_functions__WEBPACK_IMPORTED_MODULE_1__["participate"]
     }), auctionsList);
-  });
+  }); // let carousels = document.getElementsByClassName("carousel-wrapper");
+  // [].forEach.call(carousels, function(carousel) {
+  //     render(<Carousel data={carousel.dataset} />, carousel);
+  // });
+
   var carousels = document.getElementsByClassName("act-carousel");
   [].forEach.call(carousels, function (carousel) {
     var data = {};

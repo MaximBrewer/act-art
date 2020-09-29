@@ -74,6 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 
+    // let carousels = document.getElementsByClassName("carousel-wrapper");
+
+    // [].forEach.call(carousels, function(carousel) {
+    //     render(<Carousel data={carousel.dataset} />, carousel);
+    // });
+
     let carousels = document.getElementsByClassName("act-carousel");
 
     [].forEach.call(carousels, function(carousel) {

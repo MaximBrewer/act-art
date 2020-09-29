@@ -68,10 +68,10 @@
 <section class="blog-section">
     <div class="container">
         <div class="waterfall-wrapper">
-            <div class="act-waterfall" data-entity="post" data-action="add" data-preview="waterfall"
-                data-category="blog" data-limit='{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
+            <div class="act-waterfall" data-entity="post" data-action="none" data-category="blog"
+                data-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}'
                 data-view='{"xs":1,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'
-                data-first-limit='{"xs":2,"sm":2,"md":2,"lg":3,"xl":3,"xxl":4}'></div>
+                data-first-limit='{"xs":4,"sm":4,"md":4,"lg":3,"xl":3,"xxl":4}' data-tizer-view="blog"></div>
         </div>
     </div>
 </section>
