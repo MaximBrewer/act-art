@@ -56923,7 +56923,7 @@ function Countdown(props) {
   var Completionist = function Completionist() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "banner-counter d-flex"
-    }, "You are good to go!");
+    });
   };
 
   var renderer = function renderer(_ref) {

@@ -14,7 +14,7 @@ export default function Countdown(props) {
     };
 
     const Completionist = () => (
-        <div className="banner-counter d-flex">You are good to go!</div>
+        <div className="banner-counter d-flex"></div>
     );
     
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
