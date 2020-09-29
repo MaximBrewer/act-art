@@ -1,5 +1,5 @@
 import React from "react";
-export default function Bottom(props) {
+export default function Top(props) {
     const { auction } = props;
     return (
         <div className="container">

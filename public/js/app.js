@@ -54404,7 +54404,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _online_LotCenter_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./online/LotCenter.js */ "./resources/js/components/auction/online/LotCenter.js");
 /* harmony import */ var _online_LotBottom_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./online/LotBottom.js */ "./resources/js/components/auction/online/LotBottom.js");
 /* harmony import */ var _archive_LotTop_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./archive/LotTop.js */ "./resources/js/components/auction/archive/LotTop.js");
-/* harmony import */ var _archive_LotTop_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_archive_LotTop_js__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _archive_LotCenter_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./archive/LotCenter.js */ "./resources/js/components/auction/archive/LotCenter.js");
 /* harmony import */ var _archive_LotBottom_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./archive/LotBottom.js */ "./resources/js/components/auction/archive/LotBottom.js");
 
@@ -54447,7 +54446,7 @@ function Lot(props) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_online_LotTop_js__WEBPACK_IMPORTED_MODULE_6__["default"], props);
 
       case "finished":
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotTop_js__WEBPACK_IMPORTED_MODULE_9___default.a, props);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_archive_LotTop_js__WEBPACK_IMPORTED_MODULE_9__["default"], props);
 
       case "coming":
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coming_LotTop_js__WEBPACK_IMPORTED_MODULE_2__["default"], props);
@@ -55229,7 +55228,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Center; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -55255,7 +55254,7 @@ function _extends() {
 
 
 
-function Bottom(props) {
+function Center(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
@@ -55274,10 +55273,44 @@ function Bottom(props) {
 /*!***********************************************************!*\
   !*** ./resources/js/components/auction/archive/LotTop.js ***!
   \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Top; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Countdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Countdown */ "./resources/js/components/auction/Countdown.js");
 
 
+function Top(props) {
+  var auction = props.auction;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "auction-announce auction-coming",
+    style: {
+      backgroundImage: "url(" + auction.thumbnail + ")",
+      backgroundPosition: "top center"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "darkener"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    date: auction.dateatom
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h1"
+  }, auction.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/auctions/" + auction.id,
+    className: "btn btn-danger mb-3",
+    onClick: function onClick(e) {
+      e.preventDefault();
+      props.participate(auction.id);
+    }
+  }, __("PARTICIPATE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "h3"
+  }, auction.date, " \xA0\xA0\xA0"))));
+}
 
 /***/ }),
 
@@ -56078,7 +56111,7 @@ function Bottom(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Center; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -56104,7 +56137,7 @@ function _extends() {
 
 
 
-function Bottom(props) {
+function Center(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
@@ -56361,7 +56394,7 @@ function Bottom(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Center; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -56387,7 +56420,7 @@ function _extends() {
 
 
 
-function Bottom(props) {
+function Center(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
@@ -56411,7 +56444,7 @@ function Bottom(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bottom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Top; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _extends() {
@@ -56433,7 +56466,7 @@ function _extends() {
 }
 
 
-function Bottom(props) {
+function Top(props) {
   var auction = props.auction;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
